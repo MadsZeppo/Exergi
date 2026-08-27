@@ -1,0 +1,23 @@
+seed: 42
+forecast:
+  horizons: [7, 14, 28]
+  quantiles: [0.05, 0.10, 0.25, 0.50, 0.75, 0.90, 0.95]
+  calibration_window_days: 56
+benchmark:
+  min_train_days: 365
+  step_days: 28
+causal:
+  treatment_buckets: {none: [0, 0], low: [0, 10], medium: [10, 20], high: [20, 30]}
+  low_support_propensity: 0.05
+  insufficient_propensity: 0.01
+confidence:
+  minimum_samples: 100
+  minimum_comparables: 20
+simulation:
+  draws: 5000
+ensemble:
+  strategy: recent_performance
+  eta: 2.0
+evidence_gate:
+  hard_failures: [treatment_overlap, estimator_agreement, placebo_tests, distribution_shift]
+  maximum_warnings_for_moderate: 3

@@ -1,0 +1,2 @@
+import { MerchantPage, Status } from "../merchant-shell";
+export default function Page() { return <MerchantPage eyebrow="Experiments" title="Frozen randomized tests" description="Assignment and exposure stay separate; primary analysis is intention to treat."><section className="product-panel"><div className="health-row"><span>High-intent repeat recovery test</span><Status label="COMPLETE"/></div><p>Control · Free shipping · 10% offer · fixed 30-day horizon</p><a className="primary-link" href="/experiments/demo/results">View result →</a></section></MerchantPage> }
