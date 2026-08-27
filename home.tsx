@@ -153,7 +153,7 @@ button,input{font:inherit}
 }
 .ex-shell{
   overflow:hidden;
-  border:1px solid #e2e5ea;
+  border:1px solid #cfd4dc;
   border-radius:24px;
   background:#fff;
   box-shadow:var(--shadow);
@@ -204,7 +204,7 @@ button,input{font:inherit}
 
 .ex-sidebar{
   padding:22px 16px 18px;
-  border-right:1px solid var(--line);
+  border-right:1px solid #d4d8df;
   background:#fcfcfd;
 }
 .ex-sidebar-brand{
@@ -223,7 +223,6 @@ button,input{font:inherit}
   height:40px;
   display:flex;
   align-items:center;
-  gap:10px;
   margin:2px 0;
   padding:0 10px;
   border-radius:10px;
@@ -235,19 +234,6 @@ button,input{font:inherit}
   color:#111214;
   font-weight:600;
 }
-.ex-side-icon{
-  width:16px;
-  height:16px;
-  border:1.5px solid currentColor;
-  border-radius:4px;
-  opacity:.85;
-}
-.ex-side-item.active .ex-side-icon{
-  border-color:var(--blue);
-  background:var(--blue);
-  box-shadow:inset 0 0 0 3px #f2f5f8;
-}
-
 .ex-main{
   padding:32px 32px 36px;
 }
@@ -791,33 +777,26 @@ export default function Home() {
 
                   <div className="ex-side-label">Workspace</div>
                   <div className="ex-side-item active">
-                    <span className="ex-side-icon" />
                     Decision Feed
                   </div>
                   <div className="ex-side-item">
-                    <span className="ex-side-icon" />
                     Ask Exergi
                   </div>
                   <div className="ex-side-item">
-                    <span className="ex-side-icon" />
                     Experiments
                   </div>
                   <div className="ex-side-item">
-                    <span className="ex-side-icon" />
                     Evidence
                   </div>
                   <div className="ex-side-item">
-                    <span className="ex-side-icon" />
                     Economics
                   </div>
 
                   <div className="ex-side-label">Account</div>
                   <div className="ex-side-item">
-                    <span className="ex-side-icon" />
                     Data sources
                   </div>
                   <div className="ex-side-item">
-                    <span className="ex-side-icon" />
                     Settings
                   </div>
                 </aside>
