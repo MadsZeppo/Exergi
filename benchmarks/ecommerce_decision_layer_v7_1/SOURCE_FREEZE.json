@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "duckdb": "1.5.5",
+    "numpy": "2.5.2",
+    "polars": "1.44.0",
+    "pydantic": "2.13.4",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.18.1"
+  },
+  "development_config_hash": "19a556525687637c013f95e1331982c6ddaebadf851cb3860746ac9784f6a9dc",
+  "dirty": false,
+  "freeze_sha256": "7a9c83f3b3d3c5497b18ab528e20c6d2098756b6b573e73cd0c2d67cd0185195",
+  "git_sha": "1ef3bd5d805ddf3d62422cca78918de8d8ebec93",
+  "manifest_hashes": {
+    "O": "6315fe3be0432fa732af034b7cf277f3351e62d32478b0e02b9f94b481bc2cf9",
+    "P": "7bb5c8d6781cfc09db857773af8ca16f977c8339d506e11b151e37decc3f91b6",
+    "Q": "29ef3e02c10795cd4399336891ffc0db14df27563da6c5ecbce33c6f8a8a0868",
+    "R": "26e891d0ebeeaece25441c47ef097228d2088c76600c45c1daa4bbe8dae73a8b",
+    "S": "bdc568e71d5eafc9a135cbf3726555b3307ee1ab8d3db6ca5d0553bff59703ee",
+    "T": "77a22821846fde7d9c9d8693cf8fe01f368e12d7a1298682a5e5e5ef29358c76"
+  },
+  "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+  "python": "3.13.14 (main, Jul 23 2026, 14:48:16) [Clang 22.1.3 ]",
+  "schema_version": 1,
+  "source_tree_sha256": "6bf49edbcfb55881300640b9a2212029119cb65c6434b10b542ce6eb48b9afd7"
+}

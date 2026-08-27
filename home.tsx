@@ -34,6 +34,7 @@ body{
   font-feature-settings:'cv05','ss01';
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
   line-height:1.5;letter-spacing:-.006em;
+  overflow-x:hidden;
 }
 a{color:inherit;text-decoration:none}
 .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
@@ -303,7 +304,7 @@ a:focus-visible,.btn:focus-visible,button:focus-visible{outline:2px solid var(--
   .bento{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:1fr;gap:36px}
   .nav-mid,.nav-right{display:none}
-  .nav-toggle{display:block}
+  .nav-toggle{display:block;margin-left:auto}
   .m-menu{display:block;position:fixed;inset:82px 0 auto 0;z-index:99;background:rgba(255,255,255,.98);
     backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:14px 20px 20px;opacity:0;transform:translateY(-8px);
     pointer-events:none;transition:opacity .2s,transform .2s}
@@ -322,6 +323,54 @@ a:focus-visible,.btn:focus-visible,button:focus-visible{outline:2px solid var(--
   .feed-bar{flex-direction:column;align-items:flex-start;gap:12px}
   .disp-legend{flex-wrap:wrap}
   .tt-row{grid-template-columns:1fr;gap:8px}
+}
+@media(max-width:680px){
+  .wrap{padding-left:18px;padding-right:18px}
+  .nav{height:72px}
+  .brand{font-size:18px;margin-right:0}
+  .m-menu{inset:72px 0 auto 0;padding:12px 18px 18px}
+
+  .hero{padding-top:48px}
+  .hero h1{font-size:clamp(44px,13vw,56px);line-height:.94;letter-spacing:-.055em;max-width:8ch}
+  .hero-sub{margin-top:22px;font-size:16px;line-height:1.55;max-width:none}
+  .hero-cta{margin-top:26px;gap:10px}
+  .hero-cta .btn{width:100%;min-height:48px}
+  .hero-trust{margin-top:20px;align-items:flex-start;flex-wrap:wrap;gap:7px;font-size:12px;line-height:1.4}
+
+  .product{padding-top:34px}
+  .product .wrap{padding-left:10px;padding-right:10px}
+  .feed{border-radius:12px;box-shadow:var(--hair),0 18px 45px -34px rgba(23,23,23,.28)}
+  .feed-bar{padding:17px 16px;gap:11px}
+  .feed-bar-l{display:flex;flex-direction:column;align-items:flex-start;gap:3px}
+  .feed-title{font-size:14px}.feed-meta{font-size:12px}
+  .disp-legend{gap:5px}.dl{font-size:9px;padding:5px 7px}
+
+  .drow{display:grid;grid-template-columns:1fr;grid-template-areas:"stat" "main" "econ" "conf";gap:16px;padding:22px 18px 24px;align-items:start}
+  .drow .dstat{grid-area:stat;display:flex;flex-direction:row;align-items:center;gap:12px}
+  .dstat .stag{font-size:10px}.dstat .dcat{font-size:10px}
+  .drow .dmain{grid-area:main}.dtitle{font-size:17px}.dsub{font-size:13.5px;line-height:1.5;margin-top:7px;max-width:none}
+  .drow .decon{grid-area:econ;display:flex;align-items:baseline;justify-content:space-between;gap:12px;text-align:left;padding-top:14px;border-top:1px solid var(--line-2)}
+  .decon .val{font-size:25px}.decon .lbl{font-size:11.5px;text-align:right;margin:0}
+  .drow .dconf{grid-area:conf;gap:8px}.dconf .ctop{align-items:center}.dconf .cnum{font-size:15px}
+  .feed-foot{padding:15px 16px;flex-direction:column;align-items:flex-start;gap:9px}.feed-foot .fnote{line-height:1.45}
+
+  .editorial{padding-top:88px}.editorial h2{font-size:38px;line-height:1.07;max-width:none}
+  .bento{margin-top:38px;gap:12px}.tile{min-height:240px;border-radius:12px}.tile-viz{padding:16px}.tile-cap{padding:18px}
+  .crop-row .cr-top{padding:14px;flex-direction:column}.crop-row .cr-val,.crop-row .cr-vlbl{text-align:left}
+  .crop-row .cr-econ{padding:0 14px 14px}.cr-line{grid-template-columns:76px 1fr 48px;gap:7px}
+
+  .how{padding-top:88px}.how h2{font-size:38px;max-width:none}.how-sub{font-size:15px}
+  .mobile-visual{margin:12px 0 28px}.step{padding:24px 0 6px}.step h3{font-size:18px}.step p{font-size:14px}
+  .vpanel{padding:16px}.vpanel-head{gap:8px}.vcard{padding:16px}
+
+  .trust-inner{padding:64px 0}.trust h2{font-size:38px;line-height:1.08}.trust-lead{font-size:15px}
+  .tt-row{padding:17px 0}.tt-row .v{font-size:13px;line-height:1.5}
+
+  .cta{padding:68px 0}.cta-inner{padding:34px 20px;border-radius:14px}.cta-inner h2{font-size:34px;line-height:1.08}.cta-inner p{font-size:15px}
+  .cta-actions{flex-direction:column}.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
+  .cta-fine{font-size:11px}
+
+  footer{padding:34px 0}.foot{align-items:flex-start;flex-direction:column}.foot-l{align-items:flex-start;flex-wrap:wrap}.foot-r{gap:16px;flex-wrap:wrap}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
