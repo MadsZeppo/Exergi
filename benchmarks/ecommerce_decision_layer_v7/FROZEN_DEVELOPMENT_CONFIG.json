@@ -1,0 +1,54 @@
+{
+  "candidate_results": {
+    "forest_t_learner": {
+      "act_count": 36,
+      "avoid_count": 3,
+      "bau_or_test_count": 18,
+      "heterogeneous_personalization_rate": 0.6666666666666666,
+      "heterogeneous_positive_increment_rate": 0.5,
+      "mean_policy_value": 0.6560689914306945,
+      "mean_value_capture": 0.9887683959229127,
+      "null_harm_act_rate": 0.0,
+      "positive_world_mean_value": 1.0218444836137497,
+      "positive_world_positive_lower_rate": 1.0,
+      "selection_score": 1.0218444836137497,
+      "unsupported_act_count": 0,
+      "worlds": 57
+    },
+    "ridge_t_learner": {
+      "act_count": 36,
+      "avoid_count": 3,
+      "bau_or_test_count": 18,
+      "heterogeneous_personalization_rate": 0.5,
+      "heterogeneous_positive_increment_rate": 0.5,
+      "mean_policy_value": 0.6362429230052217,
+      "mean_value_capture": 0.9768693989865089,
+      "null_harm_act_rate": 0.0,
+      "positive_world_mean_value": 1.0116354672142007,
+      "positive_world_positive_lower_rate": 1.0,
+      "selection_score": 1.0116354672142007,
+      "unsupported_act_count": 0,
+      "worlds": 57
+    }
+  },
+  "freeze_sha256": "7a42de61f43c4f0ee4b4d14d066e99c2eff2345b41c65f577c636e96cdbc6e44",
+  "manifest_hashes": {
+    "H": "c837e93ce1a46c853caea13781c67cf8c43efab1bcbbf1db62cdf95d8c498392",
+    "I": "b78b54fa92936cda1a952640a2ffba263b7c53b26a07b940f31ed30f552bb0d4",
+    "J": "15b416be14a4cfc9497269826030442652e59487146ed4c47aead4ca07651f03",
+    "K": "bd001f930e8cbcfa279cee76395dec54b3d8d6142fe639f47805f940d56e3590",
+    "L": "1cb1e87638ba24b07ca76e4954db5f5c82a336b528b5dce2c35be770c9c96ece",
+    "M": "1910e0b2491a525b4d534042e0478d387463589ef551814fcf85b89326bbbe97"
+  },
+  "schema_version": 1,
+  "selected_model": "forest_t_learner",
+  "selection_stage": "DEVELOPMENT_H_I_J_ONLY",
+  "thresholds": {
+    "family_alpha": 0.05,
+    "hard_unsupported_act_count": 0,
+    "minimum_heterogeneity_ess": 200,
+    "minimum_viability_effect_cp": 0.1,
+    "propensity_floor": 0.05
+  },
+  "validation_or_final_targets_read": false
+}

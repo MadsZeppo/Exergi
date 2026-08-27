@@ -1,0 +1,180 @@
+{
+  "oracle_in_policy_inputs": false,
+  "pack": "H",
+  "role": "DEVELOPMENT",
+  "schema_version": 1,
+  "spec_sha256": "a2d1843f8786f608701e6d302453443614e7fb50c5ad8418b89e4bcbf7069e0a",
+  "worlds": [
+    {
+      "action_family": "family-2",
+      "family": "NULL",
+      "merchant_id": "merchant-H-00",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 71000,
+      "world_id": "H-00-null"
+    },
+    {
+      "action_family": "family-3",
+      "family": "HOMOGENEOUS_POSITIVE",
+      "merchant_id": "merchant-H-01",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 71101,
+      "world_id": "H-01-homogeneous_positive"
+    },
+    {
+      "action_family": "family-4",
+      "family": "SPARSE_HETEROGENEITY",
+      "merchant_id": "merchant-H-02",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 71202,
+      "world_id": "H-02-sparse_heterogeneity"
+    },
+    {
+      "action_family": "family-0",
+      "family": "QUALITATIVE_HETEROGENEITY",
+      "merchant_id": "merchant-H-03",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 71303,
+      "world_id": "H-03-qualitative_heterogeneity"
+    },
+    {
+      "action_family": "family-1",
+      "family": "GLOBALLY_HARMFUL",
+      "merchant_id": "merchant-H-04",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 71404,
+      "world_id": "H-04-globally_harmful"
+    },
+    {
+      "action_family": "family-2",
+      "family": "DELAYED_REVERSAL",
+      "merchant_id": "merchant-H-05",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 71505,
+      "world_id": "H-05-delayed_reversal"
+    },
+    {
+      "action_family": "family-3",
+      "family": "GRADUAL_DECAY",
+      "merchant_id": "merchant-H-06",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 71606,
+      "world_id": "H-06-gradual_decay"
+    },
+    {
+      "action_family": "family-4",
+      "family": "COMMON_SHOCK",
+      "merchant_id": "merchant-H-07",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 71707,
+      "world_id": "H-07-common_shock"
+    },
+    {
+      "action_family": "family-0",
+      "family": "CAUSAL_SHIFT",
+      "merchant_id": "merchant-H-08",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 71808,
+      "world_id": "H-08-causal_shift"
+    },
+    {
+      "action_family": "family-1",
+      "family": "HEAVY_TAILED_CP",
+      "merchant_id": "merchant-H-09",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 71909,
+      "world_id": "H-09-heavy_tailed_cp"
+    },
+    {
+      "action_family": "family-2",
+      "family": "ZERO_INFLATED",
+      "merchant_id": "merchant-H-10",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 72010,
+      "world_id": "H-10-zero_inflated"
+    },
+    {
+      "action_family": "family-3",
+      "family": "MISSING_DELAYED_RETURNS",
+      "merchant_id": "merchant-H-11",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 72111,
+      "world_id": "H-11-missing_delayed_returns"
+    },
+    {
+      "action_family": "family-4",
+      "family": "NONCOMPLIANCE",
+      "merchant_id": "merchant-H-12",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 72212,
+      "world_id": "H-12-noncompliance"
+    },
+    {
+      "action_family": "family-0",
+      "family": "ATTRITION",
+      "merchant_id": "merchant-H-13",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 72313,
+      "world_id": "H-13-attrition"
+    },
+    {
+      "action_family": "family-1",
+      "family": "PROPENSITY_LOGGING_ERROR",
+      "merchant_id": "merchant-H-14",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 72414,
+      "world_id": "H-14-propensity_logging_error"
+    },
+    {
+      "action_family": "family-2",
+      "family": "INTERFERENCE",
+      "merchant_id": "merchant-H-15",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 72515,
+      "world_id": "H-15-interference"
+    },
+    {
+      "action_family": "family-3",
+      "family": "ACTION_FATIGUE",
+      "merchant_id": "merchant-H-16",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 72616,
+      "world_id": "H-16-action_fatigue"
+    },
+    {
+      "action_family": "family-4",
+      "family": "NOVELTY_DECAY",
+      "merchant_id": "merchant-H-17",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 72717,
+      "world_id": "H-17-novelty_decay"
+    },
+    {
+      "action_family": "family-0",
+      "family": "INSUFFICIENT_SUPPORT",
+      "merchant_id": "merchant-H-18",
+      "observations": 2400,
+      "periods": 8,
+      "seed": 72818,
+      "world_id": "H-18-insufficient_support"
+    }
+  ]
+}

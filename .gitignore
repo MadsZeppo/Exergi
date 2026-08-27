@@ -19,7 +19,11 @@ env/
 # Project data, artifacts & benchmarks (som vejer for meget)
 data/
 artifacts/
-benchmarks/
+benchmarks/*
+!benchmarks/ecommerce_decision_layer_v7/
+!benchmarks/ecommerce_decision_layer_v7/**
+benchmarks/ecommerce_decision_layer_v7/**/__pycache__/
+benchmarks/ecommerce_decision_layer_v7/**/*.pyc
 
 # OS / System Files
 .DS_Store

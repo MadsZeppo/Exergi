@@ -1,0 +1,121 @@
+schema_version: 1
+frozen_at: "2026-08-27T00:00:00+02:00"
+datasets:
+  hillstrom:
+    source_url: "https://blog.minethatdata.com/2008/03/minethatdata-e-mail-analytics-and-data.html"
+    local_path: "data/raw/hillstrom/hillstrom.csv"
+    sha256: "27bab8c5d3669f26ec08ebb50a0a78317542f29501156f2e2af6781fab4cd7e2"
+    license_terms: "Publisher example data; verify redistribution rights before sharing."
+    acquisition_date: "2026-08-24"
+    assignment_provenance: "RANDOMIZED"
+    treatment_arms: ["No E-Mail", "Mens E-Mail", "Womens E-Mail"]
+    known_propensity: false
+    pre_treatment_features: [recency, history_segment, history, mens, womens, zip_code, newbie, channel]
+    post_treatment_variables: [visit, conversion, spend]
+    outcomes: [visit, conversion, spend]
+    cost_availability: "NONE"
+    temporal_structure: "single randomized campaign"
+    unit_of_randomization: "customer"
+    interference_risks: [household_collision_not_identified]
+    claim_authority: "REAL_RANDOMIZED_REVENUE"
+    allowed_claims: [multi_arm_itt, spend_policy_value, segment_policy]
+    forbidden_claims: [real_contribution_profit, merchant_generalization]
+  criteo_uplift_v2:
+    source_url: "https://ailab.criteo.com/criteo-uplift-prediction-dataset/"
+    local_path: "data/raw/criteo/criteo-research-uplift-v2.1.csv.gz"
+    sha256: "2716e1bf0fd157a93b5bf86924d9088419dfbac2022c6cd90030220634f616dc"
+    license_terms: "CC BY-NC-SA 4.0; non-commercial research use."
+    acquisition_date: "2026-08-24"
+    assignment_provenance: "RANDOMIZED"
+    treatment_arms: [control, advertising]
+    known_propensity: true
+    pre_treatment_features: [f0, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11]
+    post_treatment_variables: [exposure, visit, conversion]
+    outcomes: [visit, conversion]
+    cost_availability: "NONE"
+    temporal_structure: "single randomized advertising experiment"
+    unit_of_randomization: "user"
+    interference_risks: [cross_device_identity, advertising_spillover]
+    claim_authority: "REAL_RANDOMIZED_PROXY_OUTCOME"
+    allowed_claims: [itt_uplift, ranking, calibration, scalability]
+    forbidden_claims: [use_exposure_as_assignment, revenue, contribution_profit]
+  open_bandit:
+    source_url: "https://research.zozo.com/data.html"
+    local_path: "data/raw/open_bandit/zr-obp-master.zip"
+    sha256: "4a0e5f68559c15e87d1f5cc04e60ae4b19cbdc072b996a7c3043d2e1f947484a"
+    license_terms: "Open Bandit Dataset terms in upstream repository; preserve attribution."
+    acquisition_date: "2026-08-24"
+    assignment_provenance: "LOGGED_BANDIT_RANDOM_AND_BERNOULLI_TS"
+    treatment_arms: [fashion_items]
+    known_propensity: true
+    pre_treatment_features: [user_features, item_features, position]
+    post_treatment_variables: [click]
+    outcomes: [click]
+    cost_availability: "NONE"
+    temporal_structure: "logged sequential recommendations"
+    unit_of_randomization: "recommendation impression"
+    interference_risks: [repeat_users, inventory, temporal_adaptation]
+    claim_authority: "REAL_RANDOMIZED_PROXY_OUTCOME"
+    allowed_claims: [ope_method_validation, click_policy_value, overlap]
+    forbidden_claims: [commercial_value, revenue, contribution_profit]
+  x5_retailhero:
+    source_url: "https://www.uplift-modeling.com/en/latest/api/datasets/fetch_x5.html"
+    local_path: "data/raw/x5_retailhero/uplift_train.csv.gz"
+    sha256: "0a218e864a1ec1dfe26e980a082b81d5f46d199c4a6ae32abbaa95265af1c2c7"
+    related_sha256:
+      clients: "bfca1719b862735ae9816ed9bbba6924931c6a4dff761c481efe9addff458429"
+      purchases: "3d57519fa92b553fd1e947c120add475cc42e0c64c323a52cef5aebe8645c8e2"
+    license_terms: "Competition dataset terms; assignment design not established by local artifacts."
+    acquisition_date: "2026-08-24"
+    assignment_provenance: "UNKNOWN_ASSIGNMENT"
+    treatment_arms: [control, communication]
+    known_propensity: false
+    pre_treatment_features: [client_history_features]
+    post_treatment_variables: [treatment_flg, target]
+    outcomes: [target]
+    cost_availability: "NONE"
+    temporal_structure: "pre-period purchases plus campaign target"
+    unit_of_randomization: "client_if_randomized_unverified"
+    interference_risks: [household_identity, campaign_overlap]
+    claim_authority: "OBSERVATIONAL_ASSOCIATION"
+    allowed_claims: [ranking_robustness, feature_robustness]
+    forbidden_claims: [causal_pass, profit_pass]
+  baur_profit_uplift:
+    source_url: "https://doi.org/10.1007/s11573-021-01068-3"
+    local_path: null
+    sha256: null
+    license_terms: "Paper is accessible; row-level data not located as a lawful public download."
+    acquisition_date: null
+    assignment_provenance: "UNAVAILABLE"
+    treatment_arms: []
+    known_propensity: false
+    pre_treatment_features: []
+    post_treatment_variables: []
+    outcomes: []
+    cost_availability: "PAPER_ONLY"
+    temporal_structure: "not locally verifiable"
+    unit_of_randomization: "not locally verifiable"
+    interference_risks: [unknown]
+    claim_authority: "INSUFFICIENT"
+    allowed_claims: [adapter_contract_only]
+    forbidden_claims: [data_analysis, causal_pass, profit_pass]
+  synthetic_v7:
+    source_url: "repository-generated"
+    local_path: null
+    sha256: null
+    license_terms: "Repository test fixture."
+    acquisition_date: "2026-08-27"
+    assignment_provenance: "SIMULATED_RANDOMIZED"
+    treatment_arms: [bau, action]
+    known_propensity: true
+    pre_treatment_features: [rfm, customer_state, preregistered_segments]
+    post_treatment_variables: [assignment, delivery, mature_contribution_profit]
+    outcomes: [contribution_profit]
+    cost_availability: "TRUTH_KNOWN"
+    temporal_structure: "sequential customer cohorts with delayed maturity"
+    unit_of_randomization: "synthetic customer"
+    interference_risks: [explicit_world_dependent]
+    claim_authority: "SYNTHETIC_ECONOMIC"
+    allowed_claims: [mechanism, synthetic_economics, safety_properties]
+    forbidden_claims: [real_merchant_profit]
+

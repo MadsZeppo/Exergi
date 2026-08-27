@@ -1,0 +1,14 @@
+{
+  "frozen_model": "forest_t_learner",
+  "lock_sha256": "58b65ce9cc01c6902e6620b85c5c545c4995762bf03f0080ee6ee4dd73c80485",
+  "manifest_spec_hashes": {
+    "K": "bef0aa21f2d7614ae6b95b9169e698c16fef04e164ad7d82ec2cfdacd1052f03",
+    "L": "b204cbd8fc63c8b3130c950ad8d238bcd1f196249c50d3f88e2bdcbda578cb26",
+    "M": "6f1f5e159f182f8629b65683327045dbdab055a5a088d69f8685aa0885bfe14b"
+  },
+  "packs": [
+    "K",
+    "L",
+    "M"
+  ]
+}
