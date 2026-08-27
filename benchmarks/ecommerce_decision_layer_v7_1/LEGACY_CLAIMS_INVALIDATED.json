@@ -1,0 +1,18 @@
+{
+  "quarantine_version": "V7.1",
+  "legacy_versions_preserved": ["V6", "V6.1", "V6.2"],
+  "defect": "V6 build_source_records generated source-prior estimates directly from MerchantTruth.global_effects plus noise instead of observed randomized source outcomes.",
+  "invalidated_claims": [
+    "Any V6-V6.2 source-transfer or warm-start performance claim that depends on build_source_records",
+    "Any claim that V6-V6.2 source priors constituted independently observed randomized merchant evidence",
+    "Any aggregate V6-V6.2 policy result presented as free of oracle-derived prior influence"
+  ],
+  "not_automatically_invalidated": [
+    "Pure evaluator-only oracle comparisons clearly labelled after prediction freeze",
+    "Risk-ledger arithmetic tests that do not consume source priors",
+    "Unrelated real randomized dataset results"
+  ],
+  "v7_1_policy_imports_legacy_v6": false,
+  "legacy_artifacts_modified": false
+}
+

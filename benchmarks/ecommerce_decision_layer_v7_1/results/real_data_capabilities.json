@@ -1,0 +1,136 @@
+{
+  "criteo": {
+    "assignment_column": "treatment",
+    "authority": "REAL_RANDOMIZED_PROXY_OUTCOME",
+    "exposure_forbidden": true,
+    "fixed_subsample_row_id_sha256": "a09ca9cea3d432a7094ae3fe6f7b205b1ea35c655476a1f7cf96f9a1978643d6",
+    "fixed_subsample_rows": 998521,
+    "full_rows_verified": 13979592,
+    "official_hash_verified": true,
+    "outcomes": {
+      "conversion": {
+        "ate": {
+          "effect": 0.0014304416370865092,
+          "interval": [
+            0.0008917840403156782,
+            0.00196909923385734
+          ],
+          "standard_error": 0.000274830354547172
+        },
+        "decile_calibration_mae": 0.0010902875270029657,
+        "policy_minus_best_static": -0.00046853323487641046,
+        "policy_value": 0.0009603223506488081,
+        "shuffle_effect": 0.0009184652738964409,
+        "treat_all_value": 0.0014288555855252185,
+        "treated_fraction": 0.9672243120671384
+      },
+      "visit": {
+        "ate": {
+          "effect": 0.011036890105101192,
+          "interval": [
+            0.008644044973925017,
+            0.013429735236277367
+          ],
+          "standard_error": 0.0012208617862627228
+        },
+        "decile_calibration_mae": 0.00490928756726469,
+        "policy_minus_best_static": -0.0013131172630250938,
+        "policy_value": 0.00969124246526864,
+        "shuffle_effect": 0.0009942768271421695,
+        "treat_all_value": 0.011004359728293734,
+        "treated_fraction": 0.7416315522497502
+      }
+    },
+    "profit_claim_permitted": false,
+    "subsample_rule": "hash(row_id,202608271) mod 14 == 0"
+  },
+  "hillstrom": {
+    "arm_results": {
+      "MENS_EMAIL": {
+        "conversion_itt": {
+          "effect": 0.006805006519615695,
+          "interval": [
+            0.005000129025231786,
+            0.008609884013999603
+          ],
+          "standard_error": 0.0009208727857351216
+        },
+        "spend_itt": {
+          "effect": 0.7698271558945368,
+          "interval": [
+            0.48514912892878365,
+            1.0545051828602898
+          ],
+          "standard_error": 0.14524656024868676
+        }
+      },
+      "WOMENS_EMAIL": {
+        "conversion_itt": {
+          "effect": 0.003111057511085258,
+          "interval": [
+            0.0014986400681705587,
+            0.004723474953999957
+          ],
+          "standard_error": 0.0008226770775551195
+        },
+        "spend_itt": {
+          "effect": 0.4244122159365967,
+          "interval": [
+            0.16896450721722805,
+            0.6798599246559653
+          ],
+          "standard_error": 0.13033285852919116
+        }
+      }
+    },
+    "assignment": "RANDOMIZED_MULTI_ARM",
+    "authority": "REAL_RANDOMIZED_REVENUE",
+    "best_static": "MENS_EMAIL",
+    "development_means": {
+      "MENS_EMAIL": 1.386990449569066,
+      "NO_EMAIL": 0.6386846971798428,
+      "WOMENS_EMAIL": 1.3220950788342094
+    },
+    "personalized_minus_best_static": 0.06213069917900382,
+    "personalized_scenario_net_value": 0.4846195528755361,
+    "personalized_spend_value": 0.9484754453419318,
+    "predefined_segment_spend_value": 1.0192781563904485,
+    "profit_claim_permitted": false,
+    "rows": 64000,
+    "scenario_contact_cost": 0.5,
+    "segment_minus_best_static": 0.13293341022752048,
+    "test_best_static_spend": 0.886344746162928,
+    "test_control_spend": 0.7917470997679815
+  },
+  "open_bandit": {
+    "authority": "REAL_RANDOMIZED_PROXY_OUTCOME_CLICK",
+    "bts_rows": 10000,
+    "commercial_value_claim_permitted": false,
+    "effective_sample_size": 340.3783411326392,
+    "ess_fraction": 0.03403783411326392,
+    "estimators": {
+      "DM": 0.003800000002989546,
+      "DR": 0.0023106364907235213,
+      "IPS": 0.0023596395168460037,
+      "SNIPS": 0.0023337138931618065,
+      "SwitchDR": 0.003866621878971685
+    },
+    "local_release": "PUBLISHER_QUICK_SAMPLE_NOT_FULL_26M",
+    "max_weight": 277.77777777777777,
+    "random_ground_click_rate": 0.0038,
+    "random_rows": 10000,
+    "target_policy": "uniform_random_over_80_items",
+    "unsupported_fraction": 0.0
+  },
+  "x5": {
+    "assignment_provenance": "UNKNOWN_ASSIGNMENT",
+    "authority": "OBSERVATIONAL_ASSOCIATION",
+    "causal_claim_permitted": false,
+    "features": 16,
+    "overall_association": 0.038683387664763536,
+    "profit_claim_permitted": false,
+    "random_assignment_proven": false,
+    "rows": 200039,
+    "top_quintile_association": 0.04843571801418308
+  }
+}
