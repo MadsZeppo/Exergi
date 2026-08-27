@@ -52,7 +52,7 @@ a{color:inherit;text-decoration:none}
 .btn-secondary:hover{background:var(--raise)}
 .btn-ghost{color:var(--ink-2)}
 .btn-ghost:hover{color:var(--ink)}
-.arr{transition:transform .18s var(--ease)}
+.arr{display:inline-block;width:6px;height:10px;flex:0 0 auto;transition:transform .18s var(--ease)}
 .btn-primary:hover .arr,.link:hover .arr{transform:translateX(2px)}
 
 /* ---------- NAV ---------- */
@@ -407,7 +407,7 @@ const markup = String.raw`<!-- NAV -->
     <h1>Know what to do next.</h1>
     <p class="hero-sub">Exergi analyzes your commerce data, compares the decisions in front of you, and shows which actions are most likely to increase contribution profit.</p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="#cta">Join design partners <span class="arr">→</span></a>
+      <a class="btn btn-primary" href="#cta">Join design partners <svg class="arr" viewBox="0 0 6 10" aria-hidden="true"><path d="M1 1.5L4.5 5 1 8.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a class="btn btn-secondary" href="#how">See how it works</a>
     </div>
     <div class="hero-trust"><span>Read-only by default</span><span class="dot"></span><span>Evidence behind every recommendation</span></div>
@@ -614,7 +614,7 @@ const markup = String.raw`<!-- NAV -->
       <h2>Evaluate Exergi on your own store data.</h2>
       <p>We're working with a small group of US commerce brands as design partners. Read-only connection, no autonomous changes.</p>
       <div class="cta-actions">
-        <a class="btn btn-primary" href="#">Join design partners <span class="arr">→</span></a>
+        <a class="btn btn-primary" href="#">Join design partners <svg class="arr" viewBox="0 0 6 10" aria-hidden="true"><path d="M1 1.5L4.5 5 1 8.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a class="btn btn-secondary" href="#">Talk to the team</a>
       </div>
       <div class="cta-fine">Selective intake · US commerce brands</div>

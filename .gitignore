@@ -28,6 +28,10 @@ benchmarks/ecommerce_decision_layer_v7/**/*.pyc
 !benchmarks/ecommerce_decision_layer_v7_1/**
 benchmarks/ecommerce_decision_layer_v7_1/**/__pycache__/
 benchmarks/ecommerce_decision_layer_v7_1/**/*.pyc
+!benchmarks/ecommerce_decision_layer_v7_2/
+!benchmarks/ecommerce_decision_layer_v7_2/**
+benchmarks/ecommerce_decision_layer_v7_2/**/__pycache__/
+benchmarks/ecommerce_decision_layer_v7_2/**/*.pyc
 
 # OS / System Files
 .DS_Store
