@@ -1,0 +1,71 @@
+{
+  "levels": [
+    {
+      "level": "BAU",
+      "promoted": true,
+      "reason": "baseline"
+    },
+    {
+      "candidate": "MENS_EMAIL",
+      "heldout_incremental_net_value": {
+        "lower_95": -0.2681004103750271,
+        "point": 0.7350094247117838,
+        "standard_error": 0.5118001366347613,
+        "upper_95": 1.7381192597985946
+      },
+      "level": "best_supported_static_action",
+      "promoted": false,
+      "reason": "static development gate failed"
+    },
+    {
+      "candidate": "simple_rfm_affinity_segment",
+      "heldout_incremental_net_value_over_static": {
+        "lower_95": -0.9829957270145624,
+        "point": -0.25666839378980305,
+        "standard_error": 0.3705819795434695,
+        "upper_95": 0.46965893943495624
+      },
+      "level": "supported_segment_policy",
+      "promoted": false,
+      "reason": "no stable positive value over static",
+      "stability": {
+        "fold_increment": [
+          0.27178766324834286,
+          -0.31771544302243493,
+          0.141458671869164,
+          0.3659849577763203,
+          -1.7473611742684416
+        ],
+        "maximum_fold_increment": 0.3659849577763203,
+        "minimum_fold_increment": -1.7473611742684416,
+        "positive_fold_fraction": 0.6
+      }
+    },
+    {
+      "candidate": "tweedie_t",
+      "heldout_incremental_net_value_over_static": {
+        "lower_95": -0.4923349834751874,
+        "point": -0.011967180093852421,
+        "standard_error": 0.2450901175584934,
+        "upper_95": 0.4684006232874825
+      },
+      "level": "supported_personalized_policy",
+      "promoted": false,
+      "reason": "no stable positive value over preceding supported level",
+      "stability": {
+        "fold_increment": [
+          0.3846972717836117,
+          0.6103555455327919,
+          0.031945054033738096,
+          0.25774077166953857,
+          -1.3621980096482234
+        ],
+        "maximum_fold_increment": 0.6103555455327919,
+        "minimum_fold_increment": -1.3621980096482234,
+        "positive_fold_fraction": 0.8
+      }
+    }
+  ],
+  "selected_level": "BAU",
+  "validation_opened": false
+}

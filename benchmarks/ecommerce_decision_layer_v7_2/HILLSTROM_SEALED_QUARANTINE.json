@@ -1,0 +1,14 @@
+{
+  "affected_unit_hash": "45626dfdd417ae0c75f78311ffcc4c8df5f2256bc402353e1f5b5551777fb897",
+  "hash_present_in_development": false,
+  "hash_present_in_sealed_manifest": true,
+  "hash_present_in_validation": false,
+  "incident": "a full raw source row was displayed during a prior diagnostic",
+  "manifest_split": "SEALED_TEST",
+  "sealed_test_fully_untouched": false,
+  "split_moved": false,
+  "status": "QUARANTINED_INTEGRITY_INCIDENT",
+  "used_for_modeling_or_scoring": false,
+  "validation_is_only_possible_one_shot_confirmation": true,
+  "validation_opened": false
+}

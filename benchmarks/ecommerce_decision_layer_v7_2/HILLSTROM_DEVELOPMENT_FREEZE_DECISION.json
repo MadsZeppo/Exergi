@@ -1,0 +1,36 @@
+{
+  "development_gate": {
+    "candidate": "Mens E-Mail",
+    "checks": {
+      "assignment": true,
+      "bootstrap_implementation": true,
+      "conservative_adjusted_lower_bound_positive": true,
+      "fold_stability": false,
+      "leakage": true,
+      "overlap": true,
+      "positive_at_locked_email_cost": true,
+      "positive_primary_net_point": true,
+      "pretreatment_balance": true,
+      "three_estimators_select_mens": true,
+      "winsorization_sensitivity": false
+    },
+    "conservative_covariate_adjusted_net_lower_95": 0.22667008468887506,
+    "decision": "INCONCLUSIVE; no freeze",
+    "estimators_selecting_mens_at_locked_cost": 7,
+    "freeze_written": false,
+    "passed": false
+  },
+  "freeze_artifact_created": false,
+  "provenance": {
+    "audit_code_sha256": "aa006ee70ae496201e51485a1b311fcaac9f876ecfff0fb3f9255f0be569d72a",
+    "dataset_sha256": "27bab8c5d3669f26ec08ebb50a0a78317542f29501156f2e2af6781fab4cd7e2",
+    "development_parquet_sha256": "0e46a162e8bd201e487de30c5020b74516fd7b39208fce869f15babfc5724f13",
+    "preregistration_sha256": "6a0a2fb9eb7922a84222e545beeb5b76cedaa6486d82a12efd95364d3296f40b",
+    "source_commit": "ac48997c48f48526839439f2d800f0755db6d81b",
+    "split_manifest_sha256": "ee3b2050b532c65c323870f8d54ecb8240981f87936ed7ec2c8045960e1e1d0f",
+    "tracked_code_hash": "d78d6591f98c44adaa6a5540385ccedb3546add31b8653a46c8780a66de3b392"
+  },
+  "sealed_test_authority": false,
+  "status": "HILLSTROM_INCONCLUSIVE_VALIDATION_REMAINS_CLOSED",
+  "validation_opened": false
+}

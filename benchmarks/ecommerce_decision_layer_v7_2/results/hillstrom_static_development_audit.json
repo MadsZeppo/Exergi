@@ -1,0 +1,953 @@
+{
+  "bootstrap_replicates": {
+    "raw": 2000,
+    "robust": 300
+  },
+  "cost_grid": [
+    0.0,
+    0.01,
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    1.0,
+    2.0
+  ],
+  "development_gate": {
+    "candidate": "Mens E-Mail",
+    "checks": {
+      "assignment": true,
+      "bootstrap_implementation": true,
+      "conservative_adjusted_lower_bound_positive": true,
+      "fold_stability": false,
+      "leakage": true,
+      "overlap": true,
+      "positive_at_locked_email_cost": true,
+      "positive_primary_net_point": true,
+      "pretreatment_balance": true,
+      "three_estimators_select_mens": true,
+      "winsorization_sensitivity": false
+    },
+    "conservative_covariate_adjusted_net_lower_95": 0.22667008468887506,
+    "decision": "INCONCLUSIVE; no freeze",
+    "estimators_selecting_mens_at_locked_cost": 7,
+    "freeze_written": false,
+    "passed": false
+  },
+  "estimand": "ITT mean two-week spend: Mens E-Mail minus No E-Mail per eligible customer",
+  "estimator_tournament": {
+    "analytic_to_bootstrap_se_ratio": 1.0025715552132672,
+    "estimator_disagreement_range": 0.014363868457880624,
+    "estimators": {
+      "ancova_hc3": {
+        "break_even_action_cost": 0.7258033255068025,
+        "gross_spend_uplift": 0.7258033255068025,
+        "lower_95": 0.27764248459895596,
+        "net_value_by_cost": {
+          "0.0": {
+            "lower_95": 0.27764248459895596,
+            "point": 0.7258033255068025,
+            "upper_95": 1.173964166414649
+          },
+          "0.01": {
+            "lower_95": 0.26764248459895595,
+            "point": 0.7158033255068025,
+            "upper_95": 1.163964166414649
+          },
+          "0.05": {
+            "lower_95": 0.22764248459895597,
+            "point": 0.6758033255068024,
+            "upper_95": 1.123964166414649
+          },
+          "0.1": {
+            "lower_95": 0.17764248459895596,
+            "point": 0.6258033255068025,
+            "upper_95": 1.0739641664146489
+          },
+          "0.25": {
+            "lower_95": 0.027642484598955963,
+            "point": 0.4758033255068025,
+            "upper_95": 0.923964166414649
+          },
+          "0.5": {
+            "lower_95": -0.22235751540104404,
+            "point": 0.2258033255068025,
+            "upper_95": 0.673964166414649
+          },
+          "1.0": {
+            "lower_95": -0.722357515401044,
+            "point": -0.2741966744931975,
+            "upper_95": 0.17396416641464896
+          },
+          "2.0": {
+            "lower_95": -1.722357515401044,
+            "point": -1.2741966744931976,
+            "upper_95": -0.826035833585351
+          }
+        },
+        "standard_error": 0.22865769189785226,
+        "upper_95": 1.173964166414649
+      },
+      "cross_fitted_aipw": {
+        "break_even_action_cost": 0.7245859240911042,
+        "gross_spend_uplift": 0.7245859240911042,
+        "lower_95": 0.27667008468887505,
+        "net_value_by_cost": {
+          "0.0": {
+            "lower_95": 0.27667008468887505,
+            "point": 0.7245859240911042,
+            "upper_95": 1.1725017634933335
+          },
+          "0.01": {
+            "lower_95": 0.26667008468887504,
+            "point": 0.7145859240911042,
+            "upper_95": 1.1625017634933335
+          },
+          "0.05": {
+            "lower_95": 0.22667008468887506,
+            "point": 0.6745859240911042,
+            "upper_95": 1.1225017634933334
+          },
+          "0.1": {
+            "lower_95": 0.17667008468887505,
+            "point": 0.6245859240911042,
+            "upper_95": 1.0725017634933334
+          },
+          "0.25": {
+            "lower_95": 0.02667008468887505,
+            "point": 0.4745859240911042,
+            "upper_95": 0.9225017634933335
+          },
+          "0.5": {
+            "lower_95": -0.22332991531112495,
+            "point": 0.22458592409110423,
+            "upper_95": 0.6725017634933335
+          },
+          "1.0": {
+            "lower_95": -0.723329915311125,
+            "point": -0.2754140759088958,
+            "upper_95": 0.17250176349333346
+          },
+          "2.0": {
+            "lower_95": -1.723329915311125,
+            "point": -1.2754140759088957,
+            "upper_95": -0.8274982365066665
+          }
+        },
+        "standard_error": 0.2285326888327195,
+        "upper_95": 1.1725017634933335
+      },
+      "cuped_history": {
+        "break_even_action_cost": 0.7378862787647804,
+        "gross_spend_uplift": 0.7378862787647804,
+        "lower_95": 0.2884996227411118,
+        "net_value_by_cost": {
+          "0.0": {
+            "lower_95": 0.2884996227411118,
+            "point": 0.7378862787647804,
+            "upper_95": 1.187272934788449
+          },
+          "0.01": {
+            "lower_95": 0.2784996227411118,
+            "point": 0.7278862787647804,
+            "upper_95": 1.177272934788449
+          },
+          "0.05": {
+            "lower_95": 0.2384996227411118,
+            "point": 0.6878862787647804,
+            "upper_95": 1.137272934788449
+          },
+          "0.1": {
+            "lower_95": 0.1884996227411118,
+            "point": 0.6378862787647804,
+            "upper_95": 1.0872729347884489
+          },
+          "0.25": {
+            "lower_95": 0.038499622741111794,
+            "point": 0.4878862787647804,
+            "upper_95": 0.937272934788449
+          },
+          "0.5": {
+            "lower_95": -0.2115003772588882,
+            "point": 0.2378862787647804,
+            "upper_95": 0.687272934788449
+          },
+          "1.0": {
+            "lower_95": -0.7115003772588882,
+            "point": -0.2621137212352196,
+            "upper_95": 0.18727293478844897
+          },
+          "2.0": {
+            "lower_95": -1.7115003772588882,
+            "point": -1.2621137212352196,
+            "upper_95": -0.812727065211551
+          }
+        },
+        "standard_error": 0.22928311926564635,
+        "upper_95": 1.187272934788449
+      },
+      "customer_level_bootstrap": {
+        "break_even_action_cost": 0.7389497925489849,
+        "gross_spend_uplift": 0.7389497925489849,
+        "lower_95": 0.2921033126934155,
+        "net_value_by_cost": {
+          "0.0": {
+            "lower_95": 0.2921033126934155,
+            "point": 0.7389497925489849,
+            "upper_95": 1.1986351759840954
+          },
+          "0.01": {
+            "lower_95": 0.2821033126934155,
+            "point": 0.7289497925489848,
+            "upper_95": 1.1886351759840954
+          },
+          "0.05": {
+            "lower_95": 0.2421033126934155,
+            "point": 0.6889497925489848,
+            "upper_95": 1.1486351759840954
+          },
+          "0.1": {
+            "lower_95": 0.1921033126934155,
+            "point": 0.6389497925489849,
+            "upper_95": 1.0986351759840953
+          },
+          "0.25": {
+            "lower_95": 0.042103312693415496,
+            "point": 0.48894979254898485,
+            "upper_95": 0.9486351759840954
+          },
+          "0.5": {
+            "lower_95": -0.2078966873065845,
+            "point": 0.23894979254898485,
+            "upper_95": 0.6986351759840954
+          },
+          "1.0": {
+            "lower_95": -0.7078966873065845,
+            "point": -0.26105020745101515,
+            "upper_95": 0.1986351759840954
+          },
+          "2.0": {
+            "lower_95": -1.7078966873065844,
+            "point": -1.261050207451015,
+            "upper_95": -0.8013648240159046
+          }
+        },
+        "standard_error": 0.22877101798060973,
+        "upper_95": 1.1986351759840954
+      },
+      "raw_difference_in_means": {
+        "break_even_action_cost": 0.7389497925489849,
+        "gross_spend_uplift": 0.7389497925489849,
+        "lower_95": 0.2894137950725149,
+        "net_value_by_cost": {
+          "0.0": {
+            "lower_95": 0.2894137950725149,
+            "point": 0.7389497925489849,
+            "upper_95": 1.1884857900254548
+          },
+          "0.01": {
+            "lower_95": 0.2794137950725149,
+            "point": 0.7289497925489848,
+            "upper_95": 1.1784857900254548
+          },
+          "0.05": {
+            "lower_95": 0.23941379507251492,
+            "point": 0.6889497925489848,
+            "upper_95": 1.1384857900254548
+          },
+          "0.1": {
+            "lower_95": 0.1894137950725149,
+            "point": 0.6389497925489849,
+            "upper_95": 1.0884857900254548
+          },
+          "0.25": {
+            "lower_95": 0.03941379507251491,
+            "point": 0.48894979254898485,
+            "upper_95": 0.9384857900254548
+          },
+          "0.5": {
+            "lower_95": -0.2105862049274851,
+            "point": 0.23894979254898485,
+            "upper_95": 0.6884857900254548
+          },
+          "1.0": {
+            "lower_95": -0.7105862049274851,
+            "point": -0.26105020745101515,
+            "upper_95": 0.18848579002545485
+          },
+          "2.0": {
+            "lower_95": -1.7105862049274851,
+            "point": -1.261050207451015,
+            "upper_95": -0.8115142099745452
+          }
+        },
+        "standard_error": 0.22935931528454223,
+        "upper_95": 1.1884857900254548
+      },
+      "robust_regression_hc3": {
+        "break_even_action_cost": 0.7389497925489849,
+        "gross_spend_uplift": 0.7389497925489849,
+        "lower_95": 0.28939282249228865,
+        "net_value_by_cost": {
+          "0.0": {
+            "lower_95": 0.28939282249228865,
+            "point": 0.7389497925489849,
+            "upper_95": 1.188506762605681
+          },
+          "0.01": {
+            "lower_95": 0.27939282249228864,
+            "point": 0.7289497925489848,
+            "upper_95": 1.178506762605681
+          },
+          "0.05": {
+            "lower_95": 0.23939282249228866,
+            "point": 0.6889497925489848,
+            "upper_95": 1.138506762605681
+          },
+          "0.1": {
+            "lower_95": 0.18939282249228864,
+            "point": 0.6389497925489849,
+            "upper_95": 1.088506762605681
+          },
+          "0.25": {
+            "lower_95": 0.03939282249228865,
+            "point": 0.48894979254898485,
+            "upper_95": 0.9385067626056811
+          },
+          "0.5": {
+            "lower_95": -0.21060717750771135,
+            "point": 0.23894979254898485,
+            "upper_95": 0.6885067626056811
+          },
+          "1.0": {
+            "lower_95": -0.7106071775077114,
+            "point": -0.26105020745101515,
+            "upper_95": 0.1885067626056811
+          },
+          "2.0": {
+            "lower_95": -1.7106071775077114,
+            "point": -1.261050207451015,
+            "upper_95": -0.8114932373943189
+          }
+        },
+        "standard_error": 0.22937001577720012,
+        "upper_95": 1.188506762605681
+      },
+      "stratified_difference_in_means": {
+        "break_even_action_cost": 0.7324521470451382,
+        "gross_spend_uplift": 0.7324521470451382,
+        "lower_95": 0.2844022584169016,
+        "net_value_by_cost": {
+          "0.0": {
+            "lower_95": 0.2844022584169016,
+            "point": 0.7324521470451382,
+            "upper_95": 1.1805020356733746
+          },
+          "0.01": {
+            "lower_95": 0.2744022584169016,
+            "point": 0.7224521470451382,
+            "upper_95": 1.1705020356733746
+          },
+          "0.05": {
+            "lower_95": 0.2344022584169016,
+            "point": 0.6824521470451381,
+            "upper_95": 1.1305020356733746
+          },
+          "0.1": {
+            "lower_95": 0.18440225841690158,
+            "point": 0.6324521470451382,
+            "upper_95": 1.0805020356733746
+          },
+          "0.25": {
+            "lower_95": 0.03440225841690159,
+            "point": 0.48245214704513817,
+            "upper_95": 0.9305020356733746
+          },
+          "0.5": {
+            "lower_95": -0.2155977415830984,
+            "point": 0.23245214704513817,
+            "upper_95": 0.6805020356733746
+          },
+          "1.0": {
+            "lower_95": -0.7155977415830984,
+            "point": -0.26754785295486183,
+            "upper_95": 0.18050203567337464
+          },
+          "2.0": {
+            "lower_95": -1.7155977415830983,
+            "point": -1.2675478529548618,
+            "upper_95": -0.8194979643266254
+          }
+        },
+        "standard_error": 0.2286010825517188,
+        "upper_95": 1.1805020356733746
+      }
+    },
+    "fold_stability": {
+      "ancova_hc3": {
+        "all_leave_one_fold_out_positive": true,
+        "minimum_fold_net": -0.16752845169125086,
+        "net_by_fold": [
+          1.5126187205978778,
+          -0.16752845169125086,
+          0.7677932800796538,
+          1.1702659672250952,
+          0.07888170824913775
+        ],
+        "net_leave_one_fold_out": [
+          0.4802799029781712,
+          0.8774665634225018,
+          0.6449563248206558,
+          0.5555816731634988,
+          0.819983923309866
+        ],
+        "positive_fold_count": 4
+      },
+      "cross_fitted_aipw": {
+        "all_leave_one_fold_out_positive": true,
+        "minimum_fold_net": -0.13801118980699903,
+        "net_by_fold": [
+          1.4863598995598353,
+          -0.13801118980699903,
+          0.8082191352077155,
+          1.143403546127182,
+          0.0916762125055116
+        ],
+        "net_leave_one_fold_out": [
+          0.4737724837113067,
+          0.8839589059052375,
+          0.6416248724242077,
+          0.5565016158694812,
+          0.8182782178319112
+        ],
+        "positive_fold_count": 4
+      },
+      "cuped_history": {
+        "all_leave_one_fold_out_positive": true,
+        "minimum_fold_net": -0.15523774496306858,
+        "net_by_fold": [
+          1.5482517045367545,
+          -0.15523774496306858,
+          0.7911991971581194,
+          1.1500939198342295,
+          0.1342294487564652
+        ],
+        "net_leave_one_fold_out": [
+          0.4786963792620554,
+          0.9021959587786242,
+          0.6623741045358988,
+          0.5683721286625822,
+          0.82954083146111
+        ],
+        "positive_fold_count": 4
+      },
+      "robust_regression_hc3": {
+        "all_leave_one_fold_out_positive": true,
+        "minimum_fold_net": -0.16027432545201659,
+        "net_by_fold": [
+          1.5463061376776637,
+          -0.16027432545201659,
+          0.8032612947767026,
+          1.1769030327377452,
+          0.11623580784095695
+        ],
+        "net_leave_one_fold_out": [
+          0.47678648201660606,
+          0.9072474306950985,
+          0.6621201459379007,
+          0.5664369468464815,
+          0.8345266626848957
+        ],
+        "positive_fold_count": 4
+      }
+    },
+    "huber_location_sensitivity_not_mean_estimand": {
+      "break_even_action_cost": 7.2986679142803755e-09,
+      "gross_spend_uplift": 7.2986679142803755e-09,
+      "lower_95": 3.5114547649150125e-09,
+      "net_value_by_cost": {
+        "0.0": {
+          "lower_95": 3.5114547649150125e-09,
+          "point": 7.2986679142803755e-09,
+          "upper_95": 1.1703326677704861e-08
+        },
+        "0.01": {
+          "lower_95": -0.009999996488545236,
+          "point": -0.009999992701332085,
+          "upper_95": -0.009999988296673323
+        },
+        "0.05": {
+          "lower_95": -0.04999999648854524,
+          "point": -0.04999999270133209,
+          "upper_95": -0.04999998829667333
+        },
+        "0.1": {
+          "lower_95": -0.09999999648854524,
+          "point": -0.09999999270133209,
+          "upper_95": -0.09999998829667332
+        },
+        "0.25": {
+          "lower_95": -0.24999999648854523,
+          "point": -0.24999999270133208,
+          "upper_95": -0.24999998829667333
+        },
+        "0.5": {
+          "lower_95": -0.49999999648854526,
+          "point": -0.4999999927013321,
+          "upper_95": -0.4999999882966733
+        },
+        "1.0": {
+          "lower_95": -0.9999999964885452,
+          "point": -0.9999999927013321,
+          "upper_95": -0.9999999882966734
+        },
+        "2.0": {
+          "lower_95": -1.9999999964885453,
+          "point": -1.999999992701332,
+          "upper_95": -1.9999999882966732
+        }
+      },
+      "standard_error": 1.992305139988562e-09,
+      "upper_95": 1.1703326677704861e-08
+    },
+    "winsorization_sensitivity": {
+      "0.99": {
+        "aipw_net": -0.05,
+        "ancova_net": -0.05,
+        "cap": 0.0,
+        "cuped_net": -0.05,
+        "raw_net": -0.05
+      },
+      "0.995": {
+        "aipw_net": 0.24118935614404108,
+        "ancova_net": 0.24157183745812888,
+        "cap": 78.02850000000112,
+        "cuped_net": 0.24614026974868825,
+        "raw_net": 0.24666262730538369
+      },
+      "0.999": {
+        "aipw_net": 0.5829203603658403,
+        "ancova_net": 0.5838920930821306,
+        "cap": 284.2601000000248,
+        "cuped_net": 0.5935544563076537,
+        "raw_net": 0.5944730730951242
+      },
+      "none": {
+        "aipw_net": 0.6745859240911042,
+        "ancova_net": 0.6758033255068024,
+        "cap": null,
+        "cuped_net": 0.6878862787647804,
+        "raw_net": 0.6889497925489848
+      }
+    }
+  },
+  "folds": 5,
+  "forensic_audit": {
+    "arm_counts": {
+      "Mens E-Mail": 10655,
+      "No E-Mail": 10856,
+      "Womens E-Mail": 10722
+    },
+    "arm_mapping": {
+      "Mens E-Mail": 1,
+      "No E-Mail": 0,
+      "Womens E-Mail": 2
+    },
+    "assignment_srm": {
+      "chi_square": 1.949740948717153,
+      "p_value": 0.37724121280888645,
+      "pass": true
+    },
+    "balance_pass": true,
+    "duplicate_customer_limitation": "cannot test repeated people because the public source omits a stable customer ID",
+    "duplicate_unit_hashes": 0,
+    "effective_sample_size": {
+      "Mens E-Mail": 10655,
+      "No E-Mail": 10856,
+      "known_pair_propensity": 0.5,
+      "maximum_inverse_probability_weight": 2.0
+    },
+    "exact_duplicate_nonidentifying_profiles": 3686,
+    "max_absolute_smd": 0.02015876006783951,
+    "max_cramers_v": 0.016773368461325277,
+    "missingness": {
+      "channel": 0,
+      "conversion": 0,
+      "history": 0,
+      "history_segment": 0,
+      "mens": 0,
+      "newbie": 0,
+      "recency": 0,
+      "segment": 0,
+      "spend": 0,
+      "unit_hash": 0,
+      "visit": 0,
+      "womens": 0,
+      "zip_code": 0
+    },
+    "outcome_distributions": {
+      "Mens E-Mail": {
+        "conversion": {
+          "count": 10655,
+          "mean": 0.012482402627874237,
+          "missing": 0,
+          "positive_count": 133,
+          "quantiles": {
+            "0": 0.0,
+            "0.5": 0.0,
+            "0.9": 0.0,
+            "0.95": 0.0,
+            "0.99": 1.0,
+            "0.999": 1.0,
+            "1": 1.0
+          },
+          "standard_deviation": 0.11103039783978752,
+          "variance": 0.012327749244461493,
+          "zero_fraction": 0.9875175973721257
+        },
+        "spend": {
+          "count": 10655,
+          "mean": 1.5828803378695449,
+          "missing": 0,
+          "positive_count": 133,
+          "quantiles": {
+            "0": 0.0,
+            "0.5": 0.0,
+            "0.9": 0.0,
+            "0.95": 0.0,
+            "0.99": 29.99,
+            "0.999": 344.5360799999975,
+            "1": 499.0
+          },
+          "standard_deviation": 19.560670048748346,
+          "variance": 382.61981275600067,
+          "zero_fraction": 0.9875175973721257
+        },
+        "visit": {
+          "count": 10655,
+          "mean": 0.18282496480525576,
+          "missing": 0,
+          "positive_count": 1948,
+          "quantiles": {
+            "0": 0.0,
+            "0.5": 0.0,
+            "0.9": 1.0,
+            "0.95": 1.0,
+            "0.99": 1.0,
+            "0.999": 1.0,
+            "1": 1.0
+          },
+          "standard_deviation": 0.38654109736369835,
+          "variance": 0.14941401995113213,
+          "zero_fraction": 0.8171750351947442
+        }
+      },
+      "No E-Mail": {
+        "conversion": {
+          "count": 10856,
+          "mean": 0.007092851879145173,
+          "missing": 0,
+          "positive_count": 77,
+          "quantiles": {
+            "0": 0.0,
+            "0.5": 0.0,
+            "0.9": 0.0,
+            "0.95": 0.0,
+            "0.99": 0.0,
+            "0.999": 1.0,
+            "1": 1.0
+          },
+          "standard_deviation": 0.08392372796010593,
+          "variance": 0.007043192114721865,
+          "zero_fraction": 0.9929071481208548
+        },
+        "spend": {
+          "count": 10856,
+          "mean": 0.84393054532056,
+          "missing": 0,
+          "positive_count": 77,
+          "quantiles": {
+            "0": 0.0,
+            "0.5": 0.0,
+            "0.9": 0.0,
+            "0.95": 0.0,
+            "0.99": 0.0,
+            "0.999": 203.41510000000278,
+            "1": 499.0
+          },
+          "standard_deviation": 13.462902028034524,
+          "variance": 181.24973101645608,
+          "zero_fraction": 0.9929071481208548
+        },
+        "visit": {
+          "count": 10856,
+          "mean": 0.11063006632277082,
+          "missing": 0,
+          "positive_count": 1201,
+          "quantiles": {
+            "0": 0.0,
+            "0.5": 0.0,
+            "0.9": 1.0,
+            "0.95": 1.0,
+            "0.99": 1.0,
+            "0.999": 1.0,
+            "1": 1.0
+          },
+          "standard_deviation": 0.3136879323008007,
+          "variance": 0.09840011887115173,
+          "zero_fraction": 0.8893699336772292
+        }
+      },
+      "Womens E-Mail": {
+        "conversion": {
+          "count": 10722,
+          "mean": 0.00923335198656967,
+          "missing": 0,
+          "positive_count": 99,
+          "quantiles": {
+            "0": 0.0,
+            "0.5": 0.0,
+            "0.9": 0.0,
+            "0.95": 0.0,
+            "0.99": 0.0,
+            "0.999": 1.0,
+            "1": 1.0
+          },
+          "standard_deviation": 0.09565014629021719,
+          "variance": 0.009148950485339948,
+          "zero_fraction": 0.9907666480134303
+        },
+        "spend": {
+          "count": 10722,
+          "mean": 1.1671329975750793,
+          "missing": 0,
+          "positive_count": 99,
+          "quantiles": {
+            "0": 0.0,
+            "0.5": 0.0,
+            "0.9": 0.0,
+            "0.95": 0.0,
+            "0.99": 0.0,
+            "0.999": 265.36029000000116,
+            "1": 499.0
+          },
+          "standard_deviation": 15.91947451705621,
+          "variance": 253.42966889920206,
+          "zero_fraction": 0.9907666480134303
+        },
+        "visit": {
+          "count": 10722,
+          "mean": 0.1527700055959709,
+          "missing": 0,
+          "positive_count": 1638,
+          "quantiles": {
+            "0": 0.0,
+            "0.5": 0.0,
+            "0.9": 1.0,
+            "0.95": 1.0,
+            "0.99": 1.0,
+            "0.999": 1.0,
+            "1": 1.0
+          },
+          "standard_deviation": 0.35978243936882603,
+          "variance": 0.12944340367818297,
+          "zero_fraction": 0.8472299944040291
+        }
+      }
+    },
+    "pretreatment_balance": {
+      "Mens E-Mail": {
+        "categorical": {
+          "channel": {
+            "chi_square": 2.916511857023779,
+            "cramers_v": 0.011643983277554903,
+            "degrees_of_freedom": 2,
+            "p_value": 0.2326416648068984
+          },
+          "history_segment": {
+            "chi_square": 5.009857373988063,
+            "cramers_v": 0.015260978513951662,
+            "degrees_of_freedom": 6,
+            "p_value": 0.5425494552368764
+          },
+          "zip_code": {
+            "chi_square": 0.8548394356094554,
+            "cramers_v": 0.006303938597376933,
+            "degrees_of_freedom": 2,
+            "p_value": 0.652189759120035
+          }
+        },
+        "numeric": {
+          "history": {
+            "absolute_smd": 0.0024625350317696586,
+            "standardized_mean_difference": 0.0024625350317696586
+          },
+          "mens": {
+            "absolute_smd": 0.006593001486194233,
+            "standardized_mean_difference": 0.006593001486194233
+          },
+          "newbie": {
+            "absolute_smd": 0.006649386567618109,
+            "standardized_mean_difference": -0.006649386567618109
+          },
+          "recency": {
+            "absolute_smd": 0.0020197088626603883,
+            "standardized_mean_difference": -0.0020197088626603883
+          },
+          "womens": {
+            "absolute_smd": 0.001532793587663258,
+            "standardized_mean_difference": -0.001532793587663258
+          }
+        }
+      },
+      "Womens E-Mail": {
+        "categorical": {
+          "channel": {
+            "chi_square": 0.15381810940679164,
+            "cramers_v": 0.002669919333382466,
+            "degrees_of_freedom": 2,
+            "p_value": 0.9259740627630098
+          },
+          "history_segment": {
+            "chi_square": 6.070881604480774,
+            "cramers_v": 0.016773368461325277,
+            "degrees_of_freedom": 6,
+            "p_value": 0.4152969408474886
+          },
+          "zip_code": {
+            "chi_square": 0.3755775134498024,
+            "cramers_v": 0.0041719990108005965,
+            "degrees_of_freedom": 2,
+            "p_value": 0.8287897650064693
+          }
+        },
+        "numeric": {
+          "history": {
+            "absolute_smd": 0.00916276975840454,
+            "standardized_mean_difference": 0.00916276975840454
+          },
+          "mens": {
+            "absolute_smd": 0.015937757030540324,
+            "standardized_mean_difference": -0.015937757030540324
+          },
+          "newbie": {
+            "absolute_smd": 0.00019573313827253154,
+            "standardized_mean_difference": 0.00019573313827253154
+          },
+          "recency": {
+            "absolute_smd": 0.02015876006783951,
+            "standardized_mean_difference": 0.02015876006783951
+          },
+          "womens": {
+            "absolute_smd": 0.016170529620104717,
+            "standardized_mean_difference": 0.016170529620104717
+          }
+        }
+      }
+    },
+    "previous_holdout_explanation": {
+      "explanation": "same direction as full-development raw ITT, but a separate 25% internal holdout with sparse heavy-tailed spend and much larger sampling error",
+      "internal_holdout_n": 8105,
+      "reported_lower_95": -0.2681004103750271,
+      "reported_net_point": 0.7350094247117838,
+      "reported_upper_95": 1.7381192597985946
+    },
+    "randomization_unit": "one source row/customer; source has no original stable customer ID",
+    "sample_size": 32233,
+    "split_integrity": {
+      "development_matches_manifest": true,
+      "development_sealed_disjoint": true,
+      "development_validation_disjoint": true,
+      "sealed_outcomes_read": false,
+      "validation_outcomes_read": false
+    },
+    "unique_unit_hashes": 32233
+  },
+  "locked_primary_cost": 0.05,
+  "policy_hierarchy": {
+    "levels": [
+      {
+        "level": "BAU",
+        "promoted": true,
+        "reason": "baseline"
+      },
+      {
+        "candidate": "MENS_EMAIL",
+        "heldout_incremental_net_value": {
+          "lower_95": -0.2681004103750271,
+          "point": 0.7350094247117838,
+          "standard_error": 0.5118001366347613,
+          "upper_95": 1.7381192597985946
+        },
+        "level": "best_supported_static_action",
+        "promoted": false,
+        "reason": "static development gate failed"
+      },
+      {
+        "candidate": "simple_rfm_affinity_segment",
+        "heldout_incremental_net_value_over_static": {
+          "lower_95": -0.9829957270145624,
+          "point": -0.25666839378980305,
+          "standard_error": 0.3705819795434695,
+          "upper_95": 0.46965893943495624
+        },
+        "level": "supported_segment_policy",
+        "promoted": false,
+        "reason": "no stable positive value over static",
+        "stability": {
+          "fold_increment": [
+            0.27178766324834286,
+            -0.31771544302243493,
+            0.141458671869164,
+            0.3659849577763203,
+            -1.7473611742684416
+          ],
+          "maximum_fold_increment": 0.3659849577763203,
+          "minimum_fold_increment": -1.7473611742684416,
+          "positive_fold_fraction": 0.6
+        }
+      },
+      {
+        "candidate": "tweedie_t",
+        "heldout_incremental_net_value_over_static": {
+          "lower_95": -0.4923349834751874,
+          "point": -0.011967180093852421,
+          "standard_error": 0.2450901175584934,
+          "upper_95": 0.4684006232874825
+        },
+        "level": "supported_personalized_policy",
+        "promoted": false,
+        "reason": "no stable positive value over preceding supported level",
+        "stability": {
+          "fold_increment": [
+            0.3846972717836117,
+            0.6103555455327919,
+            0.031945054033738096,
+            0.25774077166953857,
+            -1.3621980096482234
+          ],
+          "maximum_fold_increment": 0.6103555455327919,
+          "minimum_fold_increment": -1.3621980096482234,
+          "positive_fold_fraction": 0.8
+        }
+      }
+    ],
+    "selected_level": "BAU",
+    "validation_opened": false
+  },
+  "provenance": {
+    "audit_code_sha256": "aa006ee70ae496201e51485a1b311fcaac9f876ecfff0fb3f9255f0be569d72a",
+    "dataset_sha256": "27bab8c5d3669f26ec08ebb50a0a78317542f29501156f2e2af6781fab4cd7e2",
+    "development_parquet_sha256": "0e46a162e8bd201e487de30c5020b74516fd7b39208fce869f15babfc5724f13",
+    "preregistration_sha256": "6a0a2fb9eb7922a84222e545beeb5b76cedaa6486d82a12efd95364d3296f40b",
+    "source_commit": "ac48997c48f48526839439f2d800f0755db6d81b",
+    "split_manifest_sha256": "ee3b2050b532c65c323870f8d54ecb8240981f87936ed7ec2c8045960e1e1d0f",
+    "tracked_code_hash": "d78d6591f98c44adaa6a5540385ccedb3546add31b8653a46c8780a66de3b392"
+  },
+  "runtime_seconds": 9.296497542003635,
+  "scope": "HILLSTROM_DEVELOPMENT_ONLY",
+  "sealed_test_used_as_authority": false,
+  "seed": 722031,
+  "status": "HILLSTROM_INCONCLUSIVE_VALIDATION_REMAINS_CLOSED",
+  "validation_opened": false
+}
