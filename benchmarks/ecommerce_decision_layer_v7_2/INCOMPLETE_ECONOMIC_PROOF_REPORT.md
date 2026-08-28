@@ -2,28 +2,16 @@
 
 ## Verdict
 
-**THREE-DATASET ECONOMIC PROOF: INCOMPLETE**.
+**REAL RANDOMIZED DEVELOPMENT EVIDENCE EXISTS; PRODUCT PROOF REMAINS INCOMPLETE**.
 
-Only Hillstrom currently has complete local data and adequate randomized revenue authority. Buy
-Baits is identified but blocked behind ICPSR authentication. Dataset C was not found: Dominick's
-assignment is not reconstructable from the installed scanner files, and Zenodo 13993677 omits the
-transaction files its replication code requires.
+Hillstrom and Buy Baits now provide two qualified randomized monetary datasets. Buy Baits central
+replication and assignment integrity pass, and sequential development assurance passes. Dataset C
+is still not found, validation and sealed test remain unopened, and there is no freeze.
 
-## What was proved
+Buy Baits development does not show material personalization. Control/BAU beats all personalized
+challengers on held-out development, and train-selected arm 1 reverses against held-out BAU. This is
+neither a positive product proof nor a sealed failure; it is an honest development stop.
 
-- V7/V7.1 artifacts were not changed or opened.
-- A separate V7.2 multi-arm economic policy engine now enforces OOF nuisance predictions, known-
-  propensity DR evaluation, cost subtraction, governance filtering, support fallback, claim levels
-  and one-time sealed guards.
-- The redesigned observable-only sequential controller passes its new development assurance gates,
-  including zero ordinary post-observable continuation and immediate stop on credible mature harm.
-- Frontend changes were not modified, stashed, staged or included.
-
-## What was not proved
-
-- No real-data model winner, policy value, personalization increment or pooled result exists.
-- No validation or SEALED_TEST outcome was opened.
-- No observed contribution-profit claim exists.
-- Three-dataset generalization remains untested.
-
-This is a scientific stop, not a negative sealed-test result.
+No observed contribution-profit, long-run economic effect, validated personalized policy or
+three-dataset generalization claim has been proved. V7/V7.1 and every historical sealed pack remain
+untouched.

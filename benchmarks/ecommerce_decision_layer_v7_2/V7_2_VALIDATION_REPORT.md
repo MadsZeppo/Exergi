@@ -2,12 +2,12 @@
 
 Verdict: **VALIDATION NOT OPENED**.
 
-Validation remains untouched because:
+Buy Baits provenance and development are now complete, but validation remains closed because:
 
-1. Buy Baits could not be authenticated/downloaded and its assignment/monetary schema is unverified.
-2. No third dataset satisfies the mandatory Dataset C contract.
-3. The three-dataset source freeze is therefore impossible.
+1. development does not show stable material personalized value over BAU;
+2. no official candidate or threshold freeze has been approved;
+3. the independent third Dataset C remains unavailable.
 
-No real-data validation outcome was read, no candidate was selected, and no thresholds were changed.
-The concrete next technical change is to acquire the official ICPSR Buy Baits package through an
-authorized login and obtain a complete third randomized monetary replication package.
+The validation manifest contains hashed assignment units/counts only. The development runner has no
+validation or sealed data path, and no validation/sealed outcome was read or scored. No threshold
+was changed after a reveal because no reveal occurred.

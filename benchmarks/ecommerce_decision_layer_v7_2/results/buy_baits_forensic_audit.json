@@ -1,0 +1,474 @@
+{
+  "assignment": {
+    "arms": [
+      {
+        "arm": 1,
+        "empirical_unit_propensity": 0.1250884447997741,
+        "label": "A: 10% automatic rebate",
+        "profit_observed_rows": 1440,
+        "purchase_rate_per_row": 0.021706910798368374,
+        "purchases": 1655,
+        "purchasevalue_observed_rows": 1441,
+        "randomized_units": 76196,
+        "redemptions": 1457,
+        "rows": 76243
+      },
+      {
+        "arm": 2,
+        "empirical_unit_propensity": 0.1253642448250558,
+        "label": "B1: 10% claim, no reminder",
+        "profit_observed_rows": 1388,
+        "purchase_rate_per_row": 0.020798157092184657,
+        "purchases": 1589,
+        "purchasevalue_observed_rows": 1389,
+        "randomized_units": 76364,
+        "redemptions": 836,
+        "rows": 76401
+      },
+      {
+        "arm": 3,
+        "empirical_unit_propensity": 0.12415597804763132,
+        "label": "B2a: 10% claim, unannounced reminder",
+        "profit_observed_rows": 1451,
+        "purchase_rate_per_row": 0.022160262170304985,
+        "purchases": 1677,
+        "purchasevalue_observed_rows": 1451,
+        "randomized_units": 75628,
+        "redemptions": 1056,
+        "rows": 75676
+      },
+      {
+        "arm": 4,
+        "empirical_unit_propensity": 0.12526574481602662,
+        "label": "B2b: 10% claim, announced reminder",
+        "profit_observed_rows": 1410,
+        "purchase_rate_per_row": 0.02110102558057291,
+        "purchases": 1611,
+        "purchasevalue_observed_rows": 1411,
+        "randomized_units": 76304,
+        "redemptions": 1097,
+        "rows": 76347
+      },
+      {
+        "arm": 5,
+        "empirical_unit_propensity": 0.12450893641331917,
+        "label": "C1: 15% claim, no reminder",
+        "profit_observed_rows": 1530,
+        "purchase_rate_per_row": 0.0225871066364451,
+        "purchases": 1714,
+        "purchasevalue_observed_rows": 1530,
+        "randomized_units": 75843,
+        "redemptions": 977,
+        "rows": 75884
+      },
+      {
+        "arm": 6,
+        "empirical_unit_propensity": 0.12596181154649938,
+        "label": "C2a: 15% claim, unannounced reminder",
+        "profit_observed_rows": 1610,
+        "purchase_rate_per_row": 0.023862245030869825,
+        "purchases": 1832,
+        "purchasevalue_observed_rows": 1611,
+        "randomized_units": 76728,
+        "redemptions": 1267,
+        "rows": 76774
+      },
+      {
+        "arm": 7,
+        "empirical_unit_propensity": 0.1252558948151237,
+        "label": "C2b: 15% claim, announced reminder",
+        "profit_observed_rows": 1586,
+        "purchase_rate_per_row": 0.023618952801393818,
+        "purchases": 1803,
+        "purchasevalue_observed_rows": 1586,
+        "randomized_units": 76298,
+        "redemptions": 1307,
+        "rows": 76337
+      },
+      {
+        "arm": 8,
+        "empirical_unit_propensity": 0.12439894473656993,
+        "label": "D: control",
+        "profit_observed_rows": 1196,
+        "purchase_rate_per_row": 0.017742658892435956,
+        "purchases": 1345,
+        "purchasevalue_observed_rows": 1197,
+        "randomized_units": 75776,
+        "redemptions": 0,
+        "rows": 75806
+      }
+    ],
+    "device_balance_chi_square": 7.7582653280804665,
+    "device_balance_df": 14,
+    "device_balance_p_value": 0.9015357262210644,
+    "exact_duplicate_rows": 0,
+    "max_rows_per_unit": 9,
+    "repeated_units": 282,
+    "srm_chi_square": 12.262973682439254,
+    "srm_p_value": 0.09223578758465684,
+    "treatment_contaminated_units": 0
+  },
+  "design": {
+    "enterprise_allowed_arms": [
+      1,
+      4,
+      7,
+      8
+    ],
+    "governance": {
+      "1": "ALLOWED",
+      "2": "PROHIBITED",
+      "3": "RESTRICTED",
+      "4": "ALLOWED",
+      "5": "PROHIBITED",
+      "6": "RESTRICTED",
+      "7": "ALLOWED",
+      "8": "ALLOWED"
+    },
+    "governance_rule": "Only control, automatic rebate, and pre-announced reminder mechanics are enterprise-allowed; unannounced reminders are restricted and no-reminder claim frictions are prohibited, independent of outcomes.",
+    "known_propensity_each_arm": 0.125,
+    "outcome_window": "not precisely documented; fail-closed UNKNOWN beyond observed experiment records",
+    "period": "14 anonymized date codes; calendar dates unavailable in package",
+    "randomization_unit": "HTTP cookie / website visitor",
+    "scientific_all_arms": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "limitations": [
+    "The public V1 package omits confidential browsing.dta, so Appendix Table D1 cannot be reproduced.",
+    "The exact calendar period and outcome-maturity window are not disclosed in the anonymized data.",
+    "Monetary outcomes are missing for a non-trivial subset of purchaser rows; official Table 2 uses complete-case regression after zero-filling non-purchasers.",
+    "No separate COGS, shipping, payment, return, or variable-cost ledger supports a contribution-profit claim."
+  ],
+  "outcomes": {
+    "buyer_rows": 13226,
+    "buyer_rows_missing_profit": 1615,
+    "buyer_rows_missing_purchasevalue": 1610,
+    "claim_authority": "REAL_RANDOMIZED_ECONOMIC_VALUE_UNDER_OBSERVED_RETAILER_PROFIT; not contribution profit",
+    "discount_cost": "not a separate field; encoded, if at all, inside package-provided profit",
+    "profit_definition": "package-provided retailer profit aggregated by official code; COGS and variable-cost components are not separately available",
+    "purchase_complete_rows": 609468,
+    "redemption_observed_buyer_rows": 13226
+  },
+  "replication": {
+    "table1": {
+      "purchase": {
+        "cluster_standard_errors": [
+          0.0004912442725289789,
+          0.0007363714341707459,
+          0.000721367209259505,
+          0.0007735981281360062,
+          0.0007789272952249658,
+          0.0007399446223632127,
+          0.0007910511092504412,
+          0.0007975344218882856
+        ],
+        "coefficients": [
+          0.01774265889243594,
+          0.003964251905932427,
+          0.003055498199748721,
+          0.0013621050781203283,
+          -0.001059236589732074,
+          0.004844447744009159,
+          0.0012751383944246994,
+          -0.0002432922294759947
+        ],
+        "n": 609468,
+        "terms": [
+          "constant",
+          "auto",
+          "rebate10",
+          "reminder10",
+          "announce10",
+          "rebate15",
+          "reminder15",
+          "announce15"
+        ]
+      },
+      "redemption": {
+        "cluster_standard_errors": [
+          0.008356716869230896,
+          0.015138233432724479,
+          0.01767688743071046,
+          0.017064116206533277,
+          0.01470179889762728,
+          0.016324724160639004,
+          0.015314595539844331
+        ],
+        "coefficients": [
+          0.8803625377643518,
+          -0.35424548301293535,
+          0.10357883075842257,
+          0.05124762783590894,
+          -0.31035086915291593,
+          0.12158221785144764,
+          0.033309053082319885
+        ],
+        "n": 11881,
+        "terms": [
+          "constant",
+          "rebate10",
+          "reminder10",
+          "announce10",
+          "rebate15",
+          "reminder15",
+          "announce15"
+        ]
+      }
+    },
+    "table2": {
+      "profit": {
+        "control_mean": 0.01767826073056948,
+        "pooled": {
+          "cluster_standard_errors": [
+            0.04327100097086919,
+            0.061198265746000194,
+            0.05052344707581268,
+            0.04999834667994342
+          ],
+          "coefficients": [
+            1.0000000000000009,
+            0.03783460123892262,
+            0.08681834263246216,
+            0.11511490556621316
+          ],
+          "n": 607853,
+          "terms": [
+            "constant",
+            "auto",
+            "rebate10",
+            "rebate15"
+          ]
+        },
+        "reminders": {
+          "cluster_standard_errors": [
+            0.04327107215814184,
+            0.06119836642630091,
+            0.06432073987937262,
+            0.05682000156707915,
+            0.06099621887198472,
+            0.05289356686751048
+          ],
+          "coefficients": [
+            1.0000000000000009,
+            0.037834601238920434,
+            0.07366124173230279,
+            0.01977054115314795,
+            0.11038964718239833,
+            0.007068203125840352
+          ],
+          "n": 607853,
+          "terms": [
+            "constant",
+            "auto",
+            "rebate10",
+            "reminder10",
+            "rebate15",
+            "reminder15"
+          ]
+        }
+      },
+      "purchasevalue": {
+        "control_mean": 0.01564094091647619,
+        "pooled": {
+          "cluster_standard_errors": [
+            0.04380508890947179,
+            0.06833224330342541,
+            0.05244978878338086,
+            0.05307693414252836
+          ],
+          "coefficients": [
+            0.9999999999999996,
+            0.20202314849706615,
+            0.19939498067564115,
+            0.32414918665220954
+          ],
+          "n": 607858,
+          "terms": [
+            "constant",
+            "auto",
+            "rebate10",
+            "rebate15"
+          ]
+        },
+        "reminders": {
+          "cluster_standard_errors": [
+            0.04380516097480159,
+            0.06833235571925744,
+            0.06761060889836754,
+            0.06213699620088158,
+            0.06607708033078544,
+            0.06209286262910109
+          ],
+          "coefficients": [
+            1.000000000000001,
+            0.20202314849706532,
+            0.1700517292940193,
+            0.04409278533368253,
+            0.28666712657570176,
+            0.05606682586869849
+          ],
+          "n": 607858,
+          "terms": [
+            "constant",
+            "auto",
+            "rebate10",
+            "reminder10",
+            "rebate15",
+            "reminder15"
+          ]
+        }
+      }
+    }
+  },
+  "schema": {
+    "columns": [
+      "id",
+      "date",
+      "treatment",
+      "purchase",
+      "red",
+      "purchasevalue",
+      "profit",
+      "counting",
+      "device",
+      "sessions",
+      "out_num90",
+      "income_cat"
+    ],
+    "dtypes": {
+      "counting": "float64",
+      "date": "float64",
+      "device": "str",
+      "id": "float64",
+      "income_cat": "float64",
+      "out_num90": "float64",
+      "profit": "float64",
+      "purchase": "float64",
+      "purchasevalue": "float64",
+      "red": "float64",
+      "sessions": "float64",
+      "treatment": "int64"
+    },
+    "missing": {
+      "counting": 596242,
+      "date": 0,
+      "device": 0,
+      "id": 0,
+      "income_cat": 0,
+      "out_num90": 0,
+      "profit": 597857,
+      "purchase": 0,
+      "purchasevalue": 597852,
+      "red": 596242,
+      "sessions": 0,
+      "treatment": 0
+    },
+    "randomized_units": 609137,
+    "rows": 609468,
+    "timing": {
+      "counting": "POST_TREATMENT_FORBIDDEN_FEATURE",
+      "date": "ASSIGNMENT_ONLY",
+      "device": "PRETREATMENT_ALLOWED",
+      "id": "EVALUATOR_ONLY",
+      "income_cat": "UNKNOWN_FORBIDDEN",
+      "out_num90": "UNKNOWN_FORBIDDEN",
+      "profit": "OUTCOME_ONLY",
+      "purchase": "OUTCOME_ONLY",
+      "purchasevalue": "OUTCOME_ONLY",
+      "red": "OUTCOME_ONLY",
+      "sessions": "POST_TREATMENT_FORBIDDEN_FEATURE",
+      "treatment": "ASSIGNMENT_ONLY"
+    },
+    "unique": {
+      "counting": 9,
+      "date": 14,
+      "device": 3,
+      "id": 609137,
+      "income_cat": 17,
+      "out_num90": 2,
+      "profit": 8453,
+      "purchase": 2,
+      "purchasevalue": 3998,
+      "red": 2,
+      "sessions": 46,
+      "treatment": 8
+    }
+  },
+  "source": {
+    "archive": "data/raw/buy_baits/198781-V1.zip",
+    "archive_mode": "0o444",
+    "archive_sha256": "3242238801aa40f5802e356d6a5d8cc108ccce9044be6586709017684a1642bc",
+    "data_sha256": "f60bdb945c08c2cf93d93ebd3680509e6db930fb7204e3b3ba0789e62c0c8907",
+    "readme_sha256": "a03e76bd2e78422b7d684b7021f3e6c2dbffad6a4d69ee7b05e10b2714cf9f01",
+    "replication_code_sha256": {
+      "A.FigureC1.do": "4f2d22066cabd3d8184b6670dc549f0943b5dc513cca21a439d6e158c85e85a4",
+      "A.TableA1.do": "1587aecfcb83c84f2190f477ace0fae67b12959d83c935b02e67971eca386d4d",
+      "A.TableD1.do": "0162ba7aeb1e9f460c82b686b81cd74dfc82c64e40a03d6d4143440ae719cdf3",
+      "A.TableE1.do": "9f9b24f47ff7e52d2cac822ffc25352c07684aff24b7fb916ebfaf57caa01776",
+      "A.TableF1.do": "b10b4a7a4048153b58e330233b5d9b2432d49fcbc670bf9b85441b5aaaeaf4cf",
+      "A.TableF2.do": "724bc14149d734863dd19bd1dfe6663cb81681ac5158ff493ff1d08d41de2ab9",
+      "A.TableG1.do": "a5d3d0b4525703b712c22b98ab9b95f208f55ab84b652fdade2d1ba9e78549f0",
+      "A.TableG2.do": "927fd87c0ac8a2af05890a353b1381878afbb6e45e5ad5abe38da6e747f926e6",
+      "Cleaning.do": "3b6027a51a6a9d4e0e4bd064a89768113eac101a495cf2e3001d4bc847092473",
+      "Figure4.do": "5f3b19f493edfa79e6ea7b93f09aa8fbbe2bd102d36f8cabdc68b39b2c4792f2",
+      "Master.do": "c36313b153a86fb679b9a240141117487c812301f0357e6272a2f62da0959fd6",
+      "Table1.do": "5797b2a2028cb09a100c20627eaa3303b1c8a067de629fb3b50587810844128c",
+      "Table2.do": "6e058ae774f01955a41103d3b517537067feeb901f41d9038e8da5c8594d9da8",
+      "Table3.do": "9c0aace85f13875bbbb04f00d8aa12281db5bc57eda04f9b302fdc9b843048ce",
+      "Table4.do": "a55097e1999122b34df4ca95cf7218f29ed4d68a4201b3ec600b0631e1933f3f"
+    }
+  },
+  "split_manifest": {
+    "development_materialization": "data/processed/buy_baits/v7_2/development.parquet",
+    "development_rows": 304578,
+    "development_units": 304416,
+    "path": "/Users/madsflyvholm/Desktop/decision layer/benchmarks/ecommerce_decision_layer_v7_2/manifests/buy_baits_split_manifest.json",
+    "row_counts": {
+      "DEVELOPMENT": 304416,
+      "SEALED_TEST": 152624,
+      "VALIDATION": 152097
+    },
+    "sha256": "cad43be571eb9faf0018a93b8517eeb41d0df4566c6b133df990d153da97341a",
+    "treatment_counts": {
+      "DEVELOPMENT": {
+        "1": 37873,
+        "2": 38262,
+        "3": 37747,
+        "4": 38100,
+        "5": 37999,
+        "6": 38551,
+        "7": 38064,
+        "8": 37820
+      },
+      "SEALED_TEST": {
+        "1": 19261,
+        "2": 19112,
+        "3": 18848,
+        "4": 19050,
+        "5": 18891,
+        "6": 19180,
+        "7": 19216,
+        "8": 19066
+      },
+      "VALIDATION": {
+        "1": 19062,
+        "2": 18990,
+        "3": 19033,
+        "4": 19154,
+        "5": 18953,
+        "6": 18997,
+        "7": 19018,
+        "8": 18890
+      }
+    }
+  },
+  "status": "AUDIT_PASS_WITH_CLAIM_DOWNGRADE"
+}

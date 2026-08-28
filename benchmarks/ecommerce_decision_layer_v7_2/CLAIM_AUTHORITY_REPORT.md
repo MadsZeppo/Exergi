@@ -2,12 +2,12 @@
 
 | Dataset/artifact | Maximum current level | Allowed wording | Prohibited wording |
 |---|---:|---|---|
-| Synthetic unit fixtures | 0 | mechanism test | real-world value/profit |
-| Hillstrom | 2 now; 3 only under preregistered costs | randomized spend/revenue effect; economic value under declared costs | observed contribution profit |
-| Buy Baits | Unqualified until official audit | none yet | profit, propensity or policy claims |
-| Dataset C | Unqualified/not found | none | randomized monetary proof |
-| Dominick's installed oatmeal | Observational only for this purpose | historical scanner association | randomized policy value |
-| Zenodo 13993677 local archive | Incomplete package | provenance/audit finding | complete transaction-level randomized proof |
+| Synthetic fixtures | 0 | mechanism test | real-world value/profit |
+| Hillstrom | 2; 3 only under declared costs | randomized spend/revenue effect | observed contribution profit |
+| Buy Baits V1 | 3 | randomized short-term package-provided retailer profit/economic value | verified contribution profit, long-run profit |
+| Dataset C | unqualified/not found | provenance finding | randomized monetary proof |
 
-The `ClaimAuthority` contract refuses Level 2 without observed monetary revenue, Level 3 without
-declared costs, and Level 4 without observed COGS and variable-cost components.
+Buy Baits has a real randomized monetary `profit` field, but no separately observable COGS or
+variable-cost ledger. Level 4 remains mechanically impossible. The `ClaimAuthority` contract now
+permits Level 3 from observed retailer profit or from observed revenue plus explicit declared costs;
+it still requires observed COGS and variable costs for Level 4.

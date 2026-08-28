@@ -23,6 +23,7 @@ class ClaimAuthority(BaseModel):
     real_world: bool
     monetary_outcome: bool
     observed_revenue: bool = False
+    observed_profit: bool = False
     declared_action_costs: bool = False
     observed_cogs: bool = False
     observed_variable_costs: bool = False
@@ -38,12 +39,12 @@ class ClaimAuthority(BaseModel):
             self.monetary_outcome and self.observed_revenue
         ):
             raise ValueError("revenue claim requires observed monetary revenue")
-        if (
-            self.level
-            >= ClaimLevel.REAL_RANDOMIZED_ECONOMIC_VALUE_UNDER_DECLARED_COSTS
-            and not self.declared_action_costs
+        if self.level >= ClaimLevel.REAL_RANDOMIZED_ECONOMIC_VALUE_UNDER_DECLARED_COSTS and not (
+            self.observed_profit or (self.observed_revenue and self.declared_action_costs)
         ):
-            raise ValueError("scenario economic value requires explicit declared costs")
+            raise ValueError(
+                "economic value requires observed profit or revenue with declared costs"
+            )
         if self.level is ClaimLevel.REAL_RANDOMIZED_CONTRIBUTION_PROFIT and not (
             self.observed_cogs and self.observed_variable_costs
         ):

@@ -1,22 +1,19 @@
 # V7.2 Model Tournament
 
-Status: **ENGINE IMPLEMENTED; REAL-DATA TOURNAMENT NOT AUTHORIZED**.
+Status: **BUY BAITS DEVELOPMENT TOURNAMENT RUN; OFFICIAL SELECTION NOT FROZEN**.
 
-Implemented candidate families:
+Compared policies include BAU, every governance-allowed treat-all arm, train-selected best static,
+a device segment rule, per-arm Ridge/Random Forest/Extra Trees/Histogram Gradient/Huber,
+logistic-times-positive-value hurdle, X learner, randomized R learner, known-propensity DR learner,
+DR causal forest and shallow DR policy tree. Nuisance predictions are strict five-fold OOF on train;
+held-out development rows are never used for fitting. Primary evaluation is known-propensity DR
+value, not purchase prediction.
 
-- per-arm Ridge;
-- per-arm Random Forest;
-- per-arm Extra Trees;
-- per-arm HistGradientBoosting;
-- per-arm Tweedie regression;
-- per-arm Huber regression;
-- two-part logistic purchase probability × log-Ridge positive spend with smearing correction.
+Outcome calibration is retained in
+`results/buy_baits_development_tournament.json`, but cannot override policy value. The provisional
+best personalized model by held-out value is Huber T; it does not beat BAU and its incremental CI
+crosses zero. There is no legitimate personalized promotion and no official winner.
 
-Every candidate produces all-arm monetary predictions and supports strict K-fold nuisance
-cross-fitting. The policy layer subtracts action-specific costs, filters governance-prohibited arms,
-requires arm support and applies a lower-bound/materiality gate. Evaluation implements known-
-propensity IPW, normalized Hájek and multi-arm DR/AIPW with ESS, maximum weights, clipping fraction
-and cluster-aware uncertainty.
-
-No winner is named. Doing so before complete Buy Baits/Dataset C authority and immutable manifests
-would be model selection on an incomplete target.
+Tweedie was not run on the retailer-profit target because that target contains negative support;
+silently shifting the outcome would change the economic estimand. This is reported as an invalid
+candidate, not hidden as a model failure.

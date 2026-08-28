@@ -2,14 +2,23 @@
 
 | Layer | Status | Evidence |
 |---|---|---|
-| Dataset acquisition | FAIL/BLOCKED | ICPSR authentication prevents official Buy Baits acquisition |
-| Dataset C authority | FAIL | No candidate satisfies assignment + row-level money + pretreatment X |
-| Sequential mechanism | PASS on development assurance | Immediate observable harm latch, freshness lease, cooldown and bounded revalidation |
-| Policy engine implementation | PASS at mechanism/unit-test level | Multi-arm costs, OOF nuisances, DR OPE and governance checks |
-| Real-data estimation | NOT RUN | Prerequisite data authority failed |
-| Validation | CLOSED | Candidate set cannot be evaluated across required evidence packages |
-| Sealed proof | CLOSED | Mechanical guard requires three qualified datasets |
+| Buy Baits provenance | PASS | Official checksum, complete main code/data, immutable raw source |
+| Assignment integrity | PASS with diagnostic | zero contamination, SRM p=0.0922, device balance p=0.9015 |
+| Paper replication | PASS with boundary | central V1 code-defined Tables 1/2 reproduced; confidential Table D1 unavailable |
+| Monetary authority | MIXED | observed retailer profit, but missing purchaser money and no separate cost ledger |
+| Split isolation | PASS | cookie-level 50/25/25, hash IDs only, development-only materialization |
+| Development policy | FAIL to show personalization | no personalized policy beats held-out BAU; all incremental CIs cross zero |
+| Responsible abstention | PASS | held-out BAU dominates and no personalized model is promoted |
+| Development stability | FAIL | train-selected static arm 1 reverses against held-out BAU |
+| Sequential mechanism | PASS on development assurance | all nine locked gates pass |
+| Dataset C | FAIL/not found | third qualified real randomized economic dataset remains absent |
+| Validation | CLOSED | deliberately not opened |
+| Sealed proof | CLOSED | deliberately not opened; no freeze exists |
 
-The dominant failure is external evidence availability, not a demonstrated positive or negative
-economic-policy result. The largest remaining model risk is still unknown generalization on sparse,
-heavy-tailed real monetary outcomes.
+The dominant scientific failure is now model/policy instability and absent observable
+personalization, not Buy Baits acquisition. V7.2 has real randomized economic evidence, but has not
+earned a personalized policy claim or contribution-profit claim.
+
+Buy Baits is frozen as `REAL_RANDOMIZED_ECONOMIC_NEGATIVE_CONTROL`. The limitations attached to
+that classification are one legal pretreatment feature, sparse purchases, heavy-tailed profit and
+no stable policy value over BAU.

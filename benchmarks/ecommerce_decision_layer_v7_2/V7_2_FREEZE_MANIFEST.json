@@ -1,12 +1,12 @@
 {
   "status": "NOT_FROZEN",
-  "reason": "Buy Baits is unavailable and DATASET_C_NOT_FOUND",
-  "qualified_datasets": 1,
+  "reason": "Buy Baits development is unstable, Dataset C is not found, and validation is unopened",
+  "qualified_datasets": 2,
   "validation_passed": false,
   "sealed_tests_opened": [],
   "sealed_tests_consumed": [],
   "source_commit_at_recovery": "2b7f6f895a335ac93e7d32d42cbfe841202c550e",
   "hillstrom_sha256": "27bab8c5d3669f26ec08ebb50a0a78317542f29501156f2e2af6781fab4cd7e2",
-  "buy_baits_sha256": null,
+  "buy_baits_sha256": "3242238801aa40f5802e356d6a5d8cc108ccce9044be6586709017684a1642bc",
   "dataset_c_sha256": null
 }

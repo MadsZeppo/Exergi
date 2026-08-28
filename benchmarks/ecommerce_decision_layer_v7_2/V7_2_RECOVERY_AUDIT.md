@@ -54,3 +54,13 @@ Buy Baits acquisition/audit and identification of a third independent randomized
 No real-data model selection or sealed-test work is authorized until dataset authority and new
 preregistered sequential gates are complete. Generic engine implementation and synthetic unit tests
 may proceed without consuming any real-data split.
+
+## 2026-08-28 checkpoint amendment
+
+The official Buy Baits V1 archive was subsequently supplied and verified at SHA-256
+`3242238801aa40f5802e356d6a5d8cc108ccce9044be6586709017684a1642bc`. Its README, all supplied
+Stata code and `data.dta` passed the forensic audit. Buy Baits is now qualified at randomized
+short-term retailer-profit authority, not contribution-profit authority. Cookie-level manifests and
+a development-only hash-ID materialization now exist. Dataset C remains absent; validation and
+sealed access remain closed. This amendment preserves the original recovery audit as history rather
+than rewriting what was known at its start.

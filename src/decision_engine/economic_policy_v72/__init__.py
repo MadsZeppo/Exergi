@@ -8,6 +8,7 @@ from .contracts import (
     PolicyEvaluation,
 )
 from .evaluation import evaluate_policy, value_all_actions
+from .learners import DRPseudoOutcomeModel, RLearnerModel, XLearnerModel, causal_challengers
 from .models import CrossFittedOutcomeModel, model_candidates
 from .policy import EconomicPolicyEngine
 from .sequential import (
@@ -29,6 +30,7 @@ __all__ = [
     "ClaimAuthority",
     "ClaimLevel",
     "CrossFittedOutcomeModel",
+    "DRPseudoOutcomeModel",
     "DatasetSplitManifest",
     "EconomicPolicyDataset",
     "EconomicPolicyEngine",
@@ -37,12 +39,15 @@ __all__ = [
     "LifecycleDecision",
     "PolicyDecision",
     "PolicyEvaluation",
+    "RLearnerModel",
     "SequentialController",
     "SequentialControllerConfig",
     "SealedTestGuard",
     "assigned_split",
     "build_split_manifest",
+    "causal_challengers",
     "evaluate_policy",
     "model_candidates",
     "value_all_actions",
+    "XLearnerModel",
 ]

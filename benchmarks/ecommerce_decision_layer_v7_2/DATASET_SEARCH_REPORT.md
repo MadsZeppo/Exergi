@@ -2,6 +2,9 @@
 
 Search date: 2026-08-28. Verdict: **DATASET_C_NOT_FOUND**.
 
+Buy Baits is no longer part of this blocker: the official package was later supplied, audited and
+qualified. This report concerns only the still-missing independent Dataset C.
+
 ## Mandatory criteria
 
 A candidate must be real-world commerce/retail/subscription/marketing, randomized with known or

@@ -1,0 +1,23 @@
+{
+  "classification": "REAL_RANDOMIZED_ECONOMIC_NEGATIVE_CONTROL",
+  "development_incremental_personalization": "FAIL",
+  "responsible_bau_abstention": "PASS",
+  "immutable": true,
+  "immutable_artifacts": {
+    "manifests/buy_baits_split_manifest.json": "3af06ed6101ef55aa23e8626b467fbbcb9463cbe8f05194e2f335963848367b8",
+    "results/buy_baits_development_tournament.json": "11e16e303f7c18751c8c6e38ad38e21d9b9dd5070620d51a2b9991e2f8cc4459",
+    "results/buy_baits_forensic_audit.json": "a2616a6086bb5d16080164463a138d7c4991d04856854711f98ed0f2e484d2ae"
+  },
+  "limitations": [
+    "only one legal pretreatment feature: device",
+    "sparse purchases",
+    "heavy-tailed retailer profit",
+    "no stable held-out policy value over BAU"
+  ],
+  "prohibitions": [
+    "no further Buy Baits development tuning",
+    "no Buy Baits validation reveal",
+    "no Buy Baits sealed-test reveal",
+    "no reuse of validation or sealed test for retuning"
+  ]
+}
