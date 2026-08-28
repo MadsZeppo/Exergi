@@ -1,9 +1,11 @@
 {
   "status": "NOT_FROZEN",
-  "reason": "Buy Baits development is unstable, Dataset C is not found, and validation is unopened",
+  "reason": "Buy Baits is a negative control, Hillstrom personalization is unsupported, Hillstrom sealed integrity has a one-row incident, Dataset C is not found, and validation is unopened",
   "qualified_datasets": 2,
   "validation_passed": false,
-  "sealed_tests_opened": [],
+  "sealed_tests_opened": [
+    "hillstrom:row-0:diagnostic-accidental-no-score"
+  ],
   "sealed_tests_consumed": [],
   "source_commit_at_recovery": "2b7f6f895a335ac93e7d32d42cbfe841202c550e",
   "hillstrom_sha256": "27bab8c5d3669f26ec08ebb50a0a78317542f29501156f2e2af6781fab4cd7e2",

@@ -1,0 +1,5047 @@
+{
+  "assignment": {
+    "arms": [
+      "NO_EMAIL",
+      "MENS_EMAIL",
+      "WOMENS_EMAIL"
+    ],
+    "development_counts": {
+      "MENS_EMAIL": 10655,
+      "NO_EMAIL": 10856,
+      "WOMENS_EMAIL": 10722
+    },
+    "known_propensity": 0.3333333333333333
+  },
+  "break_even_email_cost": {
+    "BAU": null,
+    "best_static": 0.7850094247117838,
+    "causal_forest_dr": 0.3555045667689437,
+    "dr_learner_ridge": 0.7303816698074502,
+    "extra_trees_t": 0.4633295809270435,
+    "hist_gradient_t": 0.07166764496573216,
+    "honest_dr_policy_tree": -0.10685470669339714,
+    "huber_t": null,
+    "r_learner_ridge": 0.8366945550729423,
+    "random_forest_t": 0.02469562885690456,
+    "ridge_t": 0.8494732834029766,
+    "simple_rfm_affinity_segment": 0.6825589909647015,
+    "treat_all_mens": 0.7850094247117838,
+    "treat_all_womens": -0.11748044610439823,
+    "tweedie_t": 0.7730422446179315,
+    "two_part_logit_log_ridge": 0.7583218175454135,
+    "x_learner_ridge": 0.8372501192982869
+  },
+  "by_cost": {
+    "0.0": {
+      "development_selected_best_static": "MENS_EMAIL",
+      "heldout_results": [
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "BAU",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.3287044608953426,
+              -2.6888362174241163,
+              -0.31679002342768625,
+              -0.31686039501930374,
+              -0.8757476520693372
+            ],
+            "maximum_fold_increment": 0.3287044608953426,
+            "minimum_fold_increment": -2.6888362174241163,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": -1.7881192597985947,
+            "point": -0.7850094247117839,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 0.21810041037502692
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.8433763557566174,
+          "name": "treat_all_mens",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 2.5469980007372053,
+          "value_per_customer": 1.6951871782469112,
+          "versus_bau": {
+            "lower_95": -0.21810041037502692,
+            "point": 0.7850094247117839,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 1.7881192597985947
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "WOMENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.3997054195000274,
+          "name": "treat_all_womens",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5036966629461135,
+              -2.002421895273138,
+              -0.09443322943023234,
+              -0.11716820151642701,
+              -2.771286192217587
+            ],
+            "maximum_fold_increment": 0.5036966629461135,
+            "minimum_fold_increment": -2.771286192217587,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.185689195361431,
+          "value_per_customer": 0.7926973074307292,
+          "versus_bau": {
+            "lower_95": -0.7762510971160379,
+            "point": -0.11748044610439817,
+            "standard_error": 0.33611365117315345,
+            "upper_95": 0.5412902049072414
+          },
+          "versus_best_static": {
+            "lower_95": -1.8400916314645461,
+            "point": -0.902489870816182,
+            "standard_error": 0.4783770355190438,
+            "upper_95": 0.03511188983218205
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.8433763557566174,
+          "name": "best_static",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 2.5469980007372053,
+          "value_per_customer": 1.6951871782469112,
+          "versus_bau": {
+            "lower_95": -0.21810041037502692,
+            "point": 0.7850094247117839,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 1.7881192597985947
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3295,
+            "NO_EMAIL": 1274,
+            "WOMENS_EMAIL": 3536
+          },
+          "email_rate": 0.8428130783466996,
+          "lower_95": 0.8333961486149607,
+          "name": "simple_rfm_affinity_segment",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.26220628915138144,
+              0.7148954326801521,
+              0.09626810299442458,
+              0.2928737448832831,
+              -1.9015835752500305
+            ],
+            "maximum_fold_increment": 0.7148954326801521,
+            "minimum_fold_increment": -1.9015835752500305,
+            "positive_fold_fraction": 0.8
+          },
+          "upper_95": 2.352909233911587,
+          "value_per_customer": 1.5931526912632739,
+          "versus_bau": {
+            "lower_95": -0.2049115858491839,
+            "point": 0.6829749377281463,
+            "standard_error": 0.4530116525512029,
+            "upper_95": 1.5708614613054765
+          },
+          "versus_best_static": {
+            "lower_95": -0.7258692816526624,
+            "point": -0.10203448698363765,
+            "standard_error": 0.31828890713796476,
+            "upper_95": 0.521800307685387
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3437,
+            "NO_EMAIL": 1512,
+            "WOMENS_EMAIL": 3156
+          },
+          "email_rate": 0.8134484885872918,
+          "lower_95": 0.8480707721210116,
+          "name": "ridge_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5594095276079846,
+              -0.49875253592021584,
+              0.5560957034272351,
+              0.04580572422160019,
+              -1.3530595771316212
+            ],
+            "maximum_fold_increment": 0.5594095276079846,
+            "minimum_fold_increment": -1.3530595771316212,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.2612823257841432,
+          "value_per_customer": 1.5546765489525773,
+          "versus_bau": {
+            "lower_95": -0.1544758442414631,
+            "point": 0.6444987954174498,
+            "standard_error": 0.40764761289550366,
+            "upper_95": 1.4434734350763627
+          },
+          "versus_best_static": {
+            "lower_95": -0.8423954389620879,
+            "point": -0.14051062929433403,
+            "standard_error": 0.3581110751034875,
+            "upper_95": 0.5613741803734199
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3988,
+            "NO_EMAIL": 1454,
+            "WOMENS_EMAIL": 2663
+          },
+          "email_rate": 0.820604565083282,
+          "lower_95": 0.3993904403032984,
+          "name": "random_forest_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.172397122990489,
+              -1.654932233270931,
+              0.016058196524007296,
+              -0.2227762493842977,
+              -2.1622974925654908
+            ],
+            "maximum_fold_increment": 0.172397122990489,
+            "minimum_fold_increment": -2.1622974925654908,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.4408008146035527,
+          "value_per_customer": 0.9200956274534255,
+          "versus_bau": {
+            "lower_95": -0.7223263688597725,
+            "point": 0.009917873918297994,
+            "standard_error": 0.37360086642097495,
+            "upper_95": 0.7421621166963686
+          },
+          "versus_best_static": {
+            "lower_95": -1.52705087371324,
+            "point": -0.7750915507934859,
+            "standard_error": 0.38365976561360987,
+            "upper_95": -0.023132227873731925
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3795,
+            "NO_EMAIL": 1557,
+            "WOMENS_EMAIL": 2753
+          },
+          "email_rate": 0.8078963602714374,
+          "lower_95": 0.5667677840212871,
+          "name": "extra_trees_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.37285321345684286,
+              0.010716304931695043,
+              0.4476770528599778,
+              0.10867504389060197,
+              -2.3254534871513384
+            ],
+            "maximum_fold_increment": 0.4476770528599778,
+            "minimum_fold_increment": -2.3254534871513384,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.9790790453318934,
+          "value_per_customer": 1.2729234146765902,
+          "versus_bau": {
+            "lower_95": -0.48032576447165315,
+            "point": 0.36274566114146284,
+            "standard_error": 0.43014638649646414,
+            "upper_95": 1.2058170867545788
+          },
+          "versus_best_static": {
+            "lower_95": -1.0387330738040974,
+            "point": -0.4222637635703212,
+            "standard_error": 0.31453093786233194,
+            "upper_95": 0.19420554666345508
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3508,
+            "NO_EMAIL": 1852,
+            "WOMENS_EMAIL": 2745
+          },
+          "email_rate": 0.7714990746452807,
+          "lower_95": 0.4841524917114761,
+          "name": "hist_gradient_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.2607378806874902,
+              -2.258658827287218,
+              0.3439836788548109,
+              0.08127645069882874,
+              -2.025682195496198
+            ],
+            "maximum_fold_increment": 0.3439836788548109,
+            "minimum_fold_increment": -2.258658827287218,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.4513905236794709,
+          "value_per_customer": 0.9677715076954735,
+          "versus_bau": {
+            "lower_95": -0.6092233884239314,
+            "point": 0.05759375416034626,
+            "standard_error": 0.3402190794545442,
+            "upper_95": 0.724410896744624
+          },
+          "versus_best_static": {
+            "lower_95": -1.5529818211582878,
+            "point": -0.7274156705514377,
+            "standard_error": 0.42121495962110045,
+            "upper_95": 0.09815048005541227
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 6853,
+            "WOMENS_EMAIL": 1252
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.9075451620118484,
+          "name": "tweedie_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.3846972717836117,
+              0.6103555455327919,
+              0.031945054033738096,
+              0.25774077166953857,
+              -1.3621980096482236
+            ],
+            "maximum_fold_increment": 0.6103555455327919,
+            "minimum_fold_increment": -1.3621980096482236,
+            "positive_fold_fraction": 0.8
+          },
+          "upper_95": 2.458894834294269,
+          "value_per_customer": 1.683219998153059,
+          "versus_bau": {
+            "lower_95": -0.16623092680728024,
+            "point": 0.7730422446179316,
+            "standard_error": 0.4792298117894404,
+            "upper_95": 1.7123154160431433
+          },
+          "versus_best_static": {
+            "lower_95": -0.4923349834751874,
+            "point": -0.01196718009385245,
+            "standard_error": 0.2450901175584934,
+            "upper_95": 0.4684006232874825
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2060,
+            "NO_EMAIL": 2132,
+            "WOMENS_EMAIL": 3913
+          },
+          "email_rate": 0.7369524984577421,
+          "lower_95": 0.47988691190452015,
+          "name": "huber_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.35925699887226653,
+              -1.40408933312086,
+              -0.30274886815713287,
+              -0.5948719775256697,
+              -0.7585010158905405
+            ],
+            "maximum_fold_increment": 0.35925699887226653,
+            "minimum_fold_increment": -1.40408933312086,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.8175333909423979,
+          "value_per_customer": 1.148710151423459,
+          "versus_bau": {
+            "lower_95": -0.35853877995186273,
+            "point": 0.23853239788833153,
+            "standard_error": 0.30463374967592033,
+            "upper_95": 0.8356035757285258
+          },
+          "versus_best_static": {
+            "lower_95": -1.4191072637564721,
+            "point": -0.5464770268234523,
+            "standard_error": 0.4452276898025759,
+            "upper_95": 0.32615321010956744
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 4174,
+            "NO_EMAIL": 1033,
+            "WOMENS_EMAIL": 2898
+          },
+          "email_rate": 0.872547809993831,
+          "lower_95": 0.8693839129830437,
+          "name": "two_part_logit_log_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5451989712999064,
+              -0.016975142905021046,
+              0.46495129988606315,
+              0.11518600452122298,
+              -1.7062831779834837
+            ],
+            "maximum_fold_increment": 0.5451989712999064,
+            "minimum_fold_increment": -1.7062831779834837,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.2824198360315795,
+          "value_per_customer": 1.5759018745073117,
+          "versus_bau": {
+            "lower_95": -0.17737674297264483,
+            "point": 0.6657241209721844,
+            "standard_error": 0.43016140632945365,
+            "upper_95": 1.5088249849170134
+          },
+          "versus_best_static": {
+            "lower_95": -0.8129240368697115,
+            "point": -0.11928530373959954,
+            "standard_error": 0.3539038158871519,
+            "upper_95": 0.5743534293905124
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3462,
+            "NO_EMAIL": 1513,
+            "WOMENS_EMAIL": 3130
+          },
+          "email_rate": 0.8133251079580506,
+          "lower_95": 0.8353704458557525,
+          "name": "x_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5380225049961761,
+              -0.5480824825746853,
+              0.5607189101973855,
+              0.042855223469901754,
+              -1.3481939343619815
+            ],
+            "maximum_fold_increment": 0.5607189101973855,
+            "minimum_fold_increment": -1.3481939343619815,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.2479951046909563,
+          "value_per_customer": 1.5416827752733544,
+          "versus_bau": {
+            "lower_95": -0.167198334430797,
+            "point": 0.631505021738227,
+            "standard_error": 0.4075092004083209,
+            "upper_95": 1.430208377907251
+          },
+          "versus_best_static": {
+            "lower_95": -0.8556927351828401,
+            "point": -0.15350440297355683,
+            "standard_error": 0.3582659363886557,
+            "upper_95": 0.5486839292357264
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3426,
+            "NO_EMAIL": 1525,
+            "WOMENS_EMAIL": 3154
+          },
+          "email_rate": 0.811844540407156,
+          "lower_95": 0.836737913031309,
+          "name": "r_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5613679789693748,
+              -0.5678664362802135,
+              0.5617676636464368,
+              0.041665754441182985,
+              -1.3447616234651323
+            ],
+            "maximum_fold_increment": 0.5617676636464368,
+            "minimum_fold_increment": -1.3447616234651323,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.2490506119492024,
+          "value_per_customer": 1.5428942624902557,
+          "versus_bau": {
+            "lower_95": -0.16584369707668978,
+            "point": 0.6327165089551282,
+            "standard_error": 0.40743616328195775,
+            "upper_95": 1.431276714986946
+          },
+          "versus_best_static": {
+            "lower_95": -0.8546403096410075,
+            "point": -0.15229291575665557,
+            "standard_error": 0.35834709179575674,
+            "upper_95": 0.5500544781276963
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3446,
+            "NO_EMAIL": 1567,
+            "WOMENS_EMAIL": 3092
+          },
+          "email_rate": 0.8066625539790253,
+          "lower_95": 0.8382195899724398,
+          "name": "dr_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5472338754107704,
+              -0.5633605281809779,
+              0.6711788023060761,
+              0.048960329385841876,
+              -1.4445081023532536
+            ],
+            "maximum_fold_increment": 0.6711788023060761,
+            "minimum_fold_increment": -1.4445081023532536,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.250693822689517,
+          "value_per_customer": 1.5444567063309784,
+          "versus_bau": {
+            "lower_95": -0.1651257584152862,
+            "point": 0.6342789527958511,
+            "standard_error": 0.40786704118888906,
+            "upper_95": 1.4336836640069883
+          },
+          "versus_best_static": {
+            "lower_95": -0.8520237298554889,
+            "point": -0.15073047191593256,
+            "standard_error": 0.35780925745129405,
+            "upper_95": 0.5505627860236237
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3277,
+            "NO_EMAIL": 1725,
+            "WOMENS_EMAIL": 3103
+          },
+          "email_rate": 0.7871684145589143,
+          "lower_95": 0.5759075673178261,
+          "name": "causal_forest_dr",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.122145429431061,
+              -1.1535910563478593,
+              0.15718315337576078,
+              -0.1910827012974382,
+              -1.4704996906815637
+            ],
+            "maximum_fold_increment": 0.15718315337576078,
+            "minimum_fold_increment": -1.4704996906815637,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.7929837969066957,
+          "value_per_customer": 1.1844456821122609,
+          "versus_bau": {
+            "lower_95": -0.5255484310132534,
+            "point": 0.2742679285771333,
+            "standard_error": 0.40807706973150326,
+            "upper_95": 1.0740842881675199
+          },
+          "versus_best_static": {
+            "lower_95": -1.1947862118459576,
+            "point": -0.5107414961346505,
+            "standard_error": 0.34900881909410814,
+            "upper_95": 0.17330321957665662
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 4589,
+            "WOMENS_EMAIL": 3516
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.2877773830586886,
+          "name": "honest_dr_policy_tree",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.4693418733529985,
+              -2.020653491750795,
+              -0.5276692380405495,
+              -0.5410648280274106,
+              -1.8017702343429067
+            ],
+            "maximum_fold_increment": 0.4693418733529985,
+            "minimum_fold_increment": -2.020653491750795,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.318868710624772,
+          "value_per_customer": 0.8033230468417303,
+          "versus_bau": {
+            "lower_95": -0.8461706876747682,
+            "point": -0.10685470669339732,
+            "standard_error": 0.37720896241614693,
+            "upper_95": 0.6324612742879735
+          },
+          "versus_best_static": {
+            "lower_95": -1.6264391001838558,
+            "point": -0.891864131405181,
+            "standard_error": 0.3747900341908875,
+            "upper_95": -0.15728916262650594
+          }
+        }
+      ],
+      "training_static_values": {
+        "MENS_EMAIL": 1.5346637902580587,
+        "NO_EMAIL": 0.8274414348481337,
+        "WOMENS_EMAIL": 1.2880907048012067
+      }
+    },
+    "0.01": {
+      "development_selected_best_static": "MENS_EMAIL",
+      "heldout_results": [
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "BAU",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.3387044608953426,
+              -2.6788362174241165,
+              -0.3067900234276864,
+              -0.30686039501930384,
+              -0.8657476520693376
+            ],
+            "maximum_fold_increment": 0.3387044608953426,
+            "minimum_fold_increment": -2.6788362174241165,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": -1.7781192597985949,
+            "point": -0.7750094247117839,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 0.22810041037502693
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.8333763557566174,
+          "name": "treat_all_mens",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 2.536998000737205,
+          "value_per_customer": 1.6851871782469112,
+          "versus_bau": {
+            "lower_95": -0.22810041037502693,
+            "point": 0.7750094247117839,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 1.7781192597985949
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "WOMENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.3897054195000275,
+          "name": "treat_all_womens",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5036966629461133,
+              -2.0024218952731374,
+              -0.09443322943023241,
+              -0.11716820151642696,
+              -2.771286192217586
+            ],
+            "maximum_fold_increment": 0.5036966629461133,
+            "minimum_fold_increment": -2.771286192217586,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.175689195361431,
+          "value_per_customer": 0.7826973074307293,
+          "versus_bau": {
+            "lower_95": -0.7862510971160378,
+            "point": -0.1274804461043981,
+            "standard_error": 0.33611365117315345,
+            "upper_95": 0.5312902049072415
+          },
+          "versus_best_static": {
+            "lower_95": -1.8400916314645461,
+            "point": -0.902489870816182,
+            "standard_error": 0.4783770355190438,
+            "upper_95": 0.03511188983218205
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.8333763557566174,
+          "name": "best_static",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 2.536998000737205,
+          "value_per_customer": 1.6851871782469112,
+          "versus_bau": {
+            "lower_95": -0.22810041037502693,
+            "point": 0.7750094247117839,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 1.7781192597985949
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3295,
+            "NO_EMAIL": 1274,
+            "WOMENS_EMAIL": 3536
+          },
+          "email_rate": 0.8428130783466996,
+          "lower_95": 0.8249684306804357,
+          "name": "simple_rfm_affinity_segment",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.26377798608312847,
+              0.7164905988432944,
+              0.09774361446373635,
+              0.2945792663556758,
+              -1.9000742584798442
+            ],
+            "maximum_fold_increment": 0.7164905988432944,
+            "minimum_fold_increment": -1.9000742584798442,
+            "positive_fold_fraction": 0.8
+          },
+          "upper_95": 2.3444806902791777,
+          "value_per_customer": 1.5847245604798066,
+          "versus_bau": {
+            "lower_95": -0.21333914702917256,
+            "point": 0.6745468069446794,
+            "standard_error": 0.4530113619318432,
+            "upper_95": 1.5624327609185313
+          },
+          "versus_best_static": {
+            "lower_95": -0.7242975038389319,
+            "point": -0.10046261776710458,
+            "standard_error": 0.3182889537729046,
+            "upper_95": 0.5233722683047226
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3414,
+            "NO_EMAIL": 1549,
+            "WOMENS_EMAIL": 3142
+          },
+          "email_rate": 0.8088834053053671,
+          "lower_95": 0.8412981911546735,
+          "name": "ridge_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5584667596321669,
+              -0.49945212657495497,
+              0.5505012336401002,
+              0.05519255465721366,
+              -1.3390670324816272
+            ],
+            "maximum_fold_increment": 0.5584667596321669,
+            "minimum_fold_increment": -1.3390670324816272,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.254505549005612,
+          "value_per_customer": 1.5479018700801428,
+          "versus_bau": {
+            "lower_95": -0.16122895046533903,
+            "point": 0.6377241165450153,
+            "standard_error": 0.40763660623990755,
+            "upper_95": 1.4366771835553696
+          },
+          "versus_best_static": {
+            "lower_95": -0.8391834749077179,
+            "point": -0.1372853081667685,
+            "standard_error": 0.358117890061977,
+            "upper_95": 0.5646128585741809
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3977,
+            "NO_EMAIL": 1478,
+            "WOMENS_EMAIL": 2650
+          },
+          "email_rate": 0.8176434299814929,
+          "lower_95": 0.3911177670781669,
+          "name": "random_forest_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.17530549730907266,
+              -1.6513629749457788,
+              0.015686646134648118,
+              -0.21836246582230648,
+              -2.1642610789392864
+            ],
+            "maximum_fold_increment": 0.17530549730907266,
+            "minimum_fold_increment": -2.1642610789392864,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.432524586824638,
+          "value_per_customer": 0.9118211769514024,
+          "versus_bau": {
+            "lower_95": -0.7305950137088375,
+            "point": 0.0016434234162750392,
+            "standard_error": 0.37359790429870954,
+            "upper_95": 0.7338818605413875
+          },
+          "versus_best_static": {
+            "lower_95": -1.5253285263344494,
+            "point": -0.7733660012955088,
+            "standard_error": 0.3836613993779095,
+            "upper_95": -0.021403476256568355
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3759,
+            "NO_EMAIL": 1596,
+            "WOMENS_EMAIL": 2750
+          },
+          "email_rate": 0.8030845157310302,
+          "lower_95": 0.5585820864079488,
+          "name": "extra_trees_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.3732515990208435,
+              0.023094504828480217,
+              0.44699502285553677,
+              0.10299930501762214,
+              -2.32223560988308
+            ],
+            "maximum_fold_increment": 0.44699502285553677,
+            "minimum_fold_increment": -2.32223560988308,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.9708869299224667,
+          "value_per_customer": 1.2647345081652077,
+          "versus_bau": {
+            "lower_95": -0.4885026784427073,
+            "point": 0.35455675463008035,
+            "standard_error": 0.43014026774100594,
+            "upper_95": 1.197616187702868
+          },
+          "versus_best_static": {
+            "lower_95": -1.0369364024857026,
+            "point": -0.42045267008170345,
+            "standard_error": 0.3145382962476577,
+            "upper_95": 0.19603106232229567
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3503,
+            "NO_EMAIL": 1865,
+            "WOMENS_EMAIL": 2737
+          },
+          "email_rate": 0.769895126465145,
+          "lower_95": 0.47665056096034564,
+          "name": "hist_gradient_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.2657932201818973,
+              -2.255877130739908,
+              0.34410270427043893,
+              0.08366265169540936,
+              -2.0235207048129684
+            ],
+            "maximum_fold_increment": 0.34410270427043893,
+            "minimum_fold_increment": -2.255877130739908,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.4438865520439763,
+          "value_per_customer": 0.960268556502161,
+          "versus_bau": {
+            "lower_95": -0.6167252673073546,
+            "point": 0.050090802967033575,
+            "standard_error": 0.34021853234760857,
+            "upper_95": 0.7169068732414218
+          },
+          "versus_best_static": {
+            "lower_95": -1.550484143778374,
+            "point": -0.7249186217447503,
+            "standard_error": 0.4212146389145818,
+            "upper_95": 0.10064690028887346
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 6853,
+            "WOMENS_EMAIL": 1252
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.8975451620118484,
+          "name": "tweedie_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.3846972717836117,
+              0.6103555455327919,
+              0.03194505403373812,
+              0.2577407716695386,
+              -1.3621980096482234
+            ],
+            "maximum_fold_increment": 0.6103555455327919,
+            "minimum_fold_increment": -1.3621980096482234,
+            "positive_fold_fraction": 0.8
+          },
+          "upper_95": 2.4488948342942694,
+          "value_per_customer": 1.6732199981530589,
+          "versus_bau": {
+            "lower_95": -0.17623092680728036,
+            "point": 0.7630422446179315,
+            "standard_error": 0.4792298117894404,
+            "upper_95": 1.7023154160431433
+          },
+          "versus_best_static": {
+            "lower_95": -0.49233498347518734,
+            "point": -0.011967180093852415,
+            "standard_error": 0.2450901175584934,
+            "upper_95": 0.46840062328748255
+          }
+        },
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "huber_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.3387044608953426,
+              -2.6788362174241165,
+              -0.3067900234276864,
+              -0.30686039501930384,
+              -0.8657476520693376
+            ],
+            "maximum_fold_increment": 0.3387044608953426,
+            "minimum_fold_increment": -2.6788362174241165,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": -1.7781192597985949,
+            "point": -0.7750094247117839,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 0.22810041037502693
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 4156,
+            "NO_EMAIL": 1051,
+            "WOMENS_EMAIL": 2898
+          },
+          "email_rate": 0.8703269586674892,
+          "lower_95": 0.8613143429988722,
+          "name": "two_part_logit_log_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5501868283919608,
+              -0.013484837602537094,
+              0.4677950414738061,
+              0.1124926105987428,
+              -1.7052302538510273
+            ],
+            "maximum_fold_increment": 0.5501868283919608,
+            "minimum_fold_increment": -1.7052302538510273,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.2743472700483887,
+          "value_per_customer": 1.5678308065236304,
+          "versus_bau": {
+            "lower_95": -0.18543640262566952,
+            "point": 0.657653052988503,
+            "standard_error": 0.43015558564563156,
+            "upper_95": 1.5007425086026753
+          },
+          "versus_best_static": {
+            "lower_95": -0.8110067333049402,
+            "point": -0.1173563717232808,
+            "standard_error": 0.3539097488796146,
+            "upper_95": 0.5762939898583785
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3440,
+            "NO_EMAIL": 1540,
+            "WOMENS_EMAIL": 3125
+          },
+          "email_rate": 0.8099938309685379,
+          "lower_95": 0.8318754372814292,
+          "name": "x_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5405232497632496,
+              -0.546077968503877,
+              0.5595303019874541,
+              0.053363342838338754,
+              -1.3294701664089155
+            ],
+            "maximum_fold_increment": 0.5595303019874541,
+            "minimum_fold_increment": -1.3294701664089155,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.2444863960814603,
+          "value_per_customer": 1.5381809166814449,
+          "versus_bau": {
+            "lower_95": -0.17068622363206598,
+            "point": 0.6280031631463174,
+            "standard_error": 0.407502073037231,
+            "upper_95": 1.426692549924701
+          },
+          "versus_best_static": {
+            "lower_95": -0.8492040961162963,
+            "point": -0.14700626156546634,
+            "standard_error": 0.35827078461118517,
+            "upper_95": 0.5551915729853636
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3407,
+            "NO_EMAIL": 1549,
+            "WOMENS_EMAIL": 3149
+          },
+          "email_rate": 0.8088834053053671,
+          "lower_95": 0.830147950611212,
+          "name": "r_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5563759125976674,
+              -0.5666631129542367,
+              0.5658993060675995,
+              0.053080673513629724,
+              -1.3395897160511459
+            ],
+            "maximum_fold_increment": 0.5658993060675995,
+            "minimum_fold_increment": -1.3395897160511459,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.242455280935324,
+          "value_per_customer": 1.536301615773268,
+          "versus_bau": {
+            "lower_95": -0.17242211186790612,
+            "point": 0.6261238622381409,
+            "standard_error": 0.40742890196191145,
+            "upper_95": 1.4246698363441879
+          },
+          "versus_best_static": {
+            "lower_95": -0.8512445391943584,
+            "point": -0.14888556247364307,
+            "standard_error": 0.35835300151473876,
+            "upper_95": 0.5534734142470723
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3443,
+            "NO_EMAIL": 1577,
+            "WOMENS_EMAIL": 3085
+          },
+          "email_rate": 0.8054287476866132,
+          "lower_95": 0.7822063801376293,
+          "name": "dr_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5514641406444867,
+              -0.5636706010252208,
+              0.6762144414695077,
+              -0.23711428828720005,
+              -1.442520524713502
+            ],
+            "maximum_fold_increment": 0.6762144414695077,
+            "minimum_fold_increment": -1.442520524713502,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 2.1759762298555008,
+          "value_per_customer": 1.479091304996565,
+          "versus_bau": {
+            "lower_95": -0.2222597308133626,
+            "point": 0.568913551461438,
+            "standard_error": 0.403667255375851,
+            "upper_95": 1.3600868337362386
+          },
+          "versus_best_static": {
+            "lower_95": -0.9166742930079879,
+            "point": -0.20609587325034576,
+            "standard_error": 0.3625466719606044,
+            "upper_95": 0.5044825465072964
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3267,
+            "NO_EMAIL": 1738,
+            "WOMENS_EMAIL": 3100
+          },
+          "email_rate": 0.7855644663787785,
+          "lower_95": 0.5683765603865547,
+          "name": "causal_forest_dr",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.12618498217187982,
+              -1.1484344411994916,
+              0.16052328026800328,
+              -0.1939208228940267,
+              -1.467860453973101
+            ],
+            "maximum_fold_increment": 0.16052328026800328,
+            "minimum_fold_increment": -1.467860453973101,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.7854490472366118,
+          "value_per_customer": 1.1769128038115833,
+          "versus_bau": {
+            "lower_95": -0.5330780784577258,
+            "point": 0.26673505027645594,
+            "standard_error": 0.40807542130519014,
+            "upper_95": 1.0665481790106377
+          },
+          "versus_best_static": {
+            "lower_95": -1.192321246511118,
+            "point": -0.508274374435328,
+            "standard_error": 0.3490099193002854,
+            "upper_95": 0.1757724976404621
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 4589,
+            "WOMENS_EMAIL": 3516
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.2777773830586888,
+          "name": "honest_dr_policy_tree",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.46934187335299854,
+              -2.020653491750795,
+              -0.5276692380405495,
+              -0.5410648280274106,
+              -1.8017702343429067
+            ],
+            "maximum_fold_increment": 0.46934187335299854,
+            "minimum_fold_increment": -2.020653491750795,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.3088687106247718,
+          "value_per_customer": 0.7933230468417304,
+          "versus_bau": {
+            "lower_95": -0.8561706876747681,
+            "point": -0.11685470669339723,
+            "standard_error": 0.37720896241614693,
+            "upper_95": 0.6224612742879736
+          },
+          "versus_best_static": {
+            "lower_95": -1.6264391001838558,
+            "point": -0.891864131405181,
+            "standard_error": 0.3747900341908875,
+            "upper_95": -0.15728916262650594
+          }
+        }
+      ],
+      "training_static_values": {
+        "MENS_EMAIL": 1.5246637902580586,
+        "NO_EMAIL": 0.8274414348481337,
+        "WOMENS_EMAIL": 1.2780907048012067
+      }
+    },
+    "0.05": {
+      "development_selected_best_static": "MENS_EMAIL",
+      "heldout_results": [
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "BAU",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.37870446089534265,
+              -2.6388362174241173,
+              -0.26679002342768654,
+              -0.26686039501930375,
+              -0.8257476520693376
+            ],
+            "maximum_fold_increment": 0.37870446089534265,
+            "minimum_fold_increment": -2.6388362174241173,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": -1.7381192597985946,
+            "point": -0.7350094247117838,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 0.2681004103750271
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.7933763557566174,
+          "name": "treat_all_mens",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 2.496998000737205,
+          "value_per_customer": 1.6451871782469112,
+          "versus_bau": {
+            "lower_95": -0.2681004103750271,
+            "point": 0.7350094247117838,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 1.7381192597985946
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "WOMENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.3497054195000275,
+          "name": "treat_all_womens",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5036966629461135,
+              -2.0024218952731374,
+              -0.09443322943023234,
+              -0.11716820151642703,
+              -2.7712861922175858
+            ],
+            "maximum_fold_increment": 0.5036966629461135,
+            "minimum_fold_increment": -2.7712861922175858,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.135689195361431,
+          "value_per_customer": 0.7426973074307293,
+          "versus_bau": {
+            "lower_95": -0.8262510971160377,
+            "point": -0.1674804461043981,
+            "standard_error": 0.33611365117315345,
+            "upper_95": 0.49129020490724157
+          },
+          "versus_best_static": {
+            "lower_95": -1.8400916314645461,
+            "point": -0.902489870816182,
+            "standard_error": 0.4783770355190438,
+            "upper_95": 0.03511188983218205
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.7933763557566174,
+          "name": "best_static",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 2.496998000737205,
+          "value_per_customer": 1.6451871782469112,
+          "versus_bau": {
+            "lower_95": -0.2681004103750271,
+            "point": 0.7350094247117838,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 1.7381192597985946
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2593,
+            "NO_EMAIL": 1976,
+            "WOMENS_EMAIL": 3536
+          },
+          "email_rate": 0.7561998766193707,
+          "lower_95": 0.7185683381626187,
+          "name": "simple_rfm_affinity_segment",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.27178766324834286,
+              -0.31771544302243493,
+              0.141458671869164,
+              0.3659849577763203,
+              -1.7473611742684416
+            ],
+            "maximum_fold_increment": 0.3659849577763203,
+            "minimum_fold_increment": -1.7473611742684416,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.0584692307515975,
+          "value_per_customer": 1.388518784457108,
+          "versus_bau": {
+            "lower_95": -0.32789459193893794,
+            "point": 0.47834103092198094,
+            "standard_error": 0.411352264235671,
+            "upper_95": 1.2845766537828998
+          },
+          "versus_best_static": {
+            "lower_95": -0.9829957270145624,
+            "point": -0.25666839378980305,
+            "standard_error": 0.3705819795434695,
+            "upper_95": 0.46965893943495624
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3335,
+            "NO_EMAIL": 1642,
+            "WOMENS_EMAIL": 3128
+          },
+          "email_rate": 0.7974090067859346,
+          "lower_95": 0.8377690993622744,
+          "name": "ridge_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5625216406964055,
+              -0.4891936561291841,
+              0.7277464496311021,
+              0.05851614509080638,
+              -1.3343002830477722
+            ],
+            "maximum_fold_increment": 0.7277464496311021,
+            "minimum_fold_increment": -1.3343002830477722,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.257600801448495,
+          "value_per_customer": 1.547684950405385,
+          "versus_bau": {
+            "lower_95": -0.15844979212706456,
+            "point": 0.6375071968702576,
+            "standard_error": 0.4061079669196625,
+            "upper_95": 1.4334641858675798
+          },
+          "versus_best_static": {
+            "lower_95": -0.8027719259585936,
+            "point": -0.09750222784152629,
+            "standard_error": 0.35983809074051604,
+            "upper_95": 0.607767470275541
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3929,
+            "NO_EMAIL": 1575,
+            "WOMENS_EMAIL": 2601
+          },
+          "email_rate": 0.8056755089450957,
+          "lower_95": 0.3686568962327663,
+          "name": "random_forest_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.18938664123634832,
+              -1.638739581167307,
+              0.004990007893668365,
+              -0.1975418058669255,
+              -2.111106291456754
+            ],
+            "maximum_fold_increment": 0.18938664123634832,
+            "minimum_fold_increment": -2.111106291456754,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.4109243866389904,
+          "value_per_customer": 0.8897906414358784,
+          "versus_bau": {
+            "lower_95": -0.75230434500232,
+            "point": -0.020387112099248986,
+            "standard_error": 0.3734340215822029,
+            "upper_95": 0.7115301208038219
+          },
+          "versus_best_static": {
+            "lower_95": -1.5076654002430938,
+            "point": -0.7553965368110327,
+            "standard_error": 0.3838176973484523,
+            "upper_95": -0.003127673378971574
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3637,
+            "NO_EMAIL": 1746,
+            "WOMENS_EMAIL": 2722
+          },
+          "email_rate": 0.7845774213448489,
+          "lower_95": 0.5283222633144301,
+          "name": "extra_trees_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.35735915075064584,
+              0.024082033053182496,
+              0.4511137914611662,
+              0.11645999923073654,
+              -2.3077752344727553
+            ],
+            "maximum_fold_increment": 0.4511137914611662,
+            "minimum_fold_increment": -2.3077752344727553,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.9406113572943986,
+          "value_per_customer": 1.2344668103044143,
+          "versus_bau": {
+            "lower_95": -0.5187423846814143,
+            "point": 0.32428905676928693,
+            "standard_error": 0.43012598603873625,
+            "upper_95": 1.167320498219988
+          },
+          "versus_best_static": {
+            "lower_95": -1.0272325948704226,
+            "point": -0.41072036794249706,
+            "standard_error": 0.31455283453721367,
+            "upper_95": 0.20579185898542857
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3457,
+            "NO_EMAIL": 1939,
+            "WOMENS_EMAIL": 2709
+          },
+          "email_rate": 0.7607649599012954,
+          "lower_95": 0.44304139083806576,
+          "name": "hist_gradient_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.27248372317333996,
+              -2.2617096896018536,
+              0.34803198620691345,
+              0.09800369047033494,
+              -2.010433085258047
+            ],
+            "maximum_fold_increment": 0.34803198620691345,
+            "minimum_fold_increment": -2.2617096896018536,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.4102820863392107,
+          "value_per_customer": 0.9266617385886382,
+          "versus_bau": {
+            "lower_95": -0.6503110557057308,
+            "point": 0.016483985053510758,
+            "standard_error": 0.34020780280598817,
+            "upper_95": 0.6832790258127523
+          },
+          "versus_best_static": {
+            "lower_95": -1.54409390931413,
+            "point": -0.7185254396582731,
+            "standard_error": 0.42121614283111103,
+            "upper_95": 0.10704302999758375
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 6853,
+            "WOMENS_EMAIL": 1252
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.8575451620118482,
+          "name": "tweedie_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.3846972717836117,
+              0.6103555455327919,
+              0.031945054033738096,
+              0.25774077166953857,
+              -1.3621980096482234
+            ],
+            "maximum_fold_increment": 0.6103555455327919,
+            "minimum_fold_increment": -1.3621980096482234,
+            "positive_fold_fraction": 0.8
+          },
+          "upper_95": 2.4088948342942693,
+          "value_per_customer": 1.6332199981530586,
+          "versus_bau": {
+            "lower_95": -0.21623092680728018,
+            "point": 0.7230422446179317,
+            "standard_error": 0.4792298117894404,
+            "upper_95": 1.6623154160431435
+          },
+          "versus_best_static": {
+            "lower_95": -0.4923349834751874,
+            "point": -0.011967180093852421,
+            "standard_error": 0.2450901175584934,
+            "upper_95": 0.4684006232874825
+          }
+        },
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "huber_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.37870446089534265,
+              -2.6388362174241173,
+              -0.26679002342768654,
+              -0.26686039501930375,
+              -0.8257476520693376
+            ],
+            "maximum_fold_increment": 0.37870446089534265,
+            "minimum_fold_increment": -2.6388362174241173,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": -1.7381192597985946,
+            "point": -0.7350094247117838,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 0.2681004103750271
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 4089,
+            "NO_EMAIL": 1124,
+            "WOMENS_EMAIL": 2892
+          },
+          "email_rate": 0.861320172732881,
+          "lower_95": 0.8143627003308002,
+          "name": "two_part_logit_log_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5722473592388272,
+              0.00435291082932937,
+              0.4286740807636703,
+              0.12156064880403124,
+              -1.7535000179837232
+            ],
+            "maximum_fold_increment": 0.5722473592388272,
+            "minimum_fold_increment": -1.7535000179837232,
+            "positive_fold_fraction": 0.8
+          },
+          "upper_95": 2.2261765472168222,
+          "value_per_customer": 1.5202696237738111,
+          "versus_bau": {
+            "lower_95": -0.2324629503639093,
+            "point": 0.6100918702386838,
+            "standard_error": 0.4298828076681807,
+            "upper_95": 1.452646690841277
+          },
+          "versus_best_static": {
+            "lower_95": -0.8192105291872513,
+            "point": -0.12491755447310003,
+            "standard_error": 0.3542376187474085,
+            "upper_95": 0.5693754202410513
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3363,
+            "NO_EMAIL": 1629,
+            "WOMENS_EMAIL": 3113
+          },
+          "email_rate": 0.7990129549660703,
+          "lower_95": 0.8295840312336454,
+          "name": "x_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5537117206357662,
+              -0.5362474485574203,
+              0.7365934371156643,
+              0.059221509624154615,
+              -1.3294807328950498
+            ],
+            "maximum_fold_increment": 0.7365934371156643,
+            "minimum_fold_increment": -1.3294807328950498,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.24881756407244,
+          "value_per_customer": 1.5392007976530429,
+          "versus_bau": {
+            "lower_95": -0.16667175857576344,
+            "point": 0.6290230441179155,
+            "standard_error": 0.40597419593932244,
+            "upper_95": 1.4247178468115944
+          },
+          "versus_best_static": {
+            "lower_95": -0.8115529898692252,
+            "point": -0.10598638059386835,
+            "standard_error": 0.3599895788089864,
+            "upper_95": 0.5995802286814885
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3325,
+            "NO_EMAIL": 1648,
+            "WOMENS_EMAIL": 3132
+          },
+          "email_rate": 0.7966687230104873,
+          "lower_95": 0.8274461406172173,
+          "name": "r_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5520279260832678,
+              -0.5575067193435834,
+              0.7443519392160145,
+              0.06572335222707645,
+              -1.3318312824285305
+            ],
+            "maximum_fold_increment": 0.7443519392160145,
+            "minimum_fold_increment": -1.3318312824285305,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.246379259631566,
+          "value_per_customer": 1.5369127001243919,
+          "versus_bau": {
+            "lower_95": -0.16880867357515084,
+            "point": 0.6267349465892644,
+            "standard_error": 0.40589706057844016,
+            "upper_95": 1.4222785667536797
+          },
+          "versus_best_static": {
+            "lower_95": -0.8140129762926245,
+            "point": -0.10827447812251946,
+            "standard_error": 0.36007727883618285,
+            "upper_95": 0.5974640200475856
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3396,
+            "NO_EMAIL": 1669,
+            "WOMENS_EMAIL": 3040
+          },
+          "email_rate": 0.794077729796422,
+          "lower_95": 0.7535748217920714,
+          "name": "dr_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.550641536696946,
+              -0.5515603322860976,
+              0.7031315366359916,
+              -0.22984973425125904,
+              -1.4312753082882552
+            ],
+            "maximum_fold_increment": 0.7031315366359916,
+            "minimum_fold_increment": -1.4312753082882552,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 2.1473325487897816,
+          "value_per_customer": 1.4504536852909264,
+          "versus_bau": {
+            "lower_95": -0.2508339618459716,
+            "point": 0.540275931755799,
+            "standard_error": 0.4036349136218546,
+            "upper_95": 1.3313858253575697
+          },
+          "versus_best_static": {
+            "lower_95": -0.9053531377301558,
+            "point": -0.1947334929559848,
+            "standard_error": 0.36256770551879935,
+            "upper_95": 0.5158861518181861
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3225,
+            "NO_EMAIL": 1797,
+            "WOMENS_EMAIL": 3083
+          },
+          "email_rate": 0.7782850092535472,
+          "lower_95": 0.5394273380112559,
+          "name": "causal_forest_dr",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.1467995898166564,
+              -1.1397331493125982,
+              0.17010947248218852,
+              -0.18778340433253127,
+              -1.4575209894329841
+            ],
+            "maximum_fold_increment": 0.17010947248218852,
+            "minimum_fold_increment": -1.4575209894329841,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.7564674182085356,
+          "value_per_customer": 1.1479473781098957,
+          "versus_bau": {
+            "lower_95": -0.5620202088522334,
+            "point": 0.23776962457476836,
+            "standard_error": 0.4080635357259837,
+            "upper_95": 1.0375594580017702
+          },
+          "versus_best_static": {
+            "lower_95": -1.1813059310932408,
+            "point": -0.49723980013701546,
+            "standard_error": 0.3490197454402488,
+            "upper_95": 0.1868263308192099
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 4589,
+            "WOMENS_EMAIL": 3516
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.23777738305868856,
+          "name": "honest_dr_policy_tree",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.4693418733529985,
+              -2.020653491750795,
+              -0.5276692380405495,
+              -0.5410648280274105,
+              -1.8017702343429067
+            ],
+            "maximum_fold_increment": 0.4693418733529985,
+            "minimum_fold_increment": -2.020653491750795,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.2688687106247718,
+          "value_per_customer": 0.7533230468417301,
+          "versus_bau": {
+            "lower_95": -0.896170687674768,
+            "point": -0.1568547066933972,
+            "standard_error": 0.37720896241614693,
+            "upper_95": 0.5824612742879737
+          },
+          "versus_best_static": {
+            "lower_95": -1.6264391001838558,
+            "point": -0.891864131405181,
+            "standard_error": 0.3747900341908875,
+            "upper_95": -0.15728916262650594
+          }
+        }
+      ],
+      "training_static_values": {
+        "MENS_EMAIL": 1.4846637902580586,
+        "NO_EMAIL": 0.8274414348481337,
+        "WOMENS_EMAIL": 1.2380907048012064
+      }
+    },
+    "0.1": {
+      "development_selected_best_static": "MENS_EMAIL",
+      "heldout_results": [
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "BAU",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.42870446089534253,
+              -2.588836217424117,
+              -0.21679002342768644,
+              -0.21686039501930363,
+              -0.7757476520693375
+            ],
+            "maximum_fold_increment": 0.42870446089534253,
+            "minimum_fold_increment": -2.588836217424117,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": -1.6881192597985946,
+            "point": -0.6850094247117837,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 0.3181004103750271
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.7433763557566173,
+          "name": "treat_all_mens",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 2.4469980007372047,
+          "value_per_customer": 1.5951871782469111,
+          "versus_bau": {
+            "lower_95": -0.3181004103750271,
+            "point": 0.6850094247117837,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 1.6881192597985946
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "WOMENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.29970541950002766,
+          "name": "treat_all_womens",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5036966629461133,
+              -2.0024218952731374,
+              -0.09443322943023241,
+              -0.11716820151642705,
+              -2.771286192217586
+            ],
+            "maximum_fold_increment": 0.5036966629461133,
+            "minimum_fold_increment": -2.771286192217586,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.0856891953614312,
+          "value_per_customer": 0.6926973074307294,
+          "versus_bau": {
+            "lower_95": -0.8762510971160379,
+            "point": -0.21748044610439823,
+            "standard_error": 0.33611365117315345,
+            "upper_95": 0.44129020490724147
+          },
+          "versus_best_static": {
+            "lower_95": -1.840091631464546,
+            "point": -0.9024898708161818,
+            "standard_error": 0.4783770355190438,
+            "upper_95": 0.035111889832182275
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.7433763557566173,
+          "name": "best_static",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 2.4469980007372047,
+          "value_per_customer": 1.5951871782469111,
+          "versus_bau": {
+            "lower_95": -0.3181004103750271,
+            "point": 0.6850094247117837,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 1.6881192597985946
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2593,
+            "NO_EMAIL": 1976,
+            "WOMENS_EMAIL": 3536
+          },
+          "email_rate": 0.7561998766193707,
+          "lower_95": 0.6807621413391632,
+          "name": "simple_rfm_affinity_segment",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.28415460125710934,
+              -0.30569127383814476,
+              0.15339295581212734,
+              0.37825489642662713,
+              -1.7350009258212362
+            ],
+            "maximum_fold_increment": 0.37825489642662713,
+            "minimum_fold_increment": -1.7350009258212362,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.0206554399131154,
+          "value_per_customer": 1.3507087906261392,
+          "versus_bau": {
+            "lower_95": -0.3657012929753658,
+            "point": 0.44053103709101227,
+            "standard_error": 0.41135058420758536,
+            "upper_95": 1.2467633671573903
+          },
+          "versus_best_static": {
+            "lower_95": -0.9708027148151864,
+            "point": -0.24447838762077156,
+            "standard_error": 0.37058044582633587,
+            "upper_95": 0.4818459395736433
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3298,
+            "NO_EMAIL": 1716,
+            "WOMENS_EMAIL": 3091
+          },
+          "email_rate": 0.7882788402220852,
+          "lower_95": 0.7532541052784791,
+          "name": "ridge_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5788215754350065,
+              -0.4905715967251194,
+              0.7536419173025906,
+              -0.20288086914315673,
+              -1.330957884703492
+            ],
+            "maximum_fold_increment": 0.7536419173025906,
+            "minimum_fold_increment": -1.330957884703492,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 2.154472124114231,
+          "value_per_customer": 1.4538631146963552,
+          "versus_bau": {
+            "lower_95": -0.24397379975009081,
+            "point": 0.5436853611612277,
+            "standard_error": 0.4018743033669361,
+            "upper_95": 1.3313445220725462
+          },
+          "versus_best_static": {
+            "lower_95": -0.8558475160983738,
+            "point": -0.141324063550556,
+            "standard_error": 0.3645594807781611,
+            "upper_95": 0.5731993889972617
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3856,
+            "NO_EMAIL": 1712,
+            "WOMENS_EMAIL": 2537
+          },
+          "email_rate": 0.7887723627390499,
+          "lower_95": 0.33512936603048826,
+          "name": "random_forest_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.21205624239608084,
+              -1.6379451805218248,
+              0.01882404310598642,
+              -0.17752808114998572,
+              -2.085695932737507
+            ],
+            "maximum_fold_increment": 0.21205624239608084,
+            "minimum_fold_increment": -2.085695932737507,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.3773613391100987,
+          "value_per_customer": 0.8562453525702934,
+          "versus_bau": {
+            "lower_95": -0.7858084336366755,
+            "point": -0.053932400964833926,
+            "standard_error": 0.3734130006698013,
+            "upper_95": 0.6779436317070078
+          },
+          "versus_best_static": {
+            "lower_95": -1.4912399336082882,
+            "point": -0.7389418256766176,
+            "standard_error": 0.38383261828569404,
+            "upper_95": 0.01335628225505292
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3526,
+            "NO_EMAIL": 1899,
+            "WOMENS_EMAIL": 2680
+          },
+          "email_rate": 0.7657001850709438,
+          "lower_95": 0.4055848825250632,
+          "name": "extra_trees_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.34460793299193565,
+              -0.6592545533208155,
+              0.45998312661903934,
+              0.13821894838051618,
+              -2.3001299070718546
+            ],
+            "maximum_fold_increment": 0.45998312661903934,
+            "minimum_fold_increment": -2.3001299070718546,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.7046254675472896,
+          "value_per_customer": 1.0551051750361764,
+          "versus_bau": {
+            "lower_95": -0.6512164821597155,
+            "point": 0.14492742150104904,
+            "standard_error": 0.40620333329624736,
+            "upper_95": 0.9410713251618137
+          },
+          "versus_best_static": {
+            "lower_95": -1.2160205886587516,
+            "point": -0.5400820032107347,
+            "standard_error": 0.34487296235019327,
+            "upper_95": 0.13585658223728214
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3401,
+            "NO_EMAIL": 2045,
+            "WOMENS_EMAIL": 2659
+          },
+          "email_rate": 0.7476866132017274,
+          "lower_95": 0.4140141746851879,
+          "name": "hist_gradient_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.17153687037714566,
+              -2.2497993924663238,
+              0.356828096214402,
+              0.11894424007414812,
+              -1.8329529827328928
+            ],
+            "maximum_fold_increment": 0.356828096214402,
+            "minimum_fold_increment": -2.2497993924663238,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.3868265398037656,
+          "value_per_customer": 0.9004203572444768,
+          "versus_bau": {
+            "lower_95": -0.6718839293968638,
+            "point": -0.009757396290650625,
+            "standard_error": 0.33782586737765735,
+            "upper_95": 0.6523691368155625
+          },
+          "versus_best_static": {
+            "lower_95": -1.5240683461296483,
+            "point": -0.6947668210024344,
+            "standard_error": 0.42312079796804364,
+            "upper_95": 0.13453470412477964
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 6853,
+            "WOMENS_EMAIL": 1252
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.8075451620118486,
+          "name": "tweedie_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.3846972717836117,
+              0.6103555455327919,
+              0.0319450540337381,
+              0.25774077166953857,
+              -1.3621980096482234
+            ],
+            "maximum_fold_increment": 0.6103555455327919,
+            "minimum_fold_increment": -1.3621980096482234,
+            "positive_fold_fraction": 0.8
+          },
+          "upper_95": 2.3588948342942695,
+          "value_per_customer": 1.583219998153059,
+          "versus_bau": {
+            "lower_95": -0.26623092680728055,
+            "point": 0.6730422446179314,
+            "standard_error": 0.47922981178944046,
+            "upper_95": 1.6123154160431432
+          },
+          "versus_best_static": {
+            "lower_95": -0.4923349834751874,
+            "point": -0.011967180093852421,
+            "standard_error": 0.2450901175584934,
+            "upper_95": 0.4684006232874825
+          }
+        },
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "huber_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.42870446089534253,
+              -2.588836217424117,
+              -0.21679002342768644,
+              -0.21686039501930363,
+              -0.7757476520693375
+            ],
+            "maximum_fold_increment": 0.42870446089534253,
+            "minimum_fold_increment": -2.588836217424117,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": -1.6881192597985946,
+            "point": -0.6850094247117837,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 0.3181004103750271
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3983,
+            "NO_EMAIL": 1247,
+            "WOMENS_EMAIL": 2875
+          },
+          "email_rate": 0.8461443553362122,
+          "lower_95": 0.8368659093638092,
+          "name": "two_part_logit_log_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5910596529276773,
+              -0.014202467691219257,
+              0.44158983046023315,
+              0.13209678136306918,
+              -1.2995839790014074
+            ],
+            "maximum_fold_increment": 0.5910596529276773,
+            "minimum_fold_increment": -1.2995839790014074,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.2932219883165468,
+          "value_per_customer": 1.565043948840178,
+          "versus_bau": {
+            "lower_95": -0.16840228187544726,
+            "point": 0.6548661953050504,
+            "standard_error": 0.4200426557193573,
+            "upper_95": 1.478134672485548
+          },
+          "versus_best_static": {
+            "lower_95": -0.7471547835237847,
+            "point": -0.030143229406733318,
+            "standard_error": 0.3658289436809794,
+            "upper_95": 0.6868683247103181
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3309,
+            "NO_EMAIL": 1725,
+            "WOMENS_EMAIL": 3071
+          },
+          "email_rate": 0.7871684145589143,
+          "lower_95": 0.7428484496882596,
+          "name": "x_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5611055262934876,
+              -0.5327899233512362,
+              0.7446505086452821,
+              -0.19547694387029366,
+              -1.322367048513236
+            ],
+            "maximum_fold_increment": 0.7446505086452821,
+            "minimum_fold_increment": -1.322367048513236,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 2.143466957064503,
+          "value_per_customer": 1.4431577033763812,
+          "versus_bau": {
+            "lower_95": -0.2544017880790872,
+            "point": 0.5329799498412537,
+            "standard_error": 0.40173275842367906,
+            "upper_95": 1.3203616877615947
+          },
+          "versus_best_static": {
+            "lower_95": -0.8668552682103471,
+            "point": -0.15202947487052987,
+            "standard_error": 0.36471373911881644,
+            "upper_95": 0.5627963184692873
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3290,
+            "NO_EMAIL": 1722,
+            "WOMENS_EMAIL": 3093
+          },
+          "email_rate": 0.7875385564466378,
+          "lower_95": 0.7407510232527849,
+          "name": "r_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.573409684075767,
+              -0.556884442066941,
+              0.7582806511683314,
+              -0.20419168415683325,
+              -1.3259596753473217
+            ],
+            "maximum_fold_increment": 0.7582806511683314,
+            "minimum_fold_increment": -1.3259596753473217,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 2.1410658210135,
+          "value_per_customer": 1.4409084221331425,
+          "versus_bau": {
+            "lower_95": -0.2565085935077842,
+            "point": 0.530730668598015,
+            "standard_error": 0.40166006534581356,
+            "upper_95": 1.3179699307038142
+          },
+          "versus_best_static": {
+            "lower_95": -0.8692601233261222,
+            "point": -0.15427875611376865,
+            "standard_error": 0.36479311500213035,
+            "upper_95": 0.560702611098585
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3350,
+            "NO_EMAIL": 1755,
+            "WOMENS_EMAIL": 3000
+          },
+          "email_rate": 0.783466995681678,
+          "lower_95": 0.7223514225095996,
+          "name": "dr_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5326953542113152,
+              -0.550922416119037,
+              0.7074571691884338,
+              -0.19808684841324367,
+              -1.3411866308293867
+            ],
+            "maximum_fold_increment": 0.7074571691884338,
+            "minimum_fold_increment": -1.3411866308293867,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 2.1220326211774387,
+          "value_per_customer": 1.4221920218435191,
+          "versus_bau": {
+            "lower_95": -0.2749474530012508,
+            "point": 0.5120142683083916,
+            "standard_error": 0.40151846029676874,
+            "upper_95": 1.298975989618034
+          },
+          "versus_best_static": {
+            "lower_95": -0.8881820349466629,
+            "point": -0.172995156403392,
+            "standard_error": 0.36489796964871485,
+            "upper_95": 0.5421917221398789
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3177,
+            "NO_EMAIL": 1876,
+            "WOMENS_EMAIL": 3052
+          },
+          "email_rate": 0.7685379395434917,
+          "lower_95": 0.5004273453925464,
+          "name": "causal_forest_dr",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.1626308091975474,
+              -1.1377196893845836,
+              0.17524169086741634,
+              -0.16933602267920356,
+              -1.4437978045574986
+            ],
+            "maximum_fold_increment": 0.17524169086741634,
+            "minimum_fold_increment": -1.4437978045574986,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.7174431200269922,
+          "value_per_customer": 1.1089352327097692,
+          "versus_bau": {
+            "lower_95": -0.6010042131961696,
+            "point": 0.19875747917464182,
+            "standard_error": 0.4080491777804233,
+            "upper_95": 0.9985191715454532
+          },
+          "versus_best_static": {
+            "lower_95": -1.1703356421823874,
+            "point": -0.4862519455371419,
+            "standard_error": 0.34902870769116706,
+            "upper_95": 0.1978317511081037
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2703,
+            "NO_EMAIL": 1886,
+            "WOMENS_EMAIL": 3516
+          },
+          "email_rate": 0.7673041332510796,
+          "lower_95": 0.19462929669608298,
+          "name": "honest_dr_policy_tree",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.49970978870163607,
+              -2.1120321051834634,
+              -0.5500188009529648,
+              -0.5523384526574548,
+              -1.6646394415301882
+            ],
+            "maximum_fold_increment": 0.49970978870163607,
+            "minimum_fold_increment": -2.1120321051834634,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.2277159157744189,
+          "value_per_customer": 0.7111726062352509,
+          "versus_bau": {
+            "lower_95": -0.9342884187661273,
+            "point": -0.19900514729987645,
+            "standard_error": 0.37515141975366467,
+            "upper_95": 0.5362781241663745
+          },
+          "versus_best_static": {
+            "lower_95": -1.6226316129144223,
+            "point": -0.8840145720116602,
+            "standard_error": 0.37685235378245674,
+            "upper_95": -0.1453975311088982
+          }
+        }
+      ],
+      "training_static_values": {
+        "MENS_EMAIL": 1.4346637902580586,
+        "NO_EMAIL": 0.8274414348481337,
+        "WOMENS_EMAIL": 1.1880907048012064
+      }
+    },
+    "0.25": {
+      "development_selected_best_static": "MENS_EMAIL",
+      "heldout_results": [
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "BAU",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5787044608953426,
+              -2.4388362174241163,
+              -0.06679002342768627,
+              -0.06686039501930371,
+              -0.6257476520693374
+            ],
+            "maximum_fold_increment": 0.5787044608953426,
+            "minimum_fold_increment": -2.4388362174241163,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": -1.5381192597985947,
+            "point": -0.5350094247117839,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 0.4681004103750269
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.5933763557566174,
+          "name": "treat_all_mens",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 2.2969980007372053,
+          "value_per_customer": 1.4451871782469112,
+          "versus_bau": {
+            "lower_95": -0.4681004103750269,
+            "point": 0.5350094247117839,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 1.5381192597985947
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "WOMENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.14970541950002741,
+          "name": "treat_all_womens",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5036966629461135,
+              -2.002421895273138,
+              -0.09443322943023234,
+              -0.11716820151642701,
+              -2.771286192217587
+            ],
+            "maximum_fold_increment": 0.5036966629461135,
+            "minimum_fold_increment": -2.771286192217587,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 0.935689195361431,
+          "value_per_customer": 0.5426973074307292,
+          "versus_bau": {
+            "lower_95": -1.026251097116038,
+            "point": -0.3674804461043982,
+            "standard_error": 0.33611365117315345,
+            "upper_95": 0.2912902049072415
+          },
+          "versus_best_static": {
+            "lower_95": -1.8400916314645461,
+            "point": -0.902489870816182,
+            "standard_error": 0.4783770355190438,
+            "upper_95": 0.03511188983218205
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.5933763557566174,
+          "name": "best_static",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 2.2969980007372053,
+          "value_per_customer": 1.4451871782469112,
+          "versus_bau": {
+            "lower_95": -0.4681004103750269,
+            "point": 0.5350094247117839,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 1.5381192597985947
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2593,
+            "NO_EMAIL": 1976,
+            "WOMENS_EMAIL": 3536
+          },
+          "email_rate": 0.7561998766193707,
+          "lower_95": 0.5673415942942358,
+          "name": "simple_rfm_affinity_segment",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.3212554152834085,
+              -0.2696187662852747,
+              0.1891958076410176,
+              0.41506471237754744,
+              -1.6979201804796218
+            ],
+            "maximum_fold_increment": 0.41506471237754744,
+            "minimum_fold_increment": -1.6979201804796218,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.9072160239722322,
+          "value_per_customer": 1.237278809133234,
+          "versus_bau": {
+            "lower_95": -0.4791230219390546,
+            "point": 0.3271010555981065,
+            "standard_error": 0.4113463736561252,
+            "upper_95": 1.1333251331352676
+          },
+          "versus_best_static": {
+            "lower_95": -0.9342254829578365,
+            "point": -0.2079083691136772,
+            "standard_error": 0.370576765477966,
+            "upper_95": 0.5184087447304822
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3079,
+            "NO_EMAIL": 2063,
+            "WOMENS_EMAIL": 2963
+          },
+          "email_rate": 0.7454657618753856,
+          "lower_95": 0.5282058673763298,
+          "name": "ridge_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.6155959872721503,
+              -0.5910671440156445,
+              0.7600568307016982,
+              -0.14389154640392182,
+              -2.070430878343699
+            ],
+            "maximum_fold_increment": 0.7600568307016982,
+            "minimum_fold_increment": -2.070430878343699,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.7854690200188683,
+          "value_per_customer": 1.156837443697599,
+          "versus_bau": {
+            "lower_95": -0.47759805437029046,
+            "point": 0.24665969016247144,
+            "standard_error": 0.36952604754251334,
+            "upper_95": 0.9709174346952334
+          },
+          "versus_best_static": {
+            "lower_95": -1.067016785780741,
+            "point": -0.2883497345493124,
+            "standard_error": 0.3972864080021139,
+            "upper_95": 0.49031731668211637
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3555,
+            "NO_EMAIL": 2160,
+            "WOMENS_EMAIL": 2390
+          },
+          "email_rate": 0.7334978408389883,
+          "lower_95": 0.23285212190423732,
+          "name": "random_forest_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.2399628946861262,
+              -1.6222883704310012,
+              0.07448235639012414,
+              -0.09416093977678872,
+              -2.0271834808764044
+            ],
+            "maximum_fold_increment": 0.2399628946861262,
+            "minimum_fold_increment": -2.0271834808764044,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.2759616656964403,
+          "value_per_customer": 0.7544068938003389,
+          "versus_bau": {
+            "lower_95": -0.8871622925763307,
+            "point": -0.15577085973478866,
+            "standard_error": 0.37316575131515906,
+            "upper_95": 0.5756205731067534
+          },
+          "versus_best_static": {
+            "lower_95": -1.4435070043357345,
+            "point": -0.6907802844465726,
+            "standard_error": 0.384051301874205,
+            "upper_95": 0.061946435442589376
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3260,
+            "NO_EMAIL": 2305,
+            "WOMENS_EMAIL": 2540
+          },
+          "email_rate": 0.7156076495990129,
+          "lower_95": 0.2531746123270979,
+          "name": "extra_trees_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.33500557144476506,
+              -1.5898394436849184,
+              0.668263789432224,
+              0.20121524638939117,
+              -2.1709904532054836
+            ],
+            "maximum_fold_increment": 0.668263789432224,
+            "minimum_fold_increment": -2.1709904532054836,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.3403231340278536,
+          "value_per_customer": 0.7967488731774758,
+          "versus_bau": {
+            "lower_95": -0.8184794107412205,
+            "point": -0.11342888035765145,
+            "standard_error": 0.3597262684135616,
+            "upper_95": 0.5916216500259177
+          },
+          "versus_best_static": {
+            "lower_95": -1.4187247421493203,
+            "point": -0.6484383050694355,
+            "standard_error": 0.39301050588470304,
+            "upper_95": 0.12184813201044953
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3221,
+            "NO_EMAIL": 2380,
+            "WOMENS_EMAIL": 2504
+          },
+          "email_rate": 0.7063541024059222,
+          "lower_95": 0.23425691502906348,
+          "name": "hist_gradient_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.047573286384803605,
+              -2.1908810802674648,
+              0.39099763176638264,
+              0.1695037972924152,
+              -2.0071946439697963
+            ],
+            "maximum_fold_increment": 0.39099763176638264,
+            "minimum_fold_increment": -2.1908810802674648,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.16901177006075,
+          "value_per_customer": 0.7016343425449068,
+          "versus_bau": {
+            "lower_95": -0.8567028253470754,
+            "point": -0.20854341099022058,
+            "standard_error": 0.3306996554372701,
+            "upper_95": 0.4396160033666343
+          },
+          "versus_best_static": {
+            "lower_95": -1.5618173669569173,
+            "point": -0.7435528357020045,
+            "standard_error": 0.41748957517040064,
+            "upper_95": 0.07471169555290835
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 6384,
+            "NO_EMAIL": 469,
+            "WOMENS_EMAIL": 1252
+          },
+          "email_rate": 0.9421344848858729,
+          "lower_95": 0.6517551223477179,
+          "name": "tweedie_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.4210604428757367,
+              -0.31185997120151127,
+              0.49107518755212526,
+              0.3431160316070993,
+              -1.3737611335295454
+            ],
+            "maximum_fold_increment": 0.49107518755212526,
+            "minimum_fold_increment": -1.3737611335295454,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 2.0648828390795124,
+          "value_per_customer": 1.3583189807136151,
+          "versus_bau": {
+            "lower_95": -0.4026465085961709,
+            "point": 0.44814122717848737,
+            "standard_error": 0.43408335177868745,
+            "upper_95": 1.2989289629531457
+          },
+          "versus_best_static": {
+            "lower_95": -0.710709938761738,
+            "point": -0.08686819753329647,
+            "standard_error": 0.3182924513660586,
+            "upper_95": 0.5369735436951452
+          }
+        },
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "huber_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5787044608953426,
+              -2.4388362174241163,
+              -0.06679002342768627,
+              -0.06686039501930371,
+              -0.6257476520693374
+            ],
+            "maximum_fold_increment": 0.5787044608953426,
+            "minimum_fold_increment": -2.4388362174241163,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": -1.5381192597985947,
+            "point": -0.5350094247117839,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 0.4681004103750269
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3622,
+            "NO_EMAIL": 1680,
+            "WOMENS_EMAIL": 2803
+          },
+          "email_rate": 0.7927205428747687,
+          "lower_95": 0.6663044360268695,
+          "name": "two_part_logit_log_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.6234162284251682,
+              0.03852762761596227,
+              0.6357360277632743,
+              0.1801923733563535,
+              -2.050836238905203
+            ],
+            "maximum_fold_increment": 0.6357360277632743,
+            "minimum_fold_increment": -2.050836238905203,
+            "positive_fold_fraction": 0.8
+          },
+          "upper_95": 1.9962274472319255,
+          "value_per_customer": 1.3312659416293975,
+          "versus_bau": {
+            "lower_95": -0.3404826963668353,
+            "point": 0.42108818809427023,
+            "standard_error": 0.3885637136540669,
+            "upper_95": 1.1826590725553758
+          },
+          "versus_best_static": {
+            "lower_95": -0.8961323688665662,
+            "point": -0.11392123661751355,
+            "standard_error": 0.39909464582973686,
+            "upper_95": 0.6682898956315392
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3091,
+            "NO_EMAIL": 2081,
+            "WOMENS_EMAIL": 2933
+          },
+          "email_rate": 0.7432449105490438,
+          "lower_95": 0.5213304788428986,
+          "name": "x_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5946177718500089,
+              -0.6338849032822559,
+              0.7629843644112141,
+              -0.135014750939773,
+              -2.053862385828119
+            ],
+            "maximum_fold_increment": 0.7629843644112141,
+            "minimum_fold_increment": -2.053862385828119,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.7779091117761596,
+          "value_per_customer": 1.149619795309529,
+          "versus_bau": {
+            "lower_95": -0.4845098504901658,
+            "point": 0.23944204177440165,
+            "standard_error": 0.3693699975994496,
+            "upper_95": 0.9633939340389691
+          },
+          "versus_best_static": {
+            "lower_95": -1.0745097051790278,
+            "point": -0.2955673829373821,
+            "standard_error": 0.39742685497582786,
+            "upper_95": 0.4833749393042636
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3081,
+            "NO_EMAIL": 2070,
+            "WOMENS_EMAIL": 2954
+          },
+          "email_rate": 0.744602097470697,
+          "lower_95": 0.5172128293482018,
+          "name": "r_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.6123165447399687,
+              -0.6557593058095242,
+              0.7661139314505021,
+              -0.14299208511469907,
+              -2.0655531956383726
+            ],
+            "maximum_fold_increment": 0.7661139314505021,
+            "minimum_fold_increment": -2.0655531956383726,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.773460576756944,
+          "value_per_customer": 1.145336703052573,
+          "versus_bau": {
+            "lower_95": -0.488642396009486,
+            "point": 0.2351589495174454,
+            "standard_error": 0.3692931866280116,
+            "upper_95": 0.9589602950443769
+          },
+          "versus_best_static": {
+            "lower_95": -1.078934114781735,
+            "point": -0.2998504751943384,
+            "standard_error": 0.39749895698732685,
+            "upper_95": 0.4792331643930583
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3123,
+            "NO_EMAIL": 2087,
+            "WOMENS_EMAIL": 2895
+          },
+          "email_rate": 0.7425046267735965,
+          "lower_95": 0.5011033665795268,
+          "name": "dr_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5671153321529928,
+              -0.655062475055835,
+              0.7187282545818411,
+              -0.1277292978799192,
+              -2.07231085595268
+            ],
+            "maximum_fold_increment": 0.7187282545818411,
+            "minimum_fold_increment": -2.07231085595268,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.7566353897275833,
+          "value_per_customer": 1.128869378153555,
+          "versus_bau": {
+            "lower_95": -0.5048034668311592,
+            "point": 0.21869162461842762,
+            "standard_error": 0.36913693167651235,
+            "upper_95": 0.9421867160680144
+          },
+          "versus_best_static": {
+            "lower_95": -1.0956006091022679,
+            "point": -0.316317800093356,
+            "standard_error": 0.39760057590639175,
+            "upper_95": 0.46296500891555575
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3043,
+            "NO_EMAIL": 2076,
+            "WOMENS_EMAIL": 2986
+          },
+          "email_rate": 0.7438618136952498,
+          "lower_95": 0.37492232448405693,
+          "name": "causal_forest_dr",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.19004822957042172,
+              -1.1575471497460976,
+              0.21483186952600164,
+              -0.12708154389391205,
+              -1.4117308466993863
+            ],
+            "maximum_fold_increment": 0.21483186952600164,
+            "minimum_fold_increment": -1.4117308466993863,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.5911486922457987,
+          "value_per_customer": 0.9830355083649278,
+          "versus_bau": {
+            "lower_95": -0.7265682909970849,
+            "point": 0.07285775482980024,
+            "standard_error": 0.4078779263969419,
+            "upper_95": 0.8722838006566854
+          },
+          "versus_best_static": {
+            "lower_95": -1.146601002323691,
+            "point": -0.4621516698819836,
+            "standard_error": 0.34921525999485525,
+            "upper_95": 0.22229766255972389
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2703,
+            "NO_EMAIL": 1886,
+            "WOMENS_EMAIL": 3516
+          },
+          "email_rate": 0.7673041332510796,
+          "lower_95": 0.07955124075202735,
+          "name": "honest_dr_policy_tree",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.533241410492494,
+              -2.0775910175701706,
+              -0.5132860049207266,
+              -0.5181053238230989,
+              -1.6290493794183871
+            ],
+            "maximum_fold_increment": 0.533241410492494,
+            "minimum_fold_increment": -2.0775910175701706,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.1126027317431508,
+          "value_per_customer": 0.5960769862475891,
+          "versus_bau": {
+            "lower_95": -1.049389811697366,
+            "point": -0.3141007672875385,
+            "standard_error": 0.3751543651871635,
+            "upper_95": 0.42118827712228896
+          },
+          "versus_best_static": {
+            "lower_95": -1.587749079668073,
+            "point": -0.8491101919993223,
+            "standard_error": 0.37686350029645455,
+            "upper_95": -0.1104713043305714
+          }
+        }
+      ],
+      "training_static_values": {
+        "MENS_EMAIL": 1.2846637902580584,
+        "NO_EMAIL": 0.8274414348481337,
+        "WOMENS_EMAIL": 1.0380907048012067
+      }
+    },
+    "0.5": {
+      "development_selected_best_static": "MENS_EMAIL",
+      "heldout_results": [
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "BAU",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.8287044608953424,
+              -2.1888362174241163,
+              0.18320997657231367,
+              0.18313960498069626,
+              -0.37574765206933736
+            ],
+            "maximum_fold_increment": 0.8287044608953424,
+            "minimum_fold_increment": -2.1888362174241163,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": -1.2881192597985947,
+            "point": -0.28500942471178387,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 0.718100410375027
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.3433763557566174,
+          "name": "treat_all_mens",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 2.0469980007372053,
+          "value_per_customer": 1.1951871782469112,
+          "versus_bau": {
+            "lower_95": -0.718100410375027,
+            "point": 0.28500942471178387,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 1.2881192597985947
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "WOMENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": -0.10029458049997253,
+          "name": "treat_all_womens",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5036966629461135,
+              -2.002421895273138,
+              -0.09443322943023234,
+              -0.117168201516427,
+              -2.771286192217587
+            ],
+            "maximum_fold_increment": 0.5036966629461135,
+            "minimum_fold_increment": -2.771286192217587,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 0.685689195361431,
+          "value_per_customer": 0.29269730743072925,
+          "versus_bau": {
+            "lower_95": -1.2762510971160377,
+            "point": -0.617480446104398,
+            "standard_error": 0.33611365117315345,
+            "upper_95": 0.04129020490724167
+          },
+          "versus_best_static": {
+            "lower_95": -1.8400916314645461,
+            "point": -0.902489870816182,
+            "standard_error": 0.4783770355190438,
+            "upper_95": 0.03511188983218205
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": 0.3433763557566174,
+          "name": "best_static",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 2.0469980007372053,
+          "value_per_customer": 1.1951871782469112,
+          "versus_bau": {
+            "lower_95": -0.718100410375027,
+            "point": 0.28500942471178387,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 1.2881192597985947
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2593,
+            "NO_EMAIL": 1976,
+            "WOMENS_EMAIL": 3536
+          },
+          "email_rate": 0.7561998766193707,
+          "lower_95": 0.3783008270571804,
+          "name": "simple_rfm_affinity_segment",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.3830901053272407,
+              -0.20949792036382456,
+              0.2488672273558347,
+              0.47641440562908116,
+              -1.636118938243597
+            ],
+            "maximum_fold_increment": 0.47641440562908116,
+            "minimum_fold_increment": -1.636118938243597,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.7181568528996025,
+          "value_per_customer": 1.0482288399783914,
+          "versus_bau": {
+            "lower_95": -0.6681646565432549,
+            "point": 0.1380510864432638,
+            "standard_error": 0.41134212125623004,
+            "upper_95": 0.9442668294297825
+          },
+          "versus_best_static": {
+            "lower_95": -0.8732694458216645,
+            "point": -0.14695833826851987,
+            "standard_error": 0.37057370098746406,
+            "upper_95": 0.5793527692846248
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2386,
+            "NO_EMAIL": 3054,
+            "WOMENS_EMAIL": 2665
+          },
+          "email_rate": 0.6231955582973473,
+          "lower_95": 0.2730929710920127,
+          "name": "ridge_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5249852742016061,
+              -1.2550818266446433,
+              0.838280054401397,
+              -0.07545810913374461,
+              -1.8162650148043251
+            ],
+            "maximum_fold_increment": 0.838280054401397,
+            "minimum_fold_increment": -1.8162650148043251,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.3933340432252683,
+          "value_per_customer": 0.8332135071586405,
+          "versus_bau": {
+            "lower_95": -0.7239501940941382,
+            "point": -0.0769642463764867,
+            "standard_error": 0.3301009369666964,
+            "upper_95": 0.5700217013411648
+          },
+          "versus_best_static": {
+            "lower_95": -1.1921458787957175,
+            "point": -0.36197367108827067,
+            "standard_error": 0.42356503193718836,
+            "upper_95": 0.46819853661917626
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3115,
+            "NO_EMAIL": 2856,
+            "WOMENS_EMAIL": 2134
+          },
+          "email_rate": 0.6476249228871067,
+          "lower_95": 0.10430529928016774,
+          "name": "random_forest_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.28662764271451946,
+              -2.325436712481386,
+              0.5979404438795408,
+              0.17817103729682324,
+              -1.7593663472858811
+            ],
+            "maximum_fold_increment": 0.5979404438795408,
+            "minimum_fold_increment": -2.325436712481386,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.0600267361524938,
+          "value_per_customer": 0.5821660177163308,
+          "versus_bau": {
+            "lower_95": -0.9769793642868791,
+            "point": -0.32801173581879667,
+            "standard_error": 0.3311120171528948,
+            "upper_95": 0.32095589264928576
+          },
+          "versus_best_static": {
+            "lower_95": -1.4378315981647978,
+            "point": -0.6130211605305805,
+            "standard_error": 0.4208293846928906,
+            "upper_95": 0.2117892771036366
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2874,
+            "NO_EMAIL": 2954,
+            "WOMENS_EMAIL": 2277
+          },
+          "email_rate": 0.6355336212214683,
+          "lower_95": 0.16532785411649098,
+          "name": "extra_trees_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.06935421022832111,
+              -1.5029931164183268,
+              0.7355304643985516,
+              0.3353765239672723,
+              -2.008297893234005
+            ],
+            "maximum_fold_increment": 0.7355304643985516,
+            "minimum_fold_increment": -2.008297893234005,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.2683579967874654,
+          "value_per_customer": 0.7168429254519783,
+          "versus_bau": {
+            "lower_95": -0.8910138908671587,
+            "point": -0.1933348280831492,
+            "standard_error": 0.3559652464469822,
+            "upper_95": 0.5043442347008603
+          },
+          "versus_best_static": {
+            "lower_95": -1.2544729037522575,
+            "point": -0.4783442527949331,
+            "standard_error": 0.3959912820232046,
+            "upper_95": 0.29778439816239133
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2862,
+            "NO_EMAIL": 2992,
+            "WOMENS_EMAIL": 2251
+          },
+          "email_rate": 0.6308451573103023,
+          "lower_95": 0.1610455191026915,
+          "name": "hist_gradient_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.32436567244495346,
+              -2.0933891876796396,
+              0.48509163757177315,
+              0.2929461196480768,
+              -1.7422756177844685
+            ],
+            "maximum_fold_increment": 0.48509163757177315,
+            "minimum_fold_increment": -2.0933891876796396,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.1209621785586639,
+          "value_per_customer": 0.6410038488306776,
+          "versus_bau": {
+            "lower_95": -0.9078371301987765,
+            "point": -0.2691739047044497,
+            "standard_error": 0.3258545720901103,
+            "upper_95": 0.3694893207898772
+          },
+          "versus_best_static": {
+            "lower_95": -1.3798889718504566,
+            "point": -0.5541833294162336,
+            "standard_error": 0.42128613022855715,
+            "upper_95": 0.27152231301798935
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 4636,
+            "NO_EMAIL": 2225,
+            "WOMENS_EMAIL": 1244
+          },
+          "email_rate": 0.7254780999383097,
+          "lower_95": 0.46035767460680055,
+          "name": "tweedie_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              1.0261181832902628,
+              -0.41353516516115124,
+              0.7806494993346473,
+              0.2064604956739946,
+              -2.0187862959650635
+            ],
+            "maximum_fold_increment": 1.0261181832902628,
+            "minimum_fold_increment": -2.0187862959650635,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.757230094408796,
+          "value_per_customer": 1.1087938845077983,
+          "versus_bau": {
+            "lower_95": -0.5237597560649161,
+            "point": 0.1986161309726709,
+            "standard_error": 0.36856589852446053,
+            "upper_95": 0.9209920180102578
+          },
+          "versus_best_static": {
+            "lower_95": -0.8552655618118961,
+            "point": -0.08639329373911293,
+            "standard_error": 0.3922889778269139,
+            "upper_95": 0.6824789743336701
+          }
+        },
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "huber_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.8287044608953424,
+              -2.1888362174241163,
+              0.18320997657231367,
+              0.18313960498069626,
+              -0.37574765206933736
+            ],
+            "maximum_fold_increment": 0.8287044608953424,
+            "minimum_fold_increment": -2.1888362174241163,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": -1.2881192597985947,
+            "point": -0.28500942471178387,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 0.718100410375027
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 3090,
+            "NO_EMAIL": 2407,
+            "WOMENS_EMAIL": 2608
+          },
+          "email_rate": 0.7030228254164096,
+          "lower_95": 0.5134257467386186,
+          "name": "two_part_logit_log_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.8640871128429903,
+              -0.052327452846575195,
+              0.6648828003029802,
+              0.41015509841721615,
+              -1.96536711697393
+            ],
+            "maximum_fold_increment": 0.8640871128429903,
+            "minimum_fold_increment": -1.96536711697393,
+            "positive_fold_fraction": 0.6
+          },
+          "upper_95": 1.844897503951358,
+          "value_per_customer": 1.1791616253449884,
+          "versus_bau": {
+            "lower_95": -0.48591476037349857,
+            "point": 0.26898387180986105,
+            "standard_error": 0.38515944075396474,
+            "upper_95": 1.0238825039932207
+          },
+          "versus_best_static": {
+            "lower_95": -0.8045612757462159,
+            "point": -0.016025552901922695,
+            "standard_error": 0.4023215370609677,
+            "upper_95": 0.7725101699423707
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2397,
+            "NO_EMAIL": 3068,
+            "WOMENS_EMAIL": 2640
+          },
+          "email_rate": 0.6214682294879704,
+          "lower_95": 0.26670661023042574,
+          "name": "x_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5161286410358721,
+              -1.3047166016531893,
+              0.8476885271510952,
+              -0.07170038272016607,
+              -1.8037819875316836
+            ],
+            "maximum_fold_increment": 0.8476885271510952,
+            "minimum_fold_increment": -1.8037819875316836,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.3861754413980285,
+          "value_per_customer": 0.8264410258142271,
+          "versus_bau": {
+            "lower_95": -0.7303816929007979,
+            "point": -0.08373672772090035,
+            "standard_error": 0.329926963087358,
+            "upper_95": 0.5629082374589972
+          },
+          "versus_best_static": {
+            "lower_95": -1.199180476484728,
+            "point": -0.36874615243268416,
+            "standard_error": 0.4236987672234816,
+            "upper_95": 0.4616881716193597
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2409,
+            "NO_EMAIL": 3034,
+            "WOMENS_EMAIL": 2662
+          },
+          "email_rate": 0.6256631708821715,
+          "lower_95": 0.2635393785874872,
+          "name": "r_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5166703261628597,
+              -1.3238975947116374,
+              0.8449756015306905,
+              -0.061383547174907,
+              -1.8091930513783177
+            ],
+            "maximum_fold_increment": 0.8449756015306905,
+            "minimum_fold_increment": -1.8091930513783177,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.382642909378054,
+          "value_per_customer": 0.8230911439827706,
+          "versus_bau": {
+            "lower_95": -0.7335844732865674,
+            "point": -0.08708660955235678,
+            "standard_error": 0.32985190995023544,
+            "upper_95": 0.5594112541818538
+          },
+          "versus_best_static": {
+            "lower_95": -1.2026364886302594,
+            "point": -0.37209603426414073,
+            "standard_error": 0.4237529163379103,
+            "upper_95": 0.45844442010197806
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2478,
+            "NO_EMAIL": 3012,
+            "WOMENS_EMAIL": 2615
+          },
+          "email_rate": 0.6283775447254781,
+          "lower_95": 0.245801691297018,
+          "name": "dr_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.4711771235543562,
+              -1.3246760057481408,
+              0.8007647231444072,
+              -0.04660255397994152,
+              -1.825218007915253
+            ],
+            "maximum_fold_increment": 0.8007647231444072,
+            "minimum_fold_increment": -1.825218007915253,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.3641165071472547,
+          "value_per_customer": 0.8049590992221364,
+          "versus_bau": {
+            "lower_95": -0.7514179513037054,
+            "point": -0.10521865431299104,
+            "standard_error": 0.3296995771799135,
+            "upper_95": 0.5409806426777233
+          },
+          "versus_best_static": {
+            "lower_95": -1.220923673095814,
+            "point": -0.3902280790247749,
+            "standard_error": 0.4238320707030639,
+            "upper_95": 0.4404675150462641
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2795,
+            "NO_EMAIL": 2501,
+            "WOMENS_EMAIL": 2809
+          },
+          "email_rate": 0.6914250462677359,
+          "lower_95": 0.09877768106293139,
+          "name": "causal_forest_dr",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.2756799727997737,
+              -1.9360800002525056,
+              0.3212445916517954,
+              -0.0013961671315972969,
+              -1.419653692051226
+            ],
+            "maximum_fold_increment": 0.3212445916517954,
+            "minimum_fold_increment": -1.9360800002525056,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.172854626288562,
+          "value_per_customer": 0.6358161536757466,
+          "versus_bau": {
+            "lower_95": -1.0204296390992247,
+            "point": -0.2743615998593809,
+            "standard_error": 0.380653953401559,
+            "upper_95": 0.47170643938046275
+          },
+          "versus_best_static": {
+            "lower_95": -1.3004873950420903,
+            "point": -0.5593710245711647,
+            "standard_error": 0.37812754536142346,
+            "upper_95": 0.18174534589976088
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2703,
+            "NO_EMAIL": 1886,
+            "WOMENS_EMAIL": 3516
+          },
+          "email_rate": 0.7673041332510796,
+          "lower_95": -0.11225371100105164,
+          "name": "honest_dr_policy_tree",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.5891274468105904,
+              -2.020189204881349,
+              -0.4520646782003299,
+              -0.46105010909917254,
+              -1.5697326092320518
+            ],
+            "maximum_fold_increment": 0.5891274468105904,
+            "minimum_fold_increment": -2.020189204881349,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 0.92075561687069,
+          "value_per_customer": 0.40425095293481916,
+          "versus_bau": {
+            "lower_95": -1.2412312216431198,
+            "point": -0.5059268006003083,
+            "standard_error": 0.37516221055223414,
+            "upper_95": 0.22937762044250332
+          },
+          "versus_best_static": {
+            "lower_95": -1.5296172516749398,
+            "point": -0.7909362253120922,
+            "standard_error": 0.3768850000252399,
+            "upper_95": -0.052255198949244575
+          }
+        }
+      ],
+      "training_static_values": {
+        "MENS_EMAIL": 1.0346637902580584,
+        "NO_EMAIL": 0.8274414348481337,
+        "WOMENS_EMAIL": 0.7880907048012066
+      }
+    },
+    "1.0": {
+      "development_selected_best_static": "NO_EMAIL",
+      "heldout_results": [
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "BAU",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": -0.1566236442433826,
+          "name": "treat_all_mens",
+          "stability_vs_static": {
+            "fold_increment": [
+              -1.3287044608953424,
+              1.688836217424117,
+              -0.6832099765723137,
+              -0.6831396049806963,
+              -0.12425234793066277
+            ],
+            "maximum_fold_increment": 1.688836217424117,
+            "minimum_fold_increment": -1.3287044608953424,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.546998000737205,
+          "value_per_customer": 0.6951871782469112,
+          "versus_bau": {
+            "lower_95": -1.218100410375027,
+            "point": -0.2149905752882161,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 0.7881192597985948
+          },
+          "versus_best_static": {
+            "lower_95": -1.218100410375027,
+            "point": -0.2149905752882161,
+            "standard_error": 0.5118001366347613,
+            "upper_95": 0.7881192597985948
+          }
+        },
+        {
+          "action_counts": {
+            "WOMENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": -0.6002945804999725,
+          "name": "treat_all_womens",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.8250077979492292,
+              -0.31358567784902136,
+              -0.7776432060025459,
+              -0.8003078064971231,
+              -2.8955385401482485
+            ],
+            "maximum_fold_increment": -0.31358567784902136,
+            "minimum_fold_increment": -2.8955385401482485,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 0.185689195361431,
+          "value_per_customer": -0.20730269256927078,
+          "versus_bau": {
+            "lower_95": -1.7762510971160377,
+            "point": -1.1174804461043981,
+            "standard_error": 0.33611365117315345,
+            "upper_95": -0.45870979509275844
+          },
+          "versus_best_static": {
+            "lower_95": -1.7762510971160377,
+            "point": -1.1174804461043981,
+            "standard_error": 0.33611365117315345,
+            "upper_95": -0.45870979509275844
+          }
+        },
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "best_static",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 1426,
+            "NO_EMAIL": 4014,
+            "WOMENS_EMAIL": 2665
+          },
+          "email_rate": 0.5047501542257865,
+          "lower_95": 0.17950911369984035,
+          "name": "simple_rfm_affinity_segment",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.3973907806342413,
+              1.0420019601183605,
+              0.37780022933045654,
+              -0.13131740681089873,
+              -1.556993353654742
+            ],
+            "maximum_fold_increment": 1.0420019601183605,
+            "minimum_fold_increment": -1.556993353654742,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.3887711965159124,
+          "value_per_customer": 0.7841401551078764,
+          "versus_bau": {
+            "lower_95": -0.7579545170970692,
+            "point": -0.12603759842725112,
+            "standard_error": 0.32241251556370326,
+            "upper_95": 0.5058793202425669
+          },
+          "versus_best_static": {
+            "lower_95": -0.7579545170970692,
+            "point": -0.12603759842725112,
+            "standard_error": 0.32241251556370326,
+            "upper_95": 0.5058793202425669
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 1518,
+            "NO_EMAIL": 4639,
+            "WOMENS_EMAIL": 1948
+          },
+          "email_rate": 0.42763726095003085,
+          "lower_95": 0.1658776222385253,
+          "name": "ridge_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.22172908929718257,
+              0.7933932069768193,
+              -0.211898286943888,
+              -0.4106812219862905,
+              -1.5318298785478248
+            ],
+            "maximum_fold_increment": 0.7933932069768193,
+            "minimum_fold_increment": -1.5318298785478248,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.2077705881047938,
+          "value_per_customer": 0.6868241051716596,
+          "versus_bau": {
+            "lower_95": -0.7484464313721234,
+            "point": -0.2233536483634678,
+            "standard_error": 0.2679094040250334,
+            "upper_95": 0.30173913464518776
+          },
+          "versus_best_static": {
+            "lower_95": -0.7484464313721234,
+            "point": -0.2233536483634678,
+            "standard_error": 0.2679094040250334,
+            "upper_95": 0.30173913464518776
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2330,
+            "NO_EMAIL": 4065,
+            "WOMENS_EMAIL": 1710
+          },
+          "email_rate": 0.4984577421344849,
+          "lower_95": -0.11586931916314269,
+          "name": "random_forest_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.5052810261950141,
+              -0.4590591285096704,
+              0.2924692979294521,
+              -0.21849176410709106,
+              -1.9330229328754487
+            ],
+            "maximum_fold_increment": 0.2924692979294521,
+            "minimum_fold_increment": -1.9330229328754487,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 0.8101959116422152,
+          "value_per_customer": 0.34716329623953623,
+          "versus_bau": {
+            "lower_95": -1.1794278096557966,
+            "point": -0.5630144572955912,
+            "standard_error": 0.31450238740221514,
+            "upper_95": 0.05339889506461415
+          },
+          "versus_best_static": {
+            "lower_95": -1.1794278096557966,
+            "point": -0.5630144572955912,
+            "standard_error": 0.31450238740221514,
+            "upper_95": 0.05339889506461415
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2229,
+            "NO_EMAIL": 4017,
+            "WOMENS_EMAIL": 1859
+          },
+          "email_rate": 0.504380012338063,
+          "lower_95": -0.09931615980909919,
+          "name": "extra_trees_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.943771076367692,
+              0.36182830841669844,
+              0.3960197224698825,
+              -0.20570846790074307,
+              -2.063451831742861
+            ],
+            "maximum_fold_increment": 0.3960197224698825,
+            "minimum_fold_increment": -2.063451831742861,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 0.9506256464056058,
+          "value_per_customer": 0.4256547432982533,
+          "versus_bau": {
+            "lower_95": -1.1565220696147054,
+            "point": -0.48452301023687416,
+            "standard_error": 0.3428629631352791,
+            "upper_95": 0.18747604914095706
+          },
+          "versus_best_static": {
+            "lower_95": -1.1565220696147054,
+            "point": -0.48452301023687416,
+            "standard_error": 0.3428629631352791,
+            "upper_95": 0.18747604914095706
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2313,
+            "NO_EMAIL": 3998,
+            "WOMENS_EMAIL": 1794
+          },
+          "email_rate": 0.5067242442936459,
+          "lower_95": -0.018154700494191267,
+          "name": "hist_gradient_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.732237898108088,
+              -0.10276571613627394,
+              0.2141049118861865,
+              0.030339810761674097,
+              -1.6448741917509524
+            ],
+            "maximum_fold_increment": 0.2141049118861865,
+            "minimum_fold_increment": -1.6448741917509524,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 0.9519208139088668,
+          "value_per_customer": 0.4668830567073378,
+          "versus_bau": {
+            "lower_95": -1.0750043059018646,
+            "point": -0.4432946968277897,
+            "standard_error": 0.3223067434182055,
+            "upper_95": 0.1884149122462851
+          },
+          "versus_best_static": {
+            "lower_95": -1.0750043059018646,
+            "point": -0.4432946968277897,
+            "standard_error": 0.3223067434182055,
+            "upper_95": 0.1884149122462851
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 1033,
+            "NO_EMAIL": 6497,
+            "WOMENS_EMAIL": 575
+          },
+          "email_rate": 0.19839605181986428,
+          "lower_95": 0.27316956262862435,
+          "name": "tweedie_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.13412818569001453,
+              0.6764942201166564,
+              -0.13448152325732426,
+              0.0554424737900801,
+              -1.2590802123553413
+            ],
+            "maximum_fold_increment": 0.6764942201166564,
+            "minimum_fold_increment": -1.2590802123553413,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.239160926580503,
+          "value_per_customer": 0.7561652446045637,
+          "versus_bau": {
+            "lower_95": -0.6291645485419226,
+            "point": -0.15401250893056384,
+            "standard_error": 0.2424289646949115,
+            "upper_95": 0.321139530680795
+          },
+          "versus_best_static": {
+            "lower_95": -0.6291645485419226,
+            "point": -0.15401250893056384,
+            "standard_error": 0.2424289646949115,
+            "upper_95": 0.321139530680795
+          }
+        },
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "huber_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 1321,
+            "NO_EMAIL": 5530,
+            "WOMENS_EMAIL": 1254
+          },
+          "email_rate": 0.31770512029611353,
+          "lower_95": 0.2960925621473277,
+          "name": "two_part_logit_log_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.13951773128014738,
+              1.282968972436353,
+              -0.2902102289897152,
+              -0.1275034109346153,
+              -1.3685988506367868
+            ],
+            "maximum_fold_increment": 1.282968972436353,
+            "minimum_fold_increment": -1.3685988506367868,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.392674951715648,
+          "value_per_customer": 0.8443837569314878,
+          "versus_bau": {
+            "lower_95": -0.6178462544677791,
+            "point": -0.06579399660363967,
+            "standard_error": 0.281664490887923,
+            "upper_95": 0.4862582612604997
+          },
+          "versus_best_static": {
+            "lower_95": -0.6178462544677791,
+            "point": -0.06579399660363967,
+            "standard_error": 0.281664490887923,
+            "upper_95": 0.4862582612604997
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 1526,
+            "NO_EMAIL": 4645,
+            "WOMENS_EMAIL": 1934
+          },
+          "email_rate": 0.4268969771745836,
+          "lower_95": 0.15731675330343742,
+          "name": "x_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.21169815793592886,
+              0.7403572380347336,
+              -0.20602081239834424,
+              -0.4109206395204927,
+              -1.5181440514294149
+            ],
+            "maximum_fold_increment": 0.7403572380347336,
+            "minimum_fold_increment": -1.5181440514294149,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.198399408067341,
+          "value_per_customer": 0.6778580806853892,
+          "versus_bau": {
+            "lower_95": -0.7570114242132537,
+            "point": -0.23231967284973815,
+            "standard_error": 0.26770479228303035,
+            "upper_95": 0.2923720785137775
+          },
+          "versus_best_static": {
+            "lower_95": -0.7570114242132537,
+            "point": -0.23231967284973815,
+            "standard_error": 0.26770479228303035,
+            "upper_95": 0.2923720785137775
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 1531,
+            "NO_EMAIL": 4629,
+            "WOMENS_EMAIL": 1945
+          },
+          "email_rate": 0.42887106724244295,
+          "lower_95": 0.1545347642314593,
+          "name": "r_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.2147475336290302,
+              0.7279353069777649,
+              -0.20382618031290795,
+              -0.41219976531993413,
+              -1.5243275731733625
+            ],
+            "maximum_fold_increment": 0.7279353069777649,
+            "minimum_fold_increment": -1.5243275731733625,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.1952125022782614,
+          "value_per_customer": 0.6748736332548604,
+          "versus_bau": {
+            "lower_95": -0.759777455154196,
+            "point": -0.23530412028026695,
+            "standard_error": 0.26759335325082906,
+            "upper_95": 0.2891692145936622
+          },
+          "versus_best_static": {
+            "lower_95": -0.759777455154196,
+            "point": -0.23530412028026695,
+            "standard_error": 0.26759335325082906,
+            "upper_95": 0.2891692145936622
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 1570,
+            "NO_EMAIL": 4659,
+            "WOMENS_EMAIL": 1876
+          },
+          "email_rate": 0.42516964836520665,
+          "lower_95": 0.15160815146351936,
+          "name": "dr_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.16444958044166205,
+              0.7274949192998827,
+              -0.23604517310906306,
+              -0.39607324565990054,
+              -1.4716304121887671
+            ],
+            "maximum_fold_increment": 0.7274949192998827,
+            "minimum_fold_increment": -1.4716304121887671,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.192736215108813,
+          "value_per_customer": 0.6721721832861661,
+          "versus_bau": {
+            "lower_95": -0.7626874485122563,
+            "point": -0.23800557024896132,
+            "standard_error": 0.2676997548944362,
+            "upper_95": 0.28667630801433375
+          },
+          "versus_best_static": {
+            "lower_95": -0.7626874485122563,
+            "point": -0.23800557024896132,
+            "standard_error": 0.2676997548944362,
+            "upper_95": 0.28667630801433375
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2282,
+            "NO_EMAIL": 3384,
+            "WOMENS_EMAIL": 2439
+          },
+          "email_rate": 0.5824799506477483,
+          "lower_95": -0.14391149701572586,
+          "name": "causal_forest_dr",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.7755277025704614,
+              0.013278996418805016,
+              -0.094305909772657,
+              -0.46832286807845874,
+              -1.281512293791914
+            ],
+            "maximum_fold_increment": 0.013278996418805016,
+            "minimum_fold_increment": -1.281512293791914,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 0.9290399831438294,
+          "value_per_customer": 0.39256424306405174,
+          "versus_bau": {
+            "lower_95": -1.2631202442925307,
+            "point": -0.5176135104710756,
+            "standard_error": 0.38036756782365244,
+            "upper_95": 0.22789322335037943
+          },
+          "versus_best_static": {
+            "lower_95": -1.2631202442925307,
+            "point": -0.5176135104710756,
+            "standard_error": 0.38036756782365244,
+            "upper_95": 0.22789322335037943
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 2703,
+            "NO_EMAIL": 1886,
+            "WOMENS_EMAIL": 3516
+          },
+          "email_rate": 0.7673041332510796,
+          "lower_95": -0.49589433767744306,
+          "name": "honest_dr_policy_tree",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.6278049414485593,
+              -0.216549362079589,
+              -1.01283200133185,
+              -1.030079284632016,
+              -1.5753514167900433
+            ],
+            "maximum_fold_increment": -0.216549362079589,
+            "minimum_fold_increment": -1.5753514167900433,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 0.5370921102960019,
+          "value_per_customer": 0.02059888630927943,
+          "versus_bau": {
+            "lower_95": -1.6249356211203425,
+            "point": -0.8895788672258481,
+            "standard_error": 0.37518891147740197,
+            "upper_95": -0.15422211333135372
+          },
+          "versus_best_static": {
+            "lower_95": -1.6249356211203425,
+            "point": -0.8895788672258481,
+            "standard_error": 0.37518891147740197,
+            "upper_95": -0.15422211333135372
+          }
+        }
+      ],
+      "training_static_values": {
+        "MENS_EMAIL": 0.5346637902580587,
+        "NO_EMAIL": 0.8274414348481337,
+        "WOMENS_EMAIL": 0.2880907048012066
+      }
+    },
+    "2.0": {
+      "development_selected_best_static": "NO_EMAIL",
+      "heldout_results": [
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "BAU",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": -1.1566236442433824,
+          "name": "treat_all_mens",
+          "stability_vs_static": {
+            "fold_increment": [
+              -2.328704460895343,
+              0.6888362174241167,
+              -1.6832099765723136,
+              -1.683139604980696,
+              -1.1242523479306625
+            ],
+            "maximum_fold_increment": 0.6888362174241167,
+            "minimum_fold_increment": -2.328704460895343,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 0.5469980007372052,
+          "value_per_customer": -0.30481282175308866,
+          "versus_bau": {
+            "lower_95": -2.218100410375027,
+            "point": -1.2149905752882164,
+            "standard_error": 0.5118001366347613,
+            "upper_95": -0.21188074020140557
+          },
+          "versus_best_static": {
+            "lower_95": -2.218100410375027,
+            "point": -1.2149905752882164,
+            "standard_error": 0.5118001366347613,
+            "upper_95": -0.21188074020140557
+          }
+        },
+        {
+          "action_counts": {
+            "WOMENS_EMAIL": 8105
+          },
+          "email_rate": 1.0,
+          "lower_95": -1.6002945804999724,
+          "name": "treat_all_womens",
+          "stability_vs_static": {
+            "fold_increment": [
+              -1.825007797949229,
+              -1.3135856778490214,
+              -1.777643206002546,
+              -1.8003078064971232,
+              -3.895538540148249
+            ],
+            "maximum_fold_increment": -1.3135856778490214,
+            "minimum_fold_increment": -3.895538540148249,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": -0.814310804638569,
+          "value_per_customer": -1.2073026925692707,
+          "versus_bau": {
+            "lower_95": -2.776251097116038,
+            "point": -2.1174804461043983,
+            "standard_error": 0.33611365117315345,
+            "upper_95": -1.4587097950927586
+          },
+          "versus_best_static": {
+            "lower_95": -2.776251097116038,
+            "point": -2.1174804461043983,
+            "standard_error": 0.33611365117315345,
+            "upper_95": -1.4587097950927586
+          }
+        },
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "best_static",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 421,
+            "NO_EMAIL": 6923,
+            "WOMENS_EMAIL": 761
+          },
+          "email_rate": 0.1458359037631092,
+          "lower_95": 0.20562683848998364,
+          "name": "simple_rfm_affinity_segment",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.16703400207936878,
+              0.8715246189924211,
+              -0.26558094680716027,
+              -0.11005133269783653,
+              -1.3301364763186996
+            ],
+            "maximum_fold_increment": 0.8715246189924211,
+            "minimum_fold_increment": -1.3301364763186996,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 1.2264089836305305,
+          "value_per_customer": 0.716017911060257,
+          "versus_bau": {
+            "lower_95": -0.6957616791757599,
+            "point": -0.19415984247487034,
+            "standard_error": 0.2559240071029167,
+            "upper_95": 0.3074419942260193
+          },
+          "versus_best_static": {
+            "lower_95": -0.6957616791757599,
+            "point": -0.19415984247487034,
+            "standard_error": 0.2559240071029167,
+            "upper_95": 0.3074419942260193
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 552,
+            "NO_EMAIL": 6878,
+            "WOMENS_EMAIL": 675
+          },
+          "email_rate": 0.1513880320789636,
+          "lower_95": 0.17361488109457673,
+          "name": "ridge_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.20653773773050538,
+              0.4846558974425766,
+              -0.2357047657215361,
+              -0.23003050669196534,
+              -1.4339991385215727
+            ],
+            "maximum_fold_increment": 0.4846558974425766,
+            "minimum_fold_increment": -1.4339991385215727,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.1700141981870558,
+          "value_per_customer": 0.6718145396408163,
+          "versus_bau": {
+            "lower_95": -0.7283936356028122,
+            "point": -0.23836321389431103,
+            "standard_error": 0.25002011545814035,
+            "upper_95": 0.2516672078141901
+          },
+          "versus_best_static": {
+            "lower_95": -0.7283936356028122,
+            "point": -0.23836321389431103,
+            "standard_error": 0.25002011545814035,
+            "upper_95": 0.2516672078141901
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 1275,
+            "NO_EMAIL": 5767,
+            "WOMENS_EMAIL": 1063
+          },
+          "email_rate": 0.28846391116594694,
+          "lower_95": -0.29891462577720795,
+          "name": "random_forest_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.8724200338560435,
+              -0.7157509072721371,
+              0.23262100200039126,
+              -0.6333077873334887,
+              -1.2929233255787063
+            ],
+            "maximum_fold_increment": 0.23262100200039126,
+            "minimum_fold_increment": -1.2929233255787063,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 0.8073631329925184,
+          "value_per_customer": 0.2542242536076552,
+          "versus_bau": {
+            "lower_95": -1.1149619376602617,
+            "point": -0.6559534999274721,
+            "standard_error": 0.2341922817732314,
+            "upper_95": -0.19694506219468239
+          },
+          "versus_best_static": {
+            "lower_95": -1.1149619376602617,
+            "point": -0.6559534999274721,
+            "standard_error": 0.2341922817732314,
+            "upper_95": -0.19694506219468239
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 1404,
+            "NO_EMAIL": 5433,
+            "WOMENS_EMAIL": 1268
+          },
+          "email_rate": 0.3296730413325108,
+          "lower_95": -0.4414633173734213,
+          "name": "extra_trees_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -1.0418672921946257,
+              -0.686081274024125,
+              0.2539005449693763,
+              -0.8062464205455451,
+              -2.42013312400045
+            ],
+            "maximum_fold_increment": 0.2539005449693763,
+            "minimum_fold_increment": -2.42013312400045,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 0.38633924634642675,
+          "value_per_customer": -0.027562035513497302,
+          "versus_bau": {
+            "lower_95": -1.5262559031109353,
+            "point": -0.9377397890486245,
+            "standard_error": 0.30026884101159557,
+            "upper_95": -0.3492236749863137
+          },
+          "versus_best_static": {
+            "lower_95": -1.5262559031109353,
+            "point": -0.9377397890486245,
+            "standard_error": 0.30026884101159557,
+            "upper_95": -0.3492236749863137
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 1584,
+            "NO_EMAIL": 5264,
+            "WOMENS_EMAIL": 1257
+          },
+          "email_rate": 0.35052436767427514,
+          "lower_95": -0.34522985688076596,
+          "name": "hist_gradient_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -1.0786786719321224,
+              -0.3280090678906454,
+              0.056538338234264636,
+              -0.646355253819794,
+              -2.151875993308919
+            ],
+            "maximum_fold_increment": 0.056538338234264636,
+            "minimum_fold_increment": -2.151875993308919,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 0.5141632986045994,
+          "value_per_customer": 0.0844667208619167,
+          "versus_bau": {
+            "lower_95": -1.416010925578492,
+            "point": -0.8257110326732108,
+            "standard_error": 0.30117894898145653,
+            "upper_95": -0.2354111397679296
+          },
+          "versus_best_static": {
+            "lower_95": -1.416010925578492,
+            "point": -0.8257110326732108,
+            "standard_error": 0.30117894898145653,
+            "upper_95": -0.2354111397679296
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 78,
+            "NO_EMAIL": 7863,
+            "WOMENS_EMAIL": 164
+          },
+          "email_rate": 0.029858112276372608,
+          "lower_95": 0.3292562211278337,
+          "name": "tweedie_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.02724057625228688,
+              -0.015417176559436615,
+              -0.034878587165389795,
+              -0.01709024284429157,
+              -0.16410878503991652
+            ],
+            "maximum_fold_increment": -0.015417176559436615,
+            "minimum_fold_increment": -0.16410878503991652,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 1.3881134677242826,
+          "value_per_customer": 0.8586848444260582,
+          "versus_bau": {
+            "lower_95": -0.15898981268893897,
+            "point": -0.051492909109069014,
+            "standard_error": 0.054846366784181665,
+            "upper_95": 0.05600399447080095
+          },
+          "versus_best_static": {
+            "lower_95": -0.15898981268893897,
+            "point": -0.051492909109069014,
+            "standard_error": 0.054846366784181665,
+            "upper_95": 0.05600399447080095
+          }
+        },
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "huber_t",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 436,
+            "NO_EMAIL": 7150,
+            "WOMENS_EMAIL": 519
+          },
+          "email_rate": 0.11782850092535473,
+          "lower_95": 0.19912026156702345,
+          "name": "two_part_logit_log_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              -0.19612415118559726,
+              -0.05491407043557636,
+              -0.1893639671569214,
+              -0.006626384088373762,
+              -0.4434438517364991
+            ],
+            "maximum_fold_increment": -0.006626384088373762,
+            "minimum_fold_increment": -0.4434438517364991,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 1.2673098309694364,
+          "value_per_customer": 0.73321504626823,
+          "versus_bau": {
+            "lower_95": -0.3095848472323305,
+            "point": -0.17696270726689753,
+            "standard_error": 0.06766560049650884,
+            "upper_95": -0.0443405673014646
+          },
+          "versus_best_static": {
+            "lower_95": -0.3095848472323305,
+            "point": -0.17696270726689753,
+            "standard_error": 0.06766560049650884,
+            "upper_95": -0.0443405673014646
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 520,
+            "NO_EMAIL": 6916,
+            "WOMENS_EMAIL": 669
+          },
+          "email_rate": 0.14669956816779767,
+          "lower_95": 0.18155756160594633,
+          "name": "x_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.21212009187777042,
+              0.4981857243201596,
+              -0.21484363839019294,
+              -0.2368845866252214,
+              -1.4277345926661245
+            ],
+            "maximum_fold_increment": 0.4981857243201596,
+            "minimum_fold_increment": -1.4277345926661245,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.1778320728828677,
+          "value_per_customer": 0.6796948172444071,
+          "versus_bau": {
+            "lower_95": -0.7203764791507199,
+            "point": -0.23048293629072036,
+            "standard_error": 0.24995027802766648,
+            "upper_95": 0.25941060656927917
+          },
+          "versus_best_static": {
+            "lower_95": -0.7203764791507199,
+            "point": -0.23048293629072036,
+            "standard_error": 0.24995027802766648,
+            "upper_95": 0.25941060656927917
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 557,
+            "NO_EMAIL": 6883,
+            "WOMENS_EMAIL": 665
+          },
+          "email_rate": 0.15077112893275757,
+          "lower_95": 0.1767470089169511,
+          "name": "r_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.20704444480262071,
+              0.4846344553289723,
+              -0.2249131383731547,
+              -0.23310668341973068,
+              -1.4264576904247217
+            ],
+            "maximum_fold_increment": 0.4846344553289723,
+            "minimum_fold_increment": -1.4264576904247217,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.1731271493970727,
+          "value_per_customer": 0.674937079157012,
+          "versus_bau": {
+            "lower_95": -0.7252649479296434,
+            "point": -0.23524067437811544,
+            "standard_error": 0.2500169785857173,
+            "upper_95": 0.2547835991734124
+          },
+          "versus_best_static": {
+            "lower_95": -0.7252649479296434,
+            "point": -0.23524067437811544,
+            "standard_error": 0.2500169785857173,
+            "upper_95": 0.2547835991734124
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 566,
+            "NO_EMAIL": 6911,
+            "WOMENS_EMAIL": 628
+          },
+          "email_rate": 0.1473164713140037,
+          "lower_95": 0.18212191069450367,
+          "name": "dr_learner_ridge",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.2140100449639898,
+              0.5010965886358125,
+              -0.22852644765732008,
+              -0.21731103778275632,
+              -1.4357599652039081
+            ],
+            "maximum_fold_increment": 0.5010965886358125,
+            "minimum_fold_increment": -1.4357599652039081,
+            "positive_fold_fraction": 0.4
+          },
+          "upper_95": 1.1784396914687356,
+          "value_per_customer": 0.6802808010816196,
+          "versus_bau": {
+            "lower_95": -0.7198905461140144,
+            "point": -0.22989695245350772,
+            "standard_error": 0.2500013252924613,
+            "upper_95": 0.2600966412069989
+          },
+          "versus_best_static": {
+            "lower_95": -0.7198905461140144,
+            "point": -0.22989695245350772,
+            "standard_error": 0.2500013252924613,
+            "upper_95": 0.2600966412069989
+          }
+        },
+        {
+          "action_counts": {
+            "MENS_EMAIL": 1334,
+            "NO_EMAIL": 5164,
+            "WOMENS_EMAIL": 1607
+          },
+          "email_rate": 0.36286243059839607,
+          "lower_95": -0.3532097827865429,
+          "name": "causal_forest_dr",
+          "stability_vs_static": {
+            "fold_increment": [
+              -1.2645827476832732,
+              -0.28244456780404903,
+              0.048403466205367895,
+              -0.6269182521292808,
+              -1.9680831468122904
+            ],
+            "maximum_fold_increment": 0.048403466205367895,
+            "minimum_fold_increment": -1.9680831468122904,
+            "positive_fold_fraction": 0.2
+          },
+          "upper_95": 0.5450889828573787,
+          "value_per_customer": 0.09593960003541792,
+          "versus_bau": {
+            "lower_95": -1.44014140866041,
+            "point": -0.8142381534997094,
+            "standard_error": 0.31934426351593487,
+            "upper_95": -0.18833489833900874
+          },
+          "versus_best_static": {
+            "lower_95": -1.44014140866041,
+            "point": -0.8142381534997094,
+            "standard_error": 0.31934426351593487,
+            "upper_95": -0.18833489833900874
+          }
+        },
+        {
+          "action_counts": {
+            "NO_EMAIL": 8105
+          },
+          "email_rate": 0.0,
+          "lower_95": 0.37994287249823955,
+          "name": "honest_dr_policy_tree",
+          "stability_vs_static": {
+            "fold_increment": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "maximum_fold_increment": 0.0,
+            "minimum_fold_increment": 0.0,
+            "positive_fold_fraction": 0.0
+          },
+          "upper_95": 1.4404126345720152,
+          "value_per_customer": 0.9101777535351274,
+          "versus_bau": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          },
+          "versus_best_static": {
+            "lower_95": 0.0,
+            "point": 0.0,
+            "standard_error": 0.0,
+            "upper_95": 0.0
+          }
+        }
+      ],
+      "training_static_values": {
+        "MENS_EMAIL": -0.46533620974194156,
+        "NO_EMAIL": 0.8274414348481337,
+        "WOMENS_EMAIL": -0.7119092951987934
+      }
+    }
+  },
+  "calibration": {
+    "causal_forest_dr": {
+      "observed_action_mae": 2.5087899411586485,
+      "observed_action_mean_error": -0.12940894116596052,
+      "observed_action_rmse": 16.56307296035841
+    },
+    "dr_learner_ridge": {
+      "observed_action_mae": 2.3563086370677673,
+      "observed_action_mean_error": -0.0829306116775401,
+      "observed_action_rmse": 16.497117412714463
+    },
+    "extra_trees_t": {
+      "observed_action_mae": 2.3456376334357336,
+      "observed_action_mean_error": -0.12632707018282993,
+      "observed_action_rmse": 16.578145432816733
+    },
+    "hist_gradient_t": {
+      "observed_action_mae": 2.8234774015042032,
+      "observed_action_mean_error": -0.1349145524064008,
+      "observed_action_rmse": 16.96545950615559
+    },
+    "honest_dr_policy_tree": {
+      "observed_action_mae": 2.419895598968453,
+      "observed_action_mean_error": -0.08697667397494041,
+      "observed_action_rmse": 16.511693699812763
+    },
+    "huber_t": {
+      "observed_action_mae": 1.1256043906906215,
+      "observed_action_mean_error": 1.1256034837185085,
+      "observed_action_rmse": 16.53449543129638
+    },
+    "r_learner_ridge": {
+      "observed_action_mae": 2.3541468872986,
+      "observed_action_mean_error": -0.08397178327755528,
+      "observed_action_rmse": 16.50061114936595
+    },
+    "random_forest_t": {
+      "observed_action_mae": 2.375714325804434,
+      "observed_action_mean_error": -0.1552789911139658,
+      "observed_action_rmse": 16.584479306622118
+    },
+    "ridge_t": {
+      "observed_action_mae": 2.355057103493722,
+      "observed_action_mean_error": -0.08490914932620926,
+      "observed_action_rmse": 16.500032161195378
+    },
+    "simple_rfm_affinity_segment": {
+      "observed_action_mae": 2.3227907124261167,
+      "observed_action_mean_error": -0.10061672122014297,
+      "observed_action_rmse": 16.53090984594837
+    },
+    "tweedie_t": {
+      "observed_action_mae": 2.2507066546929724,
+      "observed_action_mean_error": -0.026389195226031437,
+      "observed_action_rmse": 16.48776840320524
+    },
+    "two_part_logit_log_ridge": {
+      "observed_action_mae": 2.2873158556770696,
+      "observed_action_mean_error": -0.06517100408516398,
+      "observed_action_rmse": 16.49892658548793
+    },
+    "x_learner_ridge": {
+      "observed_action_mae": 2.3532042107854276,
+      "observed_action_mean_error": -0.0833742831099539,
+      "observed_action_rmse": 16.49976451346992
+    }
+  },
+  "cost_grid": [
+    0.0,
+    0.01,
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    1.0,
+    2.0
+  ],
+  "counts": {
+    "development": 32233,
+    "inner_heldout": 8105,
+    "inner_train": 24128,
+    "overlap": 0
+  },
+  "feature_names": [
+    "numeric__recency",
+    "numeric__history",
+    "numeric__mens",
+    "numeric__womens",
+    "numeric__newbie",
+    "categorical__history_segment_1) $0 - $100",
+    "categorical__history_segment_2) $100 - $200",
+    "categorical__history_segment_3) $200 - $350",
+    "categorical__history_segment_4) $350 - $500",
+    "categorical__history_segment_5) $500 - $750",
+    "categorical__history_segment_6) $750 - $1,000",
+    "categorical__history_segment_7) $1,000 +",
+    "categorical__zip_code_Rural",
+    "categorical__zip_code_Surburban",
+    "categorical__zip_code_Urban",
+    "categorical__channel_Multichannel",
+    "categorical__channel_Phone",
+    "categorical__channel_Web"
+  ],
+  "folds": 5,
+  "material_observable_heterogeneity": false,
+  "official_model_frozen": false,
+  "outcome": "two-week randomized spend/revenue; not profit",
+  "preregistration_sha256": "23b09c346ce4424c900ff1267b781db7d63b72494e58993400ab039c1e2dd8d6",
+  "primary_cost": 0.05,
+  "provisional_best_personalized_at_primary_cost": "tweedie_t",
+  "runtime_seconds": 15.378776708006626,
+  "sealed_integrity_incident": {
+    "assigned_split": "SEALED_TEST",
+    "future_sealed_claim": "COMPROMISED_DO_NOT_CLAIM_UNTOUCHED",
+    "row": "row-0",
+    "status": "ONE_ROW_DIAGNOSTIC_EXPOSURE",
+    "used_for_modeling_or_scoring": false
+  },
+  "sealed_test_scored": false,
+  "seed": 722021,
+  "status": "DEVELOPMENT_ONLY_NO_OFFICIAL_SELECTION",
+  "validation_scored": false
+}

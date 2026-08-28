@@ -20,3 +20,10 @@ therefore cannot be verified mechanically.
 Dominick's oatmeal has SHA-256 checksums recorded locally, but the category movement data do not
 contain the experimental assignment schedule. Treating observed price variation as randomized would
 violate the mission. It is retained as historical scanner data, not Dataset C proof.
+
+The bounded 2026-08-28 follow-up also examined the HBS 362-promotion platform study, 70 ticket-resale
+discount experiments, the IHG compliance-promotion RCT and the Supreme Nudge supermarket cluster
+RCT. The first three have promising randomized monetary designs but no verified public row-level
+package was found. Supreme Nudge is publicly registered, but its shared files still require a full
+assignment/monetary/timing audit and its 12-cluster design may be too weak for policy-learning
+validation. None is promoted. Status remains **DATASET_C_NOT_FOUND**.

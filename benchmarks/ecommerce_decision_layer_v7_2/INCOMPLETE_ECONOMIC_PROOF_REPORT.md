@@ -15,3 +15,8 @@ neither a positive product proof nor a sealed failure; it is an honest developme
 No observed contribution-profit, long-run economic effect, validated personalized policy or
 three-dataset generalization claim has been proved. V7/V7.1 and every historical sealed pack remain
 untouched.
+
+Hillstrom development later produced a positive but statistically uncertain static point signal and
+no material personalization. Its `row-0` sealed outcome was accidentally exposed diagnostically and
+never used; the Hillstrom sealed set is therefore integrity-compromised. Historical V7/V7.1 packs
+remain untouched.

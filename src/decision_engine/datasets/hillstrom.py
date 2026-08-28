@@ -5,9 +5,29 @@ from pathlib import Path
 import polars as pl
 
 from decision_engine.datasets.base import DatasetMetadata
+from decision_engine.datasets.buy_baits import VariableTiming
 
 CONTROL, MENS, WOMENS = "NO_EMAIL", "MENS_EMAIL", "WOMENS_EMAIL"
 TREATMENTS = (CONTROL, MENS, WOMENS)
+RAW_TREATMENT_LABELS = {
+    "No E-Mail": CONTROL,
+    "Mens E-Mail": MENS,
+    "Womens E-Mail": WOMENS,
+}
+HILLSTROM_VARIABLE_TIMING = {
+    "recency": VariableTiming.PRETREATMENT_ALLOWED,
+    "history_segment": VariableTiming.PRETREATMENT_ALLOWED,
+    "history": VariableTiming.PRETREATMENT_ALLOWED,
+    "mens": VariableTiming.PRETREATMENT_ALLOWED,
+    "womens": VariableTiming.PRETREATMENT_ALLOWED,
+    "zip_code": VariableTiming.PRETREATMENT_ALLOWED,
+    "newbie": VariableTiming.PRETREATMENT_ALLOWED,
+    "channel": VariableTiming.PRETREATMENT_ALLOWED,
+    "segment": VariableTiming.ASSIGNMENT_ONLY,
+    "visit": VariableTiming.OUTCOME_ONLY,
+    "conversion": VariableTiming.OUTCOME_ONLY,
+    "spend": VariableTiming.OUTCOME_ONLY,
+}
 POST_TREATMENT_COLUMNS = frozenset(
     {"segment", "offer", "treatment", "visit", "conversion", "spend"}
 )
@@ -36,7 +56,7 @@ class HillstromDataset:
             .str.strip_chars()
             .str.to_lowercase()
             .replace_strict(
-                {"no e-mail": CONTROL, "mens e-mail": MENS, "womens e-mail": WOMENS},
+                {key.lower(): value for key, value in RAW_TREATMENT_LABELS.items()},
                 default=None,
             )
             .alias("treatment")

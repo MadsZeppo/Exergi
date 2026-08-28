@@ -35,3 +35,25 @@ monetary outcome, permit research use, and not require post-treatment features.
 
 No candidate was promoted by inference. V7.2 therefore has fewer than three qualified datasets and
 must stop before real-world sealed-test access.
+
+## Bounded follow-up after Buy Baits freeze
+
+The search was repeated without weakening the contract. Four scientifically relevant candidates
+were found, but none has a verified public row-level package satisfying all gates:
+
+| Candidate | Randomization/money/features | Availability finding | Status |
+|---|---|---|---|
+| Consumer engagement platform, 362 promotion RCTs (HBS WP 24-076) | 30.7M offer-customer rows, spending ATEs and 40 pretreatment customer covariates | Working paper is public; no public raw replication package was identified | REJECT FOR NOW |
+| Ticket resale platform, 70 discount-offer RCTs | individual randomization, expenditure, prior-spend heterogeneity | Article is public; raw customer experiment package was not identified | REJECT FOR NOW |
+| IHG compliance-promotion RCT | 23,583 customers, randomized offers, profit construction, baseline/tier features | empirical data are described as company field-experiment data; no public row-level package found | REJECT FOR NOW |
+| Supreme Nudge supermarket cluster RCT | public study, baseline/follow-up purchasing context and covariates | only 12 randomized stores and 354 consented shared participants; transaction-level monetary outcome, assignment file and usable feature timing are not yet mechanically verified | RESEARCH CANDIDATE ONLY |
+
+Primary sources:
+
+- https://www.hbs.edu/ris/download.aspx?name=24-076.pdf
+- https://doi.org/10.1287/mnsc.2016.2450
+- https://doi.org/10.1287/mksc.2022.1420
+- https://doi.org/10.34894/3OZPWT
+
+`DATASET_C_NOT_FOUND` remains unchanged. No paper description was substituted for accessible raw
+data, no synthetic dataset was introduced, and no proprietary result was counted as evidence.

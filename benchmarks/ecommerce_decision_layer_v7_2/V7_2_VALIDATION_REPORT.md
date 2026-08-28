@@ -9,5 +9,8 @@ Buy Baits provenance and development are now complete, but validation remains cl
 3. the independent third Dataset C remains unavailable.
 
 The validation manifest contains hashed assignment units/counts only. The development runner has no
-validation or sealed data path, and no validation/sealed outcome was read or scored. No threshold
-was changed after a reveal because no reveal occurred.
+validation or sealed data path, and no validation outcome was read or scored. One Hillstrom
+SEALED_TEST row (`row-0`) was accidentally printed during a header diagnostic before the guarded
+development materializer was installed. It was never fitted or scored, but sealed integrity is
+explicitly marked compromised. No threshold was changed from that row and no sealed evaluation was
+performed.

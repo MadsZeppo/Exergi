@@ -151,10 +151,11 @@ class RLearnerModel:
 
 def causal_challengers(
     seed: int = 72_001,
+    bau_action: int = 7,
 ) -> tuple[XLearnerModel | RLearnerModel | DRPseudoOutcomeModel, ...]:
     return (
-        XLearnerModel(seed=seed),
-        RLearnerModel(seed=seed),
+        XLearnerModel(seed=seed, bau_action=bau_action),
+        RLearnerModel(seed=seed, bau_action=bau_action),
         DRPseudoOutcomeModel("dr_learner_ridge", Ridge(alpha=10.0), seed=seed),
         DRPseudoOutcomeModel(
             "causal_forest_dr",
