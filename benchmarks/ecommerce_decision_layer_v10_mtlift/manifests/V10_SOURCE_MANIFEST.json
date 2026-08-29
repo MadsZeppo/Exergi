@@ -1,0 +1,70 @@
+{
+  "access_attempts": [
+    {
+      "artifact_sha256": "20fff931c94cab78532555c3e073abb728e40cc9d4d5124faf33abda3d1adafe",
+      "artifact_size_bytes": 905807,
+      "attempted_at_utc": "2026-08-29T20:57:49Z",
+      "method": "direct_publisher_google_drive_download",
+      "outcome": "GOOGLE_ACCOUNT_SIGN_IN_HTML_NOT_DATASET",
+      "url": "https://drive.google.com/file/d/1dslFa9EGrVVoO_040ZYM16cIH-SKDuss/view?usp=drive_link"
+    },
+    {
+      "attempted_at_utc": "2026-08-29T20:59:00Z",
+      "method": "gdown_public_link_resolution",
+      "outcome": "PUBLIC_FILE_URL_NOT_RETRIEVABLE",
+      "url": "https://drive.google.com/file/d/1dslFa9EGrVVoO_040ZYM16cIH-SKDuss/view?usp=drive_link"
+    },
+    {
+      "artifact_sha256": "8acf646f03724480a057be312b13559ec8ad24d705dd31a5954e6f1b2d9b2303",
+      "artifact_size_bytes": 13088,
+      "attempted_at_utc": "2026-08-29T20:59:30Z",
+      "method": "publisher_linked_baidu_page",
+      "outcome": "EXPIRED_OR_MISSING_ERRNO_MINUS_7",
+      "url": "https://pan.baidu.com/s/1YmE5g-Y71ULNptiWqpToPA?pwd=06nb"
+    },
+    {
+      "attempted_at_utc": "2026-08-29T21:00:00Z",
+      "method": "existing_browser_session_read_only_check",
+      "outcome": "REDIRECTED_TO_GOOGLE_SIGN_IN",
+      "url": "https://drive.google.com/file/d/1dslFa9EGrVVoO_040ZYM16cIH-SKDuss/view?usp=drive_link"
+    }
+  ],
+  "dataset": {
+    "acquired": false,
+    "expected_files": [
+      "train.csv",
+      "test.csv"
+    ],
+    "expected_observations_documented": 5541842,
+    "immutable_raw_storage": "data/raw/mt_lift/",
+    "raw_storage_gitignored": true,
+    "sha256": null,
+    "size_bytes": null
+  },
+  "license": {
+    "explicit_repository_license": null,
+    "status": "NO_EXPLICIT_LICENSE_FOUND",
+    "usage_rights_inferred": false
+  },
+  "official_repository": {
+    "commit": "379b315dc0fcd7e9dedece720477f38823cc4fdc",
+    "commit_timestamp_utc": "2024-05-20T09:45:21Z",
+    "publisher_account": "MTDJDSP",
+    "repository": "MTDJDSP/MT-LIFT",
+    "url": "https://github.com/MTDJDSP/MT-LIFT"
+  },
+  "paper": {
+    "citation": "Huang et al. (2024), Entire Chain Uplift Modeling with Context-Enhanced Learning for Intelligent Marketing",
+    "doi": "10.1145/3589335.3648320",
+    "local_reference_sha256": "36e0024ebc976c53ab33ac058963581545b13d489cc3ec0ba9d28453fca4abe7",
+    "local_reference_size_bytes": 1413976,
+    "url": "https://arxiv.org/abs/2402.03379",
+    "version": "arXiv:2402.03379v1"
+  },
+  "readme": {
+    "local_reference_sha256": "1598c913bb2e715c384141ad716794d2c827356b492213bb864369419d5f8ca6",
+    "local_reference_size_bytes": 3766,
+    "url": "https://raw.githubusercontent.com/MTDJDSP/MT-LIFT/379b315dc0fcd7e9dedece720477f38823cc4fdc/README.md"
+  },
+  "schema_version": 1
+}

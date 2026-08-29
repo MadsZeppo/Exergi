@@ -1,0 +1,46 @@
+{
+  "access_control": {
+    "development_outcomes_opened": false,
+    "freeze_created": false,
+    "model_selection_performed": false,
+    "reveal_started": false,
+    "test_outcomes_opened": false
+  },
+  "blocking_reasons": [
+    "OFFICIAL_DATASET_NOT_ANONYMOUSLY_ACCESSIBLE",
+    "RANDOMIZATION_UNIT_NOT_VERIFIABLE_FROM_RELEASED_DOCUMENTATION",
+    "REPEAT_USER_OR_CLUSTER_STRUCTURE_NOT_AUDITABLE",
+    "FEATURE_LEVEL_TIMING_NOT_DOCUMENTED",
+    "RAW_RANDOMIZATION_AND_INTEGRITY_CHECKS_IMPOSSIBLE"
+  ],
+  "claim_authority": "NONE",
+  "documentation_findings": {
+    "assignment_probabilities_documented": false,
+    "control_arm_zero_supported": true,
+    "feature_block_described_as_upstream_of_treatment": true,
+    "individual_feature_timestamps_documented": false,
+    "official_test_from_last_week_documented": true,
+    "randomized_coupon_assignment_documented": true,
+    "randomization_unit_verified": false,
+    "repeat_users_auditable": false,
+    "treatment_arm_business_semantics_documented": false
+  },
+  "feature_policy": {
+    "allowlist": [],
+    "f0_through_f98": "UNKNOWN_FORBIDDEN",
+    "reason": "The paper supports a generic upstream X block, but the release provides no feature-level codebook, timestamps, or raw payload to verify the mapping."
+  },
+  "final_status": "V10_DATASET_NOT_CAUSALLY_QUALIFIED",
+  "integrity_checks": {
+    "download_source_publisher_controlled": true,
+    "official_data_payload_acquired": false,
+    "raw_checksum_available": false,
+    "raw_schema_verified": false,
+    "test_randomization_verified_in_raw_data": false
+  },
+  "official_source_commit": "379b315dc0fcd7e9dedece720477f38823cc4fdc",
+  "qualification_completed_at_utc": "2026-08-29T21:00:28Z",
+  "qualified_for_causal_personalization": false,
+  "schema_version": 1,
+  "v10_preregistration_created": false
+}

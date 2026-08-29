@@ -1,0 +1,32 @@
+{
+  "checks": {
+    "deterministic_qualification_json_regeneration": "PASS",
+    "downstream_report_regeneration": "NOT_APPLICABLE_STOPPED_BEFORE_PREREGISTRATION",
+    "focused_pytest": {
+      "command": ".venv/bin/pytest -q tests/test_v10_mtlift_qualification.py",
+      "passed": 12,
+      "status": "PASS"
+    },
+    "full_pytest": {
+      "collected": 481,
+      "command": ".venv/bin/pytest -q",
+      "status": "PASS"
+    },
+    "git_diff_check": "PASS",
+    "immutable_v8_v9": "PASS",
+    "mypy": {
+      "command": ".venv/bin/mypy",
+      "source_files": 180,
+      "status": "PASS"
+    },
+    "outcome_isolation": "PASS",
+    "raw_references_read_only": "PASS",
+    "ruff": {
+      "command": ".venv/bin/ruff check .",
+      "status": "PASS"
+    }
+  },
+  "final_status": "V10_DATASET_NOT_CAUSALLY_QUALIFIED",
+  "qa_completed_at_utc": "2026-08-29T21:05:00Z",
+  "schema_version": 1
+}
