@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import subprocess
 from collections.abc import Iterator
 from pathlib import Path
 from typing import Any
@@ -19,6 +20,24 @@ SPLIT_MANIFEST = ROOT / "manifests/V9_SPLIT_MANIFEST.json"
 CONFIG = ROOT / "V9_ANALYSIS_CONFIG.json"
 FREEZE_MANIFEST = ROOT / "V9_FREEZE_MANIFEST.json"
 RESULTS = ROOT / "results"
+PRE_REVEAL_QA = ROOT / "PRE_REVEAL_QA.json"
+DEVELOPMENT_RESULT = RESULTS / "V9_DEVELOPMENT_RESULT.json"
+
+FROZEN_SOURCE_NAMES = (
+    "V9_ANALYSIS_CONFIG.json",
+    "V9_DATASET_QUALIFICATION.json",
+    "V9_PREREGISTRATION.md",
+    "V9_VARIABLE_TIMING_DICTIONARY.json",
+    "acquisition.py",
+    "development.py",
+    "estimators.py",
+    "integrity.py",
+    "prepare.py",
+    "report.py",
+    "validation_runner.py",
+    "manifests/OSF_ACQUISITION_MANIFEST.json",
+    "manifests/V9_SPLIT_MANIFEST.json",
+)
 
 EXPECTED_RAW_SHA256 = {
     "study1": "05a4238427bd61126c82428828365b7fe25602ec274b81ab83f8bb6978c9b815",
@@ -84,6 +103,20 @@ def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text())
 
 
+def git(*args: str) -> str:
+    return subprocess.check_output(
+        ["git", *args], cwd=REPOSITORY, text=True, stderr=subprocess.STDOUT
+    ).strip()
+
+
+def source_hashes() -> dict[str, str]:
+    return {name: sha256_file(ROOT / name) for name in FROZEN_SOURCE_NAMES}
+
+
+def source_tree_hash(hashes: dict[str, str] | None = None) -> str:
+    return canonical_json_hash(hashes or source_hashes())
+
+
 def assert_split_integrity() -> dict[str, Any]:
     verify_raw_hashes()
     manifest = load_json(SPLIT_MANIFEST)
@@ -96,3 +129,17 @@ def assert_split_integrity() -> dict[str, Any]:
     if manifest["study3"]["hashed_id_overlap_count"] != 0:
         raise IntegrityError("Study 3 recipient overlap")
     return manifest
+
+
+def verify_frozen_sources(freeze: dict[str, Any]) -> None:
+    observed = source_hashes()
+    if observed != freeze["frozen_source_files"]:
+        raise IntegrityError("frozen V9 source/config mutation detected")
+    if source_tree_hash(observed) != freeze["source_tree_sha256"]:
+        raise IntegrityError("frozen V9 source-tree hash mismatch")
+    if sha256_file(SPLIT_MANIFEST) != freeze["split_manifest_sha256"]:
+        raise IntegrityError("V9 split manifest mutation detected")
+    if sha256_file(DEVELOPMENT_RESULT) != freeze["development_result_sha256"]:
+        raise IntegrityError("V9 development result mutation detected")
+    if sha256_file(PRE_REVEAL_QA) != freeze["pre_reveal_qa_sha256"]:
+        raise IntegrityError("V9 pre-reveal QA mutation detected")

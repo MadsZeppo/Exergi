@@ -1,0 +1,11 @@
+{
+  "development_result_sha256": "d1e318e1d8a685533fc4f856be926f2550614a8c988bdc569262d172c9c7929d",
+  "lifecycle_clear": true,
+  "outcome_accessed": false,
+  "sealed_fallback_available": false,
+  "source_tree_sha256": "c5c21e402123e53f2097f463ae5767bd1f8fdf3b75e54b5bd9d70485999ac8ed",
+  "split_manifest_sha256": "5b6a4fed90723d0f4ec95b76417e3e73075122fd5c9f7bfbfe56c5b28a6b923d",
+  "status": "V9_PRE_REVEAL_DRY_RUN_PASS",
+  "study1_expected_validation_dates": 28,
+  "study3_expected_validation_rows": 192994
+}

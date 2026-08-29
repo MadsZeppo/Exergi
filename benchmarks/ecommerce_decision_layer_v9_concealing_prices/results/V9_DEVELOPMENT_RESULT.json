@@ -1,0 +1,213 @@
+{
+  "preregistration_commit": "4638172",
+  "published_effects_used_for_selection": false,
+  "schema_version": 1,
+  "sealed_test_opened": false,
+  "status": "V9_DEVELOPMENT_COMPLETE_VALIDATION_CLOSED",
+  "study1": {
+    "break_even_incremental_action_cost_ars_per_assigned_visitor": 20.76359847323622,
+    "classification": "AGGREGATE_RANDOMIZED_FIELD_EVIDENCE",
+    "development_dates": 28,
+    "development_rows": 56,
+    "primary": {
+      "lower_95": -32.78660807779796,
+      "method": "paired date contrast; Student-t 95% CI",
+      "n_control": 28,
+      "n_treatment": 28,
+      "point": 20.76359847323622,
+      "standard_error": 26.098747494454045,
+      "upper_95": 74.31380502427041
+    },
+    "secondary": {
+      "daily_purchase_probability": {
+        "lower_95": 0.05225828674842292,
+        "method": "paired date contrast; Student-t 95% CI",
+        "n_control": 28,
+        "n_treatment": 28,
+        "point": 0.21428571428571427,
+        "standard_error": 0.07896725691322382,
+        "upper_95": 0.3763131418230056
+      },
+      "first_half": {
+        "lower_95": -46.135553533155075,
+        "method": "paired date contrast; Student-t 95% CI",
+        "n_control": 14,
+        "n_treatment": 14,
+        "point": 56.057700684108354,
+        "standard_error": 47.30361825587037,
+        "upper_95": 158.25095490137178
+      },
+      "log1p_daily_revenue": {
+        "lower_95": 0.26676848492576966,
+        "method": "paired date contrast; Student-t 95% CI",
+        "n_control": 28,
+        "n_treatment": 28,
+        "point": 1.8450967719820848,
+        "standard_error": 0.7692293658658433,
+        "upper_95": 3.4234250590384
+      },
+      "paired_bootstrap": {
+        "bootstrap_standard_error": 25.11890377977709,
+        "lower_95": -21.10452888431283,
+        "median": 17.894170913611212,
+        "replicates": 1000,
+        "upper_95": 75.07307856107958
+      },
+      "paired_sign_randomization_p_value": 0.5772113943028486,
+      "second_half": {
+        "lower_95": -57.74303784172165,
+        "method": "paired date contrast; Student-t 95% CI",
+        "n_control": 14,
+        "n_treatment": 14,
+        "point": -14.530503737635891,
+        "standard_error": 20.002388932469696,
+        "upper_95": 28.682030366449872
+      },
+      "units_per_assigned_visitor": {
+        "lower_95": -0.0024168026923346935,
+        "method": "paired date contrast; Student-t 95% CI",
+        "n_control": 28,
+        "n_treatment": 28,
+        "point": 0.0008892351667382355,
+        "standard_error": 0.0016112626420744121,
+        "upper_95": 0.004195273025811164
+      }
+    },
+    "selection": "TEST_DELAYED_PRICE"
+  },
+  "study3": {
+    "arm_counts": {
+      "delayed": 193023,
+      "immediate": 192580
+    },
+    "break_even_incremental_action_cost_ars_per_recipient": 0.0,
+    "classification": "INDIVIDUAL_RANDOMIZED_FIELD_EVIDENCE",
+    "development_rows": 385603,
+    "diagnostics": {
+      "duplicate_recipient_count": 0,
+      "outcome_missing_count": 0,
+      "revenue_heavy_tail": {
+        "maximum": 2997000.0,
+        "mean": 840.5410269110978,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 26999.0,
+        "p999": 99999.0,
+        "standard_deviation": 14990.547068475158,
+        "top_1_percent_revenue_share": 0.8232705707075796,
+        "zero_fraction": 0.9756666830911586
+      },
+      "srm_p_value": 0.47559784712797837
+    },
+    "primary": {
+      "lower_95": -201.28970490176806,
+      "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+      "n_control": 192580,
+      "n_treatment": 193023,
+      "point": -106.66634968263486,
+      "standard_error": 48.27810917216344,
+      "upper_95": -12.042994463501671
+    },
+    "secondary": {
+      "arm_stratified_bootstrap": {
+        "bootstrap_standard_error": 49.84663073151058,
+        "lower_95": -204.56121624919828,
+        "median": -104.32838597427309,
+        "replicates": 1000,
+        "upper_95": -16.168903798389863
+      },
+      "assignment_randomization_p_value": 0.02498750624687656,
+      "fold_estimates": [
+        {
+          "fold": 0,
+          "lower_95": -135.35978893969985,
+          "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+          "n_control": 38351,
+          "n_treatment": 38213,
+          "point": 77.71667006268206,
+          "standard_error": 108.71447673686957,
+          "upper_95": 290.79312906506397
+        },
+        {
+          "fold": 1,
+          "lower_95": -277.83754865808726,
+          "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+          "n_control": 38509,
+          "n_treatment": 38708,
+          "point": -98.33343332501192,
+          "standard_error": 91.58541521629016,
+          "upper_95": 81.17068200806344
+        },
+        {
+          "fold": 2,
+          "lower_95": -527.8957827973037,
+          "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+          "n_control": 38291,
+          "n_treatment": 38614,
+          "point": -293.27765392742253,
+          "standard_error": 119.70532658789601,
+          "upper_95": -58.6595250575414
+        },
+        {
+          "fold": 3,
+          "lower_95": -240.2080951743711,
+          "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+          "n_control": 38813,
+          "n_treatment": 38817,
+          "point": -96.99013470897467,
+          "standard_error": 73.07173070274834,
+          "upper_95": 46.227825756421765
+        },
+        {
+          "fold": 4,
+          "lower_95": -388.596829611487,
+          "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+          "n_control": 38616,
+          "n_treatment": 38671,
+          "point": -121.74325657221652,
+          "standard_error": 136.15228399306184,
+          "upper_95": 145.11031646705396
+        }
+      ],
+      "leave_top_0_1_percent": {
+        "lower_95": -127.73684882709495,
+        "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+        "n_control": 192382,
+        "n_treatment": 192873,
+        "point": -94.75107434319352,
+        "standard_error": 16.829786028768392,
+        "upper_95": -61.76529985929209
+      },
+      "leave_top_0_1_percent_cap_from_development": 99999.0,
+      "log1p_revenue": {
+        "lower_95": -0.03896767501260652,
+        "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+        "n_control": 192580,
+        "n_treatment": 193023,
+        "point": -0.029417637390874052,
+        "standard_error": 0.004872557708744624,
+        "upper_95": -0.019867599769141583
+      },
+      "purchase_probability": {
+        "lower_95": -0.003886457028382996,
+        "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+        "n_control": 192580,
+        "n_treatment": 193023,
+        "point": -0.0029137760902275614,
+        "standard_error": 0.0004962749039409997,
+        "upper_95": -0.001941095152072127
+      },
+      "units": {
+        "lower_95": -0.00463545190958581,
+        "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+        "n_control": 192580,
+        "n_treatment": 193023,
+        "point": -0.003498236601778046,
+        "standard_error": 0.0005802225534642339,
+        "upper_95": -0.0023610212939702818
+      }
+    },
+    "selection": "AVOID_DELAYED_PRICE"
+  },
+  "validation_opened": false
+}

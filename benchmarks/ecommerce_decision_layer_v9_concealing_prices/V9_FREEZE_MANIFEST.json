@@ -1,0 +1,87 @@
+{
+  "action_cost": {
+    "known": false,
+    "treatment": "Do not subtract an invented action cost; report gross revenue and break-even differential cost"
+  },
+  "allowed_features": [],
+  "config_canonical_sha256": "0d624b0c5e98f7bac9ed13f6880a064bc3487ae9eebc79dcbc2a82f6998cd57c",
+  "config_sha256": "0d9b152d07acec647a3c132ab906f5180146d7e8fc51d3e62f8a25179e692481",
+  "created_at_utc": "2026-08-29T15:52:24.611114+00:00",
+  "development_result_sha256": "d1e318e1d8a685533fc4f856be926f2550614a8c988bdc569262d172c9c7929d",
+  "frozen_source_files": {
+    "V9_ANALYSIS_CONFIG.json": "0d9b152d07acec647a3c132ab906f5180146d7e8fc51d3e62f8a25179e692481",
+    "V9_DATASET_QUALIFICATION.json": "87494ec751bb5ada8ddfebf9b64c296dd56bfc9ff16dcbf6ec024d1d6df63388",
+    "V9_PREREGISTRATION.md": "fb368f4dea54bbd31e15054f180c58817002a0f8a00d0428c7bce14ed63d2f10",
+    "V9_VARIABLE_TIMING_DICTIONARY.json": "8060d8236c51e06e2dae98cea44cdc3995d438e2e0b0213479c5119bdce82430",
+    "acquisition.py": "c6ade5ea9853b82427682645bb3a0bac5e5df63a8a76e66527aed688fa36f340",
+    "development.py": "863a12b1466ead2f30e1ad02ccc3c449ad4e6009835abc8c53adbc74ec7e9d33",
+    "estimators.py": "e265fa4ca145178d42c856f6f825437f99a0c396b7f234e535ca852447f150f2",
+    "integrity.py": "021de72cc3a55d9cb6f41b1c8887824b3fab97cd6392a2bd663bc65705e9c695",
+    "manifests/OSF_ACQUISITION_MANIFEST.json": "c4b175644f2c61874d863adcc8ac5f4926893ca43d059fa02e888de4b7785daa",
+    "manifests/V9_SPLIT_MANIFEST.json": "5b6a4fed90723d0f4ec95b76417e3e73075122fd5c9f7bfbfe56c5b28a6b923d",
+    "prepare.py": "3197fb3ebd8d84bf3160377c383076d9d8dde2acf95e8d146445219eed73104d",
+    "report.py": "113d51b12ef96069ffea0ddfb4af22ad19b024f222decea191b89e2cd5f32a2a",
+    "validation_runner.py": "8a30dd6ea292327faf77c52efc28c293dd1b7dee7a5c76218133f204c2927dc5"
+  },
+  "pre_reveal_qa_sha256": "afea485927375cc26f0fccd2ca6d8a3b023f29e8465320f432cb004d8e1a627c",
+  "preregistration_commit": "4638172",
+  "prohibited_features": [
+    "n_opens",
+    "prob_sale",
+    "units_sold",
+    "revenues",
+    "sessions",
+    "bounce_rate"
+  ],
+  "random_seeds": {
+    "bootstrap": 9029,
+    "randomization_inference": 9030,
+    "split": "exergi-v9-concealing-prices-split-v1"
+  },
+  "raw_sha256": {
+    "study1": "05a4238427bd61126c82428828365b7fe25602ec274b81ab83f8bb6978c9b815",
+    "study3": "69736e1325c9427045c788c510511ad7d7a8b081fc8bc914aad0940be8a9494d"
+  },
+  "repository_pre_freeze_head": "463817252f453fb4e5631fe9ac4ef218183a946b",
+  "schema_version": 1,
+  "sealed_test_opened": false,
+  "source_tree_sha256": "c5c21e402123e53f2097f463ae5767bd1f8fdf3b75e54b5bd9d70485999ac8ed",
+  "split_manifest_canonical_sha256": "fd818a963461e81b0a4e0b465f6d15a5f013da18f9ac2ef84038b5f2ee00b4d4",
+  "split_manifest_sha256": "5b6a4fed90723d0f4ec95b76417e3e73075122fd5c9f7bfbfe56c5b28a6b923d",
+  "status": "V9_FROZEN_VALIDATION_NOT_OPENED",
+  "studies": {
+    "study1": {
+      "action": "DELAYED_PRICE_DISCLOSURE",
+      "claim_authority": "REAL_RANDOMIZED_AGGREGATE_REVENUE",
+      "estimand": "mean across dates of (delayed raw ARS revenue / delayed assigned visitors) - (immediate raw ARS revenue / immediate assigned visitors)",
+      "estimator": "unweighted mean paired daily contrast",
+      "expected_validation_dates": 28,
+      "expected_validation_rows": 56,
+      "policy": "TEST_DELAYED_PRICE",
+      "primary_outcome": "raw sales revenue in ARS per assigned unique daily visitor",
+      "reference": "IMMEDIATE_PRICE_DISCLOSURE"
+    },
+    "study3": {
+      "action": "HIDE_PRICE_UNTIL_PRODUCT_PAGE",
+      "claim_authority": "REAL_RANDOMIZED_SALES_REVENUE",
+      "estimand": "mean weekly raw ARS revenue per randomized recipient under delayed minus immediate disclosure",
+      "estimator": "design-based difference in raw means",
+      "expected_validation_arm_counts": {
+        "0": 96563,
+        "1": 96431
+      },
+      "expected_validation_rows": 192994,
+      "policy": "AVOID_DELAYED_PRICE",
+      "primary_outcome": "raw weekly sales revenue in ARS per randomized recipient",
+      "reference": "SHOW_PRICE_IN_EMAIL"
+    }
+  },
+  "validation_consumed": false,
+  "validation_opened": false,
+  "validation_success_gate": {
+    "avoid": "reference minus alternative point estimate positive and two-sided 95% lower bound above 0",
+    "non_reference_action": "action minus reference point estimate positive and two-sided 95% lower bound above 0",
+    "otherwise": "INCONCLUSIVE or CONTRADICTED",
+    "sealed_fallback": false
+  }
+}

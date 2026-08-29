@@ -1,0 +1,22 @@
+{
+  "all_required_checks_passed": true,
+  "buy_baits_immutable_files_unchanged_from_1bd06ac": true,
+  "development_only_analysis_complete": true,
+  "development_selection_matches_preregistration": true,
+  "git_diff_check": "PASS",
+  "mypy": "PASS: Success, no issues found in 180 source files",
+  "outcome_isolation": "PASS: split/qualification builder reads only identifier and assignment fields; development loaders expose no held-out selector",
+  "pytest_focused_v9": "PASS: 11 tests",
+  "pytest_full_repository": "PASS",
+  "qa_at_utc": "2026-08-29T15:51:13Z",
+  "raw_sha256": {
+    "study1": "05a4238427bd61126c82428828365b7fe25602ec274b81ab83f8bb6978c9b815",
+    "study3": "69736e1325c9427045c788c510511ad7d7a8b081fc8bc914aad0940be8a9494d"
+  },
+  "ruff": "PASS: All checks passed",
+  "sealed_test_opened": false,
+  "split_integrity": "PASS: zero date/hashed-recipient overlap; deterministic reconstruction",
+  "validation_opened": false,
+  "v8_package_unchanged_from_0fa7944": true,
+  "working_head": "463817252f453fb4e5631fe9ac4ef218183a946b"
+}
