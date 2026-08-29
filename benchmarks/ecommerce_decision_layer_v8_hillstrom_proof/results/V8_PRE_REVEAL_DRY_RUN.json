@@ -1,0 +1,23 @@
+{
+  "freeze_verified": true,
+  "integrity": {
+    "base_checkpoint_is_ancestor": true,
+    "buy_baits_unchanged": true,
+    "development_hash_matches": true,
+    "manifest_hash_matches": true,
+    "passed": true,
+    "quarantine_hash_matches": true,
+    "raw_hash_matches": true,
+    "row_counts_match": true,
+    "row_zero_quarantined": true,
+    "sealed_fully_untouched": false,
+    "split_disjoint": true,
+    "validation_ids_hash_matches": true,
+    "validation_materialization_absent": true,
+    "validation_result_absent": true
+  },
+  "sealed_test_opened": false,
+  "status": "V8_DRY_RUN_VALIDATION_OUTCOMES_NOT_READ",
+  "validation_opened": false,
+  "validation_outcome_parser_called": false
+}
