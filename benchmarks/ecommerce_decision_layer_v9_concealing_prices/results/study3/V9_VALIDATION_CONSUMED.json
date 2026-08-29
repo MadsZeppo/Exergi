@@ -1,0 +1,7 @@
+{
+  "consumed_at_utc": "2026-08-29T15:53:37.092942+00:00",
+  "result_sha256": "fb29e1c075e23f69ac581d56f8d0cc882193ad6f19f54b7dbd06bac047cd37f6",
+  "second_reveal_permitted": false,
+  "status": "V9_VALIDATION_PERMANENTLY_CONSUMED",
+  "sufficient_statistics_sha256": "b17f0c48c696d41f8fc3848c9a989d8bf29c1f582807bfc5c41784427523337d"
+}

@@ -1,0 +1,81 @@
+{
+  "action_cost_observed": false,
+  "break_even_harm_avoided_ars_per_recipient": 237.56984348729782,
+  "claim_authority": "REAL_RANDOMIZED_SALES_REVENUE",
+  "context": "discount sales-email flyer",
+  "diagnostics": {
+    "outcome_missing_count": 0,
+    "revenue_heavy_tail": {
+      "maximum": 1998000.0,
+      "mean": 828.4487668010405,
+      "median": 0.0,
+      "p95": 0.0,
+      "p99": 26999.0,
+      "p999": 99999.0,
+      "standard_deviation": 12887.187371966313,
+      "top_1_percent_revenue_share": 0.8112907716122723,
+      "zero_fraction": 0.9752634796936692
+    },
+    "srm_p_value": 0.7638181959239201
+  },
+  "frozen_policy": "AVOID_DELAYED_PRICE",
+  "primary": {
+    "lower_95": -352.5327242125544,
+    "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+    "n_control": 96563,
+    "n_treatment": 96431,
+    "point": -237.56984348729782,
+    "standard_error": 58.65560879284983,
+    "upper_95": -122.60696276204123
+  },
+  "sealed_test_opened": false,
+  "secondary": {
+    "arm_stratified_bootstrap": {
+      "bootstrap_standard_error": 58.0531392049056,
+      "lower_95": -355.5076130158255,
+      "median": -237.87952179544158,
+      "replicates": 1000,
+      "upper_95": -124.11815018572284
+    },
+    "assignment_randomization_p_value": 0.0004997501249375312,
+    "leave_top_using_development_cap": {
+      "lower_95": -183.49997566328346,
+      "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+      "n_control": 96464,
+      "n_treatment": 96363,
+      "point": -136.81380397301905,
+      "standard_error": 23.81991304866772,
+      "upper_95": -90.12763228275463
+    },
+    "log1p_revenue": {
+      "lower_95": -0.05211398957459365,
+      "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+      "n_control": 96563,
+      "n_treatment": 96431,
+      "point": -0.038519881479703644,
+      "standard_error": 0.006935896884901252,
+      "upper_95": -0.024925773384813638
+    },
+    "purchase_probability": {
+      "lower_95": -0.004999706762304878,
+      "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+      "n_control": 96563,
+      "n_treatment": 96431,
+      "point": -0.003613945951250107,
+      "standard_error": 0.0007070338138789669,
+      "upper_95": -0.002228185140195336
+    },
+    "units": {
+      "lower_95": -0.0056301785736058,
+      "method": "design-based difference in raw means; Neyman SE; normal 95% CI",
+      "n_control": 96563,
+      "n_treatment": 96431,
+      "point": -0.004078332742695961,
+      "standard_error": 0.0007917726260026211,
+      "upper_95": -0.0025264869117861215
+    }
+  },
+  "status": "CONFIRMED_AVOID",
+  "study": "study3",
+  "validation_consumed": true
+}

@@ -1,0 +1,39 @@
+{
+  "purchase": {
+    "delayed": {
+      "n": 96431,
+      "sum": 2211.0,
+      "sum_squares": 2211.0
+    },
+    "immediate": {
+      "n": 96563,
+      "sum": 2563.0,
+      "sum_squares": 2563.0
+    }
+  },
+  "revenue": {
+    "delayed": {
+      "n": 96431,
+      "sum": 68425759.8,
+      "sum_squares": 11236852710444.02
+    },
+    "immediate": {
+      "n": 96563,
+      "sum": 91459881.5,
+      "sum_squares": 20947804278244.047
+    }
+  },
+  "study": "study3",
+  "units": {
+    "delayed": {
+      "n": 96431,
+      "sum": 2326.0,
+      "sum_squares": 2736.0
+    },
+    "immediate": {
+      "n": 96563,
+      "sum": 2723.0,
+      "sum_squares": 3235.0
+    }
+  }
+}

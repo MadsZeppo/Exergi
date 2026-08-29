@@ -1,0 +1,48 @@
+{
+  "action_cost_observed": false,
+  "break_even_incremental_action_cost_ars_per_assigned_visitor": 13.700026148202623,
+  "claim_authority": "REAL_RANDOMIZED_AGGREGATE_REVENUE",
+  "context": "ordinary online store",
+  "frozen_policy": "TEST_DELAYED_PRICE",
+  "primary": {
+    "lower_95": -36.75400747481951,
+    "method": "paired date contrast; Student-t 95% CI",
+    "n_control": 28,
+    "n_treatment": 28,
+    "point": 13.700026148202623,
+    "standard_error": 24.58976665849142,
+    "upper_95": 64.15405977122475
+  },
+  "sealed_test_opened": false,
+  "secondary": {
+    "daily_purchase_probability": {
+      "lower_95": -0.07513075117716317,
+      "method": "paired date contrast; Student-t 95% CI",
+      "n_control": 28,
+      "n_treatment": 28,
+      "point": 0.07142857142857142,
+      "standard_error": 0.07142857142857142,
+      "upper_95": 0.21798789403430602
+    },
+    "paired_bootstrap": {
+      "bootstrap_standard_error": 23.969698858074732,
+      "lower_95": -31.468685877156375,
+      "median": 14.365910796773914,
+      "replicates": 1000,
+      "upper_95": 61.98170233537197
+    },
+    "paired_sign_randomization_p_value": 0.5722138930534733,
+    "units_per_assigned_visitor": {
+      "lower_95": -0.0017584867714575175,
+      "method": "paired date contrast; Student-t 95% CI",
+      "n_control": 28,
+      "n_treatment": 28,
+      "point": 0.0012088359462727306,
+      "standard_error": 0.0014461831490938156,
+      "upper_95": 0.004176158664002979
+    }
+  },
+  "status": "INCONCLUSIVE",
+  "study": "study1",
+  "validation_consumed": true
+}

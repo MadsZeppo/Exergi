@@ -11,17 +11,22 @@ from benchmarks.ecommerce_decision_layer_v9_concealing_prices.estimators import 
     difference_in_means,
     paired_difference,
 )
+from benchmarks.ecommerce_decision_layer_v9_concealing_prices.finalize import build_result
 from benchmarks.ecommerce_decision_layer_v9_concealing_prices.integrity import (
     CONFIG,
     EXPECTED_RAW_SHA256,
+    FREEZE_MANIFEST,
     ROOT,
     SPLIT_MANIFEST,
     assert_split_integrity,
+    load_json,
+    verify_frozen_sources,
     verify_raw_hashes,
 )
 from benchmarks.ecommerce_decision_layer_v9_concealing_prices.validation_runner import (
     OneShotFiles,
     begin_reveal,
+    study_files,
 )
 
 
@@ -114,3 +119,29 @@ def test_v9_validation_runner_has_no_split_selector_or_sealed_loader() -> None:
     assert "load_study3_sealed" not in source
     assert "reveal_sealed" not in source
     assert "fallback" not in inspect.getsource(development.analyze_development).lower()
+
+
+def test_v9_persisted_post_reveal_classification_and_exact_primary_results() -> None:
+    result = build_result()
+    assert result["classification"] == "SECOND_RANDOMIZED_COMMERCE_PROOF_PASS"
+    assert result["contextual_contrast_passed"] is False
+    assert result["studies"]["study1"]["status"] == "INCONCLUSIVE"
+    assert result["studies"]["study1"]["primary"]["point"] == 13.700026148202623
+    assert result["studies"]["study3"]["status"] == "CONFIRMED_AVOID"
+    assert result["studies"]["study3"]["primary"]["point"] == -237.56984348729782
+    assert result["sealed_test_opened"] is False
+
+
+def test_v9_both_persisted_validation_locks_are_permanently_consumed() -> None:
+    for study in ("study1", "study3"):
+        lock = load_json(study_files(study).consumed)
+        assert lock["status"] == "V9_VALIDATION_PERMANENTLY_CONSUMED"
+        assert lock["second_reveal_permitted"] is False
+
+
+def test_v9_frozen_sources_and_post_reveal_reporter_remain_isolated() -> None:
+    verify_frozen_sources(load_json(FREEZE_MANIFEST))
+    source = (ROOT / "finalize.py").read_text()
+    assert "data/raw" not in source
+    assert "load_study1_validation" not in source
+    assert "load_study3_validation" not in source

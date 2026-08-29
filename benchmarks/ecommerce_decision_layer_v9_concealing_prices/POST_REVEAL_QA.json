@@ -1,0 +1,58 @@
+{
+  "all_required_checks_passed": true,
+  "classification": "SECOND_RANDOMIZED_COMMERCE_PROOF_PASS",
+  "config_sha256": "0d9b152d07acec647a3c132ab906f5180146d7e8fc51d3e62f8a25179e692481",
+  "deterministic_report_regeneration": {
+    "passed": true,
+    "report_hashes": {
+      "V9_CLAIM_CARD.md": "0db78b70f0cb6d4213f6bd5024ef97d1bcbe40c6fe366036a58a93e98495033d",
+      "V9_LIMITATIONS.md": "20650f22fecb106675e068176c73c1ea126b7c396c891484e72af5a45af22834",
+      "V9_OUTREACH_EVIDENCE_CARD.md": "515d099b3dae593d3b62e7afb0d60e0ab8ba29ea4e1c3614ab997aa5fd7ab683",
+      "V9_PROOF_DASHBOARD.html": "c6bd685d22e9918b2acd7a1fb86b38227b0c6c5993ddaefc4acb19392338fb01",
+      "V9_PUBLIC_CASE_STUDY.md": "002eee0558d0480baba606ad7cd533b1443e1616b8e34d1a3c3aa9631866672a",
+      "V9_REPRODUCTION.md": "dc4fe0482d51df125153a5b841d0088cfbdffbe7e39321400e6e7dda39466e91",
+      "V9_RESULT.json": "a751dc0c1087475b0e98f30ea5c56f6858474e2c9e6e4a577c2c5c4a69b3bb89",
+      "V9_VALIDATION_REPORT.md": "20c3c61e9b3671e698ba732f8feefb6801d166e3c1155eb178082f2ed86f2791"
+    }
+  },
+  "freeze_manifest_sha256": "f63842db3af480797615b1104ccef6c473c4329566b72880b966bfbe43d88092",
+  "frozen_source_tree_sha256": "c5c21e402123e53f2097f463ae5767bd1f8fdf3b75e54b5bd9d70485999ac8ed",
+  "git_diff_check": "PASS",
+  "immutable_checkpoint_verification": {
+    "buy_baits_unchanged_from_1bd06ac": true,
+    "v7_2_unchanged_from_3ec8061": true,
+    "v7_3_unchanged_from_0a089ff": true,
+    "v8_unchanged_from_0fa7944": true
+  },
+  "mypy": "PASS: Success, no issues found in 180 source files",
+  "post_reveal_qa_at_utc": "2026-08-29T20:38:34Z",
+  "pytest_focused_v9": "PASS: 14 tests",
+  "pytest_full_repository": "PASS: 469 tests",
+  "raw_sha256": {
+    "study1": "05a4238427bd61126c82428828365b7fe25602ec274b81ab83f8bb6978c9b815",
+    "study3": "69736e1325c9427045c788c510511ad7d7a8b081fc8bc914aad0940be8a9494d"
+  },
+  "ruff": "PASS: All checks passed",
+  "sealed_test_opened": false,
+  "second_reveal_rejection": {
+    "outcome_loader_reached": false,
+    "passed": true,
+    "study1": "IntegrityError: V9 validation has already been consumed",
+    "study3": "IntegrityError: V9 validation has already been consumed"
+  },
+  "split_manifest_sha256": "5b6a4fed90723d0f4ec95b76417e3e73075122fd5c9f7bfbfe56c5b28a6b923d",
+  "validation_locks": {
+    "study1": {
+      "consumed_lock_sha256": "794ad233ea61a5f5f630afaf9ef2f6c696bec4959f9f3f4241f3c8984a2913dd",
+      "reveal_start_sha256": "c9b9d3246c6666e050197c687f66eddbeacb149cb791e1c77c0d4d6c6a8c163a",
+      "second_reveal_permitted": false,
+      "status": "V9_VALIDATION_PERMANENTLY_CONSUMED"
+    },
+    "study3": {
+      "consumed_lock_sha256": "2bd692a03ed69d618a75765fc56d4b5ad9d4b571d6b2c9190b7bf49ca6438ba6",
+      "reveal_start_sha256": "7d54f48222c706267dcb4002cb84aab484f4c13d4e7f3f3ffeb0eebcae9aac07",
+      "second_reveal_permitted": false,
+      "status": "V9_VALIDATION_PERMANENTLY_CONSUMED"
+    }
+  }
+}
