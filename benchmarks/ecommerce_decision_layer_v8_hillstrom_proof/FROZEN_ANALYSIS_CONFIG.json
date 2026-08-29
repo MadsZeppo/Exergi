@@ -1,0 +1,72 @@
+{
+  "aipw": {
+    "folds": 5,
+    "ridge_alpha": 10.0,
+    "seed": 808031
+  },
+  "allowed_feature_columns": [
+    "recency",
+    "history_segment",
+    "history",
+    "mens",
+    "womens",
+    "zip_code",
+    "newbie",
+    "channel"
+  ],
+  "arm_labels": {
+    "control": "No E-Mail",
+    "secondary": "Womens E-Mail",
+    "treatment": "Mens E-Mail"
+  },
+  "bootstrap": {
+    "replicates": 5000,
+    "seed": 808033
+  },
+  "claim_authority": "REAL_RANDOMIZED_NET_REVENUE_AFTER_DECLARED_EMAIL_COST",
+  "development_expected": {
+    "gross_uplift": 0.7389497925489849,
+    "gross_uplift_absolute_tolerance": 1e-10,
+    "net_uplift": 0.6889497925489849,
+    "selected_policy": "STATIC_MENS_EMAIL_FOR_ALL_ELIGIBLE_CUSTOMERS"
+  },
+  "email_cost": 0.05,
+  "expected_validation_arm_counts": {
+    "Mens E-Mail": 5371,
+    "No E-Mail": 5192,
+    "Womens E-Mail": 5365
+  },
+  "expected_validation_rows": 15928,
+  "heavy_tail": {
+    "leave_top_k": [1, 5],
+    "nonzero_caps_from_development": {
+      "p99": 499.0,
+      "p99_5": 499.0
+    }
+  },
+  "outcome": "spend_i - 0.05 * I(randomized_assignment_i != 'No E-Mail')",
+  "permutation": {
+    "replicates": 20000,
+    "seed": 808032
+  },
+  "primary": {
+    "alpha": 0.05,
+    "comparison": "Mens E-Mail versus No E-Mail",
+    "estimator": "untransformed difference in means",
+    "null": "ATE_net <= 0",
+    "standard_error": "Neyman heteroskedastic s_t^2/n_t + s_c^2/n_c",
+    "test_interval": "two-sided 95% confidence interval",
+    "unit": "randomized customer"
+  },
+  "prohibited_feature_columns": [
+    "segment",
+    "treatment",
+    "offer",
+    "visit",
+    "conversion",
+    "spend"
+  ],
+  "schema_version": 1,
+  "static_policy": "STATIC_MENS_EMAIL_FOR_ALL_ELIGIBLE_CUSTOMERS",
+  "total_value_population": "all validation customers randomized to Mens E-Mail or No E-Mail"
+}

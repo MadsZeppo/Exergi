@@ -1,0 +1,32 @@
+{
+  "all_required_checks_passed": true,
+  "checked_at_utc": "2026-08-29T14:05:05Z",
+  "checks": {
+    "focused_v8_pytest": {
+      "passed": true,
+      "tests": 26
+    },
+    "full_repository_pytest": {
+      "passed": true,
+      "tests": 455
+    },
+    "git_diff_check": {
+      "passed": true
+    },
+    "mypy": {
+      "files": 180,
+      "passed": true
+    },
+    "raw_and_manifest_checksum_verification": {
+      "passed": true
+    },
+    "ruff": {
+      "passed": true
+    },
+    "v8_integrity_audit": {
+      "passed": true
+    }
+  },
+  "dry_run_protocol": "Freeze verification and an explicit outcome-isolation dry run must still pass after the freeze is committed and before reveal.",
+  "validation_opened": false
+}

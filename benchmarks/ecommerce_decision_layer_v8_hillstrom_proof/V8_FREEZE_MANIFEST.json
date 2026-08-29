@@ -1,0 +1,132 @@
+{
+  "allowed_input_columns": [
+    "recency",
+    "history_segment",
+    "history",
+    "mens",
+    "womens",
+    "zip_code",
+    "newbie",
+    "channel",
+    "segment",
+    "spend"
+  ],
+  "buy_baits_lock_sha256": "0e55fef69dfb9aa740e78f3f423c6adf686a024c6e0564337890e5449f4a44a0",
+  "claim_contract_canonical_sha256": "597ef711cfecdbbdb2bc91fdcd4c85f54093e18985b5f6d475dece2bb5c71abf",
+  "claim_contract_sha256": "2caf42fab20c748b13bd0c8ff692bcd3825eac6d2c6cbd4b3539ce51fbaccdc3",
+  "config_canonical_sha256": "9765cb11c89b364c7523a73982547275b2281dfdd0a4c6ad1a3a0babffec812e",
+  "config_sha256": "8cf8aa00da132a33281f606b6ab2ef71dd9839a174e025c98a38d4495c8ab558",
+  "control_label": "No E-Mail",
+  "created_at_utc": "2026-08-29T14:05:36.399281+00:00",
+  "development_materialization_sha256": "0e46a162e8bd201e487de30c5020b74516fd7b39208fce869f15babfc5724f13",
+  "development_reconstruction_sha256": "32d80428f9f8f76573f76b9adc779994581dc510cbb8ae5b0cf9e29ba7beff3a",
+  "development_reconstruction_status": "V8_DEVELOPMENT_RECONSTRUCTION_MATCH",
+  "email_cost": 0.05,
+  "expected_validation_arm_counts": {
+    "Mens E-Mail": 5371,
+    "No E-Mail": 5192,
+    "Womens E-Mail": 5365
+  },
+  "expected_validation_rows": 15928,
+  "frozen_source_files": {
+    "CLAIM_CONTRACT.json": "2caf42fab20c748b13bd0c8ff692bcd3825eac6d2c6cbd4b3539ce51fbaccdc3",
+    "FROZEN_ANALYSIS_CONFIG.json": "8cf8aa00da132a33281f606b6ab2ef71dd9839a174e025c98a38d4495c8ab558",
+    "PREREGISTRATION.md": "8d90857f4f08cfc42ed0a2102522ccb10f3d2b2f5e5f6775d7d7b05b0d213fb8",
+    "V8_PREREGISTRATION.md": "657c3ff1f82ca9d50c9bbde0b1af57dfc7584dd22eeff6f423ed58b559735162",
+    "development_reconstruction.py": "a85e674ec7b6312bfb2dd68b57d13f0ff07cfb5da6e85876630a3aeef68978b8",
+    "estimators.py": "d76f6488f9a4ba7a229d01879104a196f62a6bd8d8569f7feea2341e10c28517",
+    "freeze.py": "8d49e3f7e4f9e07e9b2f7444f09d9b1550944cd7bb77137b98b705b5c7bcab8e",
+    "integrity.py": "9b047e31c7f04a363e4a9dd7beab18ace1cfbfe30fbd7dc9128f9717c9ac085f",
+    "report.py": "e7d2ee3a703ce2db8cdf5a0c2ce78a5d9217997c56169f28f23225a3e9565c47",
+    "validation_runner.py": "d7fb83e5fcbd1344ab5848dad43d284d93e3bc1cb64be3f371e04d37117a6157"
+  },
+  "integrity": {
+    "base_checkpoint_is_ancestor": true,
+    "buy_baits_unchanged": true,
+    "development_hash_matches": true,
+    "manifest_hash_matches": true,
+    "passed": true,
+    "quarantine_hash_matches": true,
+    "raw_hash_matches": true,
+    "row_counts_match": true,
+    "row_zero_quarantined": true,
+    "sealed_fully_untouched": false,
+    "split_disjoint": true,
+    "validation_ids_hash_matches": true,
+    "validation_materialization_absent": true,
+    "validation_result_absent": true
+  },
+  "outcome_definition": "spend_i - 0.05 * I(randomized_assignment_i != 'No E-Mail')",
+  "policy": "STATIC_MENS_EMAIL_FOR_ALL_ELIGIBLE_CUSTOMERS",
+  "pre_reveal_qa_sha256": "5fad264ffb10e4f0ff553e03c27544e902c1c62669024ecbc76451db26148bbb",
+  "preregistration_sha256": "8d90857f4f08cfc42ed0a2102522ccb10f3d2b2f5e5f6775d7d7b05b0d213fb8",
+  "primary_estimator": {
+    "alpha": 0.05,
+    "comparison": "Mens E-Mail versus No E-Mail",
+    "estimator": "untransformed difference in means",
+    "null": "ATE_net <= 0",
+    "standard_error": "Neyman heteroskedastic s_t^2/n_t + s_c^2/n_c",
+    "test_interval": "two-sided 95% confidence interval",
+    "unit": "randomized customer"
+  },
+  "prohibited_columns": [
+    "segment",
+    "treatment",
+    "offer",
+    "visit",
+    "conversion",
+    "spend"
+  ],
+  "quarantine_record_sha256": "1b91162c0ee1d7971d083a6cedbf498686bdc243ada3f63dcad5326fc2184d38",
+  "random_seeds": {
+    "aipw": 808031,
+    "bootstrap": 808033,
+    "permutation": 808032
+  },
+  "raw_hillstrom_sha256": "27bab8c5d3669f26ec08ebb50a0a78317542f29501156f2e2af6781fab4cd7e2",
+  "repository_base_checkpoint": "0a089ff1b1a73ba4cf6a1fd96c44a879f53aec3b",
+  "repository_pre_freeze_head": "0a089ff1b1a73ba4cf6a1fd96c44a879f53aec3b",
+  "schema_version": 1,
+  "sealed_test_fully_untouched": false,
+  "sealed_test_opened": false,
+  "secondary_estimators": {
+    "arm_stratified_bootstrap": {
+      "replicates": 5000,
+      "seed": 808033
+    },
+    "cross_fitted_aipw": {
+      "folds": 5,
+      "ridge_alpha": 10.0,
+      "seed": 808031
+    },
+    "heavy_tail": {
+      "leave_top_k": [
+        1,
+        5
+      ],
+      "nonzero_caps_from_development": {
+        "p99": 499.0,
+        "p99_5": 499.0
+      }
+    },
+    "lin_ancova": "eight pretreatment features, interactions, HC3",
+    "randomization_inference": {
+      "replicates": 20000,
+      "seed": 808032
+    }
+  },
+  "secondary_label": "Womens E-Mail",
+  "source_tree_sha256": "8e878fcc6e773f020b71a4202a851ed9b9669be47aa2cbf6b695cadc29bb5350",
+  "split_manifest_sha256": "ee3b2050b532c65c323870f8d54ecb8240981f87936ed7ec2c8045960e1e1d0f",
+  "status": "V8_FROZEN_VALIDATION_NOT_OPENED",
+  "success_gate": {
+    "integrity_gates_pass": true,
+    "otherwise": "FAIL unless integrity is broken, then INVALID",
+    "point_estimate_strictly_positive": true,
+    "two_sided_95_lower_bound_strictly_positive": true
+  },
+  "treatment_label": "Mens E-Mail",
+  "validation_consumed": false,
+  "validation_hashed_id_manifest_sha256": "fe9df1271862da012d7703b215294d29fe6266627eb1560f8853d1be3705d9aa",
+  "validation_opened": false
+}

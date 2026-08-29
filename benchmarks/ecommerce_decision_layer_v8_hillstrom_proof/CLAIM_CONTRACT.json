@@ -1,0 +1,21 @@
+{
+  "authority": "REAL_RANDOMIZED_NET_REVENUE_AFTER_DECLARED_EMAIL_COST",
+  "allowed_claim_on_pass": "On a previously unseen validation sample from a real randomized e-commerce experiment, Exergi's development-selected static action produced statistically supported incremental net revenue over business-as-usual after a preregistered email cost.",
+  "forbidden_claims": [
+    "contribution_profit",
+    "observed_merchant_profit",
+    "cogs_adjusted_profit",
+    "return_adjusted_profit",
+    "personalization_proven",
+    "universal_merchant_performance",
+    "autonomous_decision_safety",
+    "production_ready"
+  ],
+  "limitations": [
+    "Hillstrom reports spend/revenue rather than contribution profit.",
+    "Observed COGS, shipping, returns, payment fees, and other variable costs are unavailable.",
+    "The declared email cost is a fixed scenario assumption, not an observed merchant cost ledger.",
+    "The proof concerns one static action in one historical randomized dataset."
+  ],
+  "schema_version": 1
+}

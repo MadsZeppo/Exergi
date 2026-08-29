@@ -1,0 +1,109 @@
+{
+  "adjusted_historical_directions": {
+    "ancova_hc3": 0.6758033255068024,
+    "cross_fitted_aipw": 0.6745859240911042,
+    "cuped_history": 0.6878862787647804
+  },
+  "arm_counts": {
+    "Mens E-Mail": 10655,
+    "No E-Mail": 10856
+  },
+  "category_levels": {
+    "channel": [
+      "Multichannel",
+      "Phone",
+      "Web"
+    ],
+    "history_segment": [
+      "1) $0 - $100",
+      "2) $100 - $200",
+      "3) $200 - $350",
+      "4) $350 - $500",
+      "5) $500 - $750",
+      "6) $750 - $1,000",
+      "7) $1,000 +"
+    ],
+    "zip_code": [
+      "Rural",
+      "Surburban",
+      "Urban"
+    ]
+  },
+  "contrast_rows": 21511,
+  "cross_fit_fold_counts": {
+    "0": 4207,
+    "1": 4404,
+    "2": 4372,
+    "3": 4234,
+    "4": 4294
+  },
+  "cross_fitted_aipw_net": {
+    "lower_95": 0.2221454455646295,
+    "point": 0.6700083106433168,
+    "standard_error": 0.22850566061997693,
+    "upper_95": 1.1178711757220041
+  },
+  "development_parquet_sha256": "0e46a162e8bd201e487de30c5020b74516fd7b39208fce869f15babfc5724f13",
+  "development_rows": 32233,
+  "expected_development_parquet_sha256": "0e46a162e8bd201e487de30c5020b74516fd7b39208fce869f15babfc5724f13",
+  "feature_names": [
+    "recency",
+    "history",
+    "mens",
+    "womens",
+    "newbie",
+    "history_segment=2) $100 - $200",
+    "history_segment=3) $200 - $350",
+    "history_segment=4) $350 - $500",
+    "history_segment=5) $500 - $750",
+    "history_segment=6) $750 - $1,000",
+    "history_segment=7) $1,000 +",
+    "zip_code=Surburban",
+    "zip_code=Urban",
+    "channel=Phone",
+    "channel=Web"
+  ],
+  "integrity": {
+    "base_checkpoint_is_ancestor": true,
+    "buy_baits_unchanged": true,
+    "development_hash_matches": true,
+    "manifest_hash_matches": true,
+    "passed": true,
+    "quarantine_hash_matches": true,
+    "raw_hash_matches": true,
+    "row_counts_match": true,
+    "row_zero_quarantined": true,
+    "sealed_fully_untouched": false,
+    "split_disjoint": true,
+    "validation_ids_hash_matches": true,
+    "validation_materialization_absent": true,
+    "validation_result_absent": true
+  },
+  "lin_ancova_net": {
+    "lower_95": 0.2272883997973008,
+    "point": 0.6756719287370186,
+    "standard_error": 0.22877131032840906,
+    "upper_95": 1.1240554576767365
+  },
+  "nonzero_development_caps": {
+    "p99": 499.0,
+    "p99_5": 499.0
+  },
+  "personalized_challenger_promoted": false,
+  "policy_reconstructed_not_reselected": "STATIC_MENS_EMAIL_FOR_ALL_ELIGIBLE_CUSTOMERS",
+  "raw_gross": {
+    "lower_95": 0.2894137950725149,
+    "point": 0.7389497925489849,
+    "standard_error": 0.22935931528454223,
+    "upper_95": 1.1884857900254548
+  },
+  "raw_net_at_declared_cost": {
+    "lower_95": 0.23941379507251465,
+    "point": 0.6889497925489846,
+    "standard_error": 0.22935931528454223,
+    "upper_95": 1.1384857900254546
+  },
+  "sealed_test_opened": false,
+  "status": "V8_DEVELOPMENT_RECONSTRUCTION_MATCH",
+  "validation_opened": false
+}
