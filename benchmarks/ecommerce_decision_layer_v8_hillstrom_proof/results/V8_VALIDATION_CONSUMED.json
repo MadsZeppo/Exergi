@@ -1,0 +1,7 @@
+{
+  "completed_at_utc": "2026-08-29T14:06:30.921327+00:00",
+  "freeze_commit": "6bf1f92ee7ac5d6afb1b7859cf09582266da6ce2",
+  "result_sha256": "1cab111de4fd7f63d5bb3c8afe689da96e5f52d6072f084b036794428fd7185e",
+  "second_reveal_allowed": false,
+  "status": "VALIDATION_PERMANENTLY_CONSUMED"
+}

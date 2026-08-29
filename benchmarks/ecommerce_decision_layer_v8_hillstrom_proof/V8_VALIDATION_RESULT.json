@@ -1,0 +1,253 @@
+{
+  "analysis_population_n": 10563,
+  "arm_statistics": {
+    "Mens E-Mail": {
+      "maximum_spend": 421.76,
+      "mean_net_revenue": 1.231508099050456,
+      "mean_spend": 1.2815080990504562,
+      "n": 5371,
+      "purchaser_count": 65,
+      "purchaser_rate": 0.012102029417240737,
+      "revenue_per_purchaser": 105.89200000000001,
+      "spend_sum": 6882.98,
+      "spend_variance": 240.9414314682305,
+      "zero_count": 5306
+    },
+    "No E-Mail": {
+      "maximum_spend": 444.92,
+      "mean_net_revenue": 0.5121956856702619,
+      "mean_spend": 0.5121956856702619,
+      "n": 5192,
+      "purchaser_count": 25,
+      "purchaser_rate": 0.004815100154083205,
+      "revenue_per_purchaser": 106.37280000000001,
+      "spend_sum": 2659.3199999999997,
+      "spend_variance": 104.64962122311375,
+      "zero_count": 5167
+    }
+  },
+  "buy_baits_unchanged": true,
+  "claim_authority": "REAL_RANDOMIZED_NET_REVENUE_AFTER_DECLARED_EMAIL_COST",
+  "claim_text": "On a previously unseen validation sample from a real randomized e-commerce experiment, Exergi's development-selected static action produced statistically supported incremental net revenue over business-as-usual after a preregistered email cost.",
+  "completed_at_utc": "2026-08-29T14:06:30.921327+00:00",
+  "development_comparison": {
+    "gross_uplift": 0.7389497925489849,
+    "net_uplift": 0.6889497925489846
+  },
+  "feature_contract": {
+    "category_levels": {
+      "channel": [
+        "Multichannel",
+        "Phone",
+        "Web"
+      ],
+      "history_segment": [
+        "1) $0 - $100",
+        "2) $100 - $200",
+        "3) $200 - $350",
+        "4) $350 - $500",
+        "5) $500 - $750",
+        "6) $750 - $1,000",
+        "7) $1,000 +"
+      ],
+      "zip_code": [
+        "Rural",
+        "Surburban",
+        "Urban"
+      ]
+    },
+    "encoded_feature_names": [
+      "recency",
+      "history",
+      "mens",
+      "womens",
+      "newbie",
+      "history_segment=2) $100 - $200",
+      "history_segment=3) $200 - $350",
+      "history_segment=4) $350 - $500",
+      "history_segment=5) $500 - $750",
+      "history_segment=6) $750 - $1,000",
+      "history_segment=7) $1,000 +",
+      "zip_code=Surburban",
+      "zip_code=Urban",
+      "channel=Phone",
+      "channel=Web"
+    ],
+    "post_treatment_features_used": []
+  },
+  "freeze_commit": "6bf1f92ee7ac5d6afb1b7859cf09582266da6ce2",
+  "freeze_manifest_sha256": "60e30ce82033cbce0a5dab29409dfc3004fed56aa1ac3879f82991033fff2dca",
+  "integrity": {
+    "base_checkpoint_is_ancestor": true,
+    "buy_baits_lock_sha256": "0e55fef69dfb9aa740e78f3f423c6adf686a024c6e0564337890e5449f4a44a0",
+    "buy_baits_unchanged": true,
+    "development_hash_matches": true,
+    "frozen_sources_verified": true,
+    "manifest_hash_matches": true,
+    "passed": true,
+    "post_treatment_filtering": false,
+    "quarantine_hash_matches": true,
+    "randomization_unit_equals_analysis_unit": true,
+    "raw_hash_matches": true,
+    "row_counts_match": true,
+    "row_zero_quarantined": true,
+    "sealed_fully_untouched": false,
+    "sealed_test_opened": false,
+    "split_disjoint": true,
+    "validation_ids_hash_matches": true,
+    "validation_materialization_absent": true,
+    "validation_result_absent": true
+  },
+  "primary": {
+    "lower_95": 0.21955759630612487,
+    "point": 0.7193124133801942,
+    "standard_error": 0.254981632834109,
+    "total_incremental_value": 7598.097022534992,
+    "two_sided_p_value": 0.004786880267285335,
+    "upper_95": 1.2190672304542636
+  },
+  "schema_version": 1,
+  "sealed_test_historically_quarantined": true,
+  "sealed_test_untouched_by_v8": true,
+  "secondary": {
+    "arm_stratified_bootstrap": {
+      "lower_95": 0.2342636888877637,
+      "point": 0.7193124133801942,
+      "replicates": 5000,
+      "seed": 808033,
+      "standard_error": 0.2514729457909107,
+      "upper_95": 1.218767118824085,
+      "valid_replicates": 5000
+    },
+    "cross_fitted_aipw": {
+      "fold_counts": {
+        "0": 2132,
+        "1": 2171,
+        "2": 2054,
+        "3": 2083,
+        "4": 2123
+      },
+      "influence_score_standard_deviation": 26.390573552177468,
+      "known_propensity": 0.5,
+      "lower_95": 0.2314625290897906,
+      "point": 0.7347351216782693,
+      "standard_error": 0.2567764492400007,
+      "upper_95": 1.238007714266748
+    },
+    "heavy_tail": {
+      "full_distribution_p99_prohibited_reason": "zero inflation can make the full-distribution P99 cap equal zero, mechanically destroying the marginal mean economic estimand",
+      "leave_top": {
+        "1": {
+          "lower_95": 0.33415963124941905,
+          "point": 0.804923625923891,
+          "standard_error": 0.24019012511852172,
+          "upper_95": 1.275687620598363
+        },
+        "5": {
+          "lower_95": 0.2922686632175384,
+          "point": 0.6658213634497157,
+          "standard_error": 0.19059161452899814,
+          "upper_95": 1.039374063681893
+        }
+      },
+      "top_observation_influence": [
+        {
+          "arm": "No E-Mail",
+          "signed_point_contribution": -0.08569337442218798,
+          "spend": 444.92,
+          "unit_hash": "6012c1f25133918b981fcf655193167568b0c36ee0327c9a96c0661166b2b77b"
+        },
+        {
+          "arm": "Mens E-Mail",
+          "signed_point_contribution": 0.07851610500837833,
+          "spend": 421.76,
+          "unit_hash": "a761add53eb3865f5b2215e5575991237bd9dfd77cbf38af2236638fd6ae5d8f"
+        },
+        {
+          "arm": "No E-Mail",
+          "signed_point_contribution": -0.07651964560862866,
+          "spend": 397.29,
+          "unit_hash": "7982e5f3b806f8c00d0d341084fd191d8c712d4cccc3aa41e4dfc334accd1896"
+        },
+        {
+          "arm": "Mens E-Mail",
+          "signed_point_contribution": 0.07072425991435487,
+          "spend": 379.91,
+          "unit_hash": "c74fcfac8d50c4d9554de23a31c1b910212c43a3c32c924559463249e8ec0f45"
+        },
+        {
+          "arm": "Mens E-Mail",
+          "signed_point_contribution": 0.06689629491714764,
+          "spend": 359.35,
+          "unit_hash": "27d4cf3853711fabf9a364831455f1c43e6451142304812b379555f035caff88"
+        },
+        {
+          "arm": "Mens E-Mail",
+          "signed_point_contribution": 0.06452988270340718,
+          "spend": 346.64,
+          "unit_hash": "5d1b9aa1ecfa90ff31c360d599a18aff9836a7cb2265a0da32964e8a065dc6fe"
+        },
+        {
+          "arm": "Mens E-Mail",
+          "signed_point_contribution": 0.04793520759635077,
+          "spend": 257.51,
+          "unit_hash": "a09e848fca70f5a55c4979ad3899663e15e7ac0308d53ba83892787bd3bd3bbc"
+        },
+        {
+          "arm": "Mens E-Mail",
+          "signed_point_contribution": 0.04766337739713275,
+          "spend": 256.05,
+          "unit_hash": "3a4dce0511a8263d273ae22a743331c7ad0661124c77b22532d0c99f8d3865ea"
+        },
+        {
+          "arm": "Mens E-Mail",
+          "signed_point_contribution": 0.04161608638987153,
+          "spend": 223.57,
+          "unit_hash": "75b78c0f5b8bf2d808cb76ae8ad515f82b776af0553ce7313086a40fcb07fbb0"
+        },
+        {
+          "arm": "Mens E-Mail",
+          "signed_point_contribution": 0.041143176317259354,
+          "spend": 221.03,
+          "unit_hash": "8e2953fe559951fca96fe23b02d8e35a465d1a8b5f4b41c727d5ade932d85e4c"
+        }
+      ],
+      "winsorization_caps_source": "DEVELOPMENT nonzero outcomes only",
+      "winsorized": {
+        "p99": {
+          "lower_95": 0.21955759630612487,
+          "point": 0.7193124133801942,
+          "standard_error": 0.254981632834109,
+          "upper_95": 1.2190672304542636
+        },
+        "p99_5": {
+          "lower_95": 0.21955759630612487,
+          "point": 0.7193124133801942,
+          "standard_error": 0.254981632834109,
+          "upper_95": 1.2190672304542636
+        }
+      }
+    },
+    "lin_ancova": {
+      "lower_95": 0.22931381206557244,
+      "point": 0.7331085478941559,
+      "standard_error": 0.2570428537475444,
+      "upper_95": 1.2369032837227394
+    },
+    "purchaser_decomposition": {
+      "control_revenue_per_purchaser": 106.37280000000001,
+      "mens_revenue_per_purchaser": 105.89200000000001,
+      "purchaser_rate_difference": 0.007286929263157532
+    },
+    "randomization_inference": {
+      "group_size_preserved": true,
+      "replicates": 20000,
+      "seed": 808032,
+      "two_sided_p_value": 0.005549722513874306
+    }
+  },
+  "source_tree_sha256": "8e878fcc6e773f020b71a4202a851ed9b9669be47aa2cbf6b695cadc29bb5350",
+  "status": "V8_HILLSTROM_RANDOMIZED_NET_REVENUE_PROOF_PASS",
+  "validation_permanently_consumed": true,
+  "verdict": "PASS"
+}

@@ -1,0 +1,36 @@
+{
+  "all_required_checks_passed": true,
+  "buy_baits_unchanged": true,
+  "checks": {
+    "deterministic_report_regeneration": {
+      "claim_card_sha256": "94f9395a528e3bc3a5738b60e93dcf0fadbfdb1f2180f5a01aa0500765a24168",
+      "passed": true,
+      "proof_report_sha256": "77d828578612eb3dba3c723defd2a55eaa586ebd17b561a84cb211d02dc6b5a4",
+      "reproduction_report_sha256": "e64aa81264c1562fcb01f33b5eddc14d20f553f97b8fec7a676fa3fd42d10093"
+    },
+    "focused_v8_pytest": {
+      "passed": true,
+      "tests": 26
+    },
+    "full_repository_pytest": {
+      "passed": true,
+      "tests": 455
+    },
+    "git_diff_check": {
+      "passed": true
+    },
+    "mypy": {
+      "files": 180,
+      "passed": true
+    },
+    "one_shot_second_reveal_rejected": {
+      "passed": true,
+      "validation_outcomes_read_again": false
+    },
+    "ruff": {
+      "passed": true
+    }
+  },
+  "sealed_test_opened_by_v8": false,
+  "validation_permanently_consumed": true
+}

@@ -1,0 +1,37 @@
+{
+  "analysis_population_n": 10563,
+  "arm_statistics": {
+    "Mens E-Mail": {
+      "maximum_spend": 421.76,
+      "mean_net_revenue": 1.231508099050456,
+      "mean_spend": 1.2815080990504562,
+      "n": 5371,
+      "purchaser_count": 65,
+      "purchaser_rate": 0.012102029417240737,
+      "revenue_per_purchaser": 105.89200000000001,
+      "spend_sum": 6882.98,
+      "spend_variance": 240.9414314682305,
+      "zero_count": 5306
+    },
+    "No E-Mail": {
+      "maximum_spend": 444.92,
+      "mean_net_revenue": 0.5121956856702619,
+      "mean_spend": 0.5121956856702619,
+      "n": 5192,
+      "purchaser_count": 25,
+      "purchaser_rate": 0.004815100154083205,
+      "revenue_per_purchaser": 106.37280000000001,
+      "spend_sum": 2659.3199999999997,
+      "spend_variance": 104.64962122311375,
+      "zero_count": 5167
+    }
+  },
+  "primary": {
+    "lower_95": 0.21955759630612487,
+    "point": 0.7193124133801942,
+    "standard_error": 0.254981632834109,
+    "total_incremental_value": 7598.097022534992,
+    "two_sided_p_value": 0.004786880267285335,
+    "upper_95": 1.2190672304542636
+  }
+}

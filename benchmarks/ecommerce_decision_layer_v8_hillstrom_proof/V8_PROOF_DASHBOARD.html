@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exergi V8 — Randomized net-revenue proof</title>
+  <style>
+    :root { color-scheme: light; --ink: #161616; --muted: #69707d; --line: #d9dde5;
+      --blue: #405cff; --green: #117a45; --wash: #f5f7fb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; color: var(--ink); font: 16px/1.5 system-ui, sans-serif; }
+    main { width: min(1080px, calc(100% - 40px)); margin: 56px auto 80px; }
+    header { border-bottom: 1px solid var(--line); padding-bottom: 28px; }
+    .eyebrow { color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; }
+    h1 { font-size: clamp(34px, 6vw, 68px); line-height: 1.02; margin: 12px 0 18px; }
+    .lede { max-width: 760px; color: var(--muted); font-size: 19px; }
+    .verdict { display: inline-block; margin-top: 16px; border: 1px solid #8ad3ad;
+      border-radius: 999px; padding: 7px 13px; color: var(--green); font-weight: 750; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0; }
+    .card { border: 1px solid var(--line); border-radius: 14px; padding: 20px; background: var(--wash); }
+    .label { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+    .value { font-size: 28px; font-weight: 760; margin-top: 6px; }
+    section { border-top: 1px solid var(--line); padding: 28px 0; }
+    h2 { margin: 0 0 14px; font-size: 22px; }
+    dl { display: grid; grid-template-columns: 240px 1fr; gap: 10px 24px; margin: 0; }
+    dt { color: var(--muted); } dd { margin: 0; }
+    code { overflow-wrap: anywhere; }
+    .note { border-left: 3px solid var(--blue); padding-left: 16px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } dl { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Exergi V8 · Immutable read-only proof</div>
+    <h1>Decision selected before validation.</h1>
+    <p class="lede">A static Mens Email action was selected from DEVELOPMENT, frozen with a declared
+      $0.05 email cost, and evaluated once on previously unopened randomized VALIDATION customers.</p>
+    <div class="verdict">PASS</div>
+  </header>
+  <div class="grid">
+    <div class="card"><div class="label">Development uplift</div><div class="value">+$0.689</div>
+      <div>net revenue / customer</div></div>
+    <div class="card"><div class="label">Held-out validation uplift</div><div class="value">+$0.719</div>
+      <div>net revenue / customer</div></div>
+    <div class="card"><div class="label">Validation total</div><div class="value">+$7,598.10</div>
+      <div>10,563 primary-analysis customers</div></div>
+  </div>
+  <section>
+    <h2>BAU versus selected action</h2>
+    <dl>
+      <dt>BAU</dt><dd>No E-Mail — mean net revenue $0.512196</dd>
+      <dt>Selected action</dt><dd>Mens E-Mail for all eligible customers — mean net revenue $1.231508</dd>
+      <dt>Primary difference</dt><dd>+$0.719312 per customer</dd>
+      <dt>Two-sided 95% CI</dt><dd>[$0.219558, $1.219067]</dd>
+      <dt>Primary p-value</dt><dd>0.004786880267</dd>
+      <dt>Declared cost</dt><dd>$0.05 per customer assigned to an email arm</dd>
+    </dl>
+  </section>
+  <section>
+    <h2>What Exergi knew before reveal</h2>
+    <p class="note">DEVELOPMENT supported a +$0.688950 net point estimate. The policy, estimand,
+      two-sided 95% gate, cost, features, secondary analyses, seeds, hashes and claim boundary were
+      committed before VALIDATION outcomes were read.</p>
+  </section>
+  <section>
+    <h2>What happened afterwards</h2>
+    <p>The one-shot validation produced +$0.719312 per customer. Lin ANCOVA (+$0.733109),
+      cross-fitted AIPW (+$0.734735), bootstrap CI [$0.234264, $1.218767], and assignment
+      randomization p=0.00554972 corroborated the frozen primary result.</p>
+  </section>
+  <section>
+    <h2>Evidence authority</h2>
+    <p><code>REAL_RANDOMIZED_NET_REVENUE_AFTER_DECLARED_EMAIL_COST</code></p>
+    <p>On a previously unseen validation sample from a real randomized e-commerce experiment,
+      Exergi's development-selected static action produced statistically supported incremental net
+      revenue over business-as-usual after a preregistered email cost.</p>
+  </section>
+  <section>
+    <h2>Limitations</h2>
+    <p>Hillstrom contains spend/revenue, not contribution profit. It lacks observed COGS, shipping,
+      returns, payment fees and other variable costs. This proof does not establish personalization,
+      merchant generalization, autonomous decision safety or production readiness. Validation is
+      permanently consumed. SEALED_TEST was not opened by V8 and remains historically quarantined.</p>
+  </section>
+</main>
+</body>
+</html>

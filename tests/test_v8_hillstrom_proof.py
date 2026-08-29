@@ -68,13 +68,17 @@ def test_row_zero_remains_only_in_quarantined_sealed_split() -> None:
     assert row_zero not in manifest["unit_hashes"]["VALIDATION"]
 
 
-def test_raw_checksum_matches_and_validation_is_still_unconsumed_pre_reveal() -> None:
+def test_raw_checksum_and_validation_lifecycle_state_are_consistent() -> None:
     assert sha256_file(RAW) == EXPECTED_RAW_SHA256
     report = audit_pre_reveal()
-    assert report.passed
     assert report.validation_materialization_absent
-    assert report.validation_result_absent
     assert not report.sealed_fully_untouched
+    if (ROOT / "V8_VALIDATION_RESULT.json").exists():
+        assert not report.passed
+        assert not report.validation_result_absent
+    else:
+        assert report.passed
+        assert report.validation_result_absent
 
 
 def test_development_reconstruction_reads_no_heldout_path() -> None:
@@ -210,6 +214,7 @@ def test_one_shot_start_is_permanent_even_without_result(tmp_path: Path) -> None
 def test_validation_run_is_rejected_without_freeze(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    monkeypatch.setattr(runner_module, "require_pre_reveal_integrity", lambda: object())
     monkeypatch.setattr(runner_module, "FREEZE_MANIFEST", tmp_path / "missing.json")
     with pytest.raises(IntegrityError, match="requires a freeze"):
         runner_module.dry_run()
