@@ -36,6 +36,10 @@ benchmarks/ecommerce_decision_layer_v7_2/**/*.pyc
 !benchmarks/ecommerce_decision_layer_v8_hillstrom_proof/**
 benchmarks/ecommerce_decision_layer_v8_hillstrom_proof/**/__pycache__/
 benchmarks/ecommerce_decision_layer_v8_hillstrom_proof/**/*.pyc
+!benchmarks/ecommerce_decision_layer_v9_concealing_prices/
+!benchmarks/ecommerce_decision_layer_v9_concealing_prices/**
+benchmarks/ecommerce_decision_layer_v9_concealing_prices/**/__pycache__/
+benchmarks/ecommerce_decision_layer_v9_concealing_prices/**/*.pyc
 
 # OS / System Files
 .DS_Store
