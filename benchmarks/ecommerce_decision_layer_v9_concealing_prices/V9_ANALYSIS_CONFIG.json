@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "action_cost": {
+    "known": false,
+    "treatment": "Do not subtract an invented action cost; report gross revenue and break-even differential cost"
+  },
+  "development_selection": {
+    "clear_harm": "two-sided 95% upper bound below 0",
+    "minimum_materiality_ars": 0.0,
+    "negative_point": "freeze AVOID_DELAYED_PRICE using immediate/reference",
+    "positive_point": "freeze TEST_DELAYED_PRICE if integrity passes and 95% upper bound is above 0",
+    "zero_or_invalid": "NOT_ENOUGH_EVIDENCE"
+  },
+  "personalization": {
+    "allowed": false,
+    "reason": "Neither field dataset exposes five lawful pretreatment features"
+  },
+  "random_seeds": {
+    "bootstrap": 9029,
+    "randomization_inference": 9030,
+    "split": "exergi-v9-concealing-prices-split-v1"
+  },
+  "robustness": {
+    "bootstrap_replicates": 1000,
+    "leave_top_fraction": 0.001,
+    "permutation_replicates": 2000,
+    "secondary_outcomes": [
+      "units_sold",
+      "purchase_probability",
+      "log1p_revenue"
+    ]
+  },
+  "study1": {
+    "action": "DELAYED_PRICE_DISCLOSURE",
+    "ci": "paired Student-t 95% interval over date contrasts",
+    "estimator": "unweighted mean paired daily contrast",
+    "estimand": "mean across dates of (delayed raw ARS revenue / delayed assigned visitors) - (immediate raw ARS revenue / immediate assigned visitors)",
+    "primary_outcome": "raw sales revenue in ARS per assigned unique daily visitor",
+    "reference": "IMMEDIATE_PRICE_DISCLOSURE",
+    "split": "first 28 ordered date_id values DEVELOPMENT; final 28 VALIDATION; no SEALED_TEST",
+    "treatment_probability": 0.5,
+    "unit_of_inference": "date_id"
+  },
+  "study3": {
+    "action": "HIDE_PRICE_UNTIL_PRODUCT_PAGE",
+    "ci": "Neyman two-sample 95% interval",
+    "estimator": "design-based difference in raw means",
+    "estimand": "mean weekly raw ARS revenue per randomized recipient under delayed minus immediate disclosure",
+    "primary_outcome": "raw weekly sales revenue in ARS per randomized recipient",
+    "reference": "SHOW_PRICE_IN_EMAIL",
+    "split": "deterministic SHA-256 recipient split 50% DEVELOPMENT, 25% VALIDATION, 25% SEALED_TEST",
+    "treatment_probability": 0.5,
+    "unit_of_inference": "randomized recipient user_id"
+  },
+  "validation_gate": {
+    "avoid": "reference minus alternative point estimate positive and two-sided 95% lower bound above 0",
+    "non_reference_action": "action minus reference point estimate positive and two-sided 95% lower bound above 0",
+    "otherwise": "INCONCLUSIVE or CONTRADICTED",
+    "sealed_fallback": false
+  }
+}

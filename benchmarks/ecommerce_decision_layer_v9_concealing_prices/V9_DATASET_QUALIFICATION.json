@@ -1,0 +1,77 @@
+{
+  "official_file_count_study1_and_study3": 40,
+  "official_osf_node": "https://osf.io/xt42w",
+  "published_effects_used_for_policy": false,
+  "schema_version": 1,
+  "sealed_test_outcomes_opened": false,
+  "split_manifest_canonical_sha256": "fd818a963461e81b0a4e0b465f6d15a5f013da18f9ac2ef84038b5f2ee00b4d4",
+  "status": "QUALIFIED",
+  "study1": {
+    "claim_authorities": [
+      "REAL_RANDOMIZED_AGGREGATE_REVENUE",
+      "REAL_RANDOMIZED_UNITS_SOLD",
+      "REAL_RANDOMIZED_PURCHASE_RATE"
+    ],
+    "classification": "AGGREGATE_RANDOMIZED_FIELD_EVIDENCE",
+    "headers": [
+      "date_id",
+      "treatment",
+      "prob_sale",
+      "units_sold",
+      "revenues",
+      "sessions",
+      "users",
+      "bounce_rate"
+    ],
+    "observations": 112,
+    "paired_dates": 56,
+    "personalization_allowed": false,
+    "qualification_checks": {
+      "criterion_1": true,
+      "criterion_10": true,
+      "criterion_11": true,
+      "criterion_2": true,
+      "criterion_3": true,
+      "criterion_4": true,
+      "criterion_5": true,
+      "criterion_6": true,
+      "criterion_7": true,
+      "criterion_8": true,
+      "criterion_9": true
+    },
+    "qualified": true
+  },
+  "study3": {
+    "claim_authorities": [
+      "REAL_RANDOMIZED_SALES_REVENUE",
+      "REAL_RANDOMIZED_UNITS_SOLD",
+      "REAL_RANDOMIZED_PURCHASE_RATE"
+    ],
+    "classification": "INDIVIDUAL_RANDOMIZED_FIELD_EVIDENCE",
+    "headers": [
+      "user_id",
+      "treatment",
+      "units_sold",
+      "revenues",
+      "n_opens"
+    ],
+    "observations": 771583,
+    "personalization_allowed": false,
+    "qualification_checks": {
+      "criterion_1": true,
+      "criterion_10": true,
+      "criterion_11": true,
+      "criterion_2": true,
+      "criterion_3": true,
+      "criterion_4": true,
+      "criterion_5": true,
+      "criterion_6": true,
+      "criterion_7": true,
+      "criterion_8": true,
+      "criterion_9": true
+    },
+    "qualified": true,
+    "unique_recipients": 771583
+  },
+  "validation_outcomes_opened": false
+}

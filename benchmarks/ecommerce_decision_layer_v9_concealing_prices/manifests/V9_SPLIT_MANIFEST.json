@@ -1,0 +1,70 @@
+{
+  "canonical_sha256": "fd818a963461e81b0a4e0b465f6d15a5f013da18f9ac2ef84038b5f2ee00b4d4",
+  "created_before_outcome_analysis": true,
+  "raw_sha256": {
+    "study1": "05a4238427bd61126c82428828365b7fe25602ec274b81ab83f8bb6978c9b815",
+    "study3": "69736e1325c9427045c788c510511ad7d7a8b081fc8bc914aad0940be8a9494d"
+  },
+  "schema_version": 1,
+  "split_seed": "exergi-v9-concealing-prices-split-v1",
+  "study1": {
+    "analysis_and_split_unit": "date_id",
+    "date_counts": {
+      "DEVELOPMENT": 28,
+      "VALIDATION": 28
+    },
+    "date_overlap_count": 0,
+    "hashed_date_manifest_sha256": {
+      "DEVELOPMENT": "ddb0a85fe29869d4977fa602e3a226007147c8c0d472851de6733c7eb0d47b89",
+      "VALIDATION": "7252300e39ce175c8a9781e080cfc0dd9b8eb85fbbdd519f87da867e27686714"
+    },
+    "randomization_unit": "visitor/cookie assignment; unavailable at row level",
+    "row_counts": {
+      "DEVELOPMENT": 56,
+      "VALIDATION": 56
+    },
+    "sealed_test_omitted_reason": "56 paired dates are too sparse for a defensible 50/25/25 split",
+    "split_method": "single chronological rank split; first 28 DEVELOPMENT, last 28 VALIDATION",
+    "treatment_counts": {
+      "DEVELOPMENT": {
+        "0": 28,
+        "1": 28
+      },
+      "VALIDATION": {
+        "0": 28,
+        "1": 28
+      }
+    }
+  },
+  "study3": {
+    "duplicate_raw_id_count": 0,
+    "hashed_id_manifest_sha256": {
+      "DEVELOPMENT": "325aaf9af8fb56348ac39fda6b587f0d4c978327d22c81f236db8c848e948a74",
+      "SEALED_TEST": "f602c23464fb3193472d945c52761743a099ba36d7c92f52ac6df21489534df3",
+      "VALIDATION": "913275945d88ffe37b6bd145b17bfaae4a762673d0812201d655afbeb883413e"
+    },
+    "hashed_id_overlap_count": 0,
+    "randomization_analysis_and_split_unit": "recipient user_id",
+    "raw_ids_persisted": false,
+    "row_counts": {
+      "DEVELOPMENT": 385603,
+      "SEALED_TEST": 192986,
+      "VALIDATION": 192994
+    },
+    "split_method": "SHA-256 deterministic 50/25/25",
+    "treatment_counts": {
+      "DEVELOPMENT": {
+        "0": 192580,
+        "1": 193023
+      },
+      "SEALED_TEST": {
+        "0": 96360,
+        "1": 96626
+      },
+      "VALIDATION": {
+        "0": 96563,
+        "1": 96431
+      }
+    }
+  }
+}

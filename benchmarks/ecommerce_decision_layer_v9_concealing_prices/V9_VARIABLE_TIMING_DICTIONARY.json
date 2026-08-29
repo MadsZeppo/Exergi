@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "field_studies": {
+    "study1": {
+      "bounce_rate": {
+        "classification": "POST_TREATMENT_FORBIDDEN",
+        "reason": "Daily behavior measured after assigned disclosure"
+      },
+      "date_id": {
+        "classification": "ASSIGNMENT_TIME_CONTEXT",
+        "reason": "Numeric day block; allowed only for pairing and split, not personalization"
+      },
+      "prob_sale": {
+        "classification": "OUTCOME_ONLY",
+        "reason": "Binary daily purchase outcome"
+      },
+      "revenues": {
+        "classification": "OUTCOME_ONLY",
+        "reason": "Raw daily sales revenue in Argentine pesos"
+      },
+      "sessions": {
+        "classification": "POST_TREATMENT_FORBIDDEN",
+        "reason": "Daily sessions can be affected by assignment/exposure"
+      },
+      "treatment": {
+        "classification": "RANDOMIZED_ASSIGNMENT",
+        "reason": "0 immediate price disclosure; 1 delayed price disclosure"
+      },
+      "units_sold": {
+        "classification": "OUTCOME_ONLY",
+        "reason": "Raw daily units sold"
+      },
+      "users": {
+        "classification": "EVALUATOR_ONLY",
+        "reason": "Assigned unique daily visitors used as exposure denominator, never a policy feature"
+      }
+    },
+    "study3": {
+      "n_opens": {
+        "classification": "POST_TREATMENT_FORBIDDEN",
+        "reason": "Product clicks across the seven emails after assignment"
+      },
+      "revenues": {
+        "classification": "OUTCOME_ONLY",
+        "reason": "Raw weekly sales revenue in Argentine pesos"
+      },
+      "treatment": {
+        "classification": "RANDOMIZED_ASSIGNMENT",
+        "reason": "0 immediate/show price; 1 delayed/hide price"
+      },
+      "units_sold": {
+        "classification": "OUTCOME_ONLY",
+        "reason": "Raw weekly units sold; purchase indicator is derived as units_sold > 0"
+      },
+      "user_id": {
+        "classification": "IDENTIFIER_HASH_ONLY",
+        "reason": "Unique randomized recipient ID used only for deterministic split and integrity"
+      }
+    }
+  },
+  "not_field_policy_inputs": {
+    "study1_posttest_csv_columns": {
+      "Q10": "EVALUATOR_ONLY",
+      "Q29": "EVALUATOR_ONLY",
+      "Q57": "EVALUATOR_ONLY",
+      "Q9": "EVALUATOR_ONLY",
+      "age": "EVALUATOR_ONLY",
+      "gender": "EVALUATOR_ONLY"
+    },
+    "study3_posttest_csv_columns": {
+      "Q10": "EVALUATOR_ONLY",
+      "Q57": "EVALUATOR_ONLY",
+      "Q9": "EVALUATOR_ONLY",
+      "age": "EVALUATOR_ONLY",
+      "gender": "EVALUATOR_ONLY"
+    },
+    "reason": "Separate Prolific post-tests are not linked pretreatment features for field randomized units"
+  },
+  "derived_fields": {
+    "d_purchase": "OUTCOME_ONLY",
+    "d_purchase_pct": "OUTCOME_ONLY",
+    "log_revenue": "OUTCOME_ONLY",
+    "log_revenues": "OUTCOME_ONLY",
+    "log_units": "OUTCOME_ONLY"
+  },
+  "personalization_allowed": false,
+  "validation_outcomes_opened": false,
+  "sealed_test_outcomes_opened": false
+}
