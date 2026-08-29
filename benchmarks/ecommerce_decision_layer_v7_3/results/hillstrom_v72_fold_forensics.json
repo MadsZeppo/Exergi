@@ -1,0 +1,261 @@
+{
+  "fold_count": 5,
+  "folds": [
+    {
+      "arms": {
+        "Mens E-Mail": {
+          "effective_sample_size": 2131,
+          "gross_spend_mean": 2.0209009854528395,
+          "maximum_observation": 499.0,
+          "n": 2131,
+          "net_value_mean": 1.9709009854528394,
+          "purchase_count": 25,
+          "purchase_rate": 0.011731581417175035,
+          "total_spend": 4306.540000000001
+        },
+        "No E-Mail": {
+          "effective_sample_size": 2135,
+          "gross_spend_mean": 0.42459484777517564,
+          "maximum_observation": 227.54,
+          "n": 2135,
+          "net_value_mean": 0.42459484777517564,
+          "purchase_count": 11,
+          "purchase_rate": 0.005152224824355972,
+          "total_spend": 906.51
+        }
+      },
+      "fold": 0,
+      "fold_size": 4266,
+      "gross_difference_in_means": 1.5963061376776637,
+      "largest_absolute_observation_contribution": 0.2341623650868137,
+      "leave_largest_net": 1.3129826170135568,
+      "leave_top_10_net": 0.16709142936894433,
+      "leave_top_5_net": 0.4687682754609486,
+      "lower_95": 0.43055878467609277,
+      "max_absolute_numeric_smd": 0.043141950596152195,
+      "net_difference_in_means": 1.5463061376776637,
+      "numeric_smd": {
+        "history": 0.0263057596331486,
+        "mens": -0.003578962989735859,
+        "newbie": -0.043141950596152195,
+        "recency": -0.004853560244004889,
+        "womens": 0.03788586434790006
+      },
+      "standard_error": 0.5692693140294637,
+      "top_10_absolute_contribution": 1.594478505654787,
+      "top_1_absolute_contribution": 0.2341623650868137,
+      "top_5_absolute_contribution": 1.079751290473956,
+      "upper_95": 2.6620534906792344
+    },
+    {
+      "arms": {
+        "Mens E-Mail": {
+          "effective_sample_size": 2157,
+          "gross_spend_mean": 1.0936856745479833,
+          "maximum_observation": 341.0,
+          "n": 2157,
+          "net_value_mean": 1.0436856745479832,
+          "purchase_count": 20,
+          "purchase_rate": 0.00927213722763097,
+          "total_spend": 2359.08
+        },
+        "No E-Mail": {
+          "effective_sample_size": 2250,
+          "gross_spend_mean": 1.20396,
+          "maximum_observation": 499.0,
+          "n": 2250,
+          "net_value_mean": 1.20396,
+          "purchase_count": 20,
+          "purchase_rate": 0.008888888888888889,
+          "total_spend": 2708.91
+        }
+      },
+      "fold": 1,
+      "fold_size": 4407,
+      "gross_difference_in_means": -0.11027432545201665,
+      "largest_absolute_observation_contribution": 0.22177777777777777,
+      "leave_largest_net": 0.06106673279609358,
+      "leave_top_10_net": -0.11441670875386041,
+      "leave_top_5_net": -0.22316369941547126,
+      "lower_95": -1.0958222140364524,
+      "max_absolute_numeric_smd": 0.02965142971382203,
+      "net_difference_in_means": -0.16027432545201664,
+      "numeric_smd": {
+        "history": -0.027094588446511355,
+        "mens": 0.016464234669680475,
+        "newbie": -0.004785246820959817,
+        "recency": 0.01937886841077716,
+        "womens": -0.02965142971382203
+      },
+      "standard_error": 0.47732912235322594,
+      "top_10_absolute_contribution": 1.2883290557873592,
+      "top_1_absolute_contribution": 0.22177777777777777,
+      "top_5_absolute_contribution": 0.8250975181579355,
+      "upper_95": 0.775273563132419
+    },
+    {
+      "arms": {
+        "Mens E-Mail": {
+          "effective_sample_size": 2093,
+          "gross_spend_mean": 1.952202580028667,
+          "maximum_observation": 499.0,
+          "n": 2093,
+          "net_value_mean": 1.902202580028667,
+          "purchase_count": 37,
+          "purchase_rate": 0.017677974199713332,
+          "total_spend": 4085.96
+        },
+        "No E-Mail": {
+          "effective_sample_size": 2163,
+          "gross_spend_mean": 1.0989412852519649,
+          "maximum_observation": 384.83,
+          "n": 2163,
+          "net_value_mean": 1.0989412852519649,
+          "purchase_count": 22,
+          "purchase_rate": 0.010171058714748035,
+          "total_spend": 2377.01
+        }
+      },
+      "fold": 2,
+      "fold_size": 4256,
+      "gross_difference_in_means": 0.8532612947767022,
+      "largest_absolute_observation_contribution": 0.2384137601528906,
+      "leave_largest_net": 0.5656667453407693,
+      "leave_top_10_net": 0.05471208040508828,
+      "leave_top_5_net": 0.37563715758815946,
+      "lower_95": -0.22779280830118132,
+      "max_absolute_numeric_smd": 0.028400886389008437,
+      "net_difference_in_means": 0.8032612947767022,
+      "numeric_smd": {
+        "history": 0.015398180458854651,
+        "mens": -0.0064279860118437995,
+        "newbie": 0.028400886389008437,
+        "recency": 0.01231563647893845,
+        "womens": 0.015249341019692766
+      },
+      "standard_error": 0.5260576782077154,
+      "top_10_absolute_contribution": 1.3192650180830847,
+      "top_1_absolute_contribution": 0.2384137601528906,
+      "top_5_absolute_contribution": 0.7856024628249195,
+      "upper_95": 1.8343153978545856
+    },
+    {
+      "arms": {
+        "Mens E-Mail": {
+          "effective_sample_size": 2139,
+          "gross_spend_mean": 2.105614773258532,
+          "maximum_observation": 499.0,
+          "n": 2139,
+          "net_value_mean": 2.055614773258532,
+          "purchase_count": 33,
+          "purchase_rate": 0.015427769985974754,
+          "total_spend": 4503.91
+        },
+        "No E-Mail": {
+          "effective_sample_size": 2189,
+          "gross_spend_mean": 0.8787117405207857,
+          "maximum_observation": 444.33,
+          "n": 2189,
+          "net_value_mean": 0.8787117405207857,
+          "purchase_count": 14,
+          "purchase_rate": 0.006395614435815441,
+          "total_spend": 1923.5
+        }
+      },
+      "fold": 3,
+      "fold_size": 4328,
+      "gross_difference_in_means": 1.2269030327377464,
+      "largest_absolute_observation_contribution": 0.23328658251519402,
+      "leave_largest_net": 0.9444921883847336,
+      "leave_top_10_net": 0.3112457040525936,
+      "leave_top_5_net": 0.9483114663769052,
+      "lower_95": 0.02305410329959745,
+      "max_absolute_numeric_smd": 0.0343359464246709,
+      "net_difference_in_means": 1.1769030327377463,
+      "numeric_smd": {
+        "history": 0.0343359464246709,
+        "mens": -0.003180904744961806,
+        "newbie": 0.00825316170974717,
+        "recency": -0.012473455120603359,
+        "womens": 0.01760291508588264
+      },
+      "standard_error": 0.5887092510574491,
+      "top_10_absolute_contribution": 1.6062852427806935,
+      "top_1_absolute_contribution": 0.23328658251519402,
+      "top_5_absolute_contribution": 0.9680757991154293,
+      "upper_95": 2.330751962175895
+    },
+    {
+      "arms": {
+        "Mens E-Mail": {
+          "effective_sample_size": 2135,
+          "gross_spend_mean": 0.754145199063232,
+          "maximum_observation": 359.97,
+          "n": 2135,
+          "net_value_mean": 0.7041451990632319,
+          "purchase_count": 18,
+          "purchase_rate": 0.008430913348946136,
+          "total_spend": 1610.1000000000001
+        },
+        "No E-Mail": {
+          "effective_sample_size": 2119,
+          "gross_spend_mean": 0.5879093912222746,
+          "maximum_observation": 499.0,
+          "n": 2119,
+          "net_value_mean": 0.5879093912222746,
+          "purchase_count": 10,
+          "purchase_rate": 0.004719207173194903,
+          "total_spend": 1245.78
+        }
+      },
+      "fold": 4,
+      "fold_size": 4254,
+      "gross_difference_in_means": 0.16623580784095737,
+      "largest_absolute_observation_contribution": 0.23548843794242566,
+      "leave_largest_net": 0.35155785250987975,
+      "leave_top_10_net": 0.10883917576371331,
+      "leave_top_5_net": 0.29715564533210687,
+      "lower_95": -0.6063331302289,
+      "max_absolute_numeric_smd": 0.04780982210542783,
+      "net_difference_in_means": 0.11623580784095737,
+      "numeric_smd": {
+        "history": -0.03720356907816091,
+        "mens": 0.02942300577479672,
+        "newbie": -0.022609848393648276,
+        "recency": -0.024042772231332294,
+        "womens": -0.04780982210542783
+      },
+      "standard_error": 0.3686643957589981,
+      "top_10_absolute_contribution": 0.9654050063383262,
+      "top_1_absolute_contribution": 0.23548843794242566,
+      "top_5_absolute_contribution": 0.6853527745512056,
+      "upper_95": 0.8388047459108147
+    }
+  ],
+  "gate_definition": {
+    "all_leave_one_fold_out_positive": true,
+    "global_adjusted_lower_95_positive": true,
+    "minimum_fold_net": -0.05,
+    "positive_fold_count_min": 4,
+    "veto_reason": "any fold below -0.05 fails even when four folds and every leave-one-out are positive"
+  },
+  "gate_pass": false,
+  "hillstrom_status": "DEVELOPMENT_CONSUMED",
+  "leave_one_fold_out_net": [
+    0.4767864820166062,
+    0.9072474306950982,
+    0.6621201459379007,
+    0.5664369468464818,
+    0.834526662684896
+  ],
+  "observed_all_leave_one_out_positive": true,
+  "observed_minimum_fold_net": -0.16027432545201664,
+  "observed_positive_fold_count": 4,
+  "primary_cost": 0.05,
+  "sealed_test_used": false,
+  "split_method": "sha256('hillstrom-static\\0' + development unit hash) modulo 5",
+  "status": "DIAGNOSTIC_ONLY_NO_GATE_CHANGE",
+  "stratification": "none; deterministic hash folds",
+  "v7_2_reference_commit": "3ec80610c1cb990a9440b67ec60b2ab7ad75cc57",
+  "validation_opened": false
+}

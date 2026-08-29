@@ -1,0 +1,56 @@
+{
+  "candidate_gates": [
+    "existing_v72_fold_veto",
+    "repeated_stratified",
+    "repeated_arm_balanced",
+    "median_of_means",
+    "influence_bounded",
+    "bootstrap_positive_probability",
+    "simultaneous_lcb",
+    "cross_fitted_aipw_lcb",
+    "bayesian_positive_probability",
+    "distributionally_robust",
+    "combined_economic"
+  ],
+  "common_support": {
+    "differential_attrition_max": 0.05,
+    "ess_per_arm_min": 100,
+    "mature_fraction_min": 0.95,
+    "propensity_max": 0.9,
+    "propensity_min": 0.1
+  },
+  "families": [
+    "null",
+    "harmful",
+    "material_positive",
+    "weak_positive",
+    "qualitative_heterogeneity",
+    "sparse_responder",
+    "outlier_driven",
+    "negative_margin",
+    "effect_reversal",
+    "integrity_failure"
+  ],
+  "frozen_before_outcome_generation": true,
+  "hillstrom_status": "DEVELOPMENT_CONSUMED",
+  "levels": {
+    "gate_development": {"seed_root": 7303001, "worlds_per_family": 500},
+    "gate_validation": {"seed_root": 7303002, "worlds_per_family": 500},
+    "sealed_gate_test": {"seed_root": 7303003, "worlds_per_family": 500}
+  },
+  "risk_limits": {
+    "budget_violations": 0,
+    "cvar99_loss_max": 0.25,
+    "early_release_violations": 0,
+    "harmful_act_rate_max": 0.01,
+    "material_false_negative_improvement_min": 0.1,
+    "maximum_drawdown_max": 1.0,
+    "null_act_rate_max": 0.05,
+    "p95_loss_max": 0.0,
+    "p99_loss_max": 0.1,
+    "unsupported_act": 0
+  },
+  "source_commit": "3ec80610c1cb990a9440b67ec60b2ab7ad75cc57",
+  "v7_2_reference_commit": "3ec80610c1cb990a9440b67ec60b2ab7ad75cc57",
+  "version": "7.3"
+}

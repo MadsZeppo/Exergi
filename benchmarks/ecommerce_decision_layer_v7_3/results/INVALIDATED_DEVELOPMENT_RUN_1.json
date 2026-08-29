@@ -1,0 +1,9 @@
+{
+  "invalidated": true,
+  "reason": "Evaluator false-negative denominator incorrectly included unsupported, budget-invalid, or immature materially-positive worlds where every deployable gate must abstain.",
+  "gate_definitions_changed": false,
+  "thresholds_changed": false,
+  "dgp_changed": false,
+  "summary_sha256": "ea6e33a84b12dec54d6c699c5d36e37d8e5c76a01a49f274d62248be3f602860",
+  "world_rows_sha256": "516c5256659efb4dd3e9f99871f7854662c21761571412e27ae46472e1dbdb5b"
+}
