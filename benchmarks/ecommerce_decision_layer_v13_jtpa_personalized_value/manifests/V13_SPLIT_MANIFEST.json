@@ -1,0 +1,14 @@
+{
+  "development_count": 9025,
+  "development_id_hash": "1d79e8c68427f3e343663f96286b74ce5980a9833647e305933001dc7a8a6b09",
+  "development_share_rule": 0.6,
+  "hash_algorithm": "SHA256_FIRST_64_BITS_UNIFORM",
+  "participant_count": 15134,
+  "schema_version": 1,
+  "source_qualification_commit": "47f46a3594493dd8febc614d011d9bda0564d64c",
+  "split_hash": "7c4f1bcafd1488cf4b931c8cba948310e1239aa48b8e70e33d23bb04fe91f22f",
+  "split_salt": "EXERGI_V13_JTPA_60_40_V1",
+  "validation_count": 6109,
+  "validation_id_hash": "6f874dbcd31dc3aaadeb2a6567d8ea7a65dbb888ee5f2ca46b8ccce85f12fdfa",
+  "validation_outcomes_opened": false
+}
