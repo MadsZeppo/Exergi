@@ -1,0 +1,872 @@
+{
+  "access_control": {
+    "development_outcomes_opened": true,
+    "validation_outcomes_opened": false,
+    "validation_reveal_started": false
+  },
+  "best_challenger": "lgbm_t_learner",
+  "best_challenger_bootstrap": {
+    "lower_95": -181.19778784562993,
+    "replicates": 1000,
+    "seed": 1301,
+    "standard_error": 225.59521688961496,
+    "upper_95": 716.1106520147584
+  },
+  "best_static": "BAU_TREAT_NONE",
+  "cost_sensitivity_usd": [
+    0,
+    100,
+    250,
+    500,
+    750,
+    1000,
+    1500,
+    2000,
+    3000
+  ],
+  "development": {
+    "control_mean": 14561.956492859515,
+    "materiality_usd": 145.61956492859517,
+    "n": 9025,
+    "offer_mean": 14264.116062520785,
+    "raw_offer_minus_control": -297.8404303387306
+  },
+  "development_status": "V13_DEVELOPMENT_NO_PERSONALIZED_POLICY_EARNED_REVEAL",
+  "earned_validation_reveal": false,
+  "fairness_audit_best_challenger": {
+    "adult_men": {
+      "n": 2918,
+      "treatment_rate": 0.3283070596298835,
+      "value_vs_static_dr": 390.2936920796826
+    },
+    "adult_women": {
+      "n": 3459,
+      "treatment_rate": 0.4177507950274646,
+      "value_vs_static_dr": 379.4336062913645
+    },
+    "female_youth": {
+      "n": 1455,
+      "treatment_rate": 0.452233676975945,
+      "value_vs_static_dr": -12.254384738911476
+    },
+    "male_youth": {
+      "n": 1193,
+      "treatment_rate": 0.38139145012573344,
+      "value_vs_static_dr": -3.390471896044254
+    }
+  },
+  "features": [
+    "bfabeesl",
+    "bfassdeg",
+    "bfbacdeg",
+    "bfcaruse",
+    "bfcuremp",
+    "bfdayswk",
+    "bfedcmpt",
+    "bfeduca",
+    "bfeduged",
+    "bfemploy",
+    "bfgradhs",
+    "bfgrspay",
+    "bfhrslas",
+    "bfhrswrk",
+    "bfjbclub",
+    "bflookwk",
+    "bflvwork",
+    "bfmaster",
+    "bfnetpay",
+    "bfpayful",
+    "bfpaylas",
+    "bfpayprd",
+    "bfreaslv",
+    "bfstwork",
+    "bftecdip",
+    "bfuncomp",
+    "bfvococc",
+    "bfwage",
+    "bfwforpy",
+    "bfwkswrk",
+    "bfyrearn",
+    "site",
+    "trtmnt"
+  ],
+  "models": {
+    "cost_sensitive_dr_500": {
+      "break_even_offer_cost_usd": -109.62748624235066,
+      "cost_sensitivity_dr_value_vs_static": {
+        "0": -49.912392351226465,
+        "100": -95.44147822380265,
+        "1000": -505.2032510769882,
+        "1500": -732.8486804398691,
+        "2000": -960.4941098027499,
+        "250": -163.7351070326669,
+        "3000": -1415.7849685285119,
+        "500": -277.5578217141073,
+        "750": -391.3805363955478
+      },
+      "fold_value_vs_static": [
+        100.49571566517123,
+        -465.1146376433826,
+        -246.12053517766995,
+        465.3003866787591,
+        -104.12289127901008
+      ],
+      "gates": {
+        "beats_static_point": false,
+        "conservative_lower_bound_positive": false,
+        "ess": true,
+        "estimator_agreement": false,
+        "fold_stability": false,
+        "materiality": false,
+        "placebo": false,
+        "site_stability": false,
+        "timing_and_leakage": true,
+        "treatment_rate": true
+      },
+      "ipw_ess_control_action": 1633.999999999999,
+      "ipw_ess_treated_action": 2732.0,
+      "pre_placebo_pass": false,
+      "site_value_vs_static": {
+        "CC": -253.13791478209595,
+        "CI": 851.8593377643563,
+        "CV": 555.9893773902452,
+        "HF": 1916.5203358885735,
+        "IN": -861.4411106324126,
+        "JK": 327.3427419836377,
+        "LC": 1017.613495136161,
+        "MD": 164.2251416431955,
+        "MN": -332.6083476571149,
+        "NE": -687.6400185512196,
+        "PR": -25.88514271169903,
+        "SM": -223.3822377314573
+      },
+      "total_incremental_value_dr": -450459.3409698189,
+      "treatment_rate": 0.45529085872576175,
+      "versus_bau": {
+        "doubly_robust": {
+          "lower_95": -533.330957525078,
+          "p_value_two_sided": 0.8396322073913522,
+          "point": -49.912392351226465,
+          "standard_error": 246.6466572789069,
+          "upper_95": 433.50617282262505
+        },
+        "hajek_ipw": {
+          "lower_95": -529.3401928411821,
+          "p_value_two_sided": 0.8569476291139235,
+          "point": -44.58382619284748,
+          "standard_error": 247.32922159388184,
+          "upper_95": 440.17254045548714
+        }
+      },
+      "versus_best_static": {
+        "doubly_robust": {
+          "lower_95": -533.330957525078,
+          "p_value_two_sided": 0.8396322073913522,
+          "point": -49.912392351226465,
+          "standard_error": 246.6466572789069,
+          "upper_95": 433.50617282262505
+        },
+        "hajek_ipw": {
+          "lower_95": -529.3401928411821,
+          "p_value_two_sided": 0.8569476291139235,
+          "point": -44.58382619284748,
+          "standard_error": 247.32922159388184,
+          "upper_95": 440.17254045548714
+        }
+      }
+    },
+    "direct_dr_policy": {
+      "break_even_offer_cost_usd": -374.0550291072816,
+      "cost_sensitivity_dr_value_vs_static": {
+        "0": -181.24572213696868,
+        "100": -229.70001576577755,
+        "1000": -665.7886584250573,
+        "1500": -908.0601265691016,
+        "2000": -1150.331594713146,
+        "250": -302.3814562089908,
+        "3000": -1634.8745310012346,
+        "500": -423.517190281013,
+        "750": -544.6529243530351
+      },
+      "fold_value_vs_static": [
+        -118.70776749141504,
+        -612.1400277059255,
+        -306.26789229976805,
+        507.1165212757432,
+        -376.2294444634782
+      ],
+      "gates": {
+        "beats_static_point": false,
+        "conservative_lower_bound_positive": false,
+        "ess": true,
+        "estimator_agreement": false,
+        "fold_stability": false,
+        "materiality": false,
+        "placebo": false,
+        "site_stability": false,
+        "timing_and_leakage": true,
+        "treatment_rate": true
+      },
+      "ipw_ess_control_action": 1542.999999999999,
+      "ipw_ess_treated_action": 2905.0,
+      "pre_placebo_pass": false,
+      "site_value_vs_static": {
+        "CC": -149.95509759220442,
+        "CI": 632.8545842970394,
+        "CV": 515.9164382863447,
+        "HF": 1747.7194427266386,
+        "IN": -866.8452943494689,
+        "JK": -654.7936091504062,
+        "LC": 880.0748180909306,
+        "MD": -45.19685925418096,
+        "MN": -510.447580925969,
+        "NE": -603.3166203105409,
+        "PR": -284.0131735929403,
+        "SM": -312.058122598961
+      },
+      "total_incremental_value_dr": -1635742.6422861423,
+      "treatment_rate": 0.48454293628808864,
+      "versus_bau": {
+        "doubly_robust": {
+          "lower_95": -681.2843758403679,
+          "p_value_two_sided": 0.477446665902979,
+          "point": -181.24572213696868,
+          "standard_error": 255.12645010196127,
+          "upper_95": 318.79293156643064
+        },
+        "hajek_ipw": {
+          "lower_95": -669.9258939649985,
+          "p_value_two_sided": 0.5111493021664493,
+          "point": -168.1971872344111,
+          "standard_error": 255.98873789934893,
+          "upper_95": 333.5315194961764
+        }
+      },
+      "versus_best_static": {
+        "doubly_robust": {
+          "lower_95": -681.2843758403679,
+          "p_value_two_sided": 0.477446665902979,
+          "point": -181.24572213696868,
+          "standard_error": 255.12645010196127,
+          "upper_95": 318.79293156643064
+        },
+        "hajek_ipw": {
+          "lower_95": -669.9258939649985,
+          "p_value_two_sided": 0.5111493021664493,
+          "point": -168.1971872344111,
+          "standard_error": 255.98873789934893,
+          "upper_95": 333.5315194961764
+        }
+      }
+    },
+    "dr_learner": {
+      "break_even_offer_cost_usd": 591.6577066157846,
+      "cost_sensitivity_dr_value_vs_static": {
+        "0": 218.50361619395125,
+        "100": 181.57286827151358,
+        "1000": -150.80386303042548,
+        "1500": -335.45760264261384,
+        "2000": -520.1113422548021,
+        "250": 126.17674638785707,
+        "3000": -889.4188214791789,
+        "500": 33.849876581762885,
+        "750": -58.476993224331295
+      },
+      "fold_value_vs_static": [
+        772.6072462293373,
+        132.3791193427571,
+        -236.80764579107768,
+        596.830202568955,
+        -172.49084138021604
+      ],
+      "gates": {
+        "beats_static_point": true,
+        "conservative_lower_bound_positive": false,
+        "ess": true,
+        "estimator_agreement": true,
+        "fold_stability": false,
+        "materiality": true,
+        "placebo": false,
+        "site_stability": false,
+        "timing_and_leakage": true,
+        "treatment_rate": true
+      },
+      "ipw_ess_control_action": 1873.9999999999998,
+      "ipw_ess_treated_action": 2196.0,
+      "pre_placebo_pass": false,
+      "site_value_vs_static": {
+        "CC": -1069.8184752596662,
+        "CI": 390.86127216231364,
+        "CV": 823.8913530994316,
+        "HF": 1856.4321282299024,
+        "IN": 397.44989546641057,
+        "JK": 847.6910032508341,
+        "LC": -816.5375910467259,
+        "MD": 52.14840489689088,
+        "MN": -1219.5074744430515,
+        "NE": 457.5575226747336,
+        "PR": 420.54145458846614,
+        "SM": 191.2383639914768
+      },
+      "total_incremental_value_dr": 1971995.13615041,
+      "treatment_rate": 0.36930747922437673,
+      "versus_bau": {
+        "doubly_robust": {
+          "lower_95": -211.5049302042791,
+          "p_value_two_sided": 0.3192832462906676,
+          "point": 218.50361619395125,
+          "standard_error": 219.39614696498657,
+          "upper_95": 648.5121625921815
+        },
+        "hajek_ipw": {
+          "lower_95": -216.01412509442275,
+          "p_value_two_sided": 0.3263991894642816,
+          "point": 216.6368786075127,
+          "standard_error": 220.74436424068574,
+          "upper_95": 649.2878823094482
+        }
+      },
+      "versus_best_static": {
+        "doubly_robust": {
+          "lower_95": -211.5049302042791,
+          "p_value_two_sided": 0.3192832462906676,
+          "point": 218.50361619395125,
+          "standard_error": 219.39614696498657,
+          "upper_95": 648.5121625921815
+        },
+        "hajek_ipw": {
+          "lower_95": -216.01412509442275,
+          "p_value_two_sided": 0.3263991894642816,
+          "point": 216.6368786075127,
+          "standard_error": 220.74436424068574,
+          "upper_95": 649.2878823094482
+        }
+      }
+    },
+    "lgbm_t_learner": {
+      "break_even_offer_cost_usd": 690.9735139030847,
+      "cost_sensitivity_dr_value_vs_static": {
+        "0": 269.1925623139331,
+        "100": 230.23411356047046,
+        "1000": -120.39192522069294,
+        "1500": -315.18416898800604,
+        "2000": -509.97641275531896,
+        "250": 171.79644043027656,
+        "3000": -899.5609002899452,
+        "500": 74.40031854662007,
+        "750": -22.995803337036477
+      },
+      "fold_value_vs_static": [
+        651.3202558638231,
+        -6.092887024681272,
+        -188.67999947399457,
+        441.4487257132674,
+        447.9667164912509
+      ],
+      "gates": {
+        "beats_static_point": true,
+        "conservative_lower_bound_positive": false,
+        "ess": true,
+        "estimator_agreement": true,
+        "fold_stability": false,
+        "materiality": true,
+        "placebo": false,
+        "site_stability": false,
+        "timing_and_leakage": true,
+        "treatment_rate": true
+      },
+      "ipw_ess_control_action": 1829.9999999999998,
+      "ipw_ess_treated_action": 2335.0,
+      "pre_placebo_pass": false,
+      "site_value_vs_static": {
+        "CC": -752.3913384523969,
+        "CI": -236.03232046599118,
+        "CV": 1025.8566599845487,
+        "HF": 3142.4710120304553,
+        "IN": -274.4615105450062,
+        "JK": 1418.9057434757874,
+        "LC": -26.688262337968496,
+        "MD": -1029.433686412878,
+        "MN": 287.03316322255785,
+        "NE": 831.3441164876983,
+        "PR": 566.625055869125,
+        "SM": -314.95752550106704
+      },
+      "total_incremental_value_dr": 2429462.874883246,
+      "treatment_rate": 0.38958448753462604,
+      "versus_bau": {
+        "doubly_robust": {
+          "lower_95": -175.36588197081943,
+          "p_value_two_sided": 0.23530140221961227,
+          "point": 269.1925623139331,
+          "standard_error": 226.81970066356976,
+          "upper_95": 713.7510065986855
+        },
+        "hajek_ipw": {
+          "lower_95": -175.66685976243195,
+          "p_value_two_sided": 0.2342350608998237,
+          "point": 271.2193203181341,
+          "standard_error": 228.00734279075905,
+          "upper_95": 718.1055003987002
+        }
+      },
+      "versus_best_static": {
+        "doubly_robust": {
+          "lower_95": -175.36588197081943,
+          "p_value_two_sided": 0.23530140221961227,
+          "point": 269.1925623139331,
+          "standard_error": 226.81970066356976,
+          "upper_95": 713.7510065986855
+        },
+        "hajek_ipw": {
+          "lower_95": -175.66685976243195,
+          "p_value_two_sided": 0.2342350608998237,
+          "point": 271.2193203181341,
+          "standard_error": 228.00734279075905,
+          "upper_95": 718.1055003987002
+        }
+      }
+    },
+    "linear_t_learner": {
+      "break_even_offer_cost_usd": 540.0733714294547,
+      "cost_sensitivity_dr_value_vs_static": {
+        "0": 236.79449648159027,
+        "100": 192.9496211353299,
+        "1000": -201.6542569810136,
+        "1500": -420.8786337123155,
+        "2000": -640.1030104436174,
+        "250": 127.1823081159393,
+        "3000": -1078.5517639062214,
+        "500": 17.57011975028834,
+        "750": -92.04206861536261
+      },
+      "fold_value_vs_static": [
+        556.2197022422511,
+        -181.16073867170752,
+        -38.562291565655016,
+        754.4305805851062,
+        93.04522981795643
+      ],
+      "gates": {
+        "beats_static_point": true,
+        "conservative_lower_bound_positive": false,
+        "ess": true,
+        "estimator_agreement": true,
+        "fold_stability": false,
+        "materiality": true,
+        "placebo": false,
+        "site_stability": false,
+        "timing_and_leakage": true,
+        "treatment_rate": true
+      },
+      "ipw_ess_control_action": 1640.999999999999,
+      "ipw_ess_treated_action": 2587.0,
+      "pre_placebo_pass": false,
+      "site_value_vs_static": {
+        "CC": -497.4516107396156,
+        "CI": 804.7873701065361,
+        "CV": 127.703394057543,
+        "HF": 3137.452456759994,
+        "IN": -708.4030323494159,
+        "JK": 1117.0986261378375,
+        "LC": 831.9310165634273,
+        "MD": 320.6777791284428,
+        "MN": 111.5943461736636,
+        "NE": 1170.2997372624097,
+        "PR": 559.2284089341122,
+        "SM": -86.03069741031962
+      },
+      "total_incremental_value_dr": 2137070.330746352,
+      "treatment_rate": 0.43844875346260387,
+      "versus_bau": {
+        "doubly_robust": {
+          "lower_95": -237.08695317358462,
+          "p_value_two_sided": 0.3273936409316033,
+          "point": 236.79449648159027,
+          "standard_error": 241.78069260103314,
+          "upper_95": 710.6759461367651
+        },
+        "hajek_ipw": {
+          "lower_95": -228.26626882851525,
+          "p_value_two_sided": 0.30457334540775305,
+          "point": 251.10706140867478,
+          "standard_error": 244.58272397780047,
+          "upper_95": 730.4803916458648
+        }
+      },
+      "versus_best_static": {
+        "doubly_robust": {
+          "lower_95": -237.08695317358462,
+          "p_value_two_sided": 0.3273936409316033,
+          "point": 236.79449648159027,
+          "standard_error": 241.78069260103314,
+          "upper_95": 710.6759461367651
+        },
+        "hajek_ipw": {
+          "lower_95": -228.26626882851525,
+          "p_value_two_sided": 0.30457334540775305,
+          "point": 251.10706140867478,
+          "standard_error": 244.58272397780047,
+          "upper_95": 730.4803916458648
+        }
+      }
+    },
+    "policy_tree_depth_2": {
+      "break_even_offer_cost_usd": 394.87225243580605,
+      "cost_sensitivity_dr_value_vs_static": {
+        "0": 170.9435889492182,
+        "100": 127.65273022345642,
+        "1000": -261.9649983083996,
+        "1500": -478.4192919372083,
+        "2000": -694.8735855660173,
+        "250": 62.71644213481376,
+        "3000": -1127.782172823635,
+        "500": -45.510704679590674,
+        "750": -153.73785149399507
+      },
+      "fold_value_vs_static": [
+        218.62539223338067,
+        -434.09068739882434,
+        367.228345175269,
+        515.1947191633086,
+        187.7601755729568
+      ],
+      "gates": {
+        "beats_static_point": true,
+        "conservative_lower_bound_positive": false,
+        "ess": true,
+        "estimator_agreement": true,
+        "fold_stability": true,
+        "materiality": true,
+        "placebo": false,
+        "site_stability": false,
+        "timing_and_leakage": true,
+        "treatment_rate": true
+      },
+      "ipw_ess_control_action": 1688.9999999999993,
+      "ipw_ess_treated_action": 2585.0,
+      "pre_placebo_pass": false,
+      "site_value_vs_static": {
+        "CC": -1284.8874640081226,
+        "CI": 963.3490768141945,
+        "CV": 1484.1051080946781,
+        "HF": 2354.783158099671,
+        "IN": -485.88797592700524,
+        "JK": 1179.238790553683,
+        "LC": -179.32749842639993,
+        "MD": -1311.2591555542976,
+        "MN": -800.1462068502121,
+        "NE": 335.1756874878848,
+        "PR": 201.91570263633085,
+        "SM": 867.4894544857138
+      },
+      "total_incremental_value_dr": 1542765.8902666941,
+      "treatment_rate": 0.4329085872576177,
+      "versus_bau": {
+        "doubly_robust": {
+          "lower_95": -283.18017908133356,
+          "p_value_two_sided": 0.46064835729338116,
+          "point": 170.9435889492182,
+          "standard_error": 231.70005755851744,
+          "upper_95": 625.0673569797699
+        },
+        "hajek_ipw": {
+          "lower_95": -281.75156877300947,
+          "p_value_two_sided": 0.4545552275483411,
+          "point": 173.8322041051033,
+          "standard_error": 232.4449716789183,
+          "upper_95": 629.4159769832161
+        }
+      },
+      "versus_best_static": {
+        "doubly_robust": {
+          "lower_95": -283.18017908133356,
+          "p_value_two_sided": 0.46064835729338116,
+          "point": 170.9435889492182,
+          "standard_error": 231.70005755851744,
+          "upper_95": 625.0673569797699
+        },
+        "hajek_ipw": {
+          "lower_95": -281.75156877300947,
+          "p_value_two_sided": 0.4545552275483411,
+          "point": 173.8322041051033,
+          "standard_error": 232.4449716789183,
+          "upper_95": 629.4159769832161
+        }
+      }
+    },
+    "r_learner": {
+      "break_even_offer_cost_usd": 473.020013473614,
+      "cost_sensitivity_dr_value_vs_static": {
+        "0": 175.0567141276311,
+        "100": 138.04840387832363,
+        "1000": -195.02638836544372,
+        "1500": -380.0679396119811,
+        "2000": -565.1094908585185,
+        "250": 82.53593850436239,
+        "3000": -935.1925933515934,
+        "500": -9.984837118906313,
+        "750": -102.505612742175
+      },
+      "fold_value_vs_static": [
+        457.54293712573866,
+        32.86161390200393,
+        -105.54577716532256,
+        439.5627410976539,
+        50.862055678081724
+      ],
+      "gates": {
+        "beats_static_point": true,
+        "conservative_lower_bound_positive": false,
+        "ess": true,
+        "estimator_agreement": true,
+        "fold_stability": true,
+        "materiality": true,
+        "placebo": false,
+        "site_stability": false,
+        "timing_and_leakage": true,
+        "treatment_rate": true
+      },
+      "ipw_ess_control_action": 1852.9999999999998,
+      "ipw_ess_treated_action": 2182.0,
+      "pre_placebo_pass": false,
+      "site_value_vs_static": {
+        "CC": -1202.3747262271438,
+        "CI": 296.94373175344543,
+        "CV": 1071.0778424796488,
+        "HF": 2583.8898269416454,
+        "IN": -222.05303570273068,
+        "JK": 1410.1784817153348,
+        "LC": -467.20619978770344,
+        "MD": 144.0423820420434,
+        "MN": -134.41574796303266,
+        "NE": -251.26238835328542,
+        "PR": 631.8179226921138,
+        "SM": 32.12276716396304
+      },
+      "total_incremental_value_dr": 1579886.8450018705,
+      "treatment_rate": 0.3700831024930748,
+      "versus_bau": {
+        "doubly_robust": {
+          "lower_95": -256.25876951219584,
+          "p_value_two_sided": 0.4263316252041339,
+          "point": 175.0567141276311,
+          "standard_error": 220.06296393300514,
+          "upper_95": 606.372197767458
+        },
+        "hajek_ipw": {
+          "lower_95": -258.63702112858556,
+          "p_value_two_sided": 0.42664214552210966,
+          "point": 176.4818563252702,
+          "standard_error": 222.00350663890663,
+          "upper_95": 611.6007337791259
+        }
+      },
+      "versus_best_static": {
+        "doubly_robust": {
+          "lower_95": -256.25876951219584,
+          "p_value_two_sided": 0.4263316252041339,
+          "point": 175.0567141276311,
+          "standard_error": 220.06296393300514,
+          "upper_95": 606.372197767458
+        },
+        "hajek_ipw": {
+          "lower_95": -258.63702112858556,
+          "p_value_two_sided": 0.42664214552210966,
+          "point": 176.4818563252702,
+          "standard_error": 222.00350663890663,
+          "upper_95": 611.6007337791259
+        }
+      }
+    },
+    "simple_service_strategy_segment": {
+      "break_even_offer_cost_usd": -1048.0216247258388,
+      "cost_sensitivity_dr_value_vs_static": {
+        "0": -318.76114790830223,
+        "100": -349.1766603736762,
+        "1000": -622.9162725620419,
+        "1500": -774.9938348889116,
+        "2000": -927.0713972157814,
+        "250": -394.79992907173715,
+        "3000": -1231.226521869521,
+        "500": -470.838710235172,
+        "750": -546.8774913986069
+      },
+      "fold_value_vs_static": [
+        -552.7548563256274,
+        75.59077382219593,
+        -478.48441348119127,
+        0.0,
+        -638.1572435568881
+      ],
+      "gates": {
+        "beats_static_point": false,
+        "conservative_lower_bound_positive": false,
+        "ess": true,
+        "estimator_agreement": false,
+        "fold_stability": false,
+        "materiality": false,
+        "placebo": false,
+        "site_stability": false,
+        "timing_and_leakage": true,
+        "treatment_rate": true
+      },
+      "ipw_ess_control_action": 2111.9999999999995,
+      "ipw_ess_treated_action": 1846.0,
+      "pre_placebo_pass": false,
+      "site_value_vs_static": {
+        "CC": -1148.2128489816005,
+        "CI": -52.15143706246889,
+        "CV": -139.49936306432804,
+        "HF": 1011.4156061467214,
+        "IN": -551.6070468456627,
+        "JK": -264.5177137811482,
+        "LC": 414.44687488752146,
+        "MD": -247.49546197002135,
+        "MN": 260.6409470624763,
+        "NE": -322.31845417491786,
+        "PR": -814.3253034230247,
+        "SM": 70.1583584711669
+      },
+      "total_incremental_value_dr": -2876819.359872428,
+      "treatment_rate": 0.3041551246537396,
+      "versus_bau": {
+        "doubly_robust": {
+          "lower_95": -722.6447565637825,
+          "p_value_two_sided": 0.12189165134059013,
+          "point": -318.76114790830223,
+          "standard_error": 206.0668521673167,
+          "upper_95": 85.12246074717808
+        },
+        "hajek_ipw": {
+          "lower_95": -713.9618765219407,
+          "p_value_two_sided": 0.13158044057859883,
+          "point": -310.44545496824503,
+          "standard_error": 205.879508366777,
+          "upper_95": 93.0709665854506
+        }
+      },
+      "versus_best_static": {
+        "doubly_robust": {
+          "lower_95": -722.6447565637825,
+          "p_value_two_sided": 0.12189165134059013,
+          "point": -318.76114790830223,
+          "standard_error": 206.0668521673167,
+          "upper_95": 85.12246074717808
+        },
+        "hajek_ipw": {
+          "lower_95": -713.9618765219407,
+          "p_value_two_sided": 0.13158044057859883,
+          "point": -310.44545496824503,
+          "standard_error": 205.879508366777,
+          "upper_95": 93.0709665854506
+        }
+      }
+    },
+    "x_learner": {
+      "break_even_offer_cost_usd": 454.492646492975,
+      "cost_sensitivity_dr_value_vs_static": {
+        "0": 173.48777475549016,
+        "100": 135.3160296031356,
+        "1000": -208.22967676805555,
+        "1500": -399.0884025298284,
+        "2000": -589.9471282916013,
+        "250": 78.05841187460373,
+        "3000": -971.6645798151469,
+        "500": -17.370951006282695,
+        "750": -112.8003138871691
+      },
+      "fold_value_vs_static": [
+        794.6378828161982,
+        232.4631076545696,
+        -152.63099482917536,
+        189.98297825666245,
+        -197.01410012080427
+      ],
+      "gates": {
+        "beats_static_point": true,
+        "conservative_lower_bound_positive": false,
+        "ess": true,
+        "estimator_agreement": true,
+        "fold_stability": false,
+        "materiality": true,
+        "placebo": false,
+        "site_stability": false,
+        "timing_and_leakage": true,
+        "treatment_rate": true
+      },
+      "ipw_ess_control_action": 1825.9999999999998,
+      "ipw_ess_treated_action": 2260.0,
+      "pre_placebo_pass": false,
+      "site_value_vs_static": {
+        "CC": -925.3853009541211,
+        "CI": -1063.5995465395547,
+        "CV": 1118.6617343851135,
+        "HF": 1832.7533652029833,
+        "IN": -152.30477828366318,
+        "JK": 1275.8935094117408,
+        "LC": -577.1739187775878,
+        "MD": -690.2787156172407,
+        "MN": -923.2592340130603,
+        "NE": 641.9386264868297,
+        "PR": 880.8017225143756,
+        "SM": 14.410821653289913
+      },
+      "total_incremental_value_dr": 1565727.1671682987,
+      "treatment_rate": 0.3817174515235457,
+      "versus_bau": {
+        "doubly_robust": {
+          "lower_95": -262.6210620315409,
+          "p_value_two_sided": 0.43557324306040146,
+          "point": 173.48777475549016,
+          "standard_error": 222.50859721250077,
+          "upper_95": 609.5966115425211
+        },
+        "hajek_ipw": {
+          "lower_95": -249.58814772295597,
+          "p_value_two_sided": 0.3967225374829231,
+          "point": 190.13755314860464,
+          "standard_error": 224.35396994029526,
+          "upper_95": 629.8632540201652
+        }
+      },
+      "versus_best_static": {
+        "doubly_robust": {
+          "lower_95": -262.6210620315409,
+          "p_value_two_sided": 0.43557324306040146,
+          "point": 173.48777475549016,
+          "standard_error": 222.50859721250077,
+          "upper_95": 609.5966115425211
+        },
+        "hajek_ipw": {
+          "lower_95": -249.58814772295597,
+          "p_value_two_sided": 0.3967225374829231,
+          "point": 190.13755314860464,
+          "standard_error": 224.35396994029526,
+          "upper_95": 629.8632540201652
+        }
+      }
+    }
+  },
+  "primary_outcome": "SUM_UIERN01_TO_UIERN30_NOMINAL_USD",
+  "schema_version": 1,
+  "static_treat_all_vs_bau": {
+    "doubly_robust": {
+      "lower_95": -1025.2510824598814,
+      "p_value_two_sided": 0.3831808699050946,
+      "point": -315.7013038295317,
+      "standard_error": 362.0218454151137,
+      "upper_95": 393.8484748008181
+    },
+    "hajek_ipw": {
+      "lower_95": -1008.5730434978112,
+      "p_value_two_sided": 0.41144991170198975,
+      "point": -297.84043033872877,
+      "standard_error": 362.62534350898824,
+      "upper_95": 412.8921828203537
+    }
+  },
+  "unavailable_models": {
+    "honest_causal_forest": "DEPENDENCY_NOT_INSTALLED_AT_PREREGISTRATION"
+  }
+}

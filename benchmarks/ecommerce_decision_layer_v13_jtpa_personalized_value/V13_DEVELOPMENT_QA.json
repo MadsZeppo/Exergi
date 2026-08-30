@@ -1,0 +1,26 @@
+{
+  "access_control": {
+    "development_outcome_rows_opened": 9025,
+    "validation_outcome_bytes_opened": 0,
+    "validation_outcomes_opened": false,
+    "validation_reveal_started": false
+  },
+  "checks": {
+    "all_candidates_failed_pre_placebo_gate": true,
+    "best_static_is_bau": true,
+    "no_freeze_authorized": true,
+    "outcome_shuffle_completed": true,
+    "placebos_did_not_pass": true,
+    "treatment_shuffle_completed": true,
+    "validation_remains_closed": true
+  },
+  "input_hashes": {
+    "development_access": "e550a6024db14e3b1d841bee529a57eedea13c7341388021fca8b0e8441961e6",
+    "model_tournament": "ae37227b9979766f5402959aa122e47428522d65660ba7c9df1eb18884d68b67",
+    "placebo_results": "1eeb599e7a50ee310028f3ff991712f238fa83b9b6f79ef7a332ca6758baac98",
+    "source_manifest": "1a80d80ae88d692043c892fa0f82dc012d22413ff979343f8d5413836d50c142",
+    "split_manifest": "fd61c0932adb03c3f4def082bfbbd9323caa5f6f82b2e16d9d03ffecf09338fe"
+  },
+  "schema_version": 1,
+  "status": "V13_DEVELOPMENT_NO_PERSONALIZED_POLICY_EARNED_REVEAL"
+}

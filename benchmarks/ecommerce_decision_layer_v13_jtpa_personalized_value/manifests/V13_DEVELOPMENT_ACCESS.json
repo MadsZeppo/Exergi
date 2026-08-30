@@ -1,0 +1,19 @@
+{
+  "development_ids": 9025,
+  "development_outcome_rows_opened": 9025,
+  "read_audit": {
+    "data_offset": 3876,
+    "file_sha256": "ac0b4c26e41accea8d3906cf3fdce3a079c5fbf93da46144f0dd2db7ed35ef03",
+    "id_bytes_read_for_all_source_rows": 96024,
+    "outcome_bytes_per_selected_row": 120,
+    "outcome_rows_read": 9025,
+    "record_bytes": 134,
+    "selected_id_hash": "1d79e8c68427f3e343663f96286b74ce5980a9833647e305933001dc7a8a6b09",
+    "source_rows": 16004
+  },
+  "schema_version": 1,
+  "source_preregistration_commit": "54853cf7db0f2d0fe45f3a421be230ed3f4ce10f",
+  "validation_ids": 6109,
+  "validation_outcome_bytes_opened": 0,
+  "validation_outcomes_opened": false
+}
