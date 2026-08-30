@@ -1,0 +1,70 @@
+{
+  "acquisition": {
+    "downloaded_at_utc": "2026-08-30T10:47:35.615881+00:00",
+    "immutable_mode": "0444",
+    "raw_path": "data/raw/penn_bonus/source/PA_ReempBonus.zip",
+    "source_page": "https://www.upjohn.org/data-tools/employment-research-data-center/pennsylvania-reemployment-bonus-demonstration",
+    "url": "https://www.upjohn.org/sites/default/files/2019-02/PA_ReempBonus.zip"
+  },
+  "archive": {
+    "entry_count": 19,
+    "sha256": "9036c9a82a5ab69b580b6646a3749019924442b7c6d10e4224ab0b910a95ef53",
+    "size_bytes": 38555725,
+    "uncompressed_size_bytes": 103414929,
+    "zip_crc_test": "PASS"
+  },
+  "documents": {
+    "archive_executive_summary": {
+      "pages": 7,
+      "path": "cd/reports/Exec_summary.pdf",
+      "sha256": "f10245af138508a8d28338824ca4f844006b687fe36b530c7951db64eee21f86"
+    },
+    "archive_final_report": {
+      "identity": "PENNSYLVANIA_REEMPLOYMENT_BONUS_DEMONSTRATION",
+      "pages": 274,
+      "path": "cd/reports/Final_report.pdf",
+      "sha256": "14ad487814dd70ceecd0e085c87a2ff573c497b2818b59bd8a9ce23b505ff943"
+    },
+    "archive_public_use_documentation": {
+      "pages": 160,
+      "path": "cd/reports/PARB_documentation.pdf",
+      "sha256": "481bde078f3c8bdb47c74996b59ad47b0d70cd01057cdc8c61970db91b9a2661"
+    },
+    "external_executive_summary": {
+      "pages": 7,
+      "sha256": "85cd81fefc1345899457e723cbedfe1b71b5af11e4b3799aa3a3758311dfa1a5",
+      "size_bytes": 357054,
+      "url": "https://www.upjohn.org/sites/default/files/2019-02/prbdexecsumm.pdf"
+    },
+    "external_final_report_link_mismatch": {
+      "actual_identity": "WASHINGTON_REEMPLOYMENT_BONUS_EXPERIMENT",
+      "expected_identity": "PENNSYLVANIA_REEMPLOYMENT_BONUS_DEMONSTRATION",
+      "excluded_from_v12_evidence": true,
+      "pages": 369,
+      "sha256": "a1f8aec0785128154c1cc357a7b921dea9fc6d288f2f08f96a43f70ac4dc5889",
+      "size_bytes": 14706355,
+      "url": "https://www.upjohn.org/sites/default/files/2019-02/prbdreport.pdf"
+    }
+  },
+  "extracted_core_files": {
+    "Recsfile.dta": "9b94e2c826313977cd13e70c05497372683a7cb1c3b8bac47b77a358fd142fac",
+    "Recsfile_contents.pdf": "38bc881051a18361b89d9072b22b37cdbb5b32c5c95f2bf7ff54d848c5a36bae",
+    "Recsfile_means.pdf": "8f5cdc69d600e624c198d113d0940b02373f74cfa0b0f19ad6a873430752f166",
+    "Survfile.dta": "25c5b5bec60010749a9053dcdf929d7b0e3821a02fba6c126976ffa8aa471b66",
+    "Survfile_contents.pdf": "f859badd643d365df18616a1c6e5a350a0fc9f14e40caceb737dca0d96ee1aa6",
+    "Survfile_means.pdf": "536a388a6b680c4c0c83ec756839e5de283b849b699d339bc55162aa6841eff9",
+    "recsfile.txt": "01b1e7203f1b6768003485c56e0f965c17410268c0770cc010a585c3049f0006",
+    "survfile.txt": "0ac1e05c183b42fd7f295536b58367ffff93fbfd6b59bcaeb85b97ac86f25816"
+  },
+  "license": {
+    "explicit_license_found": false,
+    "note": "The Upjohn page provides a download disclaimer, not an explicit reuse license.",
+    "rights_inferred": false
+  },
+  "publisher": "W.E. Upjohn Institute for Employment Research",
+  "schema_version": 1,
+  "source_page": {
+    "sha256": "5fa62aeecf9a5d1ee8bafb1afaa9d039b6227166c9dad2ffc3157b6e5153886a",
+    "size_bytes": 75558
+  }
+}

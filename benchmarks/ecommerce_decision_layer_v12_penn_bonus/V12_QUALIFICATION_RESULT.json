@@ -1,0 +1,39 @@
+{
+  "access_control": {
+    "development_outcome_rows_opened": false,
+    "freeze_created": false,
+    "model_selection_performed": false,
+    "preregistration_created": false,
+    "raw_outcome_values_analyzed": false,
+    "validation_outcomes_opened": false,
+    "validation_reveal_started": false
+  },
+  "blocking_reasons": [
+    "PRIMARY_RECORDS_FILE_HAS_NO_PERSISTENT_CLAIMANT_ID",
+    "ONE_ASSIGNMENT_PER_CLAIMANT_CANNOT_BE_AUDITED",
+    "CLAIMANT_LEVEL_HASH_SPLIT_CANNOT_BE_CONSTRUCTED",
+    "SURVEY_ID_CANNOT_JOIN_TO_PRIMARY_RECORDS",
+    "SURVEY_SAMPLE_OVERSAMPLED_POST_TREATMENT_BONUS_RECIPIENTS",
+    "TOTAL_UI_BENEFITS_ACTUALLY_PAID_NOT_EXPLICITLY_DOCUMENTED_AS_A_UNIT_LEVEL_FIELD"
+  ],
+  "claim_authority": "NONE",
+  "documentation_findings": {
+    "actual_bonus_payment_field": "bonusamt",
+    "administrative_cost_unit_level_observed": false,
+    "assignment_procedure_documented": true,
+    "assignment_unit": "UI_CLAIMANT",
+    "control_mapping": "tg=0",
+    "exact_per_claimant_assignment_probability_released": false,
+    "primary_records_claimant_id_released": false,
+    "random_assignment_documented": true,
+    "survey_id_released": true,
+    "survey_sampling_ignorable_for_policy_evaluation": false,
+    "treatment_mapping_documented": true
+  },
+  "final_status": "V12_DATA_NOT_CAUSALLY_QUALIFIED",
+  "integrity_deviations": [],
+  "official_zip_sha256": "9036c9a82a5ab69b580b6646a3749019924442b7c6d10e4224ab0b910a95ef53",
+  "qualified": false,
+  "qualification_completed_at_utc": "2026-08-30T11:25:00+00:00",
+  "schema_version": 1
+}

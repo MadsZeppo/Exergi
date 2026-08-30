@@ -44,6 +44,10 @@ benchmarks/ecommerce_decision_layer_v9_concealing_prices/**/*.pyc
 !benchmarks/ecommerce_decision_layer_v10_mtlift/**
 benchmarks/ecommerce_decision_layer_v10_mtlift/**/__pycache__/
 benchmarks/ecommerce_decision_layer_v10_mtlift/**/*.pyc
+!benchmarks/ecommerce_decision_layer_v12_penn_bonus/
+!benchmarks/ecommerce_decision_layer_v12_penn_bonus/**
+benchmarks/ecommerce_decision_layer_v12_penn_bonus/**/__pycache__/
+benchmarks/ecommerce_decision_layer_v12_penn_bonus/**/*.pyc
 
 # OS / System Files
 .DS_Store

@@ -1,0 +1,25 @@
+{
+  "access_boundary": "HEADER_AND_METADATA_ONLY",
+  "records": {
+    "assignment_column": "tg",
+    "column_count": 189,
+    "header_sha256": "c8eaffadb1d75d647b964521704535c73dca5d8e260960b33af6c9e159858615",
+    "identifier_column": null,
+    "observations": 17513,
+    "one_assignment_per_claimant_auditable": false,
+    "persistent_claimant_id_present": false,
+    "source_file": "recsfile.txt"
+  },
+  "schema_version": 1,
+  "survey": {
+    "assignment_column": "tg",
+    "column_count": 641,
+    "header_sha256": "c29e3aa0530e6b7b515bf1481473894e33c0c25217d9e71a4221639294e84508",
+    "identifier_column": "id",
+    "observations": 5678,
+    "post_treatment_bonus_recipient_oversampling": true,
+    "random_sample": false,
+    "records_join_key_present": false,
+    "usable_for_primary_policy_evaluation": false
+  }
+}
