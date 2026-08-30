@@ -52,6 +52,10 @@ benchmarks/ecommerce_decision_layer_v12_penn_bonus/**/*.pyc
 !benchmarks/ecommerce_decision_layer_v13_jtpa_personalized_value/**
 benchmarks/ecommerce_decision_layer_v13_jtpa_personalized_value/**/__pycache__/
 benchmarks/ecommerce_decision_layer_v13_jtpa_personalized_value/**/*.pyc
+!benchmarks/ecommerce_decision_layer_v14_multichannel_proof/
+!benchmarks/ecommerce_decision_layer_v14_multichannel_proof/**
+benchmarks/ecommerce_decision_layer_v14_multichannel_proof/**/__pycache__/
+benchmarks/ecommerce_decision_layer_v14_multichannel_proof/**/*.pyc
 
 # OS / System Files
 .DS_Store

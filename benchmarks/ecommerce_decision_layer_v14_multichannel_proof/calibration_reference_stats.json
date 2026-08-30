@@ -1,0 +1,142 @@
+{
+  "calibration_only_not_causal_truth": true,
+  "completejourney": {
+    "customer_concentration": {
+      "top_10pct_sales_share": 0.35140834448601277,
+      "top_1pct_sales_share": 0.0626570670220378
+    },
+    "customers": {
+      "mean_customer_value": 1861.498412312673,
+      "mean_orders": 63.12191170514378,
+      "median_customer_value": 1210.020000000001,
+      "median_orders": 43.0,
+      "p10_orders": 9.0,
+      "p90_orders": 137.0,
+      "p99_orders": 334.9600000000005
+    },
+    "duplicates": {
+      "exact_duplicate_excess_rows": 0,
+      "exact_duplicate_groups": 0
+    },
+    "interpurchase_time": {
+      "median_days": 2.0,
+      "p10_days": 0.0,
+      "p90_days": 12.0
+    },
+    "monetary_authority": "OBSERVED_SALES_AND_DISCOUNTS_NOT_PROFIT",
+    "orders": {
+      "mean_discount_share": 0.13428192849642234,
+      "mean_lines": 9.427820697089471,
+      "mean_order_value": 29.49052653868435,
+      "median_lines": 5.0,
+      "median_order_value": 17.5,
+      "p10_order_value": 2.88,
+      "p90_order_value": 71.14,
+      "p99_order_value": 175.39649999999995
+    },
+    "population": {
+      "customer_count": 2469,
+      "discount_value": 822553.1899988878,
+      "line_count": 1469307,
+      "max_week": 53,
+      "min_week": 1,
+      "order_count": 155848,
+      "product_count": 68509,
+      "sales_value": 4596039.580028254
+    },
+    "quality": {
+      "missing_customer": 0,
+      "missing_order": 0,
+      "missing_product": 0,
+      "missing_quantity": 0,
+      "missing_sales_value": 0,
+      "missing_timestamp": 0,
+      "negative_quantity_lines": 0,
+      "negative_sales_lines": 0,
+      "unparseable_timestamps": 0,
+      "zero_quantity_lines": 8869,
+      "zero_sales_lines": 11226
+    },
+    "return_authority": "NO_AUTHORITATIVE_RETURN_FIELD",
+    "seasonality": {
+      "max_week_index": 1.3053025339699311,
+      "mean_weekly_sales": 86717.72792452971,
+      "min_week_index": 0.12082304565357702,
+      "weekly_sales_cv": 0.14085472015059783
+    },
+    "time_semantics": "OBSERVED_TRANSACTION_TIMESTAMP_AND_WEEK_NUMBER",
+    "unit_of_observation": "ITEM_LINE_IN_RETAIL_BASKET"
+  },
+  "online_retail_ii": {
+    "customer_concentration": {
+      "top_10pct_net_value_share": 0.6373809253643659,
+      "top_1pct_net_value_share": 0.31424611552178994
+    },
+    "customers": {
+      "mean_customer_value": 2801.79945944127,
+      "mean_orders": 7.552339279703803,
+      "median_customer_value": 843.9700000000001,
+      "median_orders": 4.0,
+      "p10_orders": 1.0,
+      "p90_orders": 17.0,
+      "p99_orders": 56.590000000000146
+    },
+    "duplicates": {
+      "exact_duplicate_excess_rows": 12133,
+      "exact_duplicate_groups": 11297
+    },
+    "interpurchase_time": {
+      "median_days": 25.0,
+      "p10_days": 0.0,
+      "p90_days": 135.0
+    },
+    "monetary_authority": "OBSERVED_UNIT_PRICE_TIMES_QUANTITY_NOT_PROFIT",
+    "orders": {
+      "cancellation_order_share": 0.1546207205191318,
+      "mean_lines": 23.113574201517558,
+      "mean_order_value": 523.3074972677599,
+      "median_order_value": 304.3100000000002,
+      "p10_order_value": 61.199999999999996,
+      "p90_order_value": 949.0540000000005,
+      "p99_order_value": 4542.057999999957
+    },
+    "population": {
+      "cancellation_invoice_line_share": 0.018263565339511754,
+      "customer_count": 5942,
+      "line_count": 1067371,
+      "max_timestamp": "2011-12-09T12:50:00+00:00",
+      "min_timestamp": "2009-12-01T07:45:00+00:00",
+      "order_count": 53628,
+      "product_count": 5305
+    },
+    "quality": {
+      "cancellation_invoices": 8292,
+      "cancellation_lines": 19494,
+      "missing_customer": 243007,
+      "missing_description": 4382,
+      "missing_order": 0,
+      "missing_product": 0,
+      "missing_quantity": 0,
+      "missing_timestamp": 0,
+      "missing_unit_price": 0,
+      "negative_price_lines": 5,
+      "negative_quantity_lines": 22950,
+      "zero_price_lines": 6202,
+      "zero_quantity_lines": 0
+    },
+    "return_authority": "CANCELLATION_PROXY_NOT_MATURE_PHYSICAL_RETURN",
+    "time_semantics": "OBSERVED_INVOICE_TIMESTAMP_UTC_NORMALIZED",
+    "unit_of_observation": "ITEM_LINE_IN_INVOICE_OR_CANCELLATION"
+  },
+  "schema_version": 1,
+  "unsupported_calibrations": [
+    "causal_treatment_effects",
+    "channel_assignment_effects",
+    "cogs",
+    "payment_fees",
+    "fulfilment_costs",
+    "shipping_costs",
+    "mature_physical_returns",
+    "contribution_profit"
+  ]
+}

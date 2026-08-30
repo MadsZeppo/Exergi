@@ -1,0 +1,9 @@
+target,source,use
+order_value,"completejourney,online_retail_ii",lognormal family and quantile bounds
+order_frequency,"completejourney,online_retail_ii",lifecycle purchase intensity
+basket_lines,"completejourney,online_retail_ii",compound order size
+discount_share,completejourney,promotion and cannibalization calibration
+cancellation_share,online_retail_ii,return/refund marginal proxy only
+weekly_seasonality,completejourney,observable demand index bounds
+treatment_effect,none,synthetic evaluator truth; never source-estimated
+cogs_and_fees,none,declared preregistered family-specific synthetic costs

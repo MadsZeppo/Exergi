@@ -1,0 +1,224 @@
+{
+  "authority": "AGGREGATE_REALITY_CALIBRATION_ONLY",
+  "calibration_statistics": {
+    "calibration_only_not_causal_truth": true,
+    "completejourney": {
+      "customer_concentration": {
+        "top_10pct_sales_share": 0.35140834448601277,
+        "top_1pct_sales_share": 0.0626570670220378
+      },
+      "customers": {
+        "mean_customer_value": 1861.498412312673,
+        "mean_orders": 63.12191170514378,
+        "median_customer_value": 1210.020000000001,
+        "median_orders": 43.0,
+        "p10_orders": 9.0,
+        "p90_orders": 137.0,
+        "p99_orders": 334.9600000000005
+      },
+      "duplicates": {
+        "exact_duplicate_excess_rows": 0,
+        "exact_duplicate_groups": 0
+      },
+      "interpurchase_time": {
+        "median_days": 2.0,
+        "p10_days": 0.0,
+        "p90_days": 12.0
+      },
+      "monetary_authority": "OBSERVED_SALES_AND_DISCOUNTS_NOT_PROFIT",
+      "orders": {
+        "mean_discount_share": 0.13428192849642234,
+        "mean_lines": 9.427820697089471,
+        "mean_order_value": 29.49052653868435,
+        "median_lines": 5.0,
+        "median_order_value": 17.5,
+        "p10_order_value": 2.88,
+        "p90_order_value": 71.14,
+        "p99_order_value": 175.39649999999995
+      },
+      "population": {
+        "customer_count": 2469,
+        "discount_value": 822553.1899988878,
+        "line_count": 1469307,
+        "max_week": 53,
+        "min_week": 1,
+        "order_count": 155848,
+        "product_count": 68509,
+        "sales_value": 4596039.580028254
+      },
+      "quality": {
+        "missing_customer": 0,
+        "missing_order": 0,
+        "missing_product": 0,
+        "missing_quantity": 0,
+        "missing_sales_value": 0,
+        "missing_timestamp": 0,
+        "negative_quantity_lines": 0,
+        "negative_sales_lines": 0,
+        "unparseable_timestamps": 0,
+        "zero_quantity_lines": 8869,
+        "zero_sales_lines": 11226
+      },
+      "return_authority": "NO_AUTHORITATIVE_RETURN_FIELD",
+      "seasonality": {
+        "max_week_index": 1.3053025339699311,
+        "mean_weekly_sales": 86717.72792452971,
+        "min_week_index": 0.12082304565357702,
+        "weekly_sales_cv": 0.14085472015059783
+      },
+      "time_semantics": "OBSERVED_TRANSACTION_TIMESTAMP_AND_WEEK_NUMBER",
+      "unit_of_observation": "ITEM_LINE_IN_RETAIL_BASKET"
+    },
+    "online_retail_ii": {
+      "customer_concentration": {
+        "top_10pct_net_value_share": 0.6373809253643659,
+        "top_1pct_net_value_share": 0.31424611552178994
+      },
+      "customers": {
+        "mean_customer_value": 2801.79945944127,
+        "mean_orders": 7.552339279703803,
+        "median_customer_value": 843.9700000000001,
+        "median_orders": 4.0,
+        "p10_orders": 1.0,
+        "p90_orders": 17.0,
+        "p99_orders": 56.590000000000146
+      },
+      "duplicates": {
+        "exact_duplicate_excess_rows": 12133,
+        "exact_duplicate_groups": 11297
+      },
+      "interpurchase_time": {
+        "median_days": 25.0,
+        "p10_days": 0.0,
+        "p90_days": 135.0
+      },
+      "monetary_authority": "OBSERVED_UNIT_PRICE_TIMES_QUANTITY_NOT_PROFIT",
+      "orders": {
+        "cancellation_order_share": 0.1546207205191318,
+        "mean_lines": 23.113574201517558,
+        "mean_order_value": 523.3074972677599,
+        "median_order_value": 304.3100000000002,
+        "p10_order_value": 61.199999999999996,
+        "p90_order_value": 949.0540000000005,
+        "p99_order_value": 4542.057999999957
+      },
+      "population": {
+        "cancellation_invoice_line_share": 0.018263565339511754,
+        "customer_count": 5942,
+        "line_count": 1067371,
+        "max_timestamp": "2011-12-09T12:50:00+00:00",
+        "min_timestamp": "2009-12-01T07:45:00+00:00",
+        "order_count": 53628,
+        "product_count": 5305
+      },
+      "quality": {
+        "cancellation_invoices": 8292,
+        "cancellation_lines": 19494,
+        "missing_customer": 243007,
+        "missing_description": 4382,
+        "missing_order": 0,
+        "missing_product": 0,
+        "missing_quantity": 0,
+        "missing_timestamp": 0,
+        "missing_unit_price": 0,
+        "negative_price_lines": 5,
+        "negative_quantity_lines": 22950,
+        "zero_price_lines": 6202,
+        "zero_quantity_lines": 0
+      },
+      "return_authority": "CANCELLATION_PROXY_NOT_MATURE_PHYSICAL_RETURN",
+      "time_semantics": "OBSERVED_INVOICE_TIMESTAMP_UTC_NORMALIZED",
+      "unit_of_observation": "ITEM_LINE_IN_INVOICE_OR_CANCELLATION"
+    },
+    "schema_version": 1,
+    "unsupported_calibrations": [
+      "causal_treatment_effects",
+      "channel_assignment_effects",
+      "cogs",
+      "payment_fees",
+      "fulfilment_costs",
+      "shipping_costs",
+      "mature_physical_returns",
+      "contribution_profit"
+    ]
+  },
+  "causal_truth_imported": false,
+  "cross_source_entities_joined": false,
+  "qualified_backbones": 2,
+  "schema_version": 1,
+  "source_snapshot": {
+    "qualification": "V14_REALITY_CALIBRATION_QUALIFIED",
+    "qualified_backbones": 2,
+    "retrieval_policy": "PREEXISTING_RAW_SNAPSHOT_NO_NETWORK_REDOWNLOAD",
+    "schema_version": 1,
+    "sources": {
+      "completejourney": {
+        "authority": "CRAN package sourced from 84.51 Degrees Complete Journey 2.0",
+        "authority_url": "https://cran.r-project.org/package=completejourney",
+        "bytes": 3451145,
+        "dataset_origin_url": "https://www.8451.com/area51",
+        "independence_group": "84_51_COMPLETE_JOURNEY",
+        "license": "CC0",
+        "limitations": [
+          "NO_COGS_OR_CONTRIBUTION_PROFIT",
+          "NO_AUTHORITATIVE_RETURN_FIELD",
+          "CAMPAIGN_RECEIPT_IS_NOT_RANDOMIZED_ASSIGNMENT",
+          "ONE_GROCERY_RETAIL_CONTEXT",
+          "CHANNEL_IDENTITY_NOT_OBSERVED"
+        ],
+        "local_archive": "data/raw/dunnhumby/complete-journey/completejourney_1.1.0.tar.gz",
+        "observed_schema": [
+          "HOUSEHOLD_KEY",
+          "STORE_ID",
+          "BASKET_ID",
+          "PRODUCT_ID",
+          "QUANTITY",
+          "SALES_VALUE",
+          "RETAIL_DISC",
+          "COUPON_DISC",
+          "COUPON_MATCH_DISC",
+          "WEEK_NO",
+          "TRANSACTION_TIMESTAMP",
+          "DAY"
+        ],
+        "processed_rows": 1469307,
+        "read_only": true,
+        "retrieved_at": "2026-08-25T19:09:17.871828+00:00",
+        "sha256": "3ab70c37cc1fae797ae4b135b29acada5b56eb7eec32e1631b9fbe7c5abd4b7b",
+        "transaction_extract_sha256": "f4c396be1f82dc82b675bc1f8372d8386f63c464a98215701e77b47b70f7b4ec"
+      },
+      "online_retail_ii": {
+        "authority": "UCI Machine Learning Repository",
+        "authority_url": "https://archive.ics.uci.edu/dataset/502/online+retail+ii",
+        "bytes": 45622418,
+        "doi": "10.24432/C5CG6D",
+        "independence_group": "UCI_UK_NONSTORE_RETAILER",
+        "license": "CC BY 4.0",
+        "limitations": [
+          "NO_COGS_OR_CONTRIBUTION_PROFIT",
+          "CANCELLATION_IS_NOT_MATURE_PHYSICAL_RETURN",
+          "NO_RANDOMIZED_ASSIGNMENT",
+          "CUSTOMER_ID_MISSING_FOR_MANY_LINES",
+          "CHANNEL_IDENTITY_NOT_OBSERVED"
+        ],
+        "local_archive": "data/raw/uci/online-retail-ii/online-retail-ii.zip",
+        "observed_schema": [
+          "Invoice",
+          "StockCode",
+          "Description",
+          "Quantity",
+          "InvoiceDate",
+          "Price",
+          "Customer ID",
+          "Country"
+        ],
+        "processed_rows": 1067371,
+        "read_only": true,
+        "retrieved_at": "2026-08-25T18:07:31.728694+00:00",
+        "sha256": "572e36277c2390fbfde10664750731e0a86f55e33470d91919085f0408e67bfb",
+        "xlsx_sha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980"
+      }
+    }
+  },
+  "synthetic_outcomes_generated": false
+}

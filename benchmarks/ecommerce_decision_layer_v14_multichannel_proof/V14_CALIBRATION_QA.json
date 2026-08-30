@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "aggregate_only": true,
+    "completejourney_row_count_matches_provenance": true,
+    "independent_backbones_gte_2": true,
+    "no_causal_truth_imported": true,
+    "no_cross_source_entity_join": true,
+    "no_synthetic_outcomes": true,
+    "online_retail_row_count_matches_provenance": true,
+    "raw_archives_read_only": true
+  },
+  "input_hashes": {
+    "completejourney": "3ab70c37cc1fae797ae4b135b29acada5b56eb7eec32e1631b9fbe7c5abd4b7b",
+    "online_retail_ii": "572e36277c2390fbfde10664750731e0a86f55e33470d91919085f0408e67bfb"
+  },
+  "phase": "REALITY_CALIBRATION_ONLY",
+  "schema_version": 1,
+  "status": "PASS"
+}
