@@ -40,12 +40,17 @@ def test_render_blueprint_has_no_secret_values_and_uses_private_database() -> No
     service = blueprint["services"][0]
     variables = {item["key"]: item for item in service["envVars"]}
 
+    assert service["plan"] == "free"
     assert service["healthCheckPath"] == "/healthz"
-    assert service["preDeployCommand"] == "uv run alembic upgrade head"
+    assert "preDeployCommand" not in service
+    assert service["startCommand"].startswith(
+        "uv run alembic upgrade head && exec uv run uvicorn "
+    )
     assert variables["DATABASE_URL"]["fromDatabase"]["property"] == "connectionString"
     assert variables["PGSSLMODE"] == {"key": "PGSSLMODE", "value": "require"}
     for key in ("SHOPIFY_CLIENT_SECRET", "SHOPIFY_TOKEN_ENCRYPTION_KEY"):
         assert variables[key] == {"key": key, "sync": False}
+    assert blueprint["databases"][0]["plan"] == "free"
     assert blueprint["databases"][0]["ipAllowList"] == []
 
 

@@ -38,7 +38,7 @@ def create_app(service: MerchantValidationService | None = None) -> FastAPI:
 
     @app.get("/healthz", include_in_schema=False)
     def health() -> dict[str, str]:
-        """Render liveness check; migration failure is handled by the pre-deploy command."""
+        """Render liveness check; migration failure prevents the API process from starting."""
         return {"status": "ok"}
 
     def authorize(merchant_id: UUID, supplied: str | None) -> None:
