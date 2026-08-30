@@ -154,7 +154,6 @@ def decision_batch(
         merchant_id=pool.merchant_id,
         family=pool.family,
         week=week,
-        world_family=world,
         customer_ids=pool.customer_ids[indices],
         features=x,
         feature_names=pool.feature_names,

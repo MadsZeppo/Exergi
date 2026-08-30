@@ -30,6 +30,7 @@ FORBIDDEN_POLICY_KEYS = frozenset(
         "future_returns",
         "response_parameters",
         "oracle_value",
+        "world_family",
     }
 )
 
@@ -61,7 +62,6 @@ class ObservedDecisionBatch:
     merchant_id: str
     family: str
     week: int
-    world_family: str
     customer_ids: np.ndarray
     features: np.ndarray
     feature_names: tuple[str, ...]
@@ -74,7 +74,6 @@ class ObservedDecisionBatch:
             "merchant_id": self.merchant_id,
             "family": self.family,
             "week": self.week,
-            "world_family": self.world_family,
             "customer_ids": self.customer_ids.tolist(),
             "features": self.features.tolist(),
             "feature_names": list(self.feature_names),

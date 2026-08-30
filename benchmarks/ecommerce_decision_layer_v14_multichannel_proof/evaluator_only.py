@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from .dgp import FAMILY_PARAMETERS, merchant_spec
+from .dgp import FAMILY_PARAMETERS, merchant_spec, world_for_week
 from .observed import ACTION_INDEX, ACTION_NAMES, LoggedDecisionBatch, ObservedDecisionBatch
 
 DIRECT_COST = np.asarray([0.0, 0.02, 0.03, 0.06, 0.07, 0.02, 0.45, 0.04, 0.48, 0.0])
@@ -103,6 +103,7 @@ def potential_outcomes(batch: ObservedDecisionBatch) -> OracleBatch:
     truth_seed = int(spec["truth_seed"])
     rng = np.random.default_rng(truth_seed + batch.week)
     n, actions = len(batch.customer_ids), len(ACTION_NAMES)
+    world = world_for_week(batch.week)
     latent_probabilities = [
         0.18,
         0.16,
@@ -130,7 +131,7 @@ def potential_outcomes(batch: ObservedDecisionBatch) -> OracleBatch:
         - 0.35 * x[:, 0]
         + 0.18 * x[:, -1]
     )
-    effect = _world_effect(batch.world_family, x, latent)
+    effect = _world_effect(world, x, latent)
     purchase_probability = 1 / (1 + np.exp(-(baseline_logit[:, None] + effect)))
     purchase_draw = rng.random(n)[:, None]
     purchase = purchase_draw < purchase_probability
@@ -157,11 +158,11 @@ def potential_outcomes(batch: ObservedDecisionBatch) -> OracleBatch:
     restocking = cogs * returned * 0.08
     channel = np.broadcast_to(DIRECT_COST, (n, actions)).copy()
     switching = purchase * ((np.arange(actions) == ACTION_INDEX["EMAIL_PLUS_RETARGETING"]) * 0.12)
-    if batch.world_family == "DISCOUNT_CANNIBALIZATION":
+    if world == "DISCOUNT_CANNIBALIZATION":
         discounts[:, [2, 4]] += gross[:, [2, 4]] * 0.08
-    if batch.world_family == "PULL_FORWARD":
+    if world == "PULL_FORWARD":
         switching[:, 1:9] += gross[:, 1:9] * 0.12
-    if batch.world_family == "RETURN_DRIVEN_REVERSAL":
+    if world == "RETURN_DRIVEN_REVERSAL":
         refunds[:, [2, 4]] = np.maximum(refunds[:, [2, 4]], gross[:, [2, 4]] * 0.42)
     cp = (
         gross
@@ -199,7 +200,7 @@ def potential_outcomes(batch: ObservedDecisionBatch) -> OracleBatch:
     for component in components:
         component[:, suppression] = component[:, bau]
     cp[~batch.eligible_actions] = -np.inf
-    if batch.world_family == "INCOMPLETE_COSTS":
+    if world == "INCOMPLETE_COSTS":
         cp[~batch.cost_complete] = np.nan
     best = np.nanargmax(np.where(np.isfinite(cp), cp, -np.inf), axis=1).astype(np.int8)
     return OracleBatch(
@@ -227,11 +228,12 @@ def randomized_log(batch: ObservedDecisionBatch) -> tuple[LoggedDecisionBatch, O
     spec = merchant_spec(batch.merchant_id)
     rng = np.random.default_rng(int(spec["assignment_seed"]) + batch.week)
     n = len(batch.customer_ids)
+    world = world_for_week(batch.week)
     assignment = np.empty(n, dtype=np.int8)
     propensity = np.empty(n, dtype=float)
     for row in range(n):
         eligible = np.flatnonzero(batch.eligible_actions[row] & batch.cost_complete[row])
-        if batch.world_family == "PROPENSITY_SUPPORT_FAILURE":
+        if world == "PROPENSITY_SUPPORT_FAILURE":
             probabilities = np.full(len(eligible), 1 / len(eligible))
             if ACTION_INDEX["EMAIL_REMINDER"] in eligible:
                 target = int(np.flatnonzero(eligible == ACTION_INDEX["EMAIL_REMINDER"])[0])
@@ -245,7 +247,7 @@ def randomized_log(batch: ObservedDecisionBatch) -> tuple[LoggedDecisionBatch, O
         propensity[row] = probabilities[int(np.flatnonzero(eligible == selected)[0])]
     observed_cp = oracle.potential_contribution_profit[np.arange(n), assignment]
     observed_revenue = oracle.potential_gross_revenue[np.arange(n), assignment]
-    maturity = np.full(n, batch.week + (8 if batch.world_family == "DELAYED_REFUNDS" else 4))
+    maturity = np.full(n, batch.week + (8 if world == "DELAYED_REFUNDS" else 4))
     if not batch.data_valid:
         propensity[:] = np.nan
     return (
