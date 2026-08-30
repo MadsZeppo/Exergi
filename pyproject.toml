@@ -10,11 +10,13 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
   "alembic>=1.16",
+  "cryptography>=45",
   "duckdb>=1.0",
   "fastapi>=0.116",
   "lightgbm>=4.3",
   "numpy>=1.26",
   "polars>=1.0",
+  "psycopg[binary]>=3.2",
   "pyarrow>=16",
   "pyreadr>=0.5.3",
   "pydantic>=2.7",

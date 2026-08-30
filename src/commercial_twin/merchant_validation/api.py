@@ -7,6 +7,7 @@ from typing import Any
 from uuid import UUID
 
 from fastapi import FastAPI, Header, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict, Field
 
 from .connectors import KlaviyoConnector, ShopifyConnector, validate_event_payload
@@ -150,6 +151,37 @@ def create_app(service: MerchantValidationService | None = None) -> FastAPI:
     def ledger(merchant_id: UUID, x_merchant_id: str | None = Header(default=None)) -> Any:
         authorize(merchant_id, x_merchant_id)
         return tuple(row for row in product.ledger if row["merchant_id"] == str(merchant_id))
+
+    # The production Shopify router is enabled only when every required secret is present.
+    # Missing configuration never falls back to fake credentials or a live-success claim.
+    try:
+        from commercial_twin.shopify.api import build_shopify_router
+        from commercial_twin.shopify.config import ShopifySettings
+        from commercial_twin.shopify.product_service import SqlShopifyProductService
+        from commercial_twin.shopify.repository import SqlShopifyRepository
+        from commercial_twin.shopify.webhooks import (
+            ShopifyWebhookService,
+            SqlPrivacyProcessor,
+        )
+
+        settings = ShopifySettings.from_env()
+    except RuntimeError:
+        settings = None
+    if settings is not None:
+        repository = SqlShopifyRepository.from_url(settings.database_url)
+        privacy = SqlPrivacyProcessor(repository.engine)
+        webhooks = ShopifyWebhookService(settings.client_secret, repository, privacy)
+        product_service = SqlShopifyProductService(repository.engine, repository)
+        app.include_router(
+            build_shopify_router(settings, repository, webhooks, product_service)
+        )
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=[settings.dashboard_url.rstrip("/")],
+            allow_credentials=True,
+            allow_methods=["GET", "POST", "DELETE"],
+            allow_headers=["Authorization", "Content-Type"],
+        )
 
     app.state.merchant_service = product
     return app

@@ -4,6 +4,7 @@ node_modules/
 out/
 build/
 dist/
+tsconfig.tsbuildinfo
 
 # Python / Virtual Environments
 __pycache__/
