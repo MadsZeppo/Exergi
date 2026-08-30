@@ -10,6 +10,8 @@ from uuid import UUID, uuid4
 
 from sqlalchemy import Engine, create_engine, text
 
+from commercial_twin.database_url import normalize_sqlalchemy_url
+
 
 @dataclass(frozen=True)
 class Installation:
@@ -163,7 +165,7 @@ class SqlShopifyRepository:
 
     @classmethod
     def from_url(cls, database_url: str) -> SqlShopifyRepository:
-        return cls(create_engine(database_url, pool_pre_ping=True))
+        return cls(create_engine(normalize_sqlalchemy_url(database_url), pool_pre_ping=True))
 
     def store_oauth_nonce(
         self, merchant_id: UUID, shop: str, nonce_hash: str, expires_at: datetime
