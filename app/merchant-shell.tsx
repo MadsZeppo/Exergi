@@ -1,13 +1,15 @@
-const merchantId = "demo-merchant";
+const demoMode = process.env.NEXT_PUBLIC_EXERGI_DEMO_MODE === "true";
 
 const nav = [
   ["Onboarding", "/onboarding"],
-  ["Data health", "/data-health"],
-  ["Customer base", "/customer-base"],
-  ["Opportunities", "/opportunities"],
+  ["Overview", "/overview"],
+  ["Customers", "/customers"],
+  ["Economics", "/economics"],
+  ["Decisions", "/decisions"],
   ["Experiments", "/experiments"],
-  ["Learning ledger", "/ledger"],
-  ["Connections", "/settings/connections"],
+  ["Verification", "/verification"],
+  ["Data & integrations", "/data-integrations"],
+  ["Settings / security", "/settings/security"],
 ];
 
 export type MerchantPageProps = {
@@ -21,21 +23,22 @@ export function MerchantPage({ eyebrow, title, description, children }: Merchant
   return (
     <main className="merchant-app">
       <aside className="merchant-nav">
-        <div className="brand-mark">VT</div>
+        <div className="brand-mark">E</div>
         <div>
-          <strong>Verified Twin</strong>
-          <span>Merchant validation</span>
+          <strong>Exergi</strong>
+          <span>Commerce decision layer</span>
         </div>
         <nav>
           {nav.map(([label, href]) => (
             <a href={href} key={href}>{label}</a>
           ))}
         </nav>
-        <div className="demo-label">SYNTHETIC DEMO<br />NOT COMMERCIAL EVIDENCE</div>
+        {demoMode ? <div className="demo-label">DEMO DATA<br />NOT COMMERCIAL EVIDENCE</div> : null}
       </aside>
       <section className="merchant-content">
         <header className="merchant-topbar">
-          <span>Demo Merchant</span><code>{merchantId}</code>
+          <span>{demoMode ? "Demo workspace" : "Read-only workspace"}</span>
+          <code>{demoMode ? "DEMO DATA" : "SHOPIFY"}</code>
         </header>
         <div className="merchant-heading">
           <p>{eyebrow}</p>
