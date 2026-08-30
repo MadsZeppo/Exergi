@@ -66,6 +66,7 @@ class ObservedDecisionBatch:
     features: np.ndarray
     feature_names: tuple[str, ...]
     eligible_actions: np.ndarray
+    candidate_propensity: np.ndarray
     cost_complete: np.ndarray
     data_valid: bool
 
@@ -78,6 +79,7 @@ class ObservedDecisionBatch:
             "features": self.features.tolist(),
             "feature_names": list(self.feature_names),
             "eligible_actions": self.eligible_actions.tolist(),
+            "candidate_propensity": self.candidate_propensity.tolist(),
             "cost_complete": self.cost_complete.tolist(),
             "data_valid": self.data_valid,
         }
@@ -114,5 +116,6 @@ def state_hash(batch: ObservedDecisionBatch) -> str:
     digest.update(batch.customer_ids.tobytes())
     digest.update(batch.features.tobytes())
     digest.update(batch.eligible_actions.tobytes())
+    digest.update(batch.candidate_propensity.tobytes())
     digest.update(batch.cost_complete.tobytes())
     return digest.hexdigest()

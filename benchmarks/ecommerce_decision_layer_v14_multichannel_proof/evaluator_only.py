@@ -233,16 +233,9 @@ def randomized_log(batch: ObservedDecisionBatch) -> tuple[LoggedDecisionBatch, O
     assignment = np.empty(n, dtype=np.int8)
     propensity = np.empty(n, dtype=float)
     for row in range(n):
-        eligible = np.flatnonzero(batch.eligible_actions[row] & batch.cost_complete[row])
-        if world == "PROPENSITY_SUPPORT_FAILURE":
-            probabilities = np.full(len(eligible), 1 / len(eligible))
-            if ACTION_INDEX["EMAIL_REMINDER"] in eligible:
-                target = int(np.flatnonzero(eligible == ACTION_INDEX["EMAIL_REMINDER"])[0])
-                probabilities *= 0.999 / max(1, len(eligible) - 1)
-                probabilities[target] = 0.001
-                probabilities /= probabilities.sum()
-        else:
-            probabilities = np.full(len(eligible), 1 / len(eligible))
+        probabilities = batch.candidate_propensity[row]
+        eligible = np.flatnonzero(probabilities > 0)
+        probabilities = probabilities[eligible]
         selected = int(rng.choice(eligible, p=probabilities))
         assignment[row] = selected
         propensity[row] = probabilities[int(np.flatnonzero(eligible == selected)[0])]

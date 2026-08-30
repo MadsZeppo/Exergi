@@ -82,6 +82,7 @@ def test_v14_randomized_log_has_known_propensity_and_only_observed_action() -> N
     rows = np.arange(len(logged.assignment))
     assert np.isfinite(logged.logged_propensity).all()
     assert (logged.logged_propensity > 0).all()
+    assert np.allclose(batch.candidate_propensity.sum(axis=1), 1.0)
     assert np.array_equal(
         logged.contribution_profit,
         oracle.potential_contribution_profit[rows, logged.assignment],
@@ -106,6 +107,7 @@ def test_v14_missing_costs_and_corrupt_propensity_fail_closed_inputs() -> None:
     incomplete = decision_batch(pool, 12, batch_size=20)
     assert world_for_week(incomplete.week) == "INCOMPLETE_COSTS"
     assert not incomplete.cost_complete[:, 1:-1].any()
+    assert np.allclose(incomplete.candidate_propensity.sum(axis=1), 1.0)
     corrupted = decision_batch(pool, 16, batch_size=20)
     assert world_for_week(corrupted.week) == "DATA_CORRUPTION"
     logged, _ = randomized_log(corrupted)

@@ -167,6 +167,15 @@ def decision_batch(
     cost_complete = np.ones_like(eligible)
     if world == "INCOMPLETE_COSTS":
         cost_complete[:, 1:-1] = False
+    candidate_propensity = np.zeros_like(eligible, dtype=float)
+    for row in range(size):
+        supported = np.flatnonzero(eligible[row] & cost_complete[row])
+        candidate_propensity[row, supported] = 1 / len(supported)
+        if world == "PROPENSITY_SUPPORT_FAILURE" and ACTION_INDEX["EMAIL_REMINDER"] in supported:
+            email = ACTION_INDEX["EMAIL_REMINDER"]
+            other = supported[supported != email]
+            candidate_propensity[row, other] = 0.999 / len(other)
+            candidate_propensity[row, email] = 0.001
     data_valid = world != "DATA_CORRUPTION"
     return ObservedDecisionBatch(
         merchant_id=pool.merchant_id,
@@ -176,6 +185,7 @@ def decision_batch(
         features=x,
         feature_names=pool.feature_names,
         eligible_actions=eligible,
+        candidate_propensity=candidate_propensity,
         cost_complete=cost_complete,
         data_valid=data_valid,
     )
