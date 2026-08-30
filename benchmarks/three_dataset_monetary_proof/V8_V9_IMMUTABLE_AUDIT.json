@@ -1,0 +1,56 @@
+{
+  "audit_scope": "Persisted tracked artifacts and git history only; no raw outcomes read",
+  "head": "753eb567d79d52a0401705647350bb3ded983834",
+  "immutable_history": {
+    "buy_baits_unchanged_since_checkpoint": true,
+    "v13_unchanged_since_checkpoint": true,
+    "v14_unchanged_since_checkpoint": true
+  },
+  "v8": {
+    "authority": "REAL_RANDOMIZED_NET_REVENUE_AFTER_DECLARED_EMAIL_COST",
+    "bau": "No E-Mail",
+    "bau_value": 0.5121956856702619,
+    "checks": {
+      "artifact_tree_unchanged_since_reveal_commit": true,
+      "consumed_lock_matches_result": true,
+      "consumed_permanently": true,
+      "development_selected_policy_matches_freeze": true,
+      "freeze_precedes_reveal": true,
+      "integrity_artifact_passed": true,
+      "no_post_treatment_features": true,
+      "sealed_not_opened_by_v8": true
+    },
+    "decision": "STATIC_MENS_EMAIL_FOR_ALL_ELIGIBLE_CUSTOMERS",
+    "exergi_value": 1.231508099050456,
+    "incremental_value_per_customer": 0.7193124133801942,
+    "lower_95": 0.21955759630612487,
+    "n": 10563,
+    "p_value": 0.004786880267285335,
+    "pass": true,
+    "total_incremental_value": 7598.097022534992,
+    "upper_95": 1.2190672304542636
+  },
+  "v9_study3": {
+    "authority": "REAL_RANDOMIZED_GROSS_REVENUE_AVOIDANCE",
+    "bau": "HIDE_PRICE_UNTIL_PRODUCT_PAGE",
+    "bau_value": 709.5826010307889,
+    "checks": {
+      "artifact_tree_unchanged_since_reveal_commit": true,
+      "consumed_lock_matches_result": true,
+      "consumed_permanently": true,
+      "development_selected_policy_matches_freeze": true,
+      "freeze_precedes_reveal": true,
+      "no_post_treatment_features": true,
+      "sealed_not_opened": true
+    },
+    "decision": "SHOW_PRICE_IN_EMAIL / AVOID_DELAYED_PRICE",
+    "exergi_value": 947.1524445180867,
+    "incremental_protected_value_per_recipient": 237.56984348729782,
+    "lower_95": 122.60696276204123,
+    "n": 192994,
+    "p_value": 0.0004997501249375312,
+    "pass": true,
+    "total_protected_value": 45849554.373987556,
+    "upper_95": 352.5327242125544
+  }
+}

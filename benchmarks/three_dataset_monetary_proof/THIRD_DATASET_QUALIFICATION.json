@@ -1,0 +1,84 @@
+{
+  "access_date": "2026-08-30",
+  "candidate_selection_rule": "Use the named Yahoo study first; after access failure, select the strongest official-repository alternative without inspecting monetary outcomes.",
+  "outcome_columns_inspected": false,
+  "selected_alternative": {
+    "actions_verified_from_metadata": [
+      "control shop",
+      "randomized team bonus"
+    ],
+    "assignment_authority": "Official OpenICPSR description states that sales teams in 193 shops were randomly selected for a bonus.",
+    "candidate": "Team Incentives and Performance: Evidence from a Retail Chain",
+    "download_access": "Project download redirects to ICPSR login.",
+    "file_listing": [
+      "Figures.do",
+      "README-Friebel-Heinz-Krueger-Zubanov.pdf",
+      "Table-1--3--A-and-B-.do",
+      "Table-2--A--B-and-C-.do",
+      "Table-2--D---3--D-.do",
+      "Table-3--C-.do",
+      "Table-4.files.do",
+      "Table-5.do",
+      "Table-6.do",
+      "Table-7.do"
+    ],
+    "monetary_authority_from_metadata": "Official description reports sales and profit effects.",
+    "official_url": "https://www.openicpsr.org/openicpsr/project/113141/version/V1/view",
+    "pretreatment_timing_auditable": false,
+    "reason": "The complete public V1 listing contains only a README and Stata code. It contains no row-level assignment, sales, profit, baseline or unit file from which an outcome-isolated split can be made.",
+    "row_level_data_present": false,
+    "status": "REJECTED_NO_ROW_LEVEL_DATA"
+  },
+  "status": "THIRD_MONETARY_DATASET_NOT_FOUND",
+  "systematic_search": [
+    {
+      "candidate": "When Less Is More: Data and Power in Advertising Experiments",
+      "finding": "Publisher and Crossref metadata describe a 3-million-user randomized retail advertising experiment and advertise supplemental data, but INFORMS returns an access-security response for direct supplemental retrieval in this environment. No official row-level payload, checksum, schema or license could be verified.",
+      "official_sources": [
+        "https://pubsonline.informs.org/doi/10.1287/mksc.2016.0998",
+        "https://api.crossref.org/works/10.1287%2Fmksc.2016.0998",
+        "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2683621"
+      ],
+      "status": "REJECTED_OFFICIAL_ROW_LEVEL_PAYLOAD_NOT_ACQUIRED"
+    },
+    {
+      "candidate": "Team Incentives and Performance: Evidence from a Retail Chain",
+      "finding": "Strong randomized retail and monetary metadata, but the official public V1 listing has no row-level data files.",
+      "official_sources": [
+        "https://www.openicpsr.org/openicpsr/project/113141/version/V1/view"
+      ],
+      "status": "REJECTED_NO_ROW_LEVEL_DATA"
+    },
+    {
+      "candidate": "MT-LIFT",
+      "finding": "Official Google Drive payload was not publicly retrievable and the publisher's Baidu link was expired; preserved immutable V10 qualification result.",
+      "official_sources": [
+        "https://github.com/MTDJDSP/MT-LIFT"
+      ],
+      "status": "REJECTED_DATASET_NOT_ACQUIRED"
+    },
+    {
+      "candidate": "Information Nudges/Subsidies",
+      "finding": "Official Zenodo archive omitted transaction files referenced by the replication code; preserved prior checksum-verified audit.",
+      "official_sources": [
+        "https://zenodo.org/records/13993677"
+      ],
+      "status": "REJECTED_INCOMPLETE_ARCHIVE"
+    },
+    {
+      "candidate": "Dominick's randomized price experiments",
+      "finding": "Public movement data do not identify experimental assignment or experiment windows.",
+      "official_sources": [
+        "https://www.chicagobooth.edu/research/kilts/research-data/dominicks"
+      ],
+      "status": "REJECTED_ASSIGNMENT_NOT_RECONSTRUCTABLE"
+    },
+    {
+      "candidate": "Criteo uplift and Open Bandit",
+      "finding": "Randomized/logged assignment exists, but the public rewards are conversion/click proxies rather than monetary commerce outcomes.",
+      "official_sources": [],
+      "status": "REJECTED_NO_MONETARY_OUTCOME"
+    }
+  ],
+  "validation_or_sealed_created": false
+}
