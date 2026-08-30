@@ -1,0 +1,12 @@
+{
+  "folds": 5,
+  "known_logged_propensity_required": true,
+  "maximum_standardized_mean_difference": 0.1,
+  "minimum_action_propensity": 0.02,
+  "minimum_local_action_ess": 100,
+  "minimum_policy_action_ess": 400,
+  "minimum_supported_folds": 4,
+  "no_propensity_clipping_without_report": true,
+  "schema_version": 1,
+  "unsupported_execution": "NOT_ENOUGH_EVIDENCE_TO_BAU"
+}

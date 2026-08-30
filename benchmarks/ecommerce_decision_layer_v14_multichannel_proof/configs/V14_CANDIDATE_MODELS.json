@@ -1,0 +1,28 @@
+{
+  "bau_forecasts": [
+    "REGULARIZED_TWO_PART_MODEL",
+    "GRADIENT_BOOSTED_TWO_PART_MODEL"
+  ],
+  "comparators": [
+    "BAU",
+    "TREAT_ALL_PER_ACTION",
+    "BEST_STATIC",
+    "RULE_SEGMENT_POLICY",
+    "COST_AWARE_HEURISTIC"
+  ],
+  "complexity_tie_break": "SIMPLER_POLICY_WINS",
+  "maximum_promoted_policy_stacks": 1,
+  "model_families": [
+    "REGULARIZED_LINEAR_T_LEARNER",
+    "TREE_T_LEARNER",
+    "FOREST_T_LEARNER",
+    "X_LEARNER",
+    "R_LEARNER",
+    "DR_LEARNER",
+    "CAUSAL_FOREST_EQUIVALENT",
+    "CONSERVATIVE_ENSEMBLE"
+  ],
+  "oracle_allowed_for_selection": false,
+  "schema_version": 1,
+  "selection_metric": "HELD_OUT_INCREMENTAL_CONTRIBUTION_PROFIT_VS_PREVIOUS_HIERARCHY_LEVEL"
+}

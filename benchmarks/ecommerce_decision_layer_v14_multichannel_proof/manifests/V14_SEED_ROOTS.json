@@ -1,0 +1,122 @@
+{
+  "bootstrap_seed": 141003,
+  "fold_seed": 141002,
+  "merchant_seeds": {
+    "V14_M01": {
+      "assignment_seed": 140003,
+      "customer_seed": 140001,
+      "event_seed": 140002,
+      "shock_seed": 140005,
+      "truth_seed": 140004
+    },
+    "V14_M02": {
+      "assignment_seed": 140103,
+      "customer_seed": 140101,
+      "event_seed": 140102,
+      "shock_seed": 140105,
+      "truth_seed": 140104
+    },
+    "V14_M03": {
+      "assignment_seed": 140203,
+      "customer_seed": 140201,
+      "event_seed": 140202,
+      "shock_seed": 140205,
+      "truth_seed": 140204
+    },
+    "V14_M04": {
+      "assignment_seed": 140303,
+      "customer_seed": 140301,
+      "event_seed": 140302,
+      "shock_seed": 140305,
+      "truth_seed": 140304
+    },
+    "V14_M05": {
+      "assignment_seed": 140403,
+      "customer_seed": 140401,
+      "event_seed": 140402,
+      "shock_seed": 140405,
+      "truth_seed": 140404
+    },
+    "V14_M06": {
+      "assignment_seed": 140503,
+      "customer_seed": 140501,
+      "event_seed": 140502,
+      "shock_seed": 140505,
+      "truth_seed": 140504
+    },
+    "V14_M07": {
+      "assignment_seed": 140603,
+      "customer_seed": 140601,
+      "event_seed": 140602,
+      "shock_seed": 140605,
+      "truth_seed": 140604
+    },
+    "V14_M08": {
+      "assignment_seed": 140703,
+      "customer_seed": 140701,
+      "event_seed": 140702,
+      "shock_seed": 140705,
+      "truth_seed": 140704
+    },
+    "V14_M09": {
+      "assignment_seed": 140803,
+      "customer_seed": 140801,
+      "event_seed": 140802,
+      "shock_seed": 140805,
+      "truth_seed": 140804
+    },
+    "V14_M10": {
+      "assignment_seed": 140903,
+      "customer_seed": 140901,
+      "event_seed": 140902,
+      "shock_seed": 140905,
+      "truth_seed": 140904
+    },
+    "V14_M11": {
+      "assignment_seed": 141003,
+      "customer_seed": 141001,
+      "event_seed": 141002,
+      "shock_seed": 141005,
+      "truth_seed": 141004
+    },
+    "V14_M12": {
+      "assignment_seed": 141103,
+      "customer_seed": 141101,
+      "event_seed": 141102,
+      "shock_seed": 141105,
+      "truth_seed": 141104
+    },
+    "V14_M13": {
+      "assignment_seed": 141203,
+      "customer_seed": 141201,
+      "event_seed": 141202,
+      "shock_seed": 141205,
+      "truth_seed": 141204
+    },
+    "V14_M14": {
+      "assignment_seed": 141303,
+      "customer_seed": 141301,
+      "event_seed": 141302,
+      "shock_seed": 141305,
+      "truth_seed": 141304
+    },
+    "V14_M15": {
+      "assignment_seed": 141403,
+      "customer_seed": 141401,
+      "event_seed": 141402,
+      "shock_seed": 141405,
+      "truth_seed": 141404
+    },
+    "V14_M16": {
+      "assignment_seed": 141503,
+      "customer_seed": 141501,
+      "event_seed": 141502,
+      "shock_seed": 141505,
+      "truth_seed": 141504
+    }
+  },
+  "model_seed": 141001,
+  "placebo_seed": 141004,
+  "replay_seed": 141005,
+  "schema_version": 1
+}

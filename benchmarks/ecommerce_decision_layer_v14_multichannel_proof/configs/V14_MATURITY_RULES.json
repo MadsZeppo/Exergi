@@ -1,0 +1,9 @@
+{
+  "delayed_refund_stress_weeks": 8,
+  "early_behavior_weeks": 1,
+  "economic_outcome_weeks": 4,
+  "primary_purchase_weeks": 2,
+  "risk_release": "ONLY_AFTER_MATURE_ECONOMIC_OUTCOME",
+  "schema_version": 1,
+  "unmatured_outcome": "PENDING_NOT_ZERO"
+}

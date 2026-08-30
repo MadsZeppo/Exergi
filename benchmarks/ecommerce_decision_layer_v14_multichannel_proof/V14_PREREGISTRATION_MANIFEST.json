@@ -1,0 +1,27 @@
+{
+  "calibration_artifact_sha256": "8484c16091a04ba27f9326f5d3e626a9eba907fe517a77d7a05e492b782f3e12",
+  "calibration_commit": "9485e548491c0765f6a114014a35ae02fa19d589",
+  "config_hashes": {
+    "V14_ACTION_SPACE.json": "0f86023cb4fa48c78aeced3cee9c9bac1fd19f04ee21188be7946403aac2797d",
+    "V14_CANDIDATE_MODELS.json": "8e0189a8b3925f33c715213bd99c76ffbf8b9fef916b25eea1e30e7cf030359c",
+    "V14_DGP_SPEC.json": "894a156e127fe1b8e4c61d1975466d9f669fc1031756b9fdca3763feda1b0cf3",
+    "V14_ECONOMIC_RULES.json": "8c1092e96c4d0b699fcb72117e2d55add0ace1951482f3fd660041f0c6293308",
+    "V14_MATURITY_RULES.json": "d18314daedd4637adea838e36f309bd8d74893ae7bc0733469ad8b99c4b375ce",
+    "V14_PASS_GATES.json": "da9ad74c1da57ccbaf35b324a0843db92dc383b0d1cc11694b3979ee10309dad",
+    "V14_REPORT_CONTRACT.json": "2ae0c7ab73be7b2da2869d4b634f2ae64886475109bf28fd3f0b3001491f7ab6",
+    "V14_RISK_RULES.json": "c4a8c455ce77faf1f699721b0893005d881ebbd490b2b339dea10873255cdb1a",
+    "V14_SUPPORT_RULES.json": "296dc096fc8bf3ab1a3242e8e3e3eeabf29f28261592cc74dcbabf0289c82051"
+  },
+  "development_outcomes_generated": false,
+  "phase": "PREREGISTERED_BEFORE_ANY_SYNTHETIC_OUTCOME_GENERATION",
+  "preregister_code_sha256": "d117f5ebfdc3b36933be5d4f0c128feb155a6d714e6c6c832b57898a68e7c9d1",
+  "schema_version": 1,
+  "sealed_outcomes_generated": false,
+  "sealed_outcomes_opened": false,
+  "seed_roots_sha256": "fc2daff244cc19b2bcbd59acf9d99ffd693695ed66280429de22607bd61e1860",
+  "source_snapshot_sha256": "1e31e48e6b64b02c15c7a761a7131139612052174d0aa3f1f675d0fc6ffa7a09",
+  "split_manifest_sha256": "071dd212e0abfd741bdf4ad38cec6243179ec07cc30a97b83741d423b443814b",
+  "thresholds_imported_from_previous_benchmarks": false,
+  "validation_outcomes_generated": false,
+  "validation_outcomes_opened": false
+}

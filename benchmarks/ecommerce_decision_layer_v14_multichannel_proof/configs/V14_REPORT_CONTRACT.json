@@ -1,0 +1,22 @@
+{
+  "development": [
+    "V14_MODEL_TOURNAMENT.md",
+    "V14_DEVELOPMENT_REPORT.md",
+    "V14_SEQUENTIAL_ASSURANCE.md",
+    "V14_LEARNING_REPORT.md",
+    "V14_FAILURE_DECOMPOSITION.md",
+    "V14_DEVELOPMENT_RESULT.json"
+  ],
+  "freeze_only_if_development_passes": [
+    "V14_FREEZE_MANIFEST.json",
+    "V14_PRE_REVEAL_QA.json"
+  ],
+  "schema_version": 1,
+  "sealed_only_after_validation_pass": [
+    "V14_SEALED_REPORT.md"
+  ],
+  "validation_only_after_freeze": [
+    "V14_VALIDATION_REPORT.md",
+    "V14_RESULT.json"
+  ]
+}

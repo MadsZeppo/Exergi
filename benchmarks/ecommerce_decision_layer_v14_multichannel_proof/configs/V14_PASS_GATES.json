@@ -1,0 +1,38 @@
+{
+  "development_promotion": {
+    "beats_best_static_required_for_personalization": true,
+    "budget_violations": 0,
+    "folds": 5,
+    "future_or_oracle_access": 0,
+    "harmful_world_do_rate_lte": 0.01,
+    "lower_95_vs_bau_gt": 0.0,
+    "lower_95_vs_best_static_gt": 0.0,
+    "net_value_exceeds_materiality": true,
+    "null_world_do_rate_lte": 0.05,
+    "placebos_pass": true,
+    "positive_folds_required": 4,
+    "positive_point_vs_bau": true,
+    "seed_direction_agreement_gte": 0.8,
+    "unsupported_act": 0,
+    "world_family_direction_agreement_gte": 0.8
+  },
+  "no_threshold_source": [
+    "HILLSTROM",
+    "V8",
+    "V9",
+    "JTPA",
+    "PREVIOUS_FAILURE_RESULTS"
+  ],
+  "oracle_metrics_evaluation_only": true,
+  "schema_version": 1,
+  "validation_pass": {
+    "all_development_safety_gates_repeated": true,
+    "beats_heuristic_world_share_gte": 0.75,
+    "beats_static_world_share_gte": 0.75,
+    "no_material_negative_family": true,
+    "observable_oracle_capture_gte": 0.6,
+    "pooled_cp_lower_95_gt": 0.0,
+    "pooled_cp_point_gt": 0.0,
+    "positive_all_merchant_families": true
+  }
+}

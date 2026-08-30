@@ -1,0 +1,36 @@
+{
+  "contribution_profit_equation": "net_revenue + shipping_revenue - cogs - payment_fees - shipping_cost - shipping_subsidy - fulfilment_cost - return_shipping_cost - restocking_loss - channel_cost - switching_cost - other_variable_cost",
+  "critical_cost_fields": [
+    "cogs",
+    "payment_fees",
+    "fulfilment_cost",
+    "shipping_cost",
+    "shipping_subsidy",
+    "channel_cost"
+  ],
+  "currency": "SYNTHETIC_USD",
+  "direct_action_cost": {
+    "BAU_NO_ACTION": 0.0,
+    "EMAIL_10_PERCENT_DISCOUNT": 0.03,
+    "EMAIL_PLUS_RETARGETING": 0.48,
+    "EMAIL_REMINDER": 0.02,
+    "FREE_SHIPPING": 0.02,
+    "ONSITE_PERSONALIZATION": 0.04,
+    "PAID_RETARGETING": 0.45,
+    "SMS_10_PERCENT_DISCOUNT": 0.07,
+    "SMS_REMINDER": 0.06,
+    "SUPPRESS_DO_NOT_CONTACT": 0.0
+  },
+  "discount_funding": "10_PERCENT_OF_GROSS_REVENUE_ON_DISCOUNTED_PURCHASES",
+  "family_minimum_commercial_amount": {
+    "BEAUTY_SUPPLEMENTS": 0.25,
+    "FASHION": 0.4,
+    "HOME_GOODS": 0.55,
+    "MARKETPLACE": 0.35
+  },
+  "materiality_formula": "max(0.01 * mature_bau_cp_per_eligible_customer, direct_action_cost, switching_cost, family_minimum_commercial_amount)",
+  "missing_critical_cost": "DATA_NOT_READY",
+  "net_revenue_equation": "gross_revenue - discounts - refunds",
+  "primary_outcome": "INCREMENTAL_CONTRIBUTION_PROFIT_PER_ELIGIBLE_CUSTOMER",
+  "schema_version": 1
+}

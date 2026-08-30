@@ -1,0 +1,109 @@
+{
+  "authority": "REALITY_CALIBRATED_SEMI_SYNTHETIC_MECHANISM_BENCHMARK",
+  "calibration_use": "AGGREGATE_OBSERVABLE_MARGINALS_ONLY",
+  "customer_ids": "NEW_SYNTHETIC_IDS_NO_CROSS_SOURCE_JOIN",
+  "customer_state": [
+    "lifecycle",
+    "recency",
+    "frequency",
+    "historical_value",
+    "category_affinity",
+    "product_affinity",
+    "price_sensitivity",
+    "channel_eligibility",
+    "purchase_cadence",
+    "return_propensity",
+    "channel_fatigue"
+  ],
+  "economics": [
+    "gross_revenue",
+    "cogs",
+    "discount_funding",
+    "refunds",
+    "shipping_subsidy",
+    "payment_fees",
+    "channel_send_cost",
+    "paid_media_cost",
+    "cannibalization",
+    "pull_forward",
+    "switching_cost",
+    "incremental_contribution_profit"
+  ],
+  "evaluator_only": [
+    "latent_response_type",
+    "potential_outcomes",
+    "true_cate",
+    "true_best_action",
+    "future_shocks",
+    "future_returns",
+    "response_parameters",
+    "oracle_value"
+  ],
+  "merchant_families": [
+    "FASHION",
+    "BEAUTY_SUPPLEMENTS",
+    "HOME_GOODS",
+    "MARKETPLACE"
+  ],
+  "paired_common_random_numbers": true,
+  "response_parameter_regions": {
+    "DEVELOPMENT": {
+      "effect_scale": [
+        0.8,
+        1.2
+      ],
+      "shock_scale": [
+        0.85,
+        1.15
+      ]
+    },
+    "SEALED_TEST": {
+      "effect_scale": [
+        1.22,
+        1.5
+      ],
+      "shock_scale": [
+        1.42,
+        1.7
+      ]
+    },
+    "VALIDATION": {
+      "effect_scale": [
+        0.55,
+        0.78
+      ],
+      "shock_scale": [
+        1.18,
+        1.4
+      ]
+    }
+  },
+  "schema_version": 1,
+  "world_families": [
+    "NO_ACTIONABLE_OPPORTUNITY",
+    "HOMOGENEOUS_POSITIVE_ACTION",
+    "GLOBALLY_HARMFUL_ACTION",
+    "PROFITABLE_STATIC_ACTION",
+    "MATERIAL_CUSTOMER_HETEROGENEITY",
+    "SPARSE_RESPONDERS",
+    "CHANNEL_SUBSTITUTION",
+    "CHANNEL_FATIGUE",
+    "DISCOUNT_CANNIBALIZATION",
+    "PULL_FORWARD",
+    "DELAYED_REFUNDS",
+    "INCOMPLETE_COSTS",
+    "COMMON_SHOCK",
+    "SEASONALITY_SHIFT",
+    "PROPENSITY_SUPPORT_FAILURE",
+    "DATA_CORRUPTION",
+    "ABRUPT_REVERSAL",
+    "GRADUAL_DRIFT",
+    "NEW_UNSEEN_PRODUCTS",
+    "LIMITED_SAMPLE_POWER",
+    "RETURN_DRIVEN_REVERSAL",
+    "DELIVERABILITY_FAILURE",
+    "INVENTORY_CONSTRAINT",
+    "BUDGET_CONSTRAINT",
+    "NEW_MERCHANT_COLD_START"
+  ]
+}
