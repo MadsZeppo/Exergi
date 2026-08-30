@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "decision_ledger_verified": true,
+    "no_budget_violations": true,
+    "no_early_risk_release": true,
+    "no_freeze_authorized": true,
+    "sealed_outcomes_generated": false,
+    "sealed_outcomes_opened": false,
+    "unsupported_do_zero": true,
+    "validation_outcomes_generated": false,
+    "validation_outcomes_opened": false
+  },
+  "development_status": "V14_DEVELOPMENT_GATE_FAIL_VALIDATION_CLOSED",
+  "schema_version": 1
+}

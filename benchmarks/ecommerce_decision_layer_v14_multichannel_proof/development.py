@@ -306,6 +306,7 @@ def _decision_cards(
     effects: np.ndarray,
     policy: np.ndarray,
     test: ObservedTrainingData,
+    nuisance: np.ndarray,
     action_se: np.ndarray,
     fold_agreement: float,
     placebo_passed: bool,
@@ -313,15 +314,17 @@ def _decision_cards(
     cards: list[dict[str, Any]] = []
     ledger = HashDecisionLedger()
     budgets = {
-        merchant: CommittedRiskLedger(merchant_budget=1_000.0, action_budget=400.0)
+        str(merchant): CommittedRiskLedger(merchant_budget=1_000.0, action_budget=400.0)
         for merchant in sorted(set(test.merchant_ids))
     }
     pending: dict[str, list[tuple[str, int]]] = {merchant: [] for merchant in budgets}
     violations = 0
     budget_blocks = 0
     early_release = 0
-    for week in sorted(set(test.weeks)):
-        for merchant, risk in budgets.items():
+    for week_value in sorted(set(test.weeks)):
+        week = int(week_value)
+        for merchant_value, risk in budgets.items():
+            merchant = str(merchant_value)
             still_pending: list[tuple[str, int]] = []
             for reservation_id, maturity in pending[merchant]:
                 if maturity <= week:
@@ -361,7 +364,7 @@ def _decision_cards(
                 remaining_risk_budget=max(0.0, risk.merchant_budget - risk.open_amount()),
                 matured_batches=max(0, week - 27),
             )
-            maturity = week + 4
+            maturity = int(week + 4)
             reservation_id = f"{merchant}_{week}_{ACTION_NAMES[action]}"
             if disposition in {Disposition.DO, Disposition.TEST} and exposure > 0:
                 amount = max(0.05, -lower) * exposure
@@ -381,6 +384,8 @@ def _decision_cards(
                     budget_blocks += 1
                     disposition = Disposition.NOT_ENOUGH_EVIDENCE
                     exposure = 0
+            elif disposition not in {Disposition.DO, Disposition.TEST}:
+                exposure = 0
             probability = float(norm.cdf(point / se))
             card = DecisionCard(
                 decision_id=f"V14_{merchant}_W{week:02d}",
@@ -389,7 +394,7 @@ def _decision_cards(
                 exact_action=ACTION_NAMES[action],
                 eligible_population=int(rows.sum()),
                 timing=f"week_{week}",
-                bau_forecast=0.0,
+                bau_forecast=float(np.mean(nuisance[rows, 0])),
                 expected_incremental_contribution_profit=point,
                 total_expected_impact=point * exposure,
                 lower_95=lower,
@@ -507,6 +512,7 @@ def run_development() -> dict[str, Any]:
         selected_effects,
         selected_policy,
         test,
+        predictions.nuisance_outcome,
         predictions.action_standard_errors,
         fold_agreement,
         bool(placebos["passed"]),
@@ -582,6 +588,24 @@ def run_development() -> dict[str, Any]:
     (ROOT / "V14_DECISION_LEDGER.json").write_text(
         json.dumps(ledger_records, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
+    qa = {
+        "checks": {
+            "decision_ledger_verified": bool(operational["ledger_verified"]),
+            "no_budget_violations": operational["budget_violations"] == 0,
+            "no_early_risk_release": operational["early_risk_release"] == 0,
+            "no_freeze_authorized": not gate_pass,
+            "sealed_outcomes_generated": False,
+            "sealed_outcomes_opened": False,
+            "unsupported_do_zero": oracle["unsupported_do"] == 0,
+            "validation_outcomes_generated": False,
+            "validation_outcomes_opened": False,
+        },
+        "development_status": result["status"],
+        "schema_version": 1,
+    }
+    (ROOT / "V14_DEVELOPMENT_QA.json").write_text(
+        json.dumps(qa, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
     _write_reports(result)
     return result
 
@@ -656,8 +680,29 @@ Status: `{result['status']}`
 
 Failed preregistered gates: {', '.join(f'`{name}`' for name in failed) if failed else 'none'}.
 
+Primary classification: `INSUFFICIENT_POWER_AND_UNSTABLE_PERSONALIZED_VALUE`. The numerically strongest
+personalized challenger did not obtain a positive 95% lower bound versus BAU/static. Promoting it would
+have exposed customers without earned evidence. The selected BAU fallback captured 0% of the evaluator's
+{_money(oracle['observable_oracle_total_gain'])} supported opportunity, which is the economic cost of the
+responsible abstention in this DEVELOPMENT holdout.
+
 If the gate fails, the operational policy is BAU/NOT_ENOUGH_EVIDENCE and VALIDATION remains closed. No
 alternative candidate may replace the frozen selected candidate after evaluator metrics are visible.
+"""
+    stop = f"""# V14 DEVELOPMENT stop report
+
+Status: `{result['status']}`
+
+- Selected operational policy: `BEST_STATIC` = BAU
+- Freeze authorized: no
+- VALIDATION generated/opened: no/no
+- SEALED_TEST generated/opened: no/no
+- Unsupported DO: {oracle['unsupported_do']}
+- Incremental contribution profit/customer: {_money(oracle['incremental_cp_per_customer'])}
+- Total incremental contribution profit: {_money(oracle['total_incremental_cp'])}
+- Next V14 action: production handoff preparation only; no benchmark retuning or reveal
+
+V14 stops at DEVELOPMENT under the preregistered gate.
 """
     reports = {
         "V14_MODEL_TOURNAMENT.md": tournament,
@@ -665,6 +710,7 @@ alternative candidate may replace the frozen selected candidate after evaluator 
         "V14_SEQUENTIAL_ASSURANCE.md": sequential,
         "V14_LEARNING_REPORT.md": learning,
         "V14_FAILURE_DECOMPOSITION.md": failure,
+        "V14_STOP_REPORT.md": stop,
     }
     for name, content in reports.items():
         (ROOT / name).write_text(content.rstrip() + "\n", encoding="utf-8")

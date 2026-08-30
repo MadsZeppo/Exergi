@@ -320,8 +320,11 @@ def _estimate(point: float, influence: np.ndarray) -> Estimate:
     standard_error = float(np.std(influence, ddof=1) / np.sqrt(len(influence)))
     lower = point - float(norm.ppf(0.975)) * standard_error
     upper = point + float(norm.ppf(0.975)) * standard_error
-    z = abs(point / standard_error) if standard_error > 0 else float("inf")
-    return Estimate(point, standard_error, lower, upper, float(2 * norm.sf(z)))
+    if standard_error > 0:
+        p_value = float(2 * norm.sf(abs(point / standard_error)))
+    else:
+        p_value = 1.0 if point == 0 else 0.0
+    return Estimate(point, standard_error, lower, upper, p_value)
 
 
 def evaluate_policy(
