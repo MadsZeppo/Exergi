@@ -129,7 +129,8 @@ def potential_outcomes(batch: ObservedDecisionBatch) -> OracleBatch:
         + 0.55 * x[:, 2]
         + 0.85 * x[:, 11]
         - 0.35 * x[:, 0]
-        + 0.18 * x[:, -1]
+        + 0.18 * x[:, 15]
+        + 0.35 * (x[:, 16] - 1.0)
     )
     effect = _world_effect(world, x, latent)
     purchase_probability = 1 / (1 + np.exp(-(baseline_logit[:, None] + effect)))

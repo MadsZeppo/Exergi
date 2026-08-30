@@ -103,10 +103,10 @@ def test_v14_latent_customer_type_is_stable_across_weeks() -> None:
 
 def test_v14_missing_costs_and_corrupt_propensity_fail_closed_inputs() -> None:
     pool = generate_customer_pool("V14_M01")
-    incomplete = decision_batch(pool, 23, batch_size=20)
+    incomplete = decision_batch(pool, 12, batch_size=20)
     assert world_for_week(incomplete.week) == "INCOMPLETE_COSTS"
     assert not incomplete.cost_complete[:, 1:-1].any()
-    corrupted = decision_batch(pool, 31, batch_size=20)
+    corrupted = decision_batch(pool, 16, batch_size=20)
     assert world_for_week(corrupted.week) == "DATA_CORRUPTION"
     logged, _ = randomized_log(corrupted)
     assert np.isnan(logged.logged_propensity).all()

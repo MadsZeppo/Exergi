@@ -25,6 +25,12 @@ FEATURE_NAMES = (
     "lifecycle_dormant",
     "week_sin",
     "week_cos",
+    "macro_demand_index",
+    "deliverability",
+    "shipping_cost_index",
+    "channel_cost_index",
+    "inventory_pressure",
+    "budget_remaining_share",
 )
 
 FAMILY_PARAMETERS = {
@@ -91,6 +97,12 @@ def generate_customer_pool(merchant_id: str) -> ObservedCustomerPool:
             (lifecycle == 3).astype(float),
             np.zeros(n),
             np.ones(n),
+            np.ones(n),
+            np.ones(n),
+            np.ones(n),
+            np.ones(n),
+            np.zeros(n),
+            np.ones(n),
         ]
     ).astype(np.float32)
     prefix = f"{merchant_id}_C"
@@ -115,7 +127,7 @@ def generate_customer_pool(merchant_id: str) -> ObservedCustomerPool:
 def world_for_week(week: int) -> str:
     spec = json.loads((ROOT / "configs/V14_DGP_SPEC.json").read_text(encoding="utf-8"))
     families = spec["world_families"]
-    return str(families[((week - 1) // 2) % len(families)])
+    return str(families[(week - 1) % len(families)])
 
 
 def decision_batch(
@@ -131,8 +143,14 @@ def decision_batch(
     indices = rng.choice(len(pool.customer_ids), size=size, replace=False)
     x = pool.features[indices].copy()
     angle = 2 * np.pi * (week - 1) / 52
-    x[:, -2] = np.sin(angle)
-    x[:, -1] = np.cos(angle)
+    x[:, 14] = np.sin(angle)
+    x[:, 15] = np.cos(angle)
+    x[:, 16] = 0.82 if world == "COMMON_SHOCK" else 1.0
+    x[:, 17] = 0.35 if world == "DELIVERABILITY_FAILURE" else 1.0
+    x[:, 18] = 1.45 if world in {"DELAYED_REFUNDS", "RETURN_DRIVEN_REVERSAL"} else 1.0
+    x[:, 19] = 1.40 if world in {"CHANNEL_FATIGUE", "CHANNEL_SUBSTITUTION"} else 1.0
+    x[:, 20] = 0.75 if world == "INVENTORY_CONSTRAINT" else 0.10
+    x[:, 21] = 0.08 if world == "BUDGET_CONSTRAINT" else max(0.15, 1 - week / 60)
     eligible = np.ones((size, len(ACTION_NAMES)), dtype=bool)
     eligible[:, ACTION_INDEX["EMAIL_REMINDER"]] = pool.email_eligible[indices]
     eligible[:, ACTION_INDEX["EMAIL_10_PERCENT_DISCOUNT"]] = pool.email_eligible[indices]
