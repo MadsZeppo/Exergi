@@ -100,8 +100,8 @@ def _world_effect(world: str, x: np.ndarray, latent: np.ndarray) -> np.ndarray:
 def potential_outcomes(batch: ObservedDecisionBatch) -> OracleBatch:
     spec = merchant_spec(batch.merchant_id)
     params = FAMILY_PARAMETERS[batch.family]
-    seed = int(spec["truth_seed"]) + batch.week
-    rng = np.random.default_rng(seed)
+    truth_seed = int(spec["truth_seed"])
+    rng = np.random.default_rng(truth_seed + batch.week)
     n, actions = len(batch.customer_ids), len(ACTION_NAMES)
     latent_probabilities = [
         0.18,
@@ -117,7 +117,11 @@ def potential_outcomes(batch: ObservedDecisionBatch) -> OracleBatch:
         0.03,
         0.03,
     ]
-    latent = rng.choice(12, n, p=latent_probabilities)
+    customer_index = np.asarray([int(value[-5:]) for value in batch.customer_ids])
+    latent_pool = np.random.default_rng(truth_seed).choice(
+        12, 20_000, p=latent_probabilities
+    )
+    latent = latent_pool[customer_index]
     x = batch.features
     baseline_logit = (
         np.log(params["purchase_rate"] / (1 - params["purchase_rate"]))
@@ -128,9 +132,12 @@ def potential_outcomes(batch: ObservedDecisionBatch) -> OracleBatch:
     )
     effect = _world_effect(batch.world_family, x, latent)
     purchase_probability = 1 / (1 + np.exp(-(baseline_logit[:, None] + effect)))
-    purchase_draw = rng.random((n, actions))
+    purchase_draw = rng.random(n)[:, None]
     purchase = purchase_draw < purchase_probability
-    order_value = rng.lognormal(np.log(params["aov"]) - 0.35, 0.70, (n, actions))
+    order_value = np.broadcast_to(
+        rng.lognormal(np.log(params["aov"]) - 0.35, 0.70, n)[:, None],
+        (n, actions),
+    )
     gross = purchase * order_value
     discounts = gross * DISCOUNT_ACTIONS * 0.10
     cogs = gross * (1 - params["margin"])
@@ -144,7 +151,7 @@ def potential_outcomes(batch: ObservedDecisionBatch) -> OracleBatch:
         0,
         0.75,
     )
-    returned = rng.random((n, actions)) < return_probability
+    returned = rng.random(n)[:, None] < return_probability
     refunds = gross * returned
     return_shipping = returned * purchase * 6.50
     restocking = cogs * returned * 0.08

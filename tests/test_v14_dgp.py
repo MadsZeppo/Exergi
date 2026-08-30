@@ -87,6 +87,19 @@ def test_v14_randomized_log_has_known_propensity_and_only_observed_action() -> N
     )
 
 
+def test_v14_latent_customer_type_is_stable_across_weeks() -> None:
+    pool = generate_customer_pool("V14_M04")
+    first_batch = decision_batch(pool, 5, batch_size=2_000)
+    second_batch = decision_batch(pool, 6, batch_size=2_000)
+    first = potential_outcomes(first_batch)
+    second = potential_outcomes(second_batch)
+    first_types = dict(zip(first_batch.customer_ids, first.latent_response_type, strict=True))
+    overlap = set(first_batch.customer_ids) & set(second_batch.customer_ids)
+    assert len(overlap) > 0
+    second_types = dict(zip(second_batch.customer_ids, second.latent_response_type, strict=True))
+    assert all(first_types[customer] == second_types[customer] for customer in overlap)
+
+
 def test_v14_missing_costs_and_corrupt_propensity_fail_closed_inputs() -> None:
     pool = generate_customer_pool("V14_M01")
     incomplete = decision_batch(pool, 23, batch_size=20)
