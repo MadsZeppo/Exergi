@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 
 from benchmarks.three_dataset_monetary_proof.audit import audit_immutable_proofs
+from benchmarks.three_dataset_monetary_proof.report import build_outputs
 from decision_engine.monetary_decision_contract import (
     CostAuthority,
     MonetaryAuthority,
@@ -78,3 +79,14 @@ def test_third_dataset_stops_before_outcomes_and_reveal() -> None:
     assert qualification["outcome_columns_inspected"] is False
     assert qualification["validation_or_sealed_created"] is False
     assert qualification["selected_alternative"]["row_level_data_present"] is False
+
+
+def test_final_reports_are_deterministic_and_withhold_three_study_claim(tmp_path: Path) -> None:
+    first = build_outputs(tmp_path / "first")
+    second = build_outputs(tmp_path / "second")
+    assert first == second
+    result = json.loads(first["THREE_DATASET_MONETARY_PROOF.json"])
+    assert result["overall_status"] == "TWO_OF_THREE_MONETARY_PROOFS_ONLY"
+    assert result["public_three_study_claim_authorized"] is False
+    assert [row["pass"] for row in result["studies"]] == [True, True, False]
+    assert b"WITHHELD" in first["PUBLIC_CLAIM_CARD.md"]

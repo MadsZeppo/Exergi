@@ -1,0 +1,16 @@
+{
+  "deterministic_regeneration": "PASS",
+  "focused_tests": "PASS",
+  "full_pytest": "PASS",
+  "full_pytest_collected": 555,
+  "git_diff_check": "PASS",
+  "immutable_audit_sha256": "c1eb53fc8c7aeb2b1a9440d8fa7600ca1f8f2bcac9a836a5d1b53842a928621a",
+  "mypy": "PASS",
+  "mypy_source_files": 181,
+  "outcomes_opened_for_third_study": false,
+  "qualification_sha256": "750f7170045dd0c8d619bbd999418f31614c6bcbb797829533cc5ff6479deadc",
+  "ruff": "PASS",
+  "sealed_opened_for_third_study": false,
+  "status": "TWO_OF_THREE_MONETARY_PROOFS_ONLY",
+  "v8_v9_raw_data_read_by_proof_generator": false
+}

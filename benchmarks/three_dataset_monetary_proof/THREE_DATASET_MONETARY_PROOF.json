@@ -1,0 +1,59 @@
+{
+  "legacy_normalization_caveat": "V8 and V9 used dataset-specific frozen runners. The shared typed contract is an ex-post reporting normalization, not evidence that one general model produced both.",
+  "outreach_approved": false,
+  "overall_status": "TWO_OF_THREE_MONETARY_PROOFS_ONLY",
+  "public_three_study_claim_authorized": false,
+  "qualification_status": "THIRD_MONETARY_DATASET_NOT_FOUND",
+  "schema_version": 1,
+  "studies": [
+    {
+      "authority": "REAL_RANDOMIZED_NET_REVENUE_AFTER_DECLARED_EMAIL_COST",
+      "bau": "No E-Mail",
+      "bau_value": 0.5121956856702619,
+      "currency": "USD",
+      "dataset": "Hillstrom V8",
+      "exergi_value": 1.231508099050456,
+      "frozen_exergi_decision": "STATIC_MENS_EMAIL_FOR_ALL_ELIGIBLE_CUSTOMERS",
+      "incremental_value_per_customer": 0.7193124133801942,
+      "lower_95": 0.21955759630612487,
+      "n": 10563,
+      "p_value": 0.004786880267285335,
+      "pass": true,
+      "total_incremental_value": 7598.097022534992,
+      "upper_95": 1.2190672304542636
+    },
+    {
+      "authority": "REAL_RANDOMIZED_GROSS_REVENUE_AVOIDANCE",
+      "bau": "HIDE_PRICE_UNTIL_PRODUCT_PAGE",
+      "bau_value": 709.5826010307889,
+      "currency": "ARS",
+      "dataset": "Concealing Prices V9 Study 3",
+      "exergi_value": 947.1524445180867,
+      "frozen_exergi_decision": "SHOW_PRICE_IN_EMAIL / AVOID_DELAYED_PRICE",
+      "incremental_value_per_customer": 237.56984348729782,
+      "lower_95": 122.60696276204123,
+      "n": 192994,
+      "p_value": 0.0004997501249375312,
+      "pass": true,
+      "total_incremental_value": 45849554.373987556,
+      "upper_95": 352.5327242125544
+    },
+    {
+      "authority": "NONE_DATASET_NOT_QUALIFIED",
+      "bau": null,
+      "bau_value": null,
+      "currency": null,
+      "dataset": "Third independent randomized commerce study",
+      "exergi_value": null,
+      "frozen_exergi_decision": "NO_DECISION_DATASET_NOT_QUALIFIED",
+      "incremental_value_per_customer": null,
+      "lower_95": null,
+      "n": null,
+      "p_value": null,
+      "pass": false,
+      "total_incremental_value": null,
+      "upper_95": null
+    }
+  ],
+  "terminal_gate": "THIRD_MONETARY_DATASET_NOT_FOUND"
+}
