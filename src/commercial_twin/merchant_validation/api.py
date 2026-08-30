@@ -36,6 +36,11 @@ def create_app(service: MerchantValidationService | None = None) -> FastAPI:
     product = service or build_demo_service()
     app = FastAPI(title="Verified Customer Twin — Merchant Validation V1", version="1.0.0")
 
+    @app.get("/healthz", include_in_schema=False)
+    def health() -> dict[str, str]:
+        """Render liveness check; migration failure is handled by the pre-deploy command."""
+        return {"status": "ok"}
+
     def authorize(merchant_id: UUID, supplied: str | None) -> None:
         if supplied is None or supplied != str(merchant_id):
             raise HTTPException(status_code=403, detail="merchant authentication failed")

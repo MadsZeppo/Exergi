@@ -1,0 +1,50 @@
+services:
+  - type: web
+    name: exergi-api
+    runtime: python
+    region: frankfurt
+    plan: 0.5c-512mb
+    rootDir: .
+    buildCommand: uv sync --frozen --no-dev
+    preDeployCommand: uv run alembic upgrade head
+    startCommand: uv run uvicorn commercial_twin.merchant_validation.api:app --host 0.0.0.0 --port $PORT --proxy-headers
+    healthCheckPath: /healthz
+    autoDeployTrigger: off
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.14
+      - key: EXERGI_ENVIRONMENT
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: exergi-postgres
+          property: connectionString
+      - key: PGSSLMODE
+        value: require
+      - key: EXERGI_DASHBOARD_URL
+        sync: false
+      - key: SHOPIFY_CLIENT_ID
+        sync: false
+      - key: SHOPIFY_CLIENT_SECRET
+        sync: false
+      - key: SHOPIFY_TOKEN_ENCRYPTION_KEY
+        sync: false
+      - key: SHOPIFY_OAUTH_STATE_KEY
+        generateValue: true
+      - key: CUSTOMER_PSEUDONYM_KEY
+        generateValue: true
+      - key: EXERGI_SESSION_SIGNING_KEY
+        generateValue: true
+      - key: SHOPIFY_ENABLE_READ_ALL_ORDERS
+        value: "false"
+      - key: SHOPIFY_ENABLE_PAYMENTS_DATA
+        value: "false"
+
+databases:
+  - name: exergi-postgres
+    region: frankfurt
+    plan: 0.1c-256mb
+    postgresMajorVersion: "17"
+    databaseName: exergi
+    user: exergi_runtime
+    ipAllowList: []

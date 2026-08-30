@@ -54,7 +54,6 @@ class ShopifySettings:
         required = {
             "client_id": "SHOPIFY_CLIENT_ID",
             "client_secret": "SHOPIFY_CLIENT_SECRET",
-            "app_base_url": "EXERGI_API_BASE_URL",
             "dashboard_url": "EXERGI_DASHBOARD_URL",
             "token_encryption_key": "SHOPIFY_TOKEN_ENCRYPTION_KEY",
             "oauth_state_key": "SHOPIFY_OAUTH_STATE_KEY",
@@ -69,6 +68,13 @@ class ShopifySettings:
             if not value:
                 missing.append(environment_name)
             values[field] = value
+        app_base_url = os.environ.get("EXERGI_API_BASE_URL", "").strip()
+        render_hostname = os.environ.get("RENDER_EXTERNAL_HOSTNAME", "").strip()
+        if not app_base_url and render_hostname:
+            app_base_url = f"https://{render_hostname}"
+        if not app_base_url:
+            missing.append("EXERGI_API_BASE_URL")
+        values["app_base_url"] = app_base_url
         if missing:
             raise RuntimeError(f"missing required runtime secrets: {', '.join(sorted(missing))}")
         environment = os.environ.get("EXERGI_ENVIRONMENT", "production").lower()
