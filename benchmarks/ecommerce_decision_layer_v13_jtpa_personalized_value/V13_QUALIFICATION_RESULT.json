@@ -1,0 +1,34 @@
+{
+  "access_control": {
+    "development_outcomes_opened": false,
+    "freeze_created": false,
+    "model_selection_performed": false,
+    "preregistration_created": false,
+    "raw_outcome_values_analyzed": false,
+    "validation_outcomes_opened": false,
+    "validation_reveal_started": false
+  },
+  "claim_authority_at_qualification": "REAL_RANDOMIZED_EARNINGS_POLICY_VALUE_ONLY",
+  "cost_authority": "NO_REPRODUCIBLE_PERSON_LEVEL_OR_ASSIGNMENT_COST_IN_PUBLIC_USE_PACKAGE",
+  "hard_failures": [],
+  "outcome_contract": {
+    "currency": "NOMINAL_US_DOLLARS",
+    "horizon": "MONTHS_1_TO_30_AFTER_RANDOM_ASSIGNMENT",
+    "price_year": "NO_SINGLE_PRICE_YEAR_NOMINAL_1987_TO_1991_FOLLOW_UP",
+    "primary_columns": "SUM_UIERN01_TO_UIERN30",
+    "primary_file": "scaledui.dta",
+    "primary_population_definition": "INTERSECTION_OF_OFFICIAL_30_MONTH_ANALYSIS_SAMPLE_AND_12_SITE_SCALED_UI_FILE",
+    "raw_outcome_type": "OFFICIAL_EDITED_AND_SURVEY_SCALED_STATE_UI_EARNINGS"
+  },
+  "qualified": true,
+  "qualification_completed_at_utc": "2026-08-30T11:30:00Z",
+  "qualification_status": "QUALIFIED_FOR_RANDOMIZED_EARNINGS_ONLY",
+  "schema_version": 1,
+  "warnings": [
+    "THE_PUBLIC_USE_PACKAGE_DOES_NOT_RELEASE_A_REPRODUCIBLE_PERSON_LEVEL_PROGRAM_COST",
+    "THE_PRIMARY_OUTCOME_EXCLUDES_FOUR_SITES_WITHOUT_USABLE_UI_RECORDS",
+    "UI_EARNINGS_OMIT_EMPLOYMENT_NOT_COVERED_BY_STATE_UI_SYSTEMS",
+    "THE_OFFICIAL_SCALED_UI_MEASURE_IS_EDITED_IMPUTED_AND_SCALED_TO_SURVEY_LEVELS",
+    "PROTECTED_CHARACTERISTICS_ARE_AUDIT_ONLY_AND_FORBIDDEN_TO_THE_ENTERPRISE_POLICY"
+  ]
+}

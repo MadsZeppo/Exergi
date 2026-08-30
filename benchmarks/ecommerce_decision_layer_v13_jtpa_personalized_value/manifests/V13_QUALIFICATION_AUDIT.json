@@ -1,0 +1,48 @@
+{
+  "assignment": {
+    "control_code": "ra_stat=2",
+    "full_control": 6629,
+    "full_randomized": 20601,
+    "full_treated": 13972,
+    "primary_analysis_control": 4989,
+    "primary_analysis_rows": 15134,
+    "primary_analysis_treated": 10145,
+    "primary_propensity": 0.6666666666666666,
+    "randomization_unit": "INDIVIDUAL_ELIGIBLE_APPLICANT",
+    "treatment_code": "ra_stat=1",
+    "treatment_definition": "RANDOMIZED_OFFER_ELIGIBILITY_FOR_JTPA_TITLE_II_SERVICES"
+  },
+  "balance": {
+    "allowlisted_fields": 33,
+    "categorical_indicators_checked": 4857,
+    "indicators_abs_smd_above_0_10": 0,
+    "max_abs_smd": 0.06324207572310529
+  },
+  "identity": {
+    "full_duplicate_recid": 0,
+    "full_unique_recid": 20601,
+    "primary_duplicate_recid": 0,
+    "primary_unique_recid": 15134,
+    "stable_identifier": "recid"
+  },
+  "outcome_boundary": {
+    "outcome_columns_inspected": false,
+    "outcome_membership_ids_inspected": true,
+    "outcome_values_inspected": false,
+    "published_impacts_used_for_selection": false
+  },
+  "primary_population": {
+    "adult_men": 4850,
+    "adult_women": 5822,
+    "female_youth": 2457,
+    "male_youth": 2005,
+    "sites": 12
+  },
+  "srm": {
+    "chi_square": 0.9214021408748513,
+    "expected_control": 5044.666666666667,
+    "expected_treated": 10089.333333333334,
+    "p_value": 0.3371070850013316,
+    "status": "PASS"
+  }
+}

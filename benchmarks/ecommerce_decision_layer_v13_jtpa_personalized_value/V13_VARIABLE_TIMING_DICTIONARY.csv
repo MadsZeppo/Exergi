@@ -1,0 +1,471 @@
+source,variable,timing_class,policy_status,rationale
+expbif.dta,recid,ASSIGNMENT_ONLY,IDENTIFIER_ONLY,Stable public-use participant join key; never a model feature.
+expbif.dta,site,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,siteno,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,ssn,PRETREATMENT_ALLOWED,FORBIDDEN_PII,Collected before assignment but prohibited by policy governance.
+expbif.dta,lname,PRETREATMENT_ALLOWED,FORBIDDEN_PII,Collected before assignment but prohibited by policy governance.
+expbif.dta,fname,PRETREATMENT_ALLOWED,FORBIDDEN_PII,Collected before assignment but prohibited by policy governance.
+expbif.dta,dob,PRETREATMENT_ALLOWED,FORBIDDEN_PII,Collected before assignment but prohibited by policy governance.
+expbif.dta,trtmnt,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,ra_stat,ASSIGNMENT_ONLY,EVALUATOR_ONLY,Created or recorded at random assignment.
+expbif.dta,trgt_grp,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,rec_srvc,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,age,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,race,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,sex,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,inschool,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,ra_dt,ASSIGNMENT_ONLY,EVALUATOR_ONLY,Created or recorded at random assignment.
+expbif.dta,radrc,UNKNOWN_FORBIDDEN,FORBIDDEN_UNKNOWN,Semantics or timing are not sufficiently documented for policy use.
+expbif.dta,bfcaruse,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bflangua,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfhhafdc,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfgenass,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfhhfdst,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfeduca,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfedcmpt,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfgradhs,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfhsdate,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bflstgde,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfeduged,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfvococc,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfabeesl,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfassdeg,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfbacdeg,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bftecdip,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfmaster,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfwforpy,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfpayful,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfpaylas,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfhrslas,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bflookwk,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfemploy,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfwkswrk,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfyrearn,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfuncomp,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfstwork,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfhrswrk,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfwage,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfpayprd,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfdayswk,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfgrspay,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfnetpay,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfcuremp,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bflvwork,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfreaslv,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfjbclub,PRETREATMENT_ALLOWED,POLICY_ALLOWED,Background Information Form field recorded before the assignment call.
+expbif.dta,bfchhome,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfchund4,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfch4or5,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfch6t12,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfch1318,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfchov18,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfchaway,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfnuaway,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfhhsize,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfmarsta,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfdtdwsp,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bftotinc,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfnoafdc,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfafdc,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfstafdc,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,none3,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bflnafdc,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfafdcyr,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfafyrnm,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfafdcnw,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfstafnw,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfpbhous,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bfmandat,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,drivlice,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,hascar,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,dlonly,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,cronly,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,drlcar,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,nodlcr,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,english,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,spanish,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,french,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,portuges,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,tagalog,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,vietnam,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,cambodia,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,langoth,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,hhafdc,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,genass,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdcga,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,hhfdst,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdcfs,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,fsga,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,fsafonly,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afgaonly,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,fsgaonly,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdcfsga,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,nowelfar,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,educ07,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,educ08,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,educ09,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,educ10,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,educ11,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,educ12,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,educ13,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,educ14,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,educ15,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,educ16,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,educ17,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,educ18,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,gradcmpt,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,edcmpt07,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,edcmpt08,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,edcmpt09,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,edcmpt10,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,edcmpt11,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,edcmpt12,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,edcmpt13,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,edcmpt14,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,edcmpt15,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,edcmpt16,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,edcmpt17,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,edcmpt18,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,cmpthigh,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,gradhs,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,nummonhs,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,numyrshs,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,hasged,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,hsgrdged,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,nohs,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,somehs,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,hsged,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,somphs,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,coldeg,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,vocnow,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,vocwiy,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,vocyag,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,novococc,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,vococc,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,voca12,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,vocpas,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,abenow,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,abewiy,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,abeyag,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,noabeesl,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,abeesl,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,abea12,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,abepas,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,assdeg,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,bacdeg,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,tecdip,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,master,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,advdeg,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,teconly,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,nontec,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,banoma,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,aanohg,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,numdeg,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,wkforpy,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,wkfultm,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,paylast,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,hrslast,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,lookwrk,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,emplers,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,employo,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,employ1,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,employ2,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,employ3,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,employ5,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,employ7,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,numempls,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,avlenemp,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,weekswrk,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,avgearn,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,yearearn,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,uibnow,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,uibbefor,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,uibyear,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,stwork,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,weekpay,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,hrwage,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,curempl,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,monlvwk,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,lengjob,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,lvpltcl,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,lvothlo,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,lvquit,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,lvseatp,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,lvfired,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,lvother,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,lvinvol,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,jclubnw,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,jclubwy,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,jcbgt12,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,jcbwynw,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,jobclub,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,chhome,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,chunder4,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,nuchund4,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,ch4or5,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,nuch4or5,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,ch6to12,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,nuch6t12,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,ch13to18,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,nuch1318,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,chover18,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,nuchov18,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,numlt19,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,chdrnlv,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,chaway,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,nuchaway,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,totch18,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,anylt19,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,mstatsi,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,mstatms,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,mstatm,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,mstatwds,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,mstatmar,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,notlvsp,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,wdsmonth,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,inc3less,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,inc3to6,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,inc6to9,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,inc9to12,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,inc12t15,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,inc15up,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,recafdc,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdcown,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdcelse,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdcboth,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,ownname,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,elsecase,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdcmon,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdc0,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdc1to3,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdc4to6,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdc7t12,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdc1323,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdc2460,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdc60up,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdcyear,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdcyrnm,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afyrelse,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,anyafdcy,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,elseafdy,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,ownafdcy,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdcnow,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdcnowo,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdcnowe,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdcntnw,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdntnwe,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,afdntnwo,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,lenafdc,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,curisfst,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,pbhous,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,housass,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,pbhoass,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,reqwelf,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,reqcort,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,required,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,corpus,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,cedar,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,coosa,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,heart,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,fortw,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,jersey,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,jackson,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,larimar,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,decatur,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,nwminn,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,montana,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,omaha,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,marion,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,oakland,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,provid,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,springf,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,ctonly,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,ojtonly,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,actothr,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,treatmt,ASSIGNMENT_ONLY,EVALUATOR_ONLY,Created or recorded at random assignment.
+expbif.dta,control,ASSIGNMENT_ONLY,EVALUATOR_ONLY,Created or recorded at random assignment.
+expbif.dta,adultm,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,adultf,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,youthm,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,youthn,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,rs_ctos,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,rs_ojt,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,rs_jsa,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,rs_we,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,rs_be,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,rs_other,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,numrecs,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,numothr,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,ct_ojt,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,noctojt,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,rec_ct,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,rec_cto,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,rec_ojt,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,rec_ojo,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,ctorojt,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,one_non,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,one_oth,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,both_no,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,both_ot,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,white,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,black,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,hispanic,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,native,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,asian,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,wht_blk,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,w_b_his,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,male,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,female,PRETREATMENT_ALLOWED,AUDIT_ONLY_PROTECTED,Pretreatment protected characteristic; fairness audit only.
+expbif.dta,inschl,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,outschl,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,ramonth,ASSIGNMENT_ONLY,EVALUATOR_ONLY,Created or recorded at random assignment.
+expbif.dta,cohort,ASSIGNMENT_ONLY,EVALUATOR_ONLY,Created or recorded at random assignment.
+expbif.dta,jtpaelig,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,jtpaedet,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,tit2a,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,titoth,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,tit2oth,PRETREATMENT_ALLOWED,NOT_SELECTED,"Documented BIF/telephone-file baseline field, excluded from the V13 allowlist."
+expbif.dta,phonehom,PRETREATMENT_ALLOWED,FORBIDDEN_PII,Collected before assignment but prohibited by policy governance.
+expbif.dta,nea_stat,UNKNOWN_FORBIDDEN,FORBIDDEN_UNKNOWN,Semantics or timing are not sufficiently documented for policy use.
+expbif.dta,bifid,UNKNOWN_FORBIDDEN,FORBIDDEN_UNKNOWN,Semantics or timing are not sufficiently documented for policy use.
+earns2.dta,newern01,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern02,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern03,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern04,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern05,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern06,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern07,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern08,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern09,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern10,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern11,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern12,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern13,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern14,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern15,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern16,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern17,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern18,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern19,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern20,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern21,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern22,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern23,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern24,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern25,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern26,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern27,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern28,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern29,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,newern30,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+earns2.dta,bifrsp,EVALUATOR_ONLY,EVALUATOR_ONLY,Sample/response indicator unavailable to the policy at assignment.
+earns2.dta,recid,ASSIGNMENT_ONLY,IDENTIFIER_ONLY,Stable join key only.
+boysern2.dta,newern01,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern02,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern03,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern04,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern05,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern06,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern07,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern08,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern09,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern10,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern11,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern12,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern13,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern14,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern15,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern16,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern17,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern18,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern19,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern20,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern21,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern22,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern23,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern24,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern25,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern26,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern27,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern28,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern29,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,newern30,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+boysern2.dta,bifrsp,EVALUATOR_ONLY,EVALUATOR_ONLY,Sample/response indicator unavailable to the policy at assignment.
+boysern2.dta,recid,ASSIGNMENT_ONLY,IDENTIFIER_ONLY,Stable join key only.
+toterns.dta,recid,ASSIGNMENT_ONLY,IDENTIFIER_ONLY,Stable join key only.
+toterns.dta,bifrsp,EVALUATOR_ONLY,EVALUATOR_ONLY,Sample/response indicator unavailable to the policy at assignment.
+toterns.dta,totern19,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern20,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern21,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern22,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern23,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern24,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern25,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern26,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern27,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern28,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern29,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern30,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern31,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern32,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern00,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern01,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern02,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern03,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern04,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern05,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern06,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern07,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern08,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern09,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern10,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern11,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern12,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern13,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern14,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern15,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern16,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern17,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+toterns.dta,totern18,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+ppd_dat.dta,recid,ASSIGNMENT_ONLY,IDENTIFIER_ONLY,Stable join key only.
+ppd_dat.dta,bifrsp,EVALUATOR_ONLY,EVALUATOR_ONLY,Sample/response indicator unavailable to the policy at assignment.
+ppd_dat.dta,act_type,POST_TREATMENT_FORBIDDEN,FORBIDDEN_POST_TREATMENT,Enrollment/service/activity record created after randomized offer.
+ppd_dat.dta,titcode,POST_TREATMENT_FORBIDDEN,FORBIDDEN_POST_TREATMENT,Enrollment/service/activity record created after randomized offer.
+ppd_dat.dta,enr,POST_TREATMENT_FORBIDDEN,FORBIDDEN_POST_TREATMENT,Enrollment/service/activity record created after randomized offer.
+ppd_dat.dta,beg,POST_TREATMENT_FORBIDDEN,FORBIDDEN_POST_TREATMENT,Enrollment/service/activity record created after randomized offer.
+ppd_dat.dta,end,POST_TREATMENT_FORBIDDEN,FORBIDDEN_POST_TREATMENT,Enrollment/service/activity record created after randomized offer.
+ppd_dat.dta,trm,POST_TREATMENT_FORBIDDEN,FORBIDDEN_POST_TREATMENT,Enrollment/service/activity record created after randomized offer.
+ppd_dat.dta,plc,POST_TREATMENT_FORBIDDEN,FORBIDDEN_POST_TREATMENT,Enrollment/service/activity record created after randomized offer.
+scaledui.dta,uiern01,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern02,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern03,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern04,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern05,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern06,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern07,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern08,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern09,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern10,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern11,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern12,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern13,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern14,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern15,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern16,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern17,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern18,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern19,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern20,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern21,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern22,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern23,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern24,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern25,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern26,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern27,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern28,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern29,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,uiern30,OUTCOME_ONLY,EVALUATOR_ONLY,Post-assignment monthly earnings outcome.
+scaledui.dta,recid,ASSIGNMENT_ONLY,IDENTIFIER_ONLY,Stable join key only.
+scaledui.dta,bifrsp,EVALUATOR_ONLY,EVALUATOR_ONLY,Sample/response indicator unavailable to the policy at assignment.
+scaledui.dta,bifid,EVALUATOR_ONLY,EVALUATOR_ONLY,Sample/response indicator unavailable to the policy at assignment.

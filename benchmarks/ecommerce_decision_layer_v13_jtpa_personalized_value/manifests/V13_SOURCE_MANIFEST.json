@@ -1,0 +1,36 @@
+{
+  "archive": {
+    "bytes": 127676441,
+    "crc_check": "PASS",
+    "downloaded_at_utc": "2026-08-30T11:10:48Z",
+    "entries": 388,
+    "etag": "618df9ba-79c3019",
+    "http_last_modified": "Fri, 12 Nov 2021 05:20:58 GMT",
+    "immutable_mode": "0444",
+    "media_type": "application/zip",
+    "sha256": "3607617e265ec3eac11436f3f19a25e43e3ecf53ba6de6b98a9dede53cc3a76b",
+    "uncompressed_bytes": 134935786
+  },
+  "documentation": {
+    "abt_njs_publicuse.doc": "df914cbc8e29bd3da854f8ae95eba027b19ef83e3fe19a9dd3a51341dfea8b76",
+    "abt_njs_publicuse_addendum_032503.doc": "8cfd169b95f1165fa6ab3f402d9308e22b3d0ed8c17716ea9a65827770d2d282",
+    "analysis/earns.pdf": "25e8a4d08645cdddb8dafae4b77436cd54e654642c6404af073206c46506e7bd",
+    "Data_summary.pdf": "dc20963a73d9e2172db7af38951dcfc1097f68fcc5f0a8173f833a76daf7d447",
+    "expbif/expbif.pdf": "c835c9fc2c85d40d7c605913235e84f26fc2ab20cb3200cc8b5a29e0be506c81",
+    "NJS_final_report.pdf": "d87fbd4059200e6c78c6cf0eca23dac6ee25bf3d6c4cfe9765c3509b648a14a4"
+  },
+  "official_dataset_page": "https://www.upjohn.org/data-tools/employment-research-data-center/national-jtpa-study",
+  "official_download_url": "https://www.upjohn.org/sites/default/files/2019-02/jtpa_national_evaluation.zip",
+  "publisher": "W.E. Upjohn Institute for Employment Research",
+  "released_files": {
+    "boysern2.dta": "1cfbf385158d2ce4df2bd104eeb965b1d1d429f05fff045095c76c25568ee081",
+    "earns2.dta": "0464adf2bf4c0a8418d3459f988992dc306b68e3f1b10ec6b0da62b1bbfc56e6",
+    "expbif.dta": "decf5853ceeb60d6020412f778bba079c6c839276b432fdf725d3ae75cdcd3b0",
+    "ppd_dat.dta": "d1f005cccacae0e9a22999cdb263c4ec9a9be332a7fd6282de373124ad0b02d8",
+    "scaledui.dta": "ac0b4c26e41accea8d3906cf3fdce3a079c5fbf93da46144f0dd2db7ed35ef03",
+    "toterns.dta": "87b565240405d3e5eb1b139831d8943818f0b9a813697cd6328aa0c7bd7d1a27"
+  },
+  "schema_version": 1,
+  "source_identity": "NATIONAL_JTPA_STUDY_PUBLIC_USE_DATA_CD",
+  "source_version": "Upjohn public-use CD with March 2003 documentation addendum and April 2004 replacement files"
+}
