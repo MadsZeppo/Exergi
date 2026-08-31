@@ -18,7 +18,7 @@ export async function GET(request: Request) {
   try {
     const response = await fetch(`${apiBase}/api/v1/maintenance/daily`, {
       method: "POST",
-      headers: { "X-Exergi-Cron-Secret": secret },
+      headers: { "X-Exergi-Maintenance-Secret": secret },
       cache: "no-store",
     });
     if (!response.ok) return Response.json({ detail: "maintenance run failed" }, { status: 502 });

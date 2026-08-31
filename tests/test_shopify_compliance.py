@@ -57,10 +57,11 @@ def test_cron_authentication_is_constant_time_and_fails_closed() -> None:
 
     assert client.post("/api/v1/maintenance/daily").status_code == 401
     assert client.post(
-        "/api/v1/maintenance/daily", headers={"X-Exergi-Cron-Secret": "wrong"}
+        "/api/v1/maintenance/daily", headers={"X-Exergi-Maintenance-Secret": "wrong"}
     ).status_code == 401
     accepted = client.post(
-        "/api/v1/maintenance/daily", headers={"X-Exergi-Cron-Secret": "s" * 40}
+        "/api/v1/maintenance/daily",
+        headers={"X-Exergi-Maintenance-Secret": "s" * 40},
     )
     assert accepted.json() == {
         "status": "COMPLETED",

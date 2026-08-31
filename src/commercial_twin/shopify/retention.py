@@ -563,8 +563,10 @@ def build_maintenance_router(
     router = APIRouter(prefix="/api/v1/maintenance", tags=["internal-maintenance"])
 
     @router.post("/daily")
-    def daily(x_exergi_cron_secret: str | None = Header(default=None)) -> dict[str, Any]:
-        supplied = (x_exergi_cron_secret or "").encode()
+    def daily(
+        x_exergi_maintenance_secret: str | None = Header(default=None),
+    ) -> dict[str, Any]:
+        supplied = (x_exergi_maintenance_secret or "").encode()
         expected = settings.cron_secret.encode()
         if not hmac.compare_digest(
             hashlib.sha256(supplied).digest(), hashlib.sha256(expected).digest()
