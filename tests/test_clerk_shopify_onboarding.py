@@ -309,3 +309,62 @@ def test_valid_callback_queues_initial_sync_once(monkeypatch: Any, private_key: 
     )
     assert "shopify=error" in second.headers["location"]
     assert product.calls == 1
+
+
+def test_retry_sync_uses_existing_authenticated_connection_without_oauth(
+    private_key: Any,
+) -> None:
+    config = _settings()
+    repository = MemoryShopifyRepository()
+    tenants = MemoryTenantProvisioner(TenantIdDeriver("t" * 40))
+    principal = tenants.resolve(VerifiedIdentity(ISSUER, "user_merchant_one"))
+    installation = Installation(
+        id=UUID("00000000-0000-4000-8000-000000000011"),
+        organization_id=principal.organization_id,
+        merchant_id=principal.merchant_id,
+        shop_id=UUID("00000000-0000-4000-8000-000000000012"),
+        shop_domain="safe-shop.myshopify.com",
+        encrypted_access_token="encrypted",
+        encrypted_refresh_token=None,
+        scopes=config.scopes,
+        api_version=config.api_version,
+        access_token_expires_at=None,
+        refresh_token_expires_at=None,
+        status="CONNECTED",
+        installed_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
+    )
+    repository.installations[(principal.merchant_id, installation.shop_domain)] = installation
+
+    class Product:
+        calls = 0
+
+        def initial_sync(self, settings: ShopifySettings, value: Installation) -> None:
+            assert settings is config and value is installation
+            self.calls += 1
+
+    product = Product()
+    app = FastAPI()
+    app.include_router(
+        build_shopify_router(
+            config,
+            repository,
+            ShopifyWebhookService(
+                config.client_secret, repository, RecordingPrivacyProcessor()
+            ),
+            _verifier(private_key),
+            tenants,
+            product,  # type: ignore[arg-type]
+        )
+    )
+    client = TestClient(app)
+    missing = client.post("/api/v1/shopify/sync?shop=safe-shop.myshopify.com")
+    response = client.post(
+        "/api/v1/shopify/sync?shop=safe-shop.myshopify.com",
+        headers={"Authorization": f"Bearer {_token(private_key)}"},
+    )
+
+    assert missing.status_code == 401
+    assert response.json() == {"status": "QUEUED", "mode": "READ_ONLY"}
+    assert product.calls == 1
+    assert repository.nonces == {}

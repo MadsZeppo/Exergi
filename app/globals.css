@@ -68,6 +68,8 @@ textarea {
 .connect-form input { min-width: 280px; flex: 1; padding: 12px; border: 1px solid #cfd6d1; border-radius: 8px; }
 .connect-form button { border: 0; border-radius: 8px; background: #1d3428; color: #fff; padding: 12px 18px; font-weight: 700; }
 .connect-form button:disabled { background: #aab3ae; cursor: not-allowed; }
+.sync-retry-button { border: 0; border-radius: 8px; background: #1d3428; color: #fff; padding: 12px 18px; font-weight: 700; }
+.sync-retry-button:disabled { background: #aab3ae; cursor: not-allowed; }
 .form-note { font-size: 12px; color: #876515 !important; }
 .onboarding-steps { margin-top: 0; }
 @media (max-width: 760px) { .merchant-app { grid-template-columns: 1fr; }.merchant-nav { position: static; }.merchant-nav nav { grid-template-columns: 1fr 1fr; }.merchant-topbar { display: none; }.form-grid { grid-template-columns: 1fr; }.ledger-row { grid-template-columns: 1fr; } }
