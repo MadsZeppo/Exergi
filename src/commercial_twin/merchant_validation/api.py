@@ -163,10 +163,16 @@ def create_app(service: MerchantValidationService | None = None) -> FastAPI:
     # Missing configuration never falls back to fake credentials or a live-success claim.
     try:
         from commercial_twin.shopify.api import build_shopify_router
+        from commercial_twin.shopify.compliance import SqlAgreementService
         from commercial_twin.shopify.config import ShopifySettings
         from commercial_twin.shopify.identity import ClerkAuthSettings, ClerkJWTVerifier
         from commercial_twin.shopify.product_service import SqlShopifyProductService
         from commercial_twin.shopify.repository import SqlShopifyRepository
+        from commercial_twin.shopify.retention import (
+            DailyMaintenanceWorker,
+            MaintenanceSettings,
+            build_maintenance_router,
+        )
         from commercial_twin.shopify.tenancy import SqlTenantProvisioner, TenantIdDeriver
         from commercial_twin.shopify.webhooks import (
             ShopifyWebhookService,
@@ -181,9 +187,10 @@ def create_app(service: MerchantValidationService | None = None) -> FastAPI:
     if settings is not None:
         repository = SqlShopifyRepository.from_url(settings.database_url)
         verify_runtime_rls(repository.engine)
-        privacy = SqlPrivacyProcessor(repository.engine)
+        privacy = SqlPrivacyProcessor(repository.engine, settings.customer_pseudonym_key)
         webhooks = ShopifyWebhookService(settings.client_secret, repository, privacy)
         product_service = SqlShopifyProductService(repository.engine, repository)
+        agreements = SqlAgreementService.from_env(repository.engine, settings.dashboard_url)
         verifier = ClerkJWTVerifier(clerk_settings)
         tenants = SqlTenantProvisioner(repository.engine, tenant_deriver)
         app.include_router(
@@ -194,6 +201,15 @@ def create_app(service: MerchantValidationService | None = None) -> FastAPI:
                 verifier,
                 tenants,
                 product_service,
+                agreement_gate=agreements,
+                compliance_service=agreements,
+            )
+        )
+        maintenance_settings = MaintenanceSettings.from_env()
+        app.include_router(
+            build_maintenance_router(
+                DailyMaintenanceWorker(repository.engine, settings.customer_pseudonym_key),
+                maintenance_settings,
             )
         )
         app.add_middleware(

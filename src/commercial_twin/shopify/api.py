@@ -4,14 +4,16 @@ from __future__ import annotations
 
 from dataclasses import asdict
 from datetime import UTC, datetime, timedelta
-from typing import Any
+from typing import Any, Literal
 from urllib.parse import urlencode
+from uuid import UUID
 
 from fastapi import APIRouter, BackgroundTasks, Depends, Header, HTTPException, Request
 from fastapi.responses import RedirectResponse
 from pydantic import BaseModel, ConfigDict, Field
 
 from .auth import MerchantPrincipal
+from .compliance import AgreementGate, AgreementRequiredError, SqlAgreementService
 from .config import ShopifySettings
 from .identity import ClerkJWTVerifier
 from .oauth import ShopifyOAuthService
@@ -37,6 +39,12 @@ class EconomicAssumptionsInput(BaseModel):
     shipping_cost_per_order: float | None = Field(default=None, ge=0)
     fulfillment_cost_per_order: float | None = Field(default=None, ge=0)
     action_cost_per_order: float | None = Field(default=None, ge=0)
+
+
+class AgreementAcceptInput(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    accepted: Literal[True]
+    agreement_version: str = Field(min_length=1, max_length=40)
 
 
 class BearerMerchantAuthenticator:
@@ -71,6 +79,9 @@ def build_shopify_router(
     verifier: ClerkJWTVerifier,
     tenants: TenantResolver,
     product_service: SqlShopifyProductService | None = None,
+    *,
+    agreement_gate: AgreementGate,
+    compliance_service: SqlAgreementService | None = None,
 ) -> APIRouter:
     router = APIRouter(prefix="/api/v1/shopify", tags=["shopify-read-only"])
     oauth = ShopifyOAuthService(settings, repository)
@@ -81,6 +92,10 @@ def build_shopify_router(
         payload: ConnectInput,
         identity: MerchantPrincipal = Depends(authenticate),  # noqa: B008
     ) -> Any:
+        try:
+            agreement_gate.require_current(identity)
+        except AgreementRequiredError as exc:
+            raise HTTPException(status_code=428, detail=str(exc)) from exc
         try:
             start = oauth.begin(identity.organization_id, identity.merchant_id, payload.shop)
         except ValueError as exc:
@@ -206,6 +221,62 @@ def build_shopify_router(
         except ValueError as exc:
             raise HTTPException(status_code=422, detail=str(exc)) from exc
         return {"status": "SAVED", "version": payload.version}
+
+    @router.get("/agreements")
+    def agreement_status(
+        identity: MerchantPrincipal = Depends(authenticate),  # noqa: B008
+    ) -> dict[str, Any]:
+        if compliance_service is None:
+            raise HTTPException(status_code=503, detail="compliance service is unavailable")
+        return compliance_service.status(identity).__dict__
+
+    @router.post("/agreements/accept")
+    def accept_agreements(
+        payload: AgreementAcceptInput,
+        request: Request,
+        identity: MerchantPrincipal = Depends(authenticate),  # noqa: B008
+    ) -> dict[str, Any]:
+        if compliance_service is None:
+            raise HTTPException(status_code=503, detail="compliance service is unavailable")
+        try:
+            status = compliance_service.accept(
+                identity,
+                requested_version=payload.agreement_version,
+                client_ip=request.client.host if request.client else "unknown",
+                user_agent=request.headers.get("user-agent", ""),
+                origin=request.headers.get("origin", ""),
+            )
+        except ValueError as exc:
+            raise HTTPException(status_code=409, detail=str(exc)) from exc
+        return status.__dict__
+
+    @router.get("/compliance")
+    def compliance_dashboard(
+        identity: MerchantPrincipal = Depends(authenticate),  # noqa: B008
+    ) -> dict[str, Any]:
+        if compliance_service is None:
+            raise HTTPException(status_code=503, detail="compliance service is unavailable")
+        return compliance_service.dashboard(identity)
+
+    @router.get("/compliance/privacy-exports")
+    def privacy_exports(
+        identity: MerchantPrincipal = Depends(authenticate),  # noqa: B008
+    ) -> list[dict[str, Any]]:
+        if compliance_service is None:
+            raise HTTPException(status_code=503, detail="compliance service is unavailable")
+        return compliance_service.list_exports(identity)
+
+    @router.get("/compliance/privacy-exports/{export_id}")
+    def privacy_export(
+        export_id: UUID,
+        identity: MerchantPrincipal = Depends(authenticate),  # noqa: B008
+    ) -> dict[str, Any]:
+        if compliance_service is None:
+            raise HTTPException(status_code=503, detail="compliance service is unavailable")
+        result = compliance_service.export(identity, export_id)
+        if result is None:
+            raise HTTPException(status_code=404, detail="privacy export not found")
+        return result
 
     @router.post("/webhooks")
     async def webhook(request: Request) -> dict[str, Any]:

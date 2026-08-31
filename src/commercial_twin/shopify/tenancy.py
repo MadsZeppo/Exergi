@@ -114,6 +114,14 @@ class SqlTenantProvisioner:
                 .mappings()
                 .one()
             )
+            connection.execute(
+                text("""
+                INSERT INTO maintenance_tenants (merchant_id)
+                VALUES (:merchant_id)
+                ON CONFLICT (merchant_id) DO UPDATE SET updated_at = now()
+                """),
+                {"merchant_id": ids.merchant_id},
+            )
         if row["organization_id"] != ids.organization_id or row["merchant_id"] != ids.merchant_id:
             raise RuntimeError("verified identity is bound to a different tenant")
         return MerchantPrincipal(ids.organization_id, ids.merchant_id, identity.subject)

@@ -15,6 +15,7 @@ MIGRATION_0001 = ROOT / "migrations/versions/0001_merchant_validation_v1.py"
 MIGRATION_0002 = ROOT / "migrations/versions/0002_shopify_vertical_slice.py"
 MIGRATION_0003 = ROOT / "migrations/versions/0003_clerk_identity_tenants.py"
 MIGRATION_0004 = ROOT / "migrations/versions/0004_shops_tenant_domain_unique.py"
+MIGRATION_0005 = ROOT / "migrations/versions/0005_compliance_retention.py"
 PRODUCT_SERVICE = ROOT / "src/commercial_twin/shopify/product_service.py"
 
 
@@ -93,6 +94,23 @@ def test_shops_upsert_conflict_target_has_matching_named_constraint() -> None:
     assert '["merchant_id", "shop_domain"]' in migration_source
     assert 'down_revision = "0003_clerk_identity_tenants"' in migration_source
     assert "UNIQUE (shop_domain)" in MIGRATION_0002.read_text(encoding="utf-8")
+
+
+def test_compliance_tables_force_rls_and_maintenance_is_data_minimized() -> None:
+    source = MIGRATION_0005.read_text(encoding="utf-8")
+    namespace = _migration_namespace(MIGRATION_0005)
+    columns = _table_columns(MIGRATION_0005)
+
+    assert set(namespace["TABLES"]) == set(columns)
+    assert all("merchant_id" in columns[table] for table in namespace["TABLES"])
+    assert "ENABLE ROW LEVEL SECURITY" in source
+    assert "FORCE ROW LEVEL SECURITY" in source
+    assert "app.maintenance_mode" in source
+    assert "SECURITY DEFINER" not in source
+    assert set(columns["maintenance_tenants"]) == {
+        "merchant_id", "registered_at", "updated_at",
+    }
+    assert "UNIQUE (merchant_id, agreement_version, clerk_subject_hash)" in source
 
 
 def _runtime_engine(

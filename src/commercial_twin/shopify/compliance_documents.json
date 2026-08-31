@@ -1,0 +1,48 @@
+{
+  "version": "2026-08-31",
+  "effective_date": "2026-08-31",
+  "review_status": "FOUNDER_PREPARED_PENDING_LEGAL_REVIEW",
+  "privacy": {
+    "title": "Privacy Policy",
+    "summary": "Exergi processes the minimum read-only Shopify commerce data needed to synchronize, reconcile and describe merchant commerce performance.",
+    "sections": [
+      {"heading": "Data and purposes", "paragraphs": ["Exergi processes Shopify shop identifiers, product and inventory records, orders, refunds, returns, fulfillment records, discount amounts, pseudonymous customer identifiers and derived aggregate states. Exergi does not intentionally request customer names, postal addresses, email addresses or phone numbers.", "The data is used only for read-only ingestion, reconciliation, descriptive analytics, economic accounting, data-health reporting and merchant-approved experimentation. Observational data is not represented as proven causal evidence."]},
+      {"heading": "Roles and instructions", "paragraphs": ["The merchant is the controller or business responsible for deciding why customer data is processed. Exergi acts as processor or service provider and processes protected customer data only on documented merchant instructions expressed through this agreement and authenticated product actions.", "A merchant can request access, export, correction, restriction or deletion through the authenticated Exergi workspace. Shopify mandatory privacy webhooks are treated as documented merchant instructions."]},
+      {"heading": "Security and incidents", "paragraphs": ["Data is encrypted in transit using HTTPS and protected at rest by the managed database and hosting controls. Shopify access tokens are encrypted separately. Tenant access is enforced with PostgreSQL FORCE ROW LEVEL SECURITY, authenticated Clerk identities and auditable server-side tenant mapping.", "Exergi will investigate suspected incidents, contain access, preserve relevant evidence and notify affected merchants without undue delay when notification is required. Exergi claims no security certification that has not been independently obtained."]},
+      {"heading": "Retention and deletion", "paragraphs": ["OAuth nonce records are deleted after 24 hours. Webhook receipt metadata is deleted after 30 days. Reconciled raw protected payloads are deleted after 90 days. Privacy export artifacts expire after 30 days. Customer-redaction requests are applied to relevant raw and analytical customer records without waiting for the routine retention schedule.", "On uninstall, credentials and protected raw payloads are removed immediately and remaining shop-scoped records are hard-deleted after a 30-day contractual recovery window if the shop is not reconnected. A Shopify shop/redact request shortens the hard-deletion window to 7 days, within Shopify's required response period. Agreement and security audit records may be retained for seven years after contract termination where necessary to establish compliance or legal claims."]},
+      {"heading": "Contact and review status", "paragraphs": ["Privacy requests must be submitted through the authenticated Exergi workspace or the founder contact channel supplied during onboarding. Accurate legal-entity and notice-address details must be added before public commercial launch.", "This policy was prepared by the founder and is pending qualified legal review. It is not legal advice and does not claim regulatory certification."]}
+    ]
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "summary": "These terms govern a merchant's use of Exergi's read-only commerce decision layer.",
+    "sections": [
+      {"heading": "Service boundary", "paragraphs": ["Exergi provides read-only synchronization, descriptive analysis, evidence-labelled decision support and merchant-controlled experiment planning. Exergi does not autonomously change Shopify stores, contact customers, spend budgets or guarantee commercial outcomes."]},
+      {"heading": "Merchant responsibilities", "paragraphs": ["The merchant must have authority to connect the Shopify shop, give processing instructions, provide lawful notices and obtain any required customer consent. The merchant must keep credentials secure and review Exergi outputs before acting."]},
+      {"heading": "Data and suspension", "paragraphs": ["Data handling is governed by the Privacy Policy and DPA of the accepted version. Exergi may suspend processing when security, legality, data integrity or merchant authority cannot be verified."]},
+      {"heading": "Disclaimers and review status", "paragraphs": ["Outputs are decision support, not legal, tax or financial advice. Liability limitations, governing law, legal entity details and formal notice mechanics require qualified legal review before commercial contracting.", "These terms were prepared by the founder and are pending qualified legal review. No certification, warranty or legal conclusion is invented by this document."]}
+    ]
+  },
+  "dpa": {
+    "title": "Data Processing Addendum",
+    "summary": "This DPA records the merchant's instructions and Exergi's obligations when processing protected customer data.",
+    "sections": [
+      {"heading": "Parties and subject matter", "paragraphs": ["The merchant acts as controller/business and Exergi as processor/service provider for read-only Shopify commerce synchronization and the purposes stated in the Privacy Policy. Processing continues while the Shopify connection or merchant account is active, subject to the stated deletion windows."]},
+      {"heading": "Processing details", "paragraphs": ["Data subjects are Shopify customers and prospective customers represented in protected order or customer resources. Data categories are shop and order identifiers, purchase timing, products, quantities, prices, discounts, refunds, returns, fulfillment, inventory and pseudonymous customer linkage. Direct name, address, email and phone fields are not intentionally requested.", "Operations include collection, organization, pseudonymization, reconciliation, storage, analysis, export, restriction and deletion. Exergi may not sell protected customer data or use it for an undisclosed independent purpose."]},
+      {"heading": "Instructions, rights and assistance", "paragraphs": ["Exergi processes data only on documented merchant instructions, including authenticated actions and valid Shopify compliance webhooks. Exergi will inform the merchant if an instruction appears unlawful, unless prohibited from doing so.", "Exergi assists with access, export and deletion requests through its privacy job workflow and provides data-minimized audit status. Customer decisions and applicable opt-outs must be respected where relevant."]},
+      {"heading": "Security, subprocessors and transfers", "paragraphs": ["Exergi uses authentication, least-privilege read scopes, encrypted transport, encrypted tokens, managed encrypted storage, FORCE RLS, replay protection, retention automation and security logging. Incidents are investigated and communicated as described in the Privacy Policy.", "Authorized subprocessors are listed on the Subprocessors page. The merchant generally authorizes those subprocessors for the stated services, subject to notice of material changes and applicable transfer safeguards. Exergi remains responsible for instructing subprocessors consistently with this DPA."]},
+      {"heading": "Deletion, audit and review status", "paragraphs": ["Exergi applies the concrete retention periods in the Privacy Policy and returns or deletes protected data on termination unless retention is legally required. Data-minimized agreement and security evidence may be retained for the stated legal audit period.", "Audit evidence includes versioned acceptance, document hashes, pseudonymous Clerk-subject evidence, time and hashed request metadata. This DPA was prepared by the founder and is pending qualified legal review, including transfer terms, governing law and entity details."]}
+    ]
+  },
+  "subprocessors": {
+    "title": "Subprocessors",
+    "summary": "Services used to deliver Exergi and the narrowly described processing purpose for each.",
+    "sections": [
+      {"heading": "Shopify", "paragraphs": ["Shopify supplies the merchant-authorized commerce source data, OAuth authorization and compliance webhook instructions. Relevant processing locations and transfer terms are governed by the merchant's and Exergi's Shopify agreements."]},
+      {"heading": "Clerk", "paragraphs": ["Clerk provides merchant authentication and session-token issuance. Exergi stores only an opaque, hashed Clerk subject in agreement evidence; browser tokens are not stored by Exergi."]},
+      {"heading": "Vercel", "paragraphs": ["Vercel hosts the public Next.js dashboard and invokes the daily retention proxy. Protected Shopify payloads are not intentionally placed in browser bundles, URLs or Vercel logs."]},
+      {"heading": "Render", "paragraphs": ["Render hosts the FastAPI service and managed TLS PostgreSQL database used for encrypted, tenant-scoped commerce processing and retention jobs."]},
+      {"heading": "Changes and review status", "paragraphs": ["Material subprocessor changes will be documented on this page before use where practicable. Contractual transfer mechanisms and legal entity details remain subject to qualified legal review.", "This list was prepared by the founder and is pending qualified legal review. No vendor certification is implied beyond each vendor's own published commitments."]}
+    ]
+  }
+}

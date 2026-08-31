@@ -17,6 +17,7 @@ from fastapi.testclient import TestClient
 
 import commercial_twin.shopify.api as api_module
 from commercial_twin.shopify.api import build_shopify_router
+from commercial_twin.shopify.compliance import MemoryAgreementGate
 from commercial_twin.shopify.config import ShopifySettings
 from commercial_twin.shopify.identity import (
     ClerkAuthSettings,
@@ -91,7 +92,14 @@ def _app(private_key: Any) -> tuple[TestClient, MemoryShopifyRepository]:
     )
     app = FastAPI()
     app.include_router(
-        build_shopify_router(config, repository, webhooks, _verifier(private_key), tenants)
+        build_shopify_router(
+            config,
+            repository,
+            webhooks,
+            _verifier(private_key),
+            tenants,
+            agreement_gate=MemoryAgreementGate(),
+        )
     )
     return TestClient(app), repository
 
@@ -153,6 +161,34 @@ def test_connect_without_jwt_is_401_and_valid_jwt_provisions_tenant(
     assert len(repository.nonces) == 1
 
 
+def test_current_agreement_is_required_before_oauth_state_is_created(
+    private_key: Any,
+) -> None:
+    config = _settings()
+    repository = MemoryShopifyRepository()
+    app = FastAPI()
+    app.include_router(
+        build_shopify_router(
+            config,
+            repository,
+            ShopifyWebhookService(
+                config.client_secret, repository, RecordingPrivacyProcessor()
+            ),
+            _verifier(private_key),
+            MemoryTenantProvisioner(TenantIdDeriver("t" * 40)),
+            agreement_gate=MemoryAgreementGate(accepted=False),
+        )
+    )
+    response = TestClient(app).post(
+        "/api/v1/shopify/connect",
+        json={"shop": "safe-shop"},
+        headers={"Authorization": f"Bearer {_token(private_key)}"},
+    )
+    assert response.status_code == 428
+    assert response.json() == {"detail": "current agreements must be accepted"}
+    assert repository.nonces == {}
+
+
 def test_invalid_expired_and_unauthorized_party_tokens_are_rejected(private_key: Any) -> None:
     client, _ = _app(private_key)
     for token in (
@@ -187,6 +223,7 @@ def test_conflicting_verified_identity_binding_is_403(private_key: Any) -> None:
             ),
             _verifier(private_key),
             ConflictingTenant(),  # type: ignore[arg-type]
+            agreement_gate=MemoryAgreementGate(),
         )
     )
     response = TestClient(app).post(
@@ -224,6 +261,7 @@ def test_cors_allows_only_exact_dashboard_origin(private_key: Any) -> None:
             ),
             _verifier(private_key),
             MemoryTenantProvisioner(TenantIdDeriver("t" * 40)),
+            agreement_gate=MemoryAgreementGate(),
         )
     )
     app.add_middleware(
@@ -299,6 +337,7 @@ def test_valid_callback_queues_initial_sync_once(monkeypatch: Any, private_key: 
             _verifier(private_key),
             MemoryTenantProvisioner(TenantIdDeriver("t" * 40)),
             product,  # type: ignore[arg-type]
+            agreement_gate=MemoryAgreementGate(),
         )
     )
     client = TestClient(app)
@@ -355,6 +394,7 @@ def test_retry_sync_uses_existing_authenticated_connection_without_oauth(
             _verifier(private_key),
             tenants,
             product,  # type: ignore[arg-type]
+            agreement_gate=MemoryAgreementGate(),
         )
     )
     client = TestClient(app)
