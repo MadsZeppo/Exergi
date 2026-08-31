@@ -1,17 +1,22 @@
-# Replace the non-secret client ID and URLs through Shopify CLI/Dev Dashboard per environment.
-client_id = "REPLACE_WITH_SHOPIFY_CLIENT_ID"
-name = "Exergi"
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "977de21e417f002dee1b769590ae5940"
 application_url = "https://exergi-api.onrender.com/api/v1/shopify/install"
 embedded = false
+name = "exergi"
 
 [build]
 automatically_update_urls_on_dev = true
 
 [access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
 scopes = "read_customers,read_inventory,read_orders,read_products,read_returns"
+optional_scopes = [ ]
 
 [auth]
-redirect_urls = ["https://exergi-api.onrender.com/api/v1/shopify/oauth/callback"]
+redirect_urls = [
+  "https://exergi-api.onrender.com/api/v1/shopify/oauth/callback"
+]
 
 [webhooks]
 api_version = "2026-07"
