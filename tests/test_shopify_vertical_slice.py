@@ -4,7 +4,6 @@ import base64
 import hashlib
 import hmac
 import json
-import re
 from collections.abc import Mapping
 from contextlib import contextmanager
 from dataclasses import replace
@@ -224,16 +223,12 @@ def test_webhook_hmac_replay_and_privacy_routing() -> None:
         service.handle(body, {**headers, "X-Shopify-Hmac-Sha256": "bad"})
 
 
-def test_orders_query_uses_concrete_return_line_item_fragment_for_2026_07() -> None:
-    return_items = ORDERS_BULK_QUERY.split("returnLineItems", 1)[1]
-    before_fragment, fragment = return_items.split("... on ReturnLineItem", 1)
-
-    assert "quantity" in before_fragment
-    assert "fulfillmentLineItem" not in before_fragment
-    assert re.search(
-        r"^\s*\{\s*fulfillmentLineItem\s*\{\s*id\s*\}",
-        fragment,
-    )
+def test_orders_query_uses_only_economically_consumed_refund_shape() -> None:
+    assert "refunds { id createdAt totalRefundedSet" in ORDERS_BULK_QUERY
+    assert "returns" not in ORDERS_BULK_QUERY
+    assert "returnLineItems" not in ORDERS_BULK_QUERY
+    assert "refundLineItems" not in ORDERS_BULK_QUERY
+    assert "fulfillmentLineItem" not in ORDERS_BULK_QUERY
     assert not any(
         field in ORDERS_BULK_QUERY
         for field in ("email", "phone", "customerNote", "returnReasonNote", "mailingAddress")
@@ -251,6 +246,7 @@ def test_bulk_user_errors_are_classified_without_copying_shopify_message() -> No
                             "bulkOperation": None,
                             "userErrors": [
                                 {
+                                    "code": "INVALID",
                                     "field": ["query"],
                                     "message": (
                                         "Invalid bulk query: Field 'fulfillmentLineItem' "
@@ -274,10 +270,47 @@ def test_bulk_user_errors_are_classified_without_copying_shopify_message() -> No
         transport=Transport(),
         max_attempts=1,
     )
-    with pytest.raises(BulkQueryRejectedError, match="INVALID_QUERY") as error:
+    with pytest.raises(BulkQueryRejectedError, match="INVALID") as error:
         client.start_bulk_query(ORDERS_BULK_QUERY)
     assert "fulfillmentLineItem" not in str(error.value)
     assert "secret-token" not in str(error.value)
+
+
+def test_bulk_user_error_code_is_preserved_without_message_payload() -> None:
+    class Transport:
+        def post(self, endpoint: str, headers: Mapping[str, str], body: bytes) -> bytes:
+            del endpoint, headers, body
+            return json.dumps(
+                {
+                    "data": {
+                        "bulkOperationRunQuery": {
+                            "bulkOperation": None,
+                            "userErrors": [
+                                {
+                                    "code": "LIMIT_REACHED",
+                                    "field": ["query"],
+                                    "message": "potentially sensitive provider detail",
+                                }
+                            ],
+                        }
+                    }
+                }
+            ).encode()
+
+        def get_stream(self, url: str) -> Any:
+            del url
+            return iter([])
+
+    client = ShopifyGraphQLClient(
+        "safe-shop.myshopify.com",
+        "secret-token-not-for-errors",
+        "2026-07",
+        transport=Transport(),
+        max_attempts=1,
+    )
+    with pytest.raises(BulkQueryRejectedError, match="LIMIT_REACHED") as error:
+        client.start_bulk_query(ORDERS_BULK_QUERY)
+    assert "potentially sensitive" not in str(error.value)
 
 
 def test_order_mapping_preserves_guest_checkout_refund_and_missing_cost() -> None:

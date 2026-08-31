@@ -32,18 +32,11 @@ ORDERS_BULK_QUERY = """
         discountedUnitPriceAfterAllDiscountsSet { shopMoney { amount currencyCode } }
         product { id } variant { id inventoryItem { id unitCost { amount currencyCode } } }
       } } }
-      refunds { id createdAt totalRefundedSet { shopMoney { amount currencyCode } }
-        refundLineItems { edges { node { quantity lineItem { id } } } }
-      }
+      refunds { id createdAt totalRefundedSet { shopMoney { amount currencyCode } } }
       transactions {
         id createdAt kind status gateway amountSet { shopMoney { amount currencyCode } }
       }
       fulfillments { id createdAt updatedAt status }
-      returns { edges { node { id status createdAt closedAt
-        returnLineItems { edges { node { quantity
-          ... on ReturnLineItem { fulfillmentLineItem { id } }
-        } } }
-      } } }
     } }
   }
 }
@@ -74,7 +67,7 @@ BULK_START_MUTATION = """
 mutation ExergiBulkStart($query: String!) {
   bulkOperationRunQuery(query: $query) {
     bulkOperation { id status createdAt }
-    userErrors { field message }
+    userErrors { code field message }
   }
 }
 """
@@ -229,6 +222,14 @@ def _bulk(value: Mapping[str, Any]) -> BulkOperation:
 
 
 def _classify_bulk_user_errors(values: Any) -> str:
+    codes = {
+        str(value.get("code", "")).upper()
+        for value in values
+        if isinstance(value, Mapping) and value.get("code")
+    }
+    for code in ("LIMIT_REACHED", "OPERATION_IN_PROGRESS", "INVALID"):
+        if code in codes:
+            return code
     messages = " ".join(
         str(value.get("message", ""))
         for value in values
@@ -236,6 +237,11 @@ def _classify_bulk_user_errors(values: Any) -> str:
     ).lower()
     if "invalid bulk query" in messages or "doesn't exist on type" in messages:
         return "INVALID_QUERY"
-    if "access_denied" in messages or "access denied" in messages:
+    if (
+        "access_denied" in messages
+        or "access denied" in messages
+        or "required access" in messages
+        or "access scope" in messages
+    ):
         return "ACCESS_DENIED"
     return "SHOPIFY_USER_ERROR"
