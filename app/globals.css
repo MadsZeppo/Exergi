@@ -71,3 +71,5 @@ textarea {
 .form-note { font-size: 12px; color: #876515 !important; }
 .onboarding-steps { margin-top: 0; }
 @media (max-width: 760px) { .merchant-app { grid-template-columns: 1fr; }.merchant-nav { position: static; }.merchant-nav nav { grid-template-columns: 1fr 1fr; }.merchant-topbar { display: none; }.form-grid { grid-template-columns: 1fr; }.ledger-row { grid-template-columns: 1fr; } }
+/* Clerk account surfaces remain separate from the merchant shell. */
+.auth-page { min-height: 100vh; display: grid; place-items: center; background: #f8f9fb; }

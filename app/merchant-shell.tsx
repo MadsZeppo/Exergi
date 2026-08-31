@@ -1,3 +1,5 @@
+import { UserButton } from "@clerk/nextjs";
+
 const demoMode = process.env.NEXT_PUBLIC_EXERGI_DEMO_MODE === "true";
 
 const nav = [
@@ -39,6 +41,7 @@ export function MerchantPage({ eyebrow, title, description, children }: Merchant
         <header className="merchant-topbar">
           <span>{demoMode ? "Demo workspace" : "Read-only workspace"}</span>
           <code>{demoMode ? "DEMO DATA" : "SHOPIFY"}</code>
+          <UserButton />
         </header>
         <div className="merchant-heading">
           <p>{eyebrow}</p>

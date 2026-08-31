@@ -1,3 +1,4 @@
+import { auth } from "@clerk/nextjs/server";
 import { cookies } from "next/headers";
 
 export type CompanyState = {
@@ -54,24 +55,28 @@ export type DashboardResult =
   | { state: "not_configured" | "not_connected" | "error"; detail: string };
 
 export async function getShopifyDashboard(): Promise<DashboardResult> {
-  const apiBase = process.env.EXERGI_API_BASE_URL;
-  const shop = process.env.EXERGI_SHOP_DOMAIN;
-  if (!apiBase || !shop) {
+  const apiBase = process.env.NEXT_PUBLIC_EXERGI_API_URL;
+  if (!apiBase) {
     return {
       state: "not_configured",
-      detail: "The Shopify workspace has not been configured for this deployment.",
+      detail: "The Exergi API has not been configured for this deployment.",
     };
   }
-  const cookieStore = await cookies();
-  const session = cookieStore.get("exergi_session")?.value;
-  if (!session) {
+  const session = await auth();
+  if (!session.userId) {
     return { state: "not_connected", detail: "Sign in before accessing merchant data." };
+  }
+  const token = await session.getToken();
+  if (!token) return { state: "not_connected", detail: "Your session is no longer valid." };
+  const shop = (await cookies()).get("exergi_shop")?.value;
+  if (!shop) {
+    return { state: "not_connected", detail: "Connect Shopify before accessing merchant data." };
   }
   try {
     const response = await fetch(
       `${apiBase.replace(/\/$/, "")}/api/v1/shopify/dashboard?shop=${encodeURIComponent(shop)}`,
       {
-        headers: { Authorization: `Bearer ${session}` },
+        headers: { Authorization: `Bearer ${token}` },
         cache: "no-store",
       },
     );
