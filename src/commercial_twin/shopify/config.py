@@ -26,7 +26,6 @@ class ShopifySettings:
     token_encryption_key: str
     oauth_state_key: str
     customer_pseudonym_key: str
-    session_signing_key: str
     database_url: str
     api_version: str = API_VERSION
     enable_read_all_orders: bool = False
@@ -58,7 +57,6 @@ class ShopifySettings:
             "token_encryption_key": "SHOPIFY_TOKEN_ENCRYPTION_KEY",
             "oauth_state_key": "SHOPIFY_OAUTH_STATE_KEY",
             "customer_pseudonym_key": "CUSTOMER_PSEUDONYM_KEY",
-            "session_signing_key": "EXERGI_SESSION_SIGNING_KEY",
             "database_url": "DATABASE_URL",
         }
         values: dict[str, str] = {}

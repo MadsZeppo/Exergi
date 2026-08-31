@@ -13,6 +13,7 @@ from commercial_twin.database_security import verify_runtime_rls
 ROOT = Path(__file__).resolve().parents[1]
 MIGRATION_0001 = ROOT / "migrations/versions/0001_merchant_validation_v1.py"
 MIGRATION_0002 = ROOT / "migrations/versions/0002_shopify_vertical_slice.py"
+MIGRATION_0003 = ROOT / "migrations/versions/0003_clerk_identity_tenants.py"
 
 
 def _migration_namespace(path: Path) -> dict[str, Any]:
@@ -59,6 +60,19 @@ def test_every_v2_direct_policy_has_a_merchant_id_column() -> None:
     assert set(ddl_columns) == set(tables)
     for table in tables:
         assert "merchant_id" in ddl_columns[table], f"{table}.merchant_id does not exist"
+
+
+def test_clerk_binding_policy_and_provisioning_context_are_tenant_scoped() -> None:
+    source = MIGRATION_0003.read_text(encoding="utf-8")
+    columns = _table_columns(MIGRATION_0003)["identity_tenants"]
+
+    assert {"issuer", "subject", "organization_id", "merchant_id"}.issubset(columns)
+    assert "UNIQUE (issuer, subject)" in source
+    assert "merchant_id uuid NOT NULL UNIQUE" in source
+    assert "FORCE ROW LEVEL SECURITY" in source
+    assert "app.merchant_id" in source
+    assert "app.organization_id" in source
+    assert "SECURITY DEFINER" not in source
 
 
 def _runtime_engine(

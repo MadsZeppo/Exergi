@@ -164,14 +164,18 @@ def create_app(service: MerchantValidationService | None = None) -> FastAPI:
     try:
         from commercial_twin.shopify.api import build_shopify_router
         from commercial_twin.shopify.config import ShopifySettings
+        from commercial_twin.shopify.identity import ClerkAuthSettings, ClerkJWTVerifier
         from commercial_twin.shopify.product_service import SqlShopifyProductService
         from commercial_twin.shopify.repository import SqlShopifyRepository
+        from commercial_twin.shopify.tenancy import SqlTenantProvisioner, TenantIdDeriver
         from commercial_twin.shopify.webhooks import (
             ShopifyWebhookService,
             SqlPrivacyProcessor,
         )
 
         settings = ShopifySettings.from_env()
+        clerk_settings = ClerkAuthSettings.from_env()
+        tenant_deriver = TenantIdDeriver.from_env()
     except RuntimeError:
         settings = None
     if settings is not None:
@@ -180,13 +184,22 @@ def create_app(service: MerchantValidationService | None = None) -> FastAPI:
         privacy = SqlPrivacyProcessor(repository.engine)
         webhooks = ShopifyWebhookService(settings.client_secret, repository, privacy)
         product_service = SqlShopifyProductService(repository.engine, repository)
+        verifier = ClerkJWTVerifier(clerk_settings)
+        tenants = SqlTenantProvisioner(repository.engine, tenant_deriver)
         app.include_router(
-            build_shopify_router(settings, repository, webhooks, product_service)
+            build_shopify_router(
+                settings,
+                repository,
+                webhooks,
+                verifier,
+                tenants,
+                product_service,
+            )
         )
         app.add_middleware(
             CORSMiddleware,
             allow_origins=[settings.dashboard_url.rstrip("/")],
-            allow_credentials=True,
+            allow_credentials=False,
             allow_methods=["GET", "POST", "DELETE"],
             allow_headers=["Authorization", "Content-Type"],
         )

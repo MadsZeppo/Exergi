@@ -19,7 +19,6 @@ def test_render_hostname_is_used_without_hardcoded_api_domain(monkeypatch: Any) 
         "SHOPIFY_TOKEN_ENCRYPTION_KEY": "token-key",
         "SHOPIFY_OAUTH_STATE_KEY": "state-key",
         "CUSTOMER_PSEUDONYM_KEY": "pseudonym-key",
-        "EXERGI_SESSION_SIGNING_KEY": "session-key",
         "DATABASE_URL": "postgresql+psycopg://db/exergi",
         "RENDER_EXTERNAL_HOSTNAME": "exergi-api.onrender.com",
     }
@@ -49,6 +48,12 @@ def test_render_blueprint_has_no_secret_values_and_uses_private_database() -> No
     assert variables["DATABASE_URL"]["fromDatabase"]["property"] == "connectionString"
     assert variables["PGSSLMODE"] == {"key": "PGSSLMODE", "value": "require"}
     for key in ("SHOPIFY_CLIENT_SECRET", "SHOPIFY_TOKEN_ENCRYPTION_KEY"):
+        assert variables[key] == {"key": key, "sync": False}
+    assert variables["TENANT_PROVISIONING_KEY"] == {
+        "key": "TENANT_PROVISIONING_KEY",
+        "generateValue": True,
+    }
+    for key in ("CLERK_ISSUER_URL", "CLERK_JWKS_URL", "CLERK_AUTHORIZED_PARTIES"):
         assert variables[key] == {"key": key, "sync": False}
     assert blueprint["databases"][0]["plan"] == "free"
     assert blueprint["databases"][0]["ipAllowList"] == []

@@ -17,11 +17,32 @@ def set_tenant_context(connection: Connection, merchant_id: UUID) -> None:
     )
 
 
+def set_identity_context(
+    connection: Connection, organization_id: UUID, merchant_id: UUID
+) -> None:
+    """Set both transaction-local IDs required for first-login provisioning."""
+    set_tenant_context(connection, merchant_id)
+    connection.execute(
+        text("SELECT set_config('app.organization_id', :organization_id, true)"),
+        {"organization_id": str(organization_id)},
+    )
+
+
 @contextmanager
 def tenant_transaction(engine: Engine, merchant_id: UUID) -> Generator[Connection, None, None]:
     """Open a transaction that cannot see or mutate rows outside one merchant."""
     with engine.begin() as connection:
         set_tenant_context(connection, merchant_id)
+        yield connection
+
+
+@contextmanager
+def tenant_identity_transaction(
+    engine: Engine, organization_id: UUID, merchant_id: UUID
+) -> Generator[Connection, None, None]:
+    """Provision one verified identity without privileged or cross-tenant access."""
+    with engine.begin() as connection:
+        set_identity_context(connection, organization_id, merchant_id)
         yield connection
 
 

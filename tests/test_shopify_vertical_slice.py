@@ -63,7 +63,6 @@ def settings() -> ShopifySettings:
         token_encryption_key=Fernet.generate_key().decode(),
         oauth_state_key="o" * 40,
         customer_pseudonym_key="p" * 40,
-        session_signing_key="x" * 40,
         database_url="postgresql+psycopg://unused",
     )
 
@@ -89,8 +88,10 @@ def test_state_and_session_are_signed_expiring_and_tenant_scoped() -> None:
     state = signer.issue(ORGANIZATION_ID, MERCHANT_ID, "safe-shop")
     encoded = signer.encode(state)
     assert signer.decode(encoded, now=state.issued_at).merchant_id == str(MERCHANT_ID)
+    payload, signature = encoded.split(".", 1)
+    tampered_signature = ("A" if signature[0] != "A" else "B") + signature[1:]
     with pytest.raises(ValueError, match="signature"):
-        signer.decode(f"{encoded[:-1]}x", now=state.issued_at)
+        signer.decode(f"{payload}.{tampered_signature}", now=state.issued_at)
     with pytest.raises(ValueError, match="expired"):
         signer.decode(encoded, now=state.expires_at + 1)
 

@@ -4,18 +4,21 @@ from __future__ import annotations
 
 from dataclasses import asdict
 from datetime import UTC, datetime, timedelta
-from typing import Annotated, Any
+from typing import Any
 from urllib.parse import urlencode
 
-from fastapi import APIRouter, BackgroundTasks, Cookie, Depends, Header, HTTPException, Request
+from fastapi import APIRouter, BackgroundTasks, Depends, Header, HTTPException, Request
 from fastapi.responses import RedirectResponse
 from pydantic import BaseModel, ConfigDict, Field
 
-from .auth import MerchantPrincipal, SessionSigner
+from .auth import MerchantPrincipal
 from .config import ShopifySettings
+from .identity import ClerkJWTVerifier
 from .oauth import ShopifyOAuthService
 from .product_service import SqlShopifyProductService
 from .repository import ShopifyRepository
+from .security import canonicalize_shop_domain
+from .tenancy import TenantResolver
 from .webhooks import ShopifyWebhookService
 
 
@@ -36,34 +39,47 @@ class EconomicAssumptionsInput(BaseModel):
     action_cost_per_order: float | None = Field(default=None, ge=0)
 
 
+class BearerMerchantAuthenticator:
+    """Resolve a merchant only after verifying a Clerk bearer token."""
+
+    def __init__(self, verifier: ClerkJWTVerifier, tenants: TenantResolver) -> None:
+        self.verifier = verifier
+        self.tenants = tenants
+
+    def __call__(  # noqa: B008
+        self, authorization: str | None = Header(default=None, alias="Authorization")
+    ) -> MerchantPrincipal:
+        if authorization is None or not authorization.startswith("Bearer "):
+            raise HTTPException(status_code=401, detail="valid Clerk bearer token required")
+        token = authorization.removeprefix("Bearer ").strip()
+        try:
+            verified = self.verifier.verify(token)
+        except ValueError as exc:
+            raise HTTPException(status_code=401, detail="invalid authentication token") from exc
+        try:
+            return self.tenants.resolve(verified)
+        except ValueError as exc:
+            raise HTTPException(status_code=401, detail="invalid authentication identity") from exc
+        except RuntimeError as exc:
+            raise HTTPException(status_code=403, detail="tenant access denied") from exc
+
+
 def build_shopify_router(
     settings: ShopifySettings,
     repository: ShopifyRepository,
     webhook_service: ShopifyWebhookService,
+    verifier: ClerkJWTVerifier,
+    tenants: TenantResolver,
     product_service: SqlShopifyProductService | None = None,
 ) -> APIRouter:
     router = APIRouter(prefix="/api/v1/shopify", tags=["shopify-read-only"])
     oauth = ShopifyOAuthService(settings, repository)
-    sessions = SessionSigner(settings.session_signing_key)
-
-    def principal(
-        authorization: Annotated[str | None, Header()] = None,
-        exergi_session: Annotated[str | None, Cookie()] = None,
-    ) -> MerchantPrincipal:
-        token = exergi_session
-        if authorization and authorization.startswith("Bearer "):
-            token = authorization.removeprefix("Bearer ").strip()
-        if not token:
-            raise HTTPException(status_code=401, detail="authenticated Exergi session required")
-        try:
-            return sessions.verify(token)
-        except ValueError as exc:
-            raise HTTPException(status_code=401, detail=str(exc)) from exc
+    authenticate = BearerMerchantAuthenticator(verifier, tenants)
 
     @router.post("/connect")
     def connect(
         payload: ConnectInput,
-        identity: Annotated[MerchantPrincipal, Depends(principal)],
+        identity: MerchantPrincipal = Depends(authenticate),  # noqa: B008
     ) -> Any:
         try:
             start = oauth.begin(identity.organization_id, identity.merchant_id, payload.shop)
@@ -74,21 +90,21 @@ def build_shopify_router(
     @router.get("/install")
     def install(
         shop: str,
-        identity: Annotated[MerchantPrincipal, Depends(principal)],
     ) -> RedirectResponse:
         try:
-            start = oauth.begin(identity.organization_id, identity.merchant_id, shop)
+            canonical_shop = canonicalize_shop_domain(shop)
         except ValueError as exc:
             raise HTTPException(status_code=422, detail=str(exc)) from exc
-        return RedirectResponse(start.authorization_url, status_code=303)
+        query = urlencode({"shop": canonical_shop})
+        return RedirectResponse(f"{settings.dashboard_url}/onboarding?{query}", status_code=303)
 
     @router.get("/oauth/callback")
     def callback(request: Request, background_tasks: BackgroundTasks) -> RedirectResponse:
         parameters = {key: value for key, value in request.query_params.items()}
         try:
             installation = oauth.complete(parameters)
-        except (ValueError, RuntimeError) as exc:
-            query = urlencode({"shopify": "error", "reason": str(exc)[:160]})
+        except (PermissionError, ValueError, RuntimeError):
+            query = urlencode({"shopify": "error", "reason": "OAuth verification failed"})
             return RedirectResponse(f"{settings.dashboard_url}/onboarding?{query}", status_code=303)
         if product_service is not None:
             background_tasks.add_task(product_service.initial_sync, settings, installation)
@@ -98,8 +114,9 @@ def build_shopify_router(
     @router.get("/connection")
     def connection(
         shop: str,
-        identity: Annotated[MerchantPrincipal, Depends(principal)],
+        identity: MerchantPrincipal = Depends(authenticate),  # noqa: B008
     ) -> dict[str, Any]:
+        shop = _canonical_shop(shop)
         installation = repository.get_installation(identity.merchant_id, shop)
         if installation is None:
             return {"status": "NOT_CONNECTED", "shop": shop}
@@ -119,8 +136,9 @@ def build_shopify_router(
     @router.delete("/connection")
     def disconnect(
         shop: str,
-        identity: Annotated[MerchantPrincipal, Depends(principal)],
+        identity: MerchantPrincipal = Depends(authenticate),  # noqa: B008
     ) -> dict[str, str]:
+        shop = _canonical_shop(shop)
         oauth.disconnect(identity.merchant_id, shop, identity.subject)
         return {"status": "DISCONNECTED"}
 
@@ -128,10 +146,11 @@ def build_shopify_router(
     def start_sync(
         shop: str,
         background_tasks: BackgroundTasks,
-        identity: Annotated[MerchantPrincipal, Depends(principal)],
+        identity: MerchantPrincipal = Depends(authenticate),  # noqa: B008
     ) -> dict[str, str]:
         if product_service is None:
             raise HTTPException(status_code=503, detail="persistent sync service is unavailable")
+        shop = _canonical_shop(shop)
         installation = repository.get_installation(identity.merchant_id, shop)
         if installation is None or installation.status != "CONNECTED":
             raise HTTPException(status_code=409, detail="Shopify is not connected")
@@ -157,20 +176,21 @@ def build_shopify_router(
     @router.get("/dashboard")
     def dashboard(
         shop: str,
-        identity: Annotated[MerchantPrincipal, Depends(principal)],
+        identity: MerchantPrincipal = Depends(authenticate),  # noqa: B008
     ) -> Any:
         if product_service is None:
             raise HTTPException(status_code=503, detail="persistent read service is unavailable")
-        return product_service.dashboard(identity.merchant_id, shop)
+        return product_service.dashboard(identity.merchant_id, _canonical_shop(shop))
 
     @router.post("/economic-assumptions")
     def economic_assumptions(
         payload: EconomicAssumptionsInput,
-        identity: Annotated[MerchantPrincipal, Depends(principal)],
+        identity: MerchantPrincipal = Depends(authenticate),  # noqa: B008
     ) -> dict[str, str]:
         if product_service is None:
             raise HTTPException(status_code=503, detail="persistent read service is unavailable")
-        installation = repository.get_installation(identity.merchant_id, payload.shop)
+        shop = _canonical_shop(payload.shop)
+        installation = repository.get_installation(identity.merchant_id, shop)
         if installation is None:
             raise HTTPException(status_code=404, detail="Shopify connection not found")
         values = payload.model_dump(exclude={"shop", "version", "valid_from"}, exclude_none=False)
@@ -198,7 +218,7 @@ def build_shopify_router(
 
     @router.get("/capabilities")
     def capabilities(
-        identity: Annotated[MerchantPrincipal, Depends(principal)],
+        identity: MerchantPrincipal = Depends(authenticate),  # noqa: B008
     ) -> dict[str, Any]:
         del identity
         return {
@@ -213,3 +233,10 @@ def build_shopify_router(
         }
 
     return router
+
+
+def _canonical_shop(value: str) -> str:
+    try:
+        return canonicalize_shop_domain(value)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc

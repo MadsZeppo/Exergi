@@ -218,7 +218,7 @@ class SqlShopifyRepository:
                      :encrypted_access_token, :encrypted_refresh_token, CAST(:scopes_json AS jsonb),
                      :api_version, :access_token_expires_at, :refresh_token_expires_at,
                      :status, :installed_at, :updated_at)
-                ON CONFLICT (merchant_id, shop_domain) DO UPDATE SET
+                ON CONFLICT (shop_domain) DO UPDATE SET
                     encrypted_access_token = EXCLUDED.encrypted_access_token,
                     encrypted_refresh_token = EXCLUDED.encrypted_refresh_token,
                     scopes_json = EXCLUDED.scopes_json,
@@ -226,10 +226,13 @@ class SqlShopifyRepository:
                     access_token_expires_at = EXCLUDED.access_token_expires_at,
                     refresh_token_expires_at = EXCLUDED.refresh_token_expires_at,
                     status = 'CONNECTED', updated_at = EXCLUDED.updated_at
+                WHERE shop_connections.merchant_id = EXCLUDED.merchant_id
                 RETURNING id
                 """),
                 values,
-            ).one()
+            ).first()
+            if row is None:
+                raise PermissionError("Shopify shop is already bound to another tenant")
             values["id"] = row.id
             connection.execute(
                 text("""
