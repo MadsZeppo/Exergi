@@ -28,7 +28,11 @@ from commercial_twin.shopify.contracts import (
     ValueAuthority,
 )
 from commercial_twin.shopify.economics import reconstruct_order_economics
-from commercial_twin.shopify.graphql import BulkOperation
+from commercial_twin.shopify.graphql import (
+    BulkOperation,
+    BulkOperationNotFoundError,
+    BulkOperationTerminalError,
+)
 from commercial_twin.shopify.ingestion import (
     MemoryCanonicalSink,
     ShopifyInitialSync,
@@ -315,6 +319,193 @@ def test_initial_bulk_sync_is_resumable_and_raw_ingestion_is_idempotent() -> Non
     assert second.accepted_raw_rows == 0
     assert second.duplicate_raw_rows == 3
     assert len(sink.orders) == 1
+
+
+def test_retry_replaces_every_terminal_bulk_checkpoint_with_a_new_operation() -> None:
+    terminal = {
+        "old-customers": "FAILED",
+        "old-products": "CANCELED",
+        "old-orders": "EXPIRED",
+    }
+
+    class Client:
+        started: list[str] = []
+
+        def bulk_status(self, operation_id: str) -> BulkOperation:
+            return BulkOperation(
+                operation_id,
+                terminal[operation_id],
+                0,
+                None,
+                None,
+                "ACCESS_DENIED" if operation_id == "old-customers" else None,
+            )
+
+        def start_bulk_query(self, query: str) -> BulkOperation:
+            resource = next(name for name in ("customers", "products", "orders") if name in query)
+            self.started.append(resource)
+            return BulkOperation(f"new-{resource}", "COMPLETED", 0, resource, None, None)
+
+        def wait_for_bulk(self, operation_id: str) -> BulkOperation:
+            raise AssertionError(f"new completed operation must not be polled: {operation_id}")
+
+        def iter_jsonl(self, url: str) -> Any:
+            del url
+            return iter([])
+
+    client = Client()
+    result = ShopifyInitialSync(
+        client,  # type: ignore[arg-type]
+        MemoryShopifyRepository(),
+        MemoryCanonicalSink(),
+        "k" * 40,
+        api_version="2026-07",
+    ).run(
+        merchant_id=MERCHANT_ID,
+        shop_id=SHOP_ID,
+        resume_checkpoints={
+            "customers": "old-customers",
+            "products": "old-products",
+            "orders": "old-orders",
+        },
+        observed_at=NOW,
+    )
+
+    assert client.started == ["customers", "products", "orders"]
+    assert result.checkpoints == {
+        "customers": "new-customers",
+        "products": "new-products",
+        "orders": "new-orders",
+    }
+
+
+def test_retry_preserves_completed_and_active_bulk_checkpoints() -> None:
+    statuses = {
+        "saved-customers": "COMPLETED",
+        "saved-products": "RUNNING",
+        "saved-orders": "COMPLETED",
+    }
+
+    class Client:
+        def start_bulk_query(self, query: str) -> BulkOperation:
+            raise AssertionError(f"supported checkpoint must be preserved: {query[:20]}")
+
+        def bulk_status(self, operation_id: str) -> BulkOperation:
+            status = statuses[operation_id]
+            url = operation_id if status == "COMPLETED" else None
+            return BulkOperation(operation_id, status, 0, url, None, None)
+
+        def wait_for_bulk(self, operation_id: str) -> BulkOperation:
+            assert operation_id == "saved-products"
+            return BulkOperation(operation_id, "COMPLETED", 0, operation_id, None, None)
+
+        def iter_jsonl(self, url: str) -> Any:
+            del url
+            return iter([])
+
+    result = ShopifyInitialSync(
+        Client(),  # type: ignore[arg-type]
+        MemoryShopifyRepository(),
+        MemoryCanonicalSink(),
+        "k" * 40,
+        api_version="2026-07",
+    ).run(
+        merchant_id=MERCHANT_ID,
+        shop_id=SHOP_ID,
+        resume_checkpoints={
+            "customers": "saved-customers",
+            "products": "saved-products",
+            "orders": "saved-orders",
+        },
+        observed_at=NOW,
+    )
+
+    assert result.checkpoints == {
+        "customers": "saved-customers",
+        "products": "saved-products",
+        "orders": "saved-orders",
+    }
+
+
+def test_terminal_poll_error_is_data_safe_and_clears_failed_object_checkpoint() -> None:
+    callbacks: list[dict[str, str]] = []
+
+    class Client:
+        def start_bulk_query(self, query: str) -> BulkOperation:
+            raise AssertionError(f"active operation should first be polled: {query[:20]}")
+
+        def bulk_status(self, operation_id: str) -> BulkOperation:
+            return BulkOperation(operation_id, "RUNNING", 0, None, None, None)
+
+        def wait_for_bulk(self, operation_id: str) -> BulkOperation:
+            del operation_id
+            raise BulkOperationTerminalError("FAILED", "ACCESS_DENIED")
+
+    sync = ShopifyInitialSync(
+        Client(),  # type: ignore[arg-type]
+        MemoryShopifyRepository(),
+        MemoryCanonicalSink(),
+        "k" * 40,
+        api_version="2026-07",
+    )
+    with pytest.raises(
+        RuntimeError,
+        match="Shopify customers bulk operation FAILED: ACCESS_DENIED",
+    ) as error:
+        sync.run(
+            merchant_id=MERCHANT_ID,
+            shop_id=SHOP_ID,
+            resume_checkpoints={"customers": "active-customers"},
+            observed_at=NOW,
+            checkpoint_callback=callbacks.append,
+        )
+
+    assert callbacks == [{"customers": "active-customers"}, {}]
+    assert "token" not in str(error.value).lower()
+    assert "@" not in str(error.value)
+
+
+def test_missing_bulk_checkpoint_starts_a_new_operation() -> None:
+    class Client:
+        started = 0
+
+        def bulk_status(self, operation_id: str) -> BulkOperation:
+            if operation_id == "missing-customers":
+                raise BulkOperationNotFoundError("not found")
+            return BulkOperation(operation_id, "COMPLETED", 0, operation_id, None, None)
+
+        def start_bulk_query(self, query: str) -> BulkOperation:
+            assert "customers" in query
+            self.started += 1
+            return BulkOperation("new-customers", "COMPLETED", 0, "customers", None, None)
+
+        def wait_for_bulk(self, operation_id: str) -> BulkOperation:
+            raise AssertionError(operation_id)
+
+        def iter_jsonl(self, url: str) -> Any:
+            del url
+            return iter([])
+
+    client = Client()
+    result = ShopifyInitialSync(
+        client,  # type: ignore[arg-type]
+        MemoryShopifyRepository(),
+        MemoryCanonicalSink(),
+        "k" * 40,
+        api_version="2026-07",
+    ).run(
+        merchant_id=MERCHANT_ID,
+        shop_id=SHOP_ID,
+        resume_checkpoints={
+            "customers": "missing-customers",
+            "products": "saved-products",
+            "orders": "saved-orders",
+        },
+        observed_at=NOW,
+    )
+
+    assert client.started == 1
+    assert result.checkpoints["customers"] == "new-customers"
 
 
 def test_economic_identity_is_fail_closed_and_assumptions_are_labeled() -> None:

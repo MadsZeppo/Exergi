@@ -24,6 +24,9 @@ from .graphql import (
     CUSTOMERS_BULK_QUERY,
     ORDERS_BULK_QUERY,
     PRODUCTS_BULK_QUERY,
+    TERMINAL_BULK_STATUSES,
+    BulkOperationNotFoundError,
+    BulkOperationTerminalError,
     ShopifyGraphQLClient,
 )
 from .repository import ShopifyRepository
@@ -296,16 +299,29 @@ class ShopifyInitialSync:
         order_rows: list[dict[str, Any]] = []
         for object_type, query in self.QUERIES.items():
             operation_id = checkpoints.get(object_type)
-            operation = (
-                self.client.bulk_status(operation_id)
-                if operation_id
-                else self.client.start_bulk_query(query)
-            )
+            operation = None
+            if operation_id:
+                try:
+                    candidate = self.client.bulk_status(operation_id)
+                except BulkOperationNotFoundError:
+                    candidate = None
+                if candidate is not None and candidate.status not in TERMINAL_BULK_STATUSES:
+                    operation = candidate
+            if operation is None:
+                operation = self.client.start_bulk_query(query)
             checkpoints[object_type] = operation.id
             if checkpoint_callback is not None:
                 checkpoint_callback(dict(checkpoints))
             if operation.status != "COMPLETED":
-                operation = self.client.wait_for_bulk(operation.id)
+                try:
+                    operation = self.client.wait_for_bulk(operation.id)
+                except BulkOperationTerminalError as exc:
+                    checkpoints.pop(object_type, None)
+                    if checkpoint_callback is not None:
+                        checkpoint_callback(dict(checkpoints))
+                    raise RuntimeError(
+                        f"Shopify {object_type} bulk operation {exc.status}: {exc.error_code}"
+                    ) from exc
             if not operation.url:
                 raise RuntimeError(f"completed {object_type} bulk operation has no result URL")
             for raw in self.client.iter_jsonl(operation.url):

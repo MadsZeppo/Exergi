@@ -115,6 +115,22 @@ class BulkOperation:
     error_code: str | None
 
 
+TERMINAL_BULK_STATUSES = frozenset({"FAILED", "CANCELED", "EXPIRED"})
+
+
+class BulkOperationNotFoundError(RuntimeError):
+    """A saved Shopify operation no longer exists and cannot be resumed."""
+
+
+class BulkOperationTerminalError(RuntimeError):
+    """A terminal Shopify status containing no query payload or credentials."""
+
+    def __init__(self, status: str, error_code: str | None) -> None:
+        self.status = status
+        self.error_code = error_code or "UNKNOWN"
+        super().__init__(f"Shopify bulk operation {self.status}: {self.error_code}")
+
+
 class ShopifyGraphQLClient:
     def __init__(
         self,
@@ -165,7 +181,7 @@ class ShopifyGraphQLClient:
         payload = self.execute(BULK_STATUS_QUERY, {"id": operation_id})
         node = payload["data"]["node"]
         if not node:
-            raise RuntimeError("Shopify bulk operation was not found")
+            raise BulkOperationNotFoundError("Shopify bulk operation was not found")
         return _bulk(node)
 
     def wait_for_bulk(
@@ -175,11 +191,8 @@ class ShopifyGraphQLClient:
             operation = self.bulk_status(operation_id)
             if operation.status == "COMPLETED":
                 return operation
-            if operation.status in {"FAILED", "CANCELED", "EXPIRED"}:
-                raise RuntimeError(
-                    "Shopify bulk operation "
-                    f"{operation.status}: {operation.error_code or 'unknown'}"
-                )
+            if operation.status in TERMINAL_BULK_STATUSES:
+                raise BulkOperationTerminalError(operation.status, operation.error_code)
             time.sleep(poll_seconds)
         raise TimeoutError("Shopify bulk operation did not complete before polling deadline")
 
