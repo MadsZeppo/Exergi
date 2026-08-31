@@ -14,6 +14,8 @@ ROOT = Path(__file__).resolve().parents[1]
 MIGRATION_0001 = ROOT / "migrations/versions/0001_merchant_validation_v1.py"
 MIGRATION_0002 = ROOT / "migrations/versions/0002_shopify_vertical_slice.py"
 MIGRATION_0003 = ROOT / "migrations/versions/0003_clerk_identity_tenants.py"
+MIGRATION_0004 = ROOT / "migrations/versions/0004_shops_tenant_domain_unique.py"
+PRODUCT_SERVICE = ROOT / "src/commercial_twin/shopify/product_service.py"
 
 
 def _migration_namespace(path: Path) -> dict[str, Any]:
@@ -73,6 +75,24 @@ def test_clerk_binding_policy_and_provisioning_context_are_tenant_scoped() -> No
     assert "app.merchant_id" in source
     assert "app.organization_id" in source
     assert "SECURITY DEFINER" not in source
+
+
+def test_shops_upsert_conflict_target_has_matching_named_constraint() -> None:
+    service_source = PRODUCT_SERVICE.read_text(encoding="utf-8")
+    migration_source = MIGRATION_0004.read_text(encoding="utf-8")
+    conflict = re.search(
+        r"INSERT INTO shops\s+.*?ON CONFLICT \(([^)]+)\)",
+        service_source,
+        re.DOTALL,
+    )
+
+    assert conflict is not None
+    conflict_columns = tuple(value.strip() for value in conflict.group(1).split(","))
+    assert conflict_columns == ("merchant_id", "shop_domain")
+    assert 'CONSTRAINT_NAME = "uq_shops_merchant_shop_domain"' in migration_source
+    assert '["merchant_id", "shop_domain"]' in migration_source
+    assert 'down_revision = "0003_clerk_identity_tenants"' in migration_source
+    assert "UNIQUE (shop_domain)" in MIGRATION_0002.read_text(encoding="utf-8")
 
 
 def _runtime_engine(

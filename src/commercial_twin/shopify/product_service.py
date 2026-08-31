@@ -50,11 +50,7 @@ class SqlShopifyProductService:
         orders = self._orders(merchant_id, installation.shop_id)
         if not orders:
             return DashboardSnapshot(
-                connection={
-                    "status": installation.status,
-                    "shop": shop_domain,
-                    "api_version": installation.api_version,
-                },
+                connection=_connection_status(installation),
                 sync=self._latest_sync(merchant_id, installation.shop_id),
                 company_state=None,
                 data_quality={"status": "DATA_NOT_READY", "reason": "NO_MATURE_ORDERS"},
@@ -71,16 +67,7 @@ class SqlShopifyProductService:
         diagnostics = build_observational_diagnostics(orders, economics, customers, company)
         decision = build_first_decision_card(company, diagnostics)
         return DashboardSnapshot(
-            connection={
-                "status": installation.status,
-                "shop": shop_domain,
-                "api_version": installation.api_version,
-                "history": (
-                    "ALL_APPROVED_ORDERS"
-                    if "read_all_orders" in installation.scopes
-                    else "SHOPIFY_DEFAULT_ORDER_WINDOW"
-                ),
-            },
+            connection=_connection_status(installation),
             sync=self._latest_sync(merchant_id, installation.shop_id),
             company_state=company,
             diagnostics=diagnostics,
@@ -436,3 +423,17 @@ class SqlShopifyProductService:
                 .first()
             )
         return dict(row) if row else {"status": "NOT_STARTED"}
+
+
+def _connection_status(installation: Installation) -> dict[str, Any]:
+    return {
+        "status": installation.status,
+        "shop": installation.shop_domain,
+        "api_version": installation.api_version,
+        "scopes": installation.scopes,
+        "history": (
+            "ALL_APPROVED_ORDERS"
+            if "read_all_orders" in installation.scopes
+            else "SHOPIFY_DEFAULT_ORDER_WINDOW"
+        ),
+    }

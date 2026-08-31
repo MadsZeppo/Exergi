@@ -4,6 +4,7 @@ import base64
 import hashlib
 import hmac
 from collections.abc import Mapping
+from dataclasses import replace
 from datetime import UTC, datetime, timedelta
 from typing import Any
 from uuid import UUID, uuid4
@@ -34,8 +35,9 @@ from commercial_twin.shopify.ingestion import (
     map_order_jsonl,
 )
 from commercial_twin.shopify.oauth import ShopifyOAuthService
+from commercial_twin.shopify.product_service import _connection_status
 from commercial_twin.shopify.reconciliation import reconcile_shopify_totals
-from commercial_twin.shopify.repository import MemoryShopifyRepository
+from commercial_twin.shopify.repository import Installation, MemoryShopifyRepository
 from commercial_twin.shopify.security import (
     StateSigner,
     TokenCipher,
@@ -160,6 +162,29 @@ def test_no_write_scope_can_be_requested_or_accepted() -> None:
         if any(value.startswith("write_") for value in bad.scopes):
             raise ValueError("Shopify write scopes are forbidden")
         ShopifyOAuthService(bad, repository)
+
+
+def test_connection_history_is_explicit_with_and_without_extended_order_scope() -> None:
+    base = Installation(
+        id=uuid4(),
+        organization_id=ORGANIZATION_ID,
+        merchant_id=MERCHANT_ID,
+        shop_id=SHOP_ID,
+        shop_domain="safe-shop.myshopify.com",
+        encrypted_access_token="encrypted",
+        encrypted_refresh_token=None,
+        scopes=BASE_READ_SCOPES,
+        api_version="2026-07",
+        access_token_expires_at=None,
+        refresh_token_expires_at=None,
+        status="CONNECTED",
+        installed_at=NOW,
+        updated_at=NOW,
+    )
+
+    assert _connection_status(base)["history"] == "SHOPIFY_DEFAULT_ORDER_WINDOW"
+    extended = replace(base, scopes=(*base.scopes, "read_all_orders"))
+    assert _connection_status(extended)["history"] == "ALL_APPROVED_ORDERS"
 
 
 def test_webhook_hmac_replay_and_privacy_routing() -> None:
