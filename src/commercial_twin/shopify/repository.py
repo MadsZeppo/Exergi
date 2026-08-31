@@ -10,6 +10,11 @@ from uuid import UUID, uuid4
 
 from sqlalchemy import Engine, create_engine, text
 
+from commercial_twin.database_security import (
+    set_tenant_context,
+    shop_route_transaction,
+    tenant_transaction,
+)
 from commercial_twin.database_url import normalize_sqlalchemy_url
 
 
@@ -170,7 +175,7 @@ class SqlShopifyRepository:
     def store_oauth_nonce(
         self, merchant_id: UUID, shop: str, nonce_hash: str, expires_at: datetime
     ) -> None:
-        with self.engine.begin() as connection:
+        with tenant_transaction(self.engine, merchant_id) as connection:
             connection.execute(
                 text("""
                 INSERT INTO shopify_oauth_nonces
@@ -186,7 +191,7 @@ class SqlShopifyRepository:
             )
 
     def consume_oauth_nonce(self, merchant_id: UUID, shop: str, nonce_hash: str) -> bool:
-        with self.engine.begin() as connection:
+        with tenant_transaction(self.engine, merchant_id) as connection:
             result = connection.execute(
                 text("""
                 UPDATE shopify_oauth_nonces SET consumed_at = now()
@@ -200,7 +205,7 @@ class SqlShopifyRepository:
 
     def upsert_installation(self, installation: Installation) -> Installation:
         values = _installation_values(installation)
-        with self.engine.begin() as connection:
+        with tenant_transaction(self.engine, installation.merchant_id) as connection:
             row = connection.execute(
                 text("""
                 INSERT INTO shop_connections
@@ -243,7 +248,7 @@ class SqlShopifyRepository:
         return replace(installation, id=row.id)
 
     def get_installation(self, merchant_id: UUID, shop: str) -> Installation | None:
-        with self.engine.connect() as connection:
+        with tenant_transaction(self.engine, merchant_id) as connection:
             row = (
                 connection.execute(
                     text("""
@@ -258,7 +263,7 @@ class SqlShopifyRepository:
         return _installation_from_row(row) if row else None
 
     def disconnect(self, merchant_id: UUID, shop: str, at: datetime) -> None:
-        with self.engine.begin() as connection:
+        with tenant_transaction(self.engine, merchant_id) as connection:
             connection.execute(
                 text("""
                 UPDATE shop_connections SET encrypted_access_token = '',
@@ -271,17 +276,33 @@ class SqlShopifyRepository:
     def register_webhook(
         self, shop: str, webhook_id: str, topic: str, payload_hash: str, received_at: datetime
     ) -> bool:
-        with self.engine.begin() as connection:
+        with shop_route_transaction(self.engine, shop) as connection:
+            route = (
+                connection.execute(
+                    text("""
+                    SELECT merchant_id, shop_id FROM shop_connections
+                    WHERE shop_domain = :shop
+                    """),
+                    {"shop": shop},
+                )
+                .mappings()
+                .first()
+            )
+            if route is None:
+                return False
+            set_tenant_context(connection, route["merchant_id"])
             row = connection.execute(
                 text("""
                 INSERT INTO shopify_webhook_receipts
                     (merchant_id, shop_id, shop_domain, webhook_id, topic, payload_hash,
                      received_at)
-                SELECT merchant_id, shop_id, :shop, :webhook_id, :topic, :payload_hash, :received_at
-                FROM shop_connections WHERE shop_domain = :shop
+                VALUES (:merchant_id, :shop_id, :shop, :webhook_id, :topic, :payload_hash,
+                        :received_at)
                 ON CONFLICT (shop_domain, webhook_id) DO NOTHING RETURNING id
                 """),
                 {
+                    "merchant_id": route["merchant_id"],
+                    "shop_id": route["shop_id"],
                     "shop": shop,
                     "webhook_id": webhook_id,
                     "topic": topic,
@@ -305,7 +326,7 @@ class SqlShopifyRepository:
         payload_hash: str,
         observed_at: datetime,
     ) -> bool:
-        with self.engine.begin() as connection:
+        with tenant_transaction(self.engine, merchant_id) as connection:
             row = connection.execute(
                 text("""
                 INSERT INTO raw_import_objects
@@ -335,7 +356,7 @@ class SqlShopifyRepository:
     def audit(
         self, merchant_id: UUID, event_type: str, actor: str, details: dict[str, Any]
     ) -> None:
-        with self.engine.begin() as connection:
+        with tenant_transaction(self.engine, merchant_id) as connection:
             connection.execute(
                 text("""
                 INSERT INTO audit_log

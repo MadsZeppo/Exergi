@@ -12,6 +12,8 @@ from uuid import UUID, uuid4
 
 from sqlalchemy import Engine, text
 
+from commercial_twin.database_security import tenant_transaction
+
 from .contracts import (
     CanonicalOrder,
     CanonicalOrderLine,
@@ -55,7 +57,7 @@ class SqlCanonicalSink:
             if order.customer_key
             else None
         )
-        with self.engine.begin() as connection:
+        with tenant_transaction(self.engine, self.merchant_id) as connection:
             if customer_id and order.customer_key:
                 connection.execute(
                     text("""

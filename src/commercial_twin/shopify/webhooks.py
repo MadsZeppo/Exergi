@@ -11,6 +11,8 @@ from typing import Any, Protocol
 
 from sqlalchemy import Engine, text
 
+from commercial_twin.database_security import set_tenant_context, shop_route_transaction
+
 from .repository import ShopifyRepository
 from .security import canonicalize_shop_domain, verify_webhook_hmac
 
@@ -128,7 +130,7 @@ class SqlPrivacyProcessor:
         customer = payload.get("customer") or {}
         source_id = str(customer.get("id", "")) if isinstance(customer, Mapping) else ""
         order_ids = [str(value) for value in payload.get("orders_to_redact", [])]
-        with self.engine.begin() as connection:
+        with shop_route_transaction(self.engine, shop) as connection:
             route = self._route(connection, shop)
             connection.execute(
                 text("""
@@ -155,7 +157,7 @@ class SqlPrivacyProcessor:
 
     def redact_shop(self, shop: str, payload: Mapping[str, Any]) -> None:
         del payload
-        with self.engine.begin() as connection:
+        with shop_route_transaction(self.engine, shop) as connection:
             route = self._route(connection, shop)
             # Raw protected data and credentials are removed immediately. Canonical financial
             # records are queued for ordered FK-safe erasure by the retention worker.
@@ -175,7 +177,7 @@ class SqlPrivacyProcessor:
 
     def uninstall(self, shop: str, payload: Mapping[str, Any]) -> None:
         del payload
-        with self.engine.begin() as connection:
+        with shop_route_transaction(self.engine, shop) as connection:
             route = self._route(connection, shop)
             connection.execute(
                 text("""
@@ -191,7 +193,7 @@ class SqlPrivacyProcessor:
         self._enqueue(shop, "SHOPIFY_INCREMENTAL_INGEST", {"topic": topic, "payload": payload})
 
     def _enqueue(self, shop: str, kind: str, payload: Mapping[str, Any]) -> None:
-        with self.engine.begin() as connection:
+        with shop_route_transaction(self.engine, shop) as connection:
             route = self._route(connection, shop)
             self._insert_job(connection, route, kind, payload)
 
@@ -208,6 +210,7 @@ class SqlPrivacyProcessor:
         )
         if row is None:
             raise ValueError("webhook shop is not installed")
+        set_tenant_context(connection, row["merchant_id"])
         return {"merchant_id": row["merchant_id"], "shop_id": row["shop_id"]}
 
     @staticmethod

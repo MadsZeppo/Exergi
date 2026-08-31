@@ -10,6 +10,8 @@ from fastapi import FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict, Field
 
+from commercial_twin.database_security import verify_runtime_rls
+
 from .connectors import KlaviyoConnector, ShopifyConnector, validate_event_payload
 from .service import MerchantValidationService, build_demo_service
 
@@ -174,6 +176,7 @@ def create_app(service: MerchantValidationService | None = None) -> FastAPI:
         settings = None
     if settings is not None:
         repository = SqlShopifyRepository.from_url(settings.database_url)
+        verify_runtime_rls(repository.engine)
         privacy = SqlPrivacyProcessor(repository.engine)
         webhooks = ShopifyWebhookService(settings.client_secret, repository, privacy)
         product_service = SqlShopifyProductService(repository.engine, repository)

@@ -217,11 +217,18 @@ def upgrade() -> None:
     """)
     for table in NEW_TABLES:
         op.execute(f"ALTER TABLE {table} ENABLE ROW LEVEL SECURITY")
+        op.execute(f"ALTER TABLE {table} FORCE ROW LEVEL SECURITY")
         op.execute(
             f"CREATE POLICY {table}_tenant_policy ON {table} USING "
             "(merchant_id = nullif(current_setting('app.merchant_id', true), '')::uuid) "
             "WITH CHECK (merchant_id = nullif(current_setting('app.merchant_id', true), '')::uuid)"
         )
+    # Shopify authenticates webhooks before this narrow lookup. It exposes only the connection
+    # matching the transaction-local canonical shop domain; all writes still require merchant_id.
+    op.execute(
+        "CREATE POLICY shop_connections_webhook_route_policy ON shop_connections "
+        "FOR SELECT USING (shop_domain = nullif(current_setting('app.shop_domain', true), ''))"
+    )
 
 
 def downgrade() -> None:

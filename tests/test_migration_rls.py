@@ -1,0 +1,91 @@
+from __future__ import annotations
+
+import re
+import runpy
+from pathlib import Path
+from typing import Any
+from unittest.mock import MagicMock
+
+import pytest
+
+from commercial_twin.database_security import verify_runtime_rls
+
+ROOT = Path(__file__).resolve().parents[1]
+MIGRATION_0001 = ROOT / "migrations/versions/0001_merchant_validation_v1.py"
+MIGRATION_0002 = ROOT / "migrations/versions/0002_shopify_vertical_slice.py"
+
+
+def _migration_namespace(path: Path) -> dict[str, Any]:
+    return runpy.run_path(str(path))
+
+
+def _table_columns(path: Path) -> dict[str, set[str]]:
+    source = path.read_text(encoding="utf-8")
+    tables: dict[str, set[str]] = {}
+    for match in re.finditer(r"CREATE TABLE\s+(\w+)\s*\((.*?)\);", source, re.DOTALL):
+        table, body = match.groups()
+        tables[table] = set(
+            re.findall(r"(?:^|,)\s*([a-z][a-z0-9_]*)\s+[a-z]", body, re.MULTILINE)
+        )
+    return tables
+
+
+def test_every_v1_policy_target_column_exists_in_its_table() -> None:
+    namespace = _migration_namespace(MIGRATION_0001)
+    tables = tuple(namespace["TABLES"])
+    policy_columns = dict(namespace["POLICY_TARGET_COLUMNS"])
+    ddl_columns = _table_columns(MIGRATION_0001)
+
+    assert set(policy_columns) == set(tables)
+    assert set(ddl_columns) == set(tables)
+    for table, policy_column in policy_columns.items():
+        assert policy_column in ddl_columns[table], f"{table}.{policy_column} does not exist"
+
+
+def test_v1_special_policies_follow_real_tenant_relationships() -> None:
+    predicate = _migration_namespace(MIGRATION_0001)["tenant_predicate"]
+
+    assert predicate("merchants").startswith("id = ")
+    assert "organizations.id" in predicate("organizations")
+    assert "data_health_checks.data_health_run_id" in predicate("data_health_checks")
+    assert "experiment_arms.experiment_id" in predicate("experiment_arms")
+    assert predicate("orders").startswith("merchant_id = ")
+
+
+def test_every_v2_direct_policy_has_a_merchant_id_column() -> None:
+    tables = tuple(_migration_namespace(MIGRATION_0002)["NEW_TABLES"])
+    ddl_columns = _table_columns(MIGRATION_0002)
+
+    assert set(ddl_columns) == set(tables)
+    for table in tables:
+        assert "merchant_id" in ddl_columns[table], f"{table}.merchant_id does not exist"
+
+
+def _runtime_engine(
+    *, superuser: bool = False, bypass: bool = False, unsafe: list[str] | None = None
+) -> MagicMock:
+    engine = MagicMock()
+    connection = engine.connect.return_value.__enter__.return_value
+    role_result = MagicMock()
+    role_result.mappings.return_value.one.return_value = {
+        "rolname": "exergi_runtime",
+        "rolsuper": superuser,
+        "rolbypassrls": bypass,
+    }
+    table_result = MagicMock()
+    table_result.scalars.return_value.all.return_value = unsafe or []
+    connection.execute.side_effect = [role_result, table_result]
+    return engine
+
+
+def test_runtime_table_owner_is_accepted_only_when_all_tables_force_rls() -> None:
+    verify_runtime_rls(_runtime_engine())
+
+    with pytest.raises(RuntimeError, match="missing forced RLS"):
+        verify_runtime_rls(_runtime_engine(unsafe=["orders"]))
+
+
+@pytest.mark.parametrize(("superuser", "bypass"), [(True, False), (False, True)])
+def test_runtime_role_cannot_bypass_rls(superuser: bool, bypass: bool) -> None:
+    with pytest.raises(RuntimeError, match="must not be superuser or BYPASSRLS"):
+        verify_runtime_rls(_runtime_engine(superuser=superuser, bypass=bypass))

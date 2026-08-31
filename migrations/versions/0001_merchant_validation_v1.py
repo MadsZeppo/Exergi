@@ -48,6 +48,42 @@ TABLES = (
     "audit_log",
 )
 
+TENANT_SETTING = "nullif(current_setting('app.merchant_id', true), '')::uuid"
+
+# The value is the tenant-bearing column on the policy's target table. Keeping this mapping
+# explicit makes schema/policy drift testable instead of assuming every table has merchant_id.
+POLICY_TARGET_COLUMNS = {
+    **{table: "merchant_id" for table in TABLES},
+    "organizations": "id",
+    "merchants": "id",
+    "data_health_checks": "data_health_run_id",
+    "experiment_arms": "experiment_id",
+}
+
+
+def tenant_predicate(table: str) -> str:
+    if table == "organizations":
+        return (
+            "EXISTS (SELECT 1 FROM merchants tenant_merchant "
+            "WHERE tenant_merchant.organization_id = organizations.id "
+            f"AND tenant_merchant.id = {TENANT_SETTING})"
+        )
+    if table == "merchants":
+        return f"id = {TENANT_SETTING}"
+    if table == "data_health_checks":
+        return (
+            "EXISTS (SELECT 1 FROM data_health_runs tenant_health_run "
+            "WHERE tenant_health_run.id = data_health_checks.data_health_run_id "
+            f"AND tenant_health_run.merchant_id = {TENANT_SETTING})"
+        )
+    if table == "experiment_arms":
+        return (
+            "EXISTS (SELECT 1 FROM experiments tenant_experiment "
+            "WHERE tenant_experiment.id = experiment_arms.experiment_id "
+            f"AND tenant_experiment.merchant_id = {TENANT_SETTING})"
+        )
+    return f"merchant_id = {TENANT_SETTING}"
+
 
 def upgrade() -> None:
     op.execute("CREATE EXTENSION IF NOT EXISTS pgcrypto")
@@ -91,13 +127,13 @@ def upgrade() -> None:
         "CREATE INDEX behavior_events_merchant_customer_time ON behavior_events (merchant_id, customer_id, occurred_at); CREATE INDEX behavior_events_merchant_type_time ON behavior_events (merchant_id, event_type, occurred_at); CREATE INDEX orders_merchant_customer_time ON orders (merchant_id, customer_id, ordered_at); CREATE INDEX jobs_claim ON jobs (status, available_at) WHERE status = 'PENDING';"
     )
     for table in TABLES:
-        if table == "organizations":
-            continue
         op.execute(f"ALTER TABLE {table} ENABLE ROW LEVEL SECURITY")
-        if table in {"data_health_checks", "experiment_arms"}:
-            continue
+        # Table owners otherwise bypass RLS. FORCE keeps Render's runtime/owner role subject to it.
+        op.execute(f"ALTER TABLE {table} FORCE ROW LEVEL SECURITY")
+        predicate = tenant_predicate(table)
         op.execute(
-            f"CREATE POLICY {table}_tenant_policy ON {table} USING (merchant_id = nullif(current_setting('app.merchant_id', true), '')::uuid) WITH CHECK (merchant_id = nullif(current_setting('app.merchant_id', true), '')::uuid)"
+            f"CREATE POLICY {table}_tenant_policy ON {table} "
+            f"USING ({predicate}) WITH CHECK ({predicate})"
         )
 
 

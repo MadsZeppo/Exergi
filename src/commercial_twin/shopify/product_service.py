@@ -10,6 +10,8 @@ from uuid import UUID, uuid4
 
 from sqlalchemy import Engine, text
 
+from commercial_twin.database_security import tenant_transaction
+
 from .analysis import build_first_decision_card, build_observational_diagnostics
 from .config import ShopifySettings
 from .contracts import (
@@ -120,7 +122,7 @@ class SqlShopifyProductService:
         payment_fee_rate = assumptions.get("payment_fee_rate")
         if payment_fee_rate is not None and payment_fee_rate > 1:
             raise ValueError("payment fee rate must be between 0 and 1")
-        with self.engine.begin() as connection:
+        with tenant_transaction(self.engine, merchant_id) as connection:
             connection.execute(
                 text("""
                 INSERT INTO economic_assumptions
@@ -146,7 +148,7 @@ class SqlShopifyProductService:
         sync_run_id = uuid4()
         started = datetime.now(UTC)
         resume = self._resume_checkpoints(installation.merchant_id, installation.shop_id)
-        with self.engine.begin() as connection:
+        with tenant_transaction(self.engine, installation.merchant_id) as connection:
             connection.execute(
                 text("""
                 INSERT INTO sync_runs
@@ -171,7 +173,7 @@ class SqlShopifyProductService:
             )
             client = ShopifyGraphQLClient(installation.shop_domain, token, settings.api_version)
             metadata = client.shop_metadata()
-            with self.engine.begin() as connection:
+            with tenant_transaction(self.engine, installation.merchant_id) as connection:
                 connection.execute(
                     text("""
                 INSERT INTO shops
@@ -215,9 +217,11 @@ class SqlShopifyProductService:
                 resume_checkpoints=resume,
                 observed_at=started,
                 sync_run_id=sync_run_id,
-                checkpoint_callback=lambda value: self._save_checkpoint(sync_run_id, value),
+                        checkpoint_callback=lambda value: self._save_checkpoint(
+                            sync_run_id, installation.merchant_id, value
+                        ),
             )
-            with self.engine.begin() as connection:
+            with tenant_transaction(self.engine, installation.merchant_id) as connection:
                 connection.execute(
                     text("""
                     UPDATE sync_runs SET completed_at = now(), status = :status,
@@ -252,7 +256,7 @@ class SqlShopifyProductService:
                 "error_type": traceback.format_exc().splitlines()[-1][:160],
             },
         )
-        with self.engine.begin() as connection:
+        with tenant_transaction(self.engine, installation.merchant_id) as connection:
             connection.execute(
                 text("""
                 UPDATE sync_runs SET completed_at = now(), status = 'FAILED',
@@ -262,8 +266,10 @@ class SqlShopifyProductService:
                 {"id": sync_run_id, "merchant_id": installation.merchant_id},
             )
 
-    def _save_checkpoint(self, sync_run_id: UUID, checkpoints: dict[str, str]) -> None:
-        with self.engine.begin() as connection:
+    def _save_checkpoint(
+        self, sync_run_id: UUID, merchant_id: UUID, checkpoints: dict[str, str]
+    ) -> None:
+        with tenant_transaction(self.engine, merchant_id) as connection:
             connection.execute(
                 text("""
                 UPDATE sync_runs SET checkpoint_json = CAST(:checkpoints AS jsonb)
@@ -273,7 +279,7 @@ class SqlShopifyProductService:
             )
 
     def _resume_checkpoints(self, merchant_id: UUID, shop_id: UUID) -> dict[str, str]:
-        with self.engine.connect() as connection:
+        with tenant_transaction(self.engine, merchant_id) as connection:
             row = (
                 connection.execute(
                     text("""
@@ -292,7 +298,7 @@ class SqlShopifyProductService:
         return dict(json.loads(value) if isinstance(value, str) else value)
 
     def _orders(self, merchant_id: UUID, shop_id: UUID) -> tuple[CanonicalOrder, ...]:
-        with self.engine.connect() as connection:
+        with tenant_transaction(self.engine, merchant_id) as connection:
             order_rows = (
                 connection.execute(
                     text("""
@@ -381,7 +387,7 @@ class SqlShopifyProductService:
     def _assumptions(
         self, merchant_id: UUID, shop_id: UUID, as_of: datetime
     ) -> EconomicAssumptions | None:
-        with self.engine.connect() as connection:
+        with tenant_transaction(self.engine, merchant_id) as connection:
             row = (
                 connection.execute(
                     text("""
@@ -414,7 +420,7 @@ class SqlShopifyProductService:
         )
 
     def _latest_sync(self, merchant_id: UUID, shop_id: UUID) -> dict[str, Any]:
-        with self.engine.connect() as connection:
+        with tenant_transaction(self.engine, merchant_id) as connection:
             row = (
                 connection.execute(
                     text("""
