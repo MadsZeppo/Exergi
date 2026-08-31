@@ -12,6 +12,7 @@ const nav = [
   ["Verification", "/verification"],
   ["Data & integrations", "/data-integrations"],
   ["Settings / security", "/settings/security"],
+  ["Compliance", "/settings/compliance"],
 ];
 
 export type MerchantPageProps = {

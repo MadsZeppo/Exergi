@@ -1,6 +1,9 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 
-const publicPaths = new Set(["/", "/sign-in", "/sign-up"]);
+const publicPaths = new Set([
+  "/", "/sign-in", "/sign-up", "/privacy", "/terms", "/dpa", "/subprocessors",
+  "/api/cron/retention",
+]);
 
 export default clerkMiddleware(async (auth, request) => {
   const path = request.nextUrl.pathname;

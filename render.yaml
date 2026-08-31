@@ -34,6 +34,12 @@ services:
         generateValue: true
       - key: TENANT_PROVISIONING_KEY
         generateValue: true
+      - key: AGREEMENT_AUDIT_KEY
+        generateValue: true
+      - key: RETENTION_CRON_SECRET
+        sync: false
+      - key: SHOPIFY_WEBHOOKS_VERIFIED_AT
+        sync: false
       - key: CLERK_ISSUER_URL
         sync: false
       - key: CLERK_JWKS_URL
