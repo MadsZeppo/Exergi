@@ -421,6 +421,42 @@ def test_initial_bulk_sync_is_resumable_and_raw_ingestion_is_idempotent() -> Non
     assert len(sink.orders) == 1
 
 
+def test_empty_completed_bulk_operations_without_result_urls_are_successful() -> None:
+    class Client:
+        def start_bulk_query(self, query: str) -> BulkOperation:
+            resource = next(name for name in ("customers", "products", "orders") if name in query)
+            return BulkOperation(resource, "COMPLETED", 0, None, None, None)
+
+        def bulk_status(self, operation_id: str) -> BulkOperation:
+            raise AssertionError(f"new operation must not be resumed: {operation_id}")
+
+        def wait_for_bulk(self, operation_id: str) -> BulkOperation:
+            raise AssertionError(f"completed operation must not be polled: {operation_id}")
+
+        def iter_jsonl(self, url: str) -> Any:
+            raise AssertionError(f"empty operation has no download: {url}")
+
+    result = ShopifyInitialSync(
+        Client(),  # type: ignore[arg-type]
+        MemoryShopifyRepository(),
+        MemoryCanonicalSink(),
+        "k" * 40,
+        api_version="2026-07",
+    ).run(merchant_id=MERCHANT_ID, shop_id=SHOP_ID, observed_at=NOW)
+
+    assert result.status == "COMPLETED"
+    assert result.source_rows == 0
+    assert result.canonical_orders == 0
+    assert result.checkpoints == {
+        "customers": "customers",
+        "products": "products",
+        "orders": "orders",
+    }
+    assert result.warnings == (
+        "No orders were available in the granted Shopify history window.",
+    )
+
+
 def test_retry_replaces_every_terminal_bulk_checkpoint_with_a_new_operation() -> None:
     terminal = {
         "old-customers": "FAILED",

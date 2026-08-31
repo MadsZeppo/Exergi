@@ -329,6 +329,10 @@ class ShopifyInitialSync:
                         f"Shopify {object_type} bulk operation {exc.status}: {exc.error_code}"
                     ) from exc
             if not operation.url:
+                # Shopify legitimately omits the result URL when a completed bulk query
+                # produced zero objects. This is an empty dataset, not a failed operation.
+                if operation.object_count == 0:
+                    continue
                 raise RuntimeError(f"completed {object_type} bulk operation has no result URL")
             for raw in self.client.iter_jsonl(operation.url):
                 source_rows += 1
