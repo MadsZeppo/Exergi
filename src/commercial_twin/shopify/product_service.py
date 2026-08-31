@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-import traceback
+import re
 from datetime import UTC, datetime
 from typing import Any
 from uuid import UUID, uuid4
@@ -194,8 +194,8 @@ class SqlShopifyProductService:
                 settings.customer_pseudonym_key,
                 api_version=settings.api_version,
             )
-        except Exception:
-            self._record_sync_failure(sync_run_id, installation)
+        except Exception as exc:
+            self._record_sync_failure(sync_run_id, installation, exc)
             raise
         try:
             result = sync.run(
@@ -228,29 +228,36 @@ class SqlShopifyProductService:
                     },
                 )
             return result
-        except Exception:
-            self._record_sync_failure(sync_run_id, installation)
+        except Exception as exc:
+            self._record_sync_failure(sync_run_id, installation, exc)
             raise
 
-    def _record_sync_failure(self, sync_run_id: UUID, installation: Installation) -> None:
+    def _record_sync_failure(
+        self, sync_run_id: UUID, installation: Installation, error: Exception
+    ) -> None:
         # No token, payload or personal field is included in the stored summary.
+        summary = _safe_sync_error(error)
         self.repository.audit(
             installation.merchant_id,
             "SHOPIFY_INITIAL_SYNC_FAILED",
             "sync_worker",
             {
                 "shop": installation.shop_domain,
-                "error_type": traceback.format_exc().splitlines()[-1][:160],
+                "error_type": summary,
             },
         )
         with tenant_transaction(self.engine, installation.merchant_id) as connection:
             connection.execute(
                 text("""
                 UPDATE sync_runs SET completed_at = now(), status = 'FAILED',
-                    error_summary = 'Read-only Shopify sync failed; inspect structured logs.'
+                    error_summary = :error_summary
                 WHERE id = :id AND merchant_id = :merchant_id
                 """),
-                {"id": sync_run_id, "merchant_id": installation.merchant_id},
+                {
+                    "id": sync_run_id,
+                    "merchant_id": installation.merchant_id,
+                    "error_summary": summary,
+                },
             )
 
     def _save_checkpoint(
@@ -437,3 +444,15 @@ def _connection_status(installation: Installation) -> dict[str, Any]:
             else "SHOPIFY_DEFAULT_ORDER_WINDOW"
         ),
     }
+
+
+def _safe_sync_error(error: Exception) -> str:
+    match = re.fullmatch(
+        r"Shopify (customers|products|orders) bulk operation "
+        r"(FAILED|CANCELED|EXPIRED|REJECTED): ([A-Z0-9_]+)",
+        str(error),
+    )
+    if match is None:
+        return "Read-only Shopify sync failed; inspect server-side diagnostics."
+    object_type, status, error_code = match.groups()
+    return f"Shopify {object_type} bulk operation {status}: {error_code}"

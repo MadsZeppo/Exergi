@@ -323,6 +323,9 @@ def test_valid_callback_queues_initial_sync_once(monkeypatch: Any, private_key: 
         def initial_sync(self, settings: ShopifySettings, value: Installation) -> None:
             assert settings is config and value is installation
             self.calls += 1
+            # The service has already persisted FAILED; this worker exception must not escape
+            # through Starlette's background-task execution into the successful queue response.
+            raise RuntimeError("Shopify orders bulk operation REJECTED: INVALID_QUERY")
 
     monkeypatch.setattr(api_module, "ShopifyOAuthService", OAuth)
     product = Product()

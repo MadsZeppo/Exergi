@@ -27,6 +27,7 @@ from .graphql import (
     TERMINAL_BULK_STATUSES,
     BulkOperationNotFoundError,
     BulkOperationTerminalError,
+    BulkQueryRejectedError,
     ShopifyGraphQLClient,
 )
 from .repository import ShopifyRepository
@@ -308,7 +309,12 @@ class ShopifyInitialSync:
                 if candidate is not None and candidate.status not in TERMINAL_BULK_STATUSES:
                     operation = candidate
             if operation is None:
-                operation = self.client.start_bulk_query(query)
+                try:
+                    operation = self.client.start_bulk_query(query)
+                except BulkQueryRejectedError as exc:
+                    raise RuntimeError(
+                        f"Shopify {object_type} bulk operation REJECTED: {exc.error_code}"
+                    ) from exc
             checkpoints[object_type] = operation.id
             if checkpoint_callback is not None:
                 checkpoint_callback(dict(checkpoints))

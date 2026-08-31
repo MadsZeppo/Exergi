@@ -40,7 +40,9 @@ ORDERS_BULK_QUERY = """
       }
       fulfillments { id createdAt updatedAt status }
       returns { edges { node { id status createdAt closedAt
-        returnLineItems { edges { node { quantity fulfillmentLineItem { id } } } }
+        returnLineItems { edges { node { quantity
+          ... on ReturnLineItem { fulfillmentLineItem { id } }
+        } } }
       } } }
     } }
   }
@@ -131,6 +133,14 @@ class BulkOperationTerminalError(RuntimeError):
         super().__init__(f"Shopify bulk operation {self.status}: {self.error_code}")
 
 
+class BulkQueryRejectedError(RuntimeError):
+    """A data-safe classification of Shopify bulk-query userErrors."""
+
+    def __init__(self, error_code: str) -> None:
+        self.error_code = error_code
+        super().__init__(f"Shopify rejected bulk query: {error_code}")
+
+
 class ShopifyGraphQLClient:
     def __init__(
         self,
@@ -174,7 +184,7 @@ class ShopifyGraphQLClient:
         payload = self.execute(BULK_START_MUTATION, {"query": query})
         result = payload["data"]["bulkOperationRunQuery"]
         if result["userErrors"]:
-            raise RuntimeError(f"Shopify rejected bulk query: {result['userErrors']}")
+            raise BulkQueryRejectedError(_classify_bulk_user_errors(result["userErrors"]))
         return _bulk(result["bulkOperation"])
 
     def bulk_status(self, operation_id: str) -> BulkOperation:
@@ -216,3 +226,16 @@ def _bulk(value: Mapping[str, Any]) -> BulkOperation:
         partial_data_url=value.get("partialDataUrl"),
         error_code=value.get("errorCode"),
     )
+
+
+def _classify_bulk_user_errors(values: Any) -> str:
+    messages = " ".join(
+        str(value.get("message", ""))
+        for value in values
+        if isinstance(value, Mapping)
+    ).lower()
+    if "invalid bulk query" in messages or "doesn't exist on type" in messages:
+        return "INVALID_QUERY"
+    if "access_denied" in messages or "access denied" in messages:
+        return "ACCESS_DENIED"
+    return "SHOPIFY_USER_ERROR"

@@ -3,7 +3,10 @@ from __future__ import annotations
 import base64
 import hashlib
 import hmac
+import json
+import re
 from collections.abc import Mapping
+from contextlib import contextmanager
 from dataclasses import replace
 from datetime import UTC, datetime, timedelta
 from typing import Any
@@ -12,6 +15,7 @@ from uuid import UUID, uuid4
 import pytest
 from cryptography.fernet import Fernet
 
+import commercial_twin.shopify.product_service as product_service_module
 from commercial_twin.shopify.analysis import (
     build_first_decision_card,
     build_observational_diagnostics,
@@ -29,9 +33,12 @@ from commercial_twin.shopify.contracts import (
 )
 from commercial_twin.shopify.economics import reconstruct_order_economics
 from commercial_twin.shopify.graphql import (
+    ORDERS_BULK_QUERY,
     BulkOperation,
     BulkOperationNotFoundError,
     BulkOperationTerminalError,
+    BulkQueryRejectedError,
+    ShopifyGraphQLClient,
 )
 from commercial_twin.shopify.ingestion import (
     MemoryCanonicalSink,
@@ -39,7 +46,11 @@ from commercial_twin.shopify.ingestion import (
     map_order_jsonl,
 )
 from commercial_twin.shopify.oauth import ShopifyOAuthService
-from commercial_twin.shopify.product_service import _connection_status
+from commercial_twin.shopify.product_service import (
+    SqlShopifyProductService,
+    _connection_status,
+    _safe_sync_error,
+)
 from commercial_twin.shopify.reconciliation import reconcile_shopify_totals
 from commercial_twin.shopify.repository import Installation, MemoryShopifyRepository
 from commercial_twin.shopify.security import (
@@ -211,6 +222,62 @@ def test_webhook_hmac_replay_and_privacy_routing() -> None:
     assert [call[0] for call in processor.calls] == ["redact_shop"]
     with pytest.raises(ValueError, match="HMAC"):
         service.handle(body, {**headers, "X-Shopify-Hmac-Sha256": "bad"})
+
+
+def test_orders_query_uses_concrete_return_line_item_fragment_for_2026_07() -> None:
+    return_items = ORDERS_BULK_QUERY.split("returnLineItems", 1)[1]
+    before_fragment, fragment = return_items.split("... on ReturnLineItem", 1)
+
+    assert "quantity" in before_fragment
+    assert "fulfillmentLineItem" not in before_fragment
+    assert re.search(
+        r"^\s*\{\s*fulfillmentLineItem\s*\{\s*id\s*\}",
+        fragment,
+    )
+    assert not any(
+        field in ORDERS_BULK_QUERY
+        for field in ("email", "phone", "customerNote", "returnReasonNote", "mailingAddress")
+    )
+
+
+def test_bulk_user_errors_are_classified_without_copying_shopify_message() -> None:
+    class Transport:
+        def post(self, endpoint: str, headers: Mapping[str, str], body: bytes) -> bytes:
+            del endpoint, headers, body
+            return json.dumps(
+                {
+                    "data": {
+                        "bulkOperationRunQuery": {
+                            "bulkOperation": None,
+                            "userErrors": [
+                                {
+                                    "field": ["query"],
+                                    "message": (
+                                        "Invalid bulk query: Field 'fulfillmentLineItem' "
+                                        "doesn't exist on type 'ReturnLineItemType'"
+                                    ),
+                                }
+                            ],
+                        }
+                    }
+                }
+            ).encode()
+
+        def get_stream(self, url: str) -> Any:
+            del url
+            return iter([])
+
+    client = ShopifyGraphQLClient(
+        "safe-shop.myshopify.com",
+        "secret-token-not-for-errors",
+        "2026-07",
+        transport=Transport(),
+        max_attempts=1,
+    )
+    with pytest.raises(BulkQueryRejectedError, match="INVALID_QUERY") as error:
+        client.start_bulk_query(ORDERS_BULK_QUERY)
+    assert "fulfillmentLineItem" not in str(error.value)
+    assert "secret-token" not in str(error.value)
 
 
 def test_order_mapping_preserves_guest_checkout_refund_and_missing_cost() -> None:
@@ -506,6 +573,105 @@ def test_missing_bulk_checkpoint_starts_a_new_operation() -> None:
 
     assert client.started == 1
     assert result.checkpoints["customers"] == "new-customers"
+
+
+def test_orders_user_error_identifies_object_and_status_without_payload_data() -> None:
+    class Client:
+        def bulk_status(self, operation_id: str) -> BulkOperation:
+            return BulkOperation(operation_id, "COMPLETED", 0, operation_id, None, None)
+
+        def start_bulk_query(self, query: str) -> BulkOperation:
+            assert "orders" in query
+            raise BulkQueryRejectedError("INVALID_QUERY")
+
+        def wait_for_bulk(self, operation_id: str) -> BulkOperation:
+            raise AssertionError(operation_id)
+
+        def iter_jsonl(self, url: str) -> Any:
+            del url
+            return iter([])
+
+    sync = ShopifyInitialSync(
+        Client(),  # type: ignore[arg-type]
+        MemoryShopifyRepository(),
+        MemoryCanonicalSink(),
+        "k" * 40,
+        api_version="2026-07",
+    )
+    with pytest.raises(
+        RuntimeError,
+        match="Shopify orders bulk operation REJECTED: INVALID_QUERY",
+    ) as error:
+        sync.run(
+            merchant_id=MERCHANT_ID,
+            shop_id=SHOP_ID,
+            resume_checkpoints={
+                "customers": "saved-customers",
+                "products": "saved-products",
+            },
+            observed_at=NOW,
+        )
+    assert _safe_sync_error(error.value) == (
+        "Shopify orders bulk operation REJECTED: INVALID_QUERY"
+    )
+    assert "token" not in str(error.value).lower()
+    assert "customer" not in str(error.value).lower()
+
+
+def test_safe_shopify_failure_is_persisted_as_failed(monkeypatch: Any) -> None:
+    class Repository:
+        audits: list[tuple[Any, ...]] = []
+
+        def audit(self, *values: Any) -> None:
+            self.audits.append(values)
+
+    class Connection:
+        calls: list[tuple[str, dict[str, Any]]] = []
+
+        def execute(self, statement: Any, parameters: dict[str, Any]) -> None:
+            self.calls.append((str(statement), parameters))
+
+    connection = Connection()
+
+    @contextmanager
+    def transaction(engine: Any, merchant_id: UUID) -> Any:
+        del engine
+        assert merchant_id == MERCHANT_ID
+        yield connection
+
+    monkeypatch.setattr(product_service_module, "tenant_transaction", transaction)
+    repository = Repository()
+    service = SqlShopifyProductService(object(), repository)  # type: ignore[arg-type]
+    installation = Installation(
+        id=uuid4(),
+        organization_id=ORGANIZATION_ID,
+        merchant_id=MERCHANT_ID,
+        shop_id=SHOP_ID,
+        shop_domain="safe-shop.myshopify.com",
+        encrypted_access_token="not-used",
+        encrypted_refresh_token=None,
+        scopes=("read_orders", "read_returns"),
+        api_version="2026-07",
+        access_token_expires_at=None,
+        refresh_token_expires_at=None,
+        status="CONNECTED",
+        installed_at=NOW,
+        updated_at=NOW,
+    )
+
+    service._record_sync_failure(
+        uuid4(),
+        installation,
+        RuntimeError("Shopify orders bulk operation REJECTED: INVALID_QUERY"),
+    )
+
+    statement, parameters = connection.calls[0]
+    assert "status = 'FAILED'" in statement
+    assert parameters["error_summary"] == (
+        "Shopify orders bulk operation REJECTED: INVALID_QUERY"
+    )
+    assert repository.audits[0][3]["error_type"] == parameters["error_summary"]
+    assert "not-used" not in str(repository.audits)
 
 
 def test_economic_identity_is_fail_closed_and_assumptions_are_labeled() -> None:

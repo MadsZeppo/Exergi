@@ -122,7 +122,9 @@ def build_shopify_router(
             query = urlencode({"shopify": "error", "reason": "OAuth verification failed"})
             return RedirectResponse(f"{settings.dashboard_url}/onboarding?{query}", status_code=303)
         if product_service is not None:
-            background_tasks.add_task(product_service.initial_sync, settings, installation)
+            background_tasks.add_task(
+                _run_initial_sync_safely, product_service, settings, installation
+            )
         query = urlencode({"shopify": "connected", "shop": installation.shop_domain})
         return RedirectResponse(f"{settings.dashboard_url}/onboarding?{query}", status_code=303)
 
@@ -179,7 +181,9 @@ def build_shopify_router(
                 raise HTTPException(
                     status_code=401, detail="Shopify reauthorization required"
                 ) from exc
-        background_tasks.add_task(product_service.initial_sync, settings, installation)
+        background_tasks.add_task(
+            _run_initial_sync_safely, product_service, settings, installation
+        )
         repository.audit(
             identity.merchant_id,
             "SHOPIFY_INITIAL_SYNC_QUEUED",
@@ -311,3 +315,15 @@ def _canonical_shop(value: str) -> str:
         return canonicalize_shop_domain(value)
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+
+def _run_initial_sync_safely(
+    product_service: SqlShopifyProductService,
+    settings: ShopifySettings,
+    installation: Any,
+) -> None:
+    """Let the service persist FAILED, but never leak worker exceptions into ASGI."""
+    try:
+        product_service.initial_sync(settings, installation)
+    except Exception:
+        return
