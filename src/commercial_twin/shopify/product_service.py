@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Iterator
+from contextlib import contextmanager
 from datetime import UTC, datetime
 from typing import Any
 from uuid import UUID, uuid4
@@ -132,6 +134,28 @@ class SqlShopifyProductService:
         settings: ShopifySettings,
         installation: Installation,
     ) -> SyncResult:
+        with self._sync_lock(installation.shop_id) as acquired:
+            if not acquired:
+                return SyncResult(
+                    uuid4(),
+                    "SKIPPED_ACTIVE",
+                    0,
+                    0,
+                    0,
+                    0,
+                    {},
+                    ("A sync for this shop is already active.",),
+                )
+            self._claim_incremental_jobs(installation)
+            result = self._initial_sync_locked(settings, installation)
+            self._complete_incremental_jobs(installation)
+            return result
+
+    def _initial_sync_locked(
+        self,
+        settings: ShopifySettings,
+        installation: Installation,
+    ) -> SyncResult:
         sync_run_id = uuid4()
         started = datetime.now(UTC)
         resume = self._resume_checkpoints(installation.merchant_id, installation.shop_id)
@@ -197,6 +221,7 @@ class SqlShopifyProductService:
         except Exception as exc:
             self._record_sync_failure(sync_run_id, installation, exc)
             raise
+
         try:
             result = sync.run(
                 merchant_id=installation.merchant_id,
@@ -204,9 +229,9 @@ class SqlShopifyProductService:
                 resume_checkpoints=resume,
                 observed_at=started,
                 sync_run_id=sync_run_id,
-                        checkpoint_callback=lambda value: self._save_checkpoint(
-                            sync_run_id, installation.merchant_id, value
-                        ),
+                checkpoint_callback=lambda value: self._save_checkpoint(
+                    sync_run_id, installation.merchant_id, value
+                ),
             )
             with tenant_transaction(self.engine, installation.merchant_id) as connection:
                 connection.execute(
@@ -231,6 +256,57 @@ class SqlShopifyProductService:
         except Exception as exc:
             self._record_sync_failure(sync_run_id, installation, exc)
             raise
+
+    @contextmanager
+    def _sync_lock(self, shop_id: UUID) -> Iterator[bool]:
+        lock_key = shop_id.int & ((1 << 63) - 1)
+        with self.engine.connect() as connection:
+            acquired = bool(
+                connection.execute(
+                    text("SELECT pg_try_advisory_lock(:lock_key)"), {"lock_key": lock_key}
+                ).scalar_one()
+            )
+            try:
+                yield acquired
+            finally:
+                if acquired:
+                    connection.execute(
+                        text("SELECT pg_advisory_unlock(:lock_key)"), {"lock_key": lock_key}
+                    )
+
+    def _claim_incremental_jobs(self, installation: Installation) -> None:
+        with tenant_transaction(self.engine, installation.merchant_id) as connection:
+            connection.execute(
+                text("""
+                UPDATE jobs SET status = 'RUNNING', locked_at = now(), attempts = attempts + 1
+                WHERE merchant_id = :merchant_id
+                  AND job_type = 'SHOPIFY_INCREMENTAL_INGEST'
+                  AND status = 'PENDING'
+                  AND available_at <= now()
+                  AND payload ->> 'shop_id' = :shop_id
+                """),
+                {
+                    "merchant_id": installation.merchant_id,
+                    "shop_id": str(installation.shop_id),
+                },
+            )
+
+    def _complete_incremental_jobs(self, installation: Installation) -> None:
+        with tenant_transaction(self.engine, installation.merchant_id) as connection:
+            connection.execute(
+                text("""
+                UPDATE jobs SET status = 'COMPLETED', completed_at = now(), locked_at = NULL,
+                    error = NULL, payload = '{}'
+                WHERE merchant_id = :merchant_id
+                  AND job_type = 'SHOPIFY_INCREMENTAL_INGEST'
+                  AND status = 'RUNNING'
+                  AND payload ->> 'shop_id' = :shop_id
+                """),
+                {
+                    "merchant_id": installation.merchant_id,
+                    "shop_id": str(installation.shop_id),
+                },
+            )
 
     def _record_sync_failure(
         self, sync_run_id: UUID, installation: Installation, error: Exception
@@ -277,8 +353,8 @@ class SqlShopifyProductService:
             row = (
                 connection.execute(
                     text("""
-                SELECT checkpoint_json FROM sync_runs
-                WHERE merchant_id = :merchant_id AND shop_id = :shop_id AND status = 'FAILED'
+                SELECT status, checkpoint_json FROM sync_runs
+                WHERE merchant_id = :merchant_id AND shop_id = :shop_id
                 ORDER BY started_at DESC LIMIT 1
                 """),
                     {"merchant_id": merchant_id, "shop_id": shop_id},
@@ -286,7 +362,7 @@ class SqlShopifyProductService:
                 .mappings()
                 .first()
             )
-        if row is None:
+        if row is None or row["status"] != "FAILED":
             return {}
         value = row["checkpoint_json"]
         return dict(json.loads(value) if isinstance(value, str) else value)

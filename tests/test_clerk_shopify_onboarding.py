@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import base64
+import hashlib
+import hmac
 import time
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
@@ -411,3 +414,79 @@ def test_retry_sync_uses_existing_authenticated_connection_without_oauth(
     assert response.json() == {"status": "QUEUED", "mode": "READ_ONLY"}
     assert product.calls == 1
     assert repository.nonces == {}
+
+
+def test_verified_incremental_webhook_automatically_syncs_once(
+    private_key: Any,
+) -> None:
+    config = _settings()
+    repository = MemoryShopifyRepository()
+    tenants = MemoryTenantProvisioner(TenantIdDeriver("t" * 40))
+    principal = tenants.resolve(VerifiedIdentity(ISSUER, "user_merchant_one"))
+    installation = Installation(
+        id=UUID("00000000-0000-4000-8000-000000000021"),
+        organization_id=principal.organization_id,
+        merchant_id=principal.merchant_id,
+        shop_id=UUID("00000000-0000-4000-8000-000000000022"),
+        shop_domain="safe-shop.myshopify.com",
+        encrypted_access_token="encrypted",
+        encrypted_refresh_token=None,
+        scopes=config.scopes,
+        api_version=config.api_version,
+        access_token_expires_at=None,
+        refresh_token_expires_at=None,
+        status="CONNECTED",
+        installed_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
+    )
+    repository.installations[(principal.merchant_id, installation.shop_domain)] = installation
+
+    class Product:
+        calls = 0
+
+        def initial_sync(self, settings: ShopifySettings, value: Installation) -> None:
+            assert settings is config and value is installation
+            self.calls += 1
+
+    product = Product()
+    app = FastAPI()
+    app.include_router(
+        build_shopify_router(
+            config,
+            repository,
+            ShopifyWebhookService(
+                config.client_secret, repository, RecordingPrivacyProcessor()
+            ),
+            _verifier(private_key),
+            tenants,
+            product,  # type: ignore[arg-type]
+            agreement_gate=MemoryAgreementGate(),
+        )
+    )
+    client = TestClient(app)
+    body = b'{"id":123,"admin_graphql_api_id":"gid://shopify/Order/123"}'
+    signature = base64.b64encode(
+        hmac.new(config.client_secret.encode(), body, hashlib.sha256).digest()
+    ).decode()
+    headers = {
+        "X-Shopify-Hmac-Sha256": signature,
+        "X-Shopify-Shop-Domain": installation.shop_domain,
+        "X-Shopify-Topic": "orders/create",
+        "X-Shopify-Webhook-Id": "delivery-1",
+        "Content-Type": "application/json",
+    }
+
+    first = client.post("/api/v1/shopify/webhooks", content=body, headers=headers)
+    duplicate = client.post("/api/v1/shopify/webhooks", content=body, headers=headers)
+
+    assert first.json() == {
+        "accepted": True,
+        "duplicate": False,
+        "topic": "orders/create",
+    }
+    assert duplicate.json() == {
+        "accepted": True,
+        "duplicate": True,
+        "topic": "orders/create",
+    }
+    assert product.calls == 1

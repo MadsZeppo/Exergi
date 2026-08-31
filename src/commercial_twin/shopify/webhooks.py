@@ -17,12 +17,8 @@ from commercial_twin.database_security import set_tenant_context, shop_route_tra
 from .repository import ShopifyRepository
 from .security import canonicalize_shop_domain, pseudonymize_customer, verify_webhook_hmac
 
-SUPPORTED_TOPICS = frozenset(
+INCREMENTAL_TOPICS = frozenset(
     {
-        "app/uninstalled",
-        "customers/data_request",
-        "customers/redact",
-        "shop/redact",
         "orders/create",
         "orders/updated",
         "orders/cancelled",
@@ -30,6 +26,15 @@ SUPPORTED_TOPICS = frozenset(
         "products/create",
         "products/update",
         "products/delete",
+    }
+)
+
+SUPPORTED_TOPICS = INCREMENTAL_TOPICS | frozenset(
+    {
+        "app/uninstalled",
+        "customers/data_request",
+        "customers/redact",
+        "shop/redact",
     }
 )
 

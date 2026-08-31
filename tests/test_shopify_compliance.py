@@ -50,9 +50,16 @@ def test_acceptance_is_idempotent_and_browser_never_supplies_merchant_id() -> No
 
 def test_cron_authentication_is_constant_time_and_fails_closed() -> None:
     worker = MagicMock()
+    reconciliation = MagicMock()
     worker.run.return_value = MaintenanceResult(1, 2, {"oauth_nonces": 3})
     app = FastAPI()
-    app.include_router(build_maintenance_router(worker, MaintenanceSettings("s" * 40)))
+    app.include_router(
+        build_maintenance_router(
+            worker,
+            MaintenanceSettings("s" * 40),
+            reconciliation=reconciliation,
+        )
+    )
     client = TestClient(app)
 
     assert client.post("/api/v1/maintenance/daily").status_code == 401
@@ -71,6 +78,7 @@ def test_cron_authentication_is_constant_time_and_fails_closed() -> None:
     }
     assert "s" * 40 not in accepted.text
     worker.run.assert_called_once_with()
+    reconciliation.assert_called_once_with()
 
 
 def test_retention_cutoffs_are_explicit_and_parameterized() -> None:

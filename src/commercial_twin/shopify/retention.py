@@ -6,12 +6,13 @@ import hashlib
 import hmac
 import json
 import os
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from typing import Any
 from uuid import UUID, uuid4
 
-from fastapi import APIRouter, Header, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Header, HTTPException
 from sqlalchemy import Connection, Engine, text
 
 from commercial_twin.database_security import tenant_transaction
@@ -558,12 +559,15 @@ class DailyMaintenanceWorker:
 
 
 def build_maintenance_router(
-    worker: DailyMaintenanceWorker, settings: MaintenanceSettings
+    worker: DailyMaintenanceWorker,
+    settings: MaintenanceSettings,
+    reconciliation: Callable[[], None] | None = None,
 ) -> APIRouter:
     router = APIRouter(prefix="/api/v1/maintenance", tags=["internal-maintenance"])
 
     @router.post("/daily")
     def daily(
+        background_tasks: BackgroundTasks,
         x_exergi_maintenance_secret: str | None = Header(default=None),
     ) -> dict[str, Any]:
         supplied = (x_exergi_maintenance_secret or "").encode()
@@ -573,6 +577,8 @@ def build_maintenance_router(
         ):
             raise HTTPException(status_code=401, detail="invalid maintenance authentication")
         result = worker.run()
+        if reconciliation is not None:
+            background_tasks.add_task(reconciliation)
         return {
             "status": "COMPLETED",
             "tenants_processed": result.tenants_processed,

@@ -743,6 +743,43 @@ def test_safe_shopify_failure_is_persisted_as_failed(monkeypatch: Any) -> None:
     assert "not-used" not in str(repository.audits)
 
 
+def test_completed_sync_prevents_reuse_of_stale_failed_checkpoints(
+    monkeypatch: Any,
+) -> None:
+    class Result:
+        def mappings(self) -> Result:
+            return self
+
+        def first(self) -> dict[str, Any]:
+            return {
+                "status": "COMPLETED",
+                "checkpoint_json": {"orders": "stale-empty-operation"},
+            }
+
+    class Connection:
+        statement = ""
+
+        def execute(self, statement: Any, parameters: dict[str, Any]) -> Result:
+            self.statement = str(statement)
+            assert parameters == {"merchant_id": MERCHANT_ID, "shop_id": SHOP_ID}
+            return Result()
+
+    connection = Connection()
+
+    @contextmanager
+    def transaction(engine: Any, merchant_id: UUID) -> Any:
+        del engine
+        assert merchant_id == MERCHANT_ID
+        yield connection
+
+    monkeypatch.setattr(product_service_module, "tenant_transaction", transaction)
+    service = SqlShopifyProductService(object(), object())  # type: ignore[arg-type]
+
+    assert service._resume_checkpoints(MERCHANT_ID, SHOP_ID) == {}
+    assert "status = 'FAILED'" not in connection.statement
+    assert "ORDER BY started_at DESC LIMIT 1" in connection.statement
+
+
 def test_economic_identity_is_fail_closed_and_assumptions_are_labeled() -> None:
     order = _order("c1", NOW - timedelta(days=5), observed_at=NOW - timedelta(days=4))
     missing = reconstruct_order_economics(order)

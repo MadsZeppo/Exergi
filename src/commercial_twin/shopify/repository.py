@@ -47,6 +47,10 @@ class ShopifyRepository(Protocol):
 
     def get_installation(self, merchant_id: UUID, shop: str) -> Installation | None: ...
 
+    def get_installation_for_verified_webhook(self, shop: str) -> Installation | None: ...
+
+    def connected_installations_for_maintenance(self) -> tuple[Installation, ...]: ...
+
     def disconnect(self, merchant_id: UUID, shop: str, at: datetime) -> None: ...
 
     def register_webhook(
@@ -111,6 +115,19 @@ class MemoryShopifyRepository:
 
     def get_installation(self, merchant_id: UUID, shop: str) -> Installation | None:
         return self.installations.get((merchant_id, shop))
+
+    def get_installation_for_verified_webhook(self, shop: str) -> Installation | None:
+        return next(
+            (value for (_, domain), value in self.installations.items() if domain == shop),
+            None,
+        )
+
+    def connected_installations_for_maintenance(self) -> tuple[Installation, ...]:
+        return tuple(
+            value
+            for value in self.installations.values()
+            if value.status == "CONNECTED" and value.encrypted_access_token
+        )
 
     def disconnect(self, merchant_id: UUID, shop: str, at: datetime) -> None:
         current = self.installations.get((merchant_id, shop))
@@ -264,6 +281,50 @@ class SqlShopifyRepository:
                 .first()
             )
         return _installation_from_row(row) if row else None
+
+    def get_installation_for_verified_webhook(self, shop: str) -> Installation | None:
+        with shop_route_transaction(self.engine, shop) as connection:
+            row = (
+                connection.execute(
+                    text("SELECT * FROM shop_connections WHERE shop_domain = :shop"),
+                    {"shop": shop},
+                )
+                .mappings()
+                .first()
+            )
+            if row is None:
+                return None
+            set_tenant_context(connection, row["merchant_id"])
+            return _installation_from_row(row)
+
+    def connected_installations_for_maintenance(self) -> tuple[Installation, ...]:
+        with self.engine.begin() as connection:
+            connection.execute(
+                text("SELECT set_config('app.maintenance_mode', 'retention-v1', true)")
+            )
+            merchant_ids = tuple(
+                connection.execute(
+                    text("SELECT merchant_id FROM maintenance_tenants ORDER BY merchant_id")
+                ).scalars()
+            )
+        installations: list[Installation] = []
+        for merchant_id in merchant_ids:
+            with tenant_transaction(self.engine, merchant_id) as connection:
+                rows = (
+                    connection.execute(
+                        text("""
+                        SELECT * FROM shop_connections
+                        WHERE merchant_id = :merchant_id AND status = 'CONNECTED'
+                          AND encrypted_access_token <> ''
+                        ORDER BY shop_domain
+                        """),
+                        {"merchant_id": merchant_id},
+                    )
+                    .mappings()
+                    .all()
+                )
+            installations.extend(_installation_from_row(row) for row in rows)
+        return tuple(installations)
 
     def disconnect(self, merchant_id: UUID, shop: str, at: datetime) -> None:
         with tenant_transaction(self.engine, merchant_id) as connection:

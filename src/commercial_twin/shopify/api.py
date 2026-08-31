@@ -21,7 +21,7 @@ from .product_service import SqlShopifyProductService
 from .repository import ShopifyRepository
 from .security import canonicalize_shop_domain
 from .tenancy import TenantResolver
-from .webhooks import ShopifyWebhookService
+from .webhooks import INCREMENTAL_TOPICS, ShopifyWebhookService
 
 
 class ConnectInput(BaseModel):
@@ -283,12 +283,28 @@ def build_shopify_router(
         return result
 
     @router.post("/webhooks")
-    async def webhook(request: Request) -> dict[str, Any]:
+    async def webhook(request: Request, background_tasks: BackgroundTasks) -> dict[str, Any]:
         body = await request.body()
         try:
             result = webhook_service.handle(body, request.headers)
         except (ValueError, RuntimeError) as exc:
             raise HTTPException(status_code=401, detail=str(exc)) from exc
+        if (
+            product_service is not None
+            and result.topic in INCREMENTAL_TOPICS
+            and not result.duplicate
+        ):
+            shop = canonicalize_shop_domain(
+                request.headers.get("X-Shopify-Shop-Domain", "")
+            )
+            background_tasks.add_task(
+                _run_webhook_sync_safely,
+                product_service,
+                settings,
+                repository,
+                oauth,
+                shop,
+            )
         return asdict(result)
 
     @router.get("/capabilities")
@@ -327,3 +343,43 @@ def _run_initial_sync_safely(
         product_service.initial_sync(settings, installation)
     except Exception:
         return
+
+
+def _run_webhook_sync_safely(
+    product_service: SqlShopifyProductService,
+    settings: ShopifySettings,
+    repository: ShopifyRepository,
+    oauth: ShopifyOAuthService,
+    shop: str,
+) -> None:
+    try:
+        installation = repository.get_installation_for_verified_webhook(shop)
+        if installation is None or installation.status != "CONNECTED":
+            return
+        if (
+            installation.access_token_expires_at is not None
+            and installation.access_token_expires_at <= datetime.now(UTC) + timedelta(minutes=5)
+        ):
+            installation = oauth.refresh(installation)
+        product_service.initial_sync(settings, installation)
+    except Exception:
+        return
+
+
+def run_daily_shopify_reconciliation_safely(
+    product_service: SqlShopifyProductService,
+    settings: ShopifySettings,
+    repository: ShopifyRepository,
+) -> None:
+    oauth = ShopifyOAuthService(settings, repository)
+    for installation in repository.connected_installations_for_maintenance():
+        try:
+            if (
+                installation.access_token_expires_at is not None
+                and installation.access_token_expires_at
+                <= datetime.now(UTC) + timedelta(minutes=5)
+            ):
+                installation = oauth.refresh(installation)
+            product_service.initial_sync(settings, installation)
+        except Exception:
+            continue

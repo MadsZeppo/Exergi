@@ -162,7 +162,10 @@ def create_app(service: MerchantValidationService | None = None) -> FastAPI:
     # The production Shopify router is enabled only when every required secret is present.
     # Missing configuration never falls back to fake credentials or a live-success claim.
     try:
-        from commercial_twin.shopify.api import build_shopify_router
+        from commercial_twin.shopify.api import (
+            build_shopify_router,
+            run_daily_shopify_reconciliation_safely,
+        )
         from commercial_twin.shopify.compliance import SqlAgreementService
         from commercial_twin.shopify.config import ShopifySettings
         from commercial_twin.shopify.identity import ClerkAuthSettings, ClerkJWTVerifier
@@ -210,6 +213,9 @@ def create_app(service: MerchantValidationService | None = None) -> FastAPI:
             build_maintenance_router(
                 DailyMaintenanceWorker(repository.engine, settings.customer_pseudonym_key),
                 maintenance_settings,
+                reconciliation=lambda: run_daily_shopify_reconciliation_safely(
+                    product_service, settings, repository
+                ),
             )
         )
         app.add_middleware(
