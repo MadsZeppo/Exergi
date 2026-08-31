@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import { MerchantPage, Status } from "../merchant-shell";
-import { safeSyncFailureSummary } from "./sync-status";
+import { canQueueSync, safeSyncFailureSummary, syncActionLabel } from "./sync-status";
 
 type Props = {
   apiBase: string;
@@ -15,7 +15,6 @@ type Props = {
   quality: Record<string, unknown>;
 };
 
-const RETRYABLE = new Set(["FAILED", "NOT_STARTED"]);
 const POLLING = new Set(["QUEUED", "RUNNING", "SYNCING"]);
 
 function text(value: unknown, fallback: string): string {
@@ -45,8 +44,8 @@ export function DataIntegrationsClient({ apiBase, shop, connection, sync, qualit
       ? "ALL_APPROVED_ORDERS"
       : "SHOPIFY_DEFAULT_ORDER_WINDOW";
   }, [connection.history, scopes]);
-  const canRetry = connectionStatus === "CONNECTED"
-    && RETRYABLE.has(syncStatus)
+  const canQueue = connectionStatus === "CONNECTED"
+    && canQueueSync(syncStatus)
     && isLoaded
     && isSignedIn
     && !submitting
@@ -92,7 +91,7 @@ export function DataIntegrationsClient({ apiBase, shop, connection, sync, qualit
   }, [base, getToken, isSignedIn, router, shop, syncStatus]);
 
   async function retrySync() {
-    if (!canRetry) return;
+    if (!canQueue) return;
     setError("");
     setSubmitting(true);
     try {
@@ -126,9 +125,9 @@ export function DataIntegrationsClient({ apiBase, shop, connection, sync, qualit
     </section>
     <section className="product-panel dashboard-section">
       <h2>Read-only synchronization</h2>
-      <p>Retry resumes the existing Shopify connection. It does not restart OAuth or request new scopes.</p>
-      <button className="sync-retry-button" type="button" onClick={retrySync} disabled={!canRetry}>
-        {submitting ? "Queueing…" : POLLING.has(syncStatus) ? displayedSync : "Retry sync"}
+      <p>Sync refreshes the existing Shopify connection. It does not restart OAuth or request new scopes.</p>
+      <button className="sync-retry-button" type="button" onClick={retrySync} disabled={!canQueue}>
+        {POLLING.has(syncStatus) ? displayedSync : syncActionLabel(syncStatus, submitting)}
       </button>
       {syncStatus === "FAILED" && syncFailure ? <p className="form-note" role="alert"><strong>Latest failure:</strong> {syncFailure}</p> : null}
       {error ? <p className="form-note">{error}</p> : null}
