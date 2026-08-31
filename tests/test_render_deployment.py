@@ -40,6 +40,8 @@ def test_render_blueprint_has_no_secret_values_and_uses_private_database() -> No
     variables = {item["key"]: item for item in service["envVars"]}
 
     assert service["plan"] == "free"
+    assert service["branch"] == "main"
+    assert service["autoDeployTrigger"] == "commit"
     assert service["healthCheckPath"] == "/healthz"
     assert "preDeployCommand" not in service
     assert service["startCommand"].startswith(

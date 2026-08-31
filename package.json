@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test:cron-auth": "node --experimental-strip-types --test tests_ts/cron-auth.test.ts"
+    "test:cron-auth": "node --experimental-strip-types --test tests_ts/cron-auth.test.ts",
+    "test:shopify-sync-status": "node --experimental-strip-types --test tests_ts/shopify-sync-status.test.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^7.8.3",

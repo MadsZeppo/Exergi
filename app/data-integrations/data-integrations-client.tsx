@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import { MerchantPage, Status } from "../merchant-shell";
+import { safeSyncFailureSummary } from "./sync-status";
 
 type Props = {
   apiBase: string;
@@ -25,6 +26,11 @@ export function DataIntegrationsClient({ apiBase, shop, connection, sync, qualit
   const { getToken, isLoaded, isSignedIn } = useAuth();
   const router = useRouter();
   const [syncStatus, setSyncStatus] = useState(text(sync.status, "NOT_STARTED"));
+  const [syncFailure, setSyncFailure] = useState(
+    text(sync.status, "NOT_STARTED") === "FAILED"
+      ? safeSyncFailureSummary(sync.error_summary)
+      : "",
+  );
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const base = apiBase.replace(/\/$/, "");
@@ -58,10 +64,17 @@ export function DataIntegrationsClient({ apiBase, shop, connection, sync, qualit
           { headers: { Authorization: `Bearer ${token}` }, cache: "no-store" },
         );
         if (!response.ok) throw new Error(`Sync status returned ${response.status}.`);
-        const snapshot = await response.json() as { sync?: { status?: unknown } };
+        const snapshot = await response.json() as {
+          sync?: { status?: unknown; error_summary?: unknown };
+        };
         const observed = text(snapshot.sync?.status, "NOT_STARTED");
         if (!cancelled) {
           setSyncStatus(observed);
+          setSyncFailure(
+            observed === "FAILED"
+              ? safeSyncFailureSummary(snapshot.sync?.error_summary)
+              : "",
+          );
           if (!POLLING.has(observed)) router.refresh();
         }
       } catch (reason) {
@@ -94,6 +107,7 @@ export function DataIntegrationsClient({ apiBase, shop, connection, sync, qualit
         throw new Error(body.detail ?? "The read-only sync could not be queued.");
       }
       setSyncStatus("QUEUED");
+      setSyncFailure("");
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "The sync retry failed.");
     } finally {
@@ -116,6 +130,7 @@ export function DataIntegrationsClient({ apiBase, shop, connection, sync, qualit
       <button className="sync-retry-button" type="button" onClick={retrySync} disabled={!canRetry}>
         {submitting ? "Queueing…" : POLLING.has(syncStatus) ? displayedSync : "Retry sync"}
       </button>
+      {syncStatus === "FAILED" && syncFailure ? <p className="form-note" role="alert"><strong>Latest failure:</strong> {syncFailure}</p> : null}
       {error ? <p className="form-note">{error}</p> : null}
     </section>
   </MerchantPage>;

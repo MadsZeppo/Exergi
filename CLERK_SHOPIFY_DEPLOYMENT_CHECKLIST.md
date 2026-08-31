@@ -52,7 +52,8 @@ that file and confirm it is the active version in the Partner Dashboard. The web
 ## 5. Deployment order
 
 1. Push the reviewed commits only after explicit approval.
-2. Deploy Render and confirm `GET https://exergi-api.onrender.com/healthz` returns `{"status":"ok"}`.
+2. Confirm Render auto-deploys `main` after the push and that
+   `GET https://exergi-api.onrender.com/healthz` returns `{"status":"ok"}`.
 3. Deploy Vercel and confirm the public home page loads while `/onboarding` redirects to Clerk.
 4. Confirm `GET /api/v1/shopify/install?shop=<development-store>.myshopify.com` redirects to the
    same protected onboarding URL and does not start OAuth.

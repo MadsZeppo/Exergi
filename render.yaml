@@ -4,11 +4,12 @@ services:
     runtime: python
     region: frankfurt
     plan: free
+    branch: main
     rootDir: .
     buildCommand: uv sync --frozen --no-dev
     startCommand: uv run alembic upgrade head && exec uv run uvicorn commercial_twin.merchant_validation.api:app --host 0.0.0.0 --port $PORT --proxy-headers
     healthCheckPath: /healthz
-    autoDeployTrigger: off
+    autoDeployTrigger: commit
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.14
