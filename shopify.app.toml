@@ -1,7 +1,7 @@
 # Replace the non-secret client ID and URLs through Shopify CLI/Dev Dashboard per environment.
 client_id = "REPLACE_WITH_SHOPIFY_CLIENT_ID"
 name = "Exergi"
-application_url = "https://api.example.exergi.app/api/v1/shopify/install"
+application_url = "https://exergi-api.onrender.com/api/v1/shopify/install"
 embedded = false
 
 [build]
@@ -11,7 +11,7 @@ automatically_update_urls_on_dev = true
 scopes = "read_customers,read_inventory,read_orders,read_products,read_returns"
 
 [auth]
-redirect_urls = ["https://api.example.exergi.app/api/v1/shopify/oauth/callback"]
+redirect_urls = ["https://exergi-api.onrender.com/api/v1/shopify/oauth/callback"]
 
 [webhooks]
 api_version = "2026-07"

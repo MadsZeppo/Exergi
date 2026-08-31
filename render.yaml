@@ -32,8 +32,14 @@ services:
         generateValue: true
       - key: CUSTOMER_PSEUDONYM_KEY
         generateValue: true
-      - key: EXERGI_SESSION_SIGNING_KEY
+      - key: TENANT_PROVISIONING_KEY
         generateValue: true
+      - key: CLERK_ISSUER_URL
+        sync: false
+      - key: CLERK_JWKS_URL
+        sync: false
+      - key: CLERK_AUTHORIZED_PARTIES
+        sync: false
       - key: SHOPIFY_ENABLE_READ_ALL_ORDERS
         value: "false"
       - key: SHOPIFY_ENABLE_PAYMENTS_DATA
